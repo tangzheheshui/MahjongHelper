@@ -1,0 +1,20 @@
+# Node
+node_modules/
+dist/
+*.tsbuildinfo
+
+# 依赖与缓存
+.venv/
+__pycache__/
+.DS_Store
+
+# 环境与密钥
+.env
+.env.*
+
+# IDE
+.idea/
+.vscode/
+
+# 大文件：参考资料 PDF 单独管理（见 docs/references/SOURCES.md），如需免入库可取消注释
+# docs/references/*.pdf

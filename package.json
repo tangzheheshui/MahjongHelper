@@ -1,0 +1,15 @@
+{
+  "name": "nanikiru",
+  "private": true,
+  "version": "0.1.0",
+  "description": "麻将「何切」训练教学 App——引擎、前端、题库内容 monorepo",
+  "workspaces": ["packages/*", "apps/*"],
+  "scripts": {
+    "test": "npm run test --workspaces --if-present",
+    "typecheck": "tsc -p packages/engine --noEmit"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "vitest": "^3.0.0"
+  }
+}
