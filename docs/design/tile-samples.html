@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>牌面样张 v0.2 · nanikiru（何切）</title>
+<title>牌面样张 v0.3 · nanikiru（何切）</title>
 <style>
   body { font-family: -apple-system,"PingFang SC","Helvetica Neue",sans-serif;
          background:#efece3; color:#3a352c; margin:0; padding:36px 44px; }
@@ -29,8 +29,8 @@
 </head>
 <body>
 
-<h1>牌面样张 v0.2</h1>
-<p class="sub">11 / 34 张 · 万字加重加粗（朱/蓝两版待选）· 新增条子 2/3/9 索与 1 饼 / 發 / 白 · 2026-08-31</p>
+<h1>牌面样张 v0.3</h1>
+<p class="sub">11 / 34 张 · 筒子改铜钱菊纹（外环+象牙环+花瓣圈+彩芯）· 万字粗笔（朱/蓝两版待选）· 2026-09-01</p>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
 <defs>
@@ -106,22 +106,37 @@
     <ellipse cx="40" cy="25" rx="42" ry="17" fill="url(#gSheen)"/>
   </symbol>
 
-  <!-- 饼圆点 -->
+  <!-- 饼圆点：铜钱/菊纹样式（外环 + 象牙环 + 花瓣圈 + 芯） -->
+  <path id="petal" d="M 0 -4.4 C 2.3 -6.4 2.5 -9.8 0 -12.3 C -2.5 -9.8 -2.3 -6.4 0 -4.4 Z"/>
+  <path id="petalL" d="M 0 -9 C 4.8 -13.5 5.2 -20.5 0 -25.5 C -5.2 -20.5 -4.8 -13.5 0 -9 Z"/>
+
   <g id="pin-green">
     <circle r="17.5" fill="url(#gPinG)"/>
     <circle r="17.5" fill="none" stroke="rgba(15,40,20,.4)" stroke-width="1"/>
-    <circle r="12.5" fill="#f4eed9"/>
-    <circle r="12.5" fill="none" stroke="rgba(15,40,20,.14)" stroke-width=".8"/>
-    <circle r="8.8" fill="url(#gPinG2)"/>
-    <circle r="2.8" fill="#f4eed9"/>
+    <circle r="13.2" fill="#f4eed9"/>
+    <circle r="13.2" fill="none" stroke="rgba(15,40,20,.14)" stroke-width=".8"/>
+    <g fill="url(#gPinG2)">
+      <use href="#petal"/><use href="#petal" transform="rotate(45)"/>
+      <use href="#petal" transform="rotate(90)"/><use href="#petal" transform="rotate(135)"/>
+      <use href="#petal" transform="rotate(180)"/><use href="#petal" transform="rotate(225)"/>
+      <use href="#petal" transform="rotate(270)"/><use href="#petal" transform="rotate(315)"/>
+    </g>
+    <circle r="4.6" fill="#f4eed9"/>
+    <circle r="2.6" fill="url(#gPinG)"/>
   </g>
   <g id="pin-red">
     <circle r="17.5" fill="url(#gPinR)"/>
     <circle r="17.5" fill="none" stroke="rgba(60,10,5,.4)" stroke-width="1"/>
-    <circle r="12.5" fill="#f4eed9"/>
-    <circle r="12.5" fill="none" stroke="rgba(60,10,5,.14)" stroke-width=".8"/>
-    <circle r="8.8" fill="url(#gPinR2)"/>
-    <circle r="2.8" fill="#f4eed9"/>
+    <circle r="13.2" fill="#f4eed9"/>
+    <circle r="13.2" fill="none" stroke="rgba(60,10,5,.14)" stroke-width=".8"/>
+    <g fill="url(#gPinR2)">
+      <use href="#petal"/><use href="#petal" transform="rotate(45)"/>
+      <use href="#petal" transform="rotate(90)"/><use href="#petal" transform="rotate(135)"/>
+      <use href="#petal" transform="rotate(180)"/><use href="#petal" transform="rotate(225)"/>
+      <use href="#petal" transform="rotate(270)"/><use href="#petal" transform="rotate(315)"/>
+    </g>
+    <circle r="4.6" fill="#f4eed9"/>
+    <circle r="2.6" fill="url(#gPinR)"/>
   </g>
 
   <!-- 条子棒（13 × 112，原点左上） -->
@@ -181,18 +196,20 @@
   <!-- ====== 饼 ====== -->
   <symbol id="t-1p" viewBox="0 0 120 180">
     <use href="#shell"/>
-    <circle cx="60" cy="94" r="36"   fill="url(#gPinB)"/>
-    <circle cx="60" cy="94" r="36"   fill="none" stroke="rgba(12,22,58,.4)" stroke-width="1.2"/>
-    <circle cx="60" cy="94" r="28.5" fill="#f4eed9"/>
-    <circle cx="60" cy="94" r="28.5" fill="none" stroke="rgba(12,22,58,.14)" stroke-width=".8"/>
-    <circle cx="60" cy="94" r="21.5" fill="url(#gPinB2)"/>
-    <g fill="#f4eed9">
-      <circle cx="73.5" cy="94" r="2.3"/><circle cx="69.6" cy="103.9" r="2.3"/>
-      <circle cx="60" cy="107.5" r="2.3"/><circle cx="50.4" cy="103.9" r="2.3"/>
-      <circle cx="46.5" cy="94" r="2.3"/><circle cx="50.4" cy="84.1" r="2.3"/>
-      <circle cx="60" cy="80.5" r="2.3"/><circle cx="69.6" cy="84.1" r="2.3"/>
+    <circle cx="60" cy="94" r="36" fill="url(#gPinB)"/>
+    <circle cx="60" cy="94" r="36" fill="none" stroke="rgba(12,22,58,.4)" stroke-width="1.2"/>
+    <circle cx="60" cy="94" r="27.5" fill="#f4eed9"/>
+    <circle cx="60" cy="94" r="27.5" fill="none" stroke="rgba(12,22,58,.14)" stroke-width=".8"/>
+    <g fill="url(#gPinB2)" transform="translate(60,94)">
+      <use href="#petalL"/><use href="#petalL" transform="rotate(36)"/>
+      <use href="#petalL" transform="rotate(72)"/><use href="#petalL" transform="rotate(108)"/>
+      <use href="#petalL" transform="rotate(144)"/><use href="#petalL" transform="rotate(180)"/>
+      <use href="#petalL" transform="rotate(216)"/><use href="#petalL" transform="rotate(252)"/>
+      <use href="#petalL" transform="rotate(288)"/><use href="#petalL" transform="rotate(324)"/>
     </g>
-    <circle cx="60" cy="94" r="6.5" fill="url(#gPinR)"/>
+    <circle cx="60" cy="94" r="9.5" fill="#f4eed9"/>
+    <circle cx="60" cy="94" r="6" fill="url(#gPinR)"/>
+    <circle cx="58.2" cy="92.2" r="1.8" fill="rgba(255,255,255,.5)"/>
   </symbol>
 
   <symbol id="t-5p" viewBox="0 0 120 180">
@@ -324,9 +341,9 @@
 </section>
 
 <footer>
-  v0.2 变更：万/中/發 改粗笔刻字（描边加粗 + 字号放大）；萬 出 <span class="q">朱 / 蓝</span> 两版待选；
-  新增条子 2/3/9 索（棒形带节）、1 饼、發、白；牌体侧壁加厚、象牙面饱和度提高。<br>
-  待确认：① 萬的配色选朱还是蓝（对照参考图）② 九索三行颜色顺序（现为绿/红/蓝，可按参考图调整）
+  v0.3 变更：筒子圆点改为铜钱菊纹——外环 + 象牙环 + 花瓣圈（小圆 8 瓣 / 一饼 10 瓣）+ 彩芯高光（对照用户参考图）。<br>
+  v0.2 变更：万/中/發 粗笔刻字；萬 <span class="q">朱 / 蓝</span> 两版待选；条子 2/3/9 索；牌体侧壁加厚。<br>
+  待确认：① 萬配色选朱还是蓝 ② 九索三行颜色顺序（现为绿/红/蓝）
 </footer>
 
 </body>

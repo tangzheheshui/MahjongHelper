@@ -1,0 +1,103 @@
+{
+  "schema_version": 1,
+  "note": "golden 用例集：期望值必须独立于引擎推导（教材明文数字/结构必然），先于实现锚定。张数口径：进张张数 = 4 − 手内该牌张数，故手内已见 1 张的进张只有 3 张，对子只剩 2 张。source 标注出处；provenance=book 表示教材明文，constructed 表示按教材理论构造。",
+  "cases": [
+    {
+      "id": "G01",
+      "hand": ["1m","2m","3m","4m","5m","6m","7s","8s","9s","3p","4p","5s","5s"],
+      "shanten": 0,
+      "waits": ["2p","5p"],
+      "ukeireCount": 8,
+      "source": "79博客 5.3 搭子价值排序：两面 2 种 8 张（手内无 2p/5p）",
+      "provenance": "book"
+    },
+    {
+      "id": "G02",
+      "hand": ["1m","2m","3m","4m","5m","6m","7s","8s","9s","3p","5p","5s","5s"],
+      "shanten": 0,
+      "waits": ["4p"],
+      "ukeireCount": 4,
+      "source": "79博客 5.3：嵌张 1 种 4 张",
+      "provenance": "book"
+    },
+    {
+      "id": "G03",
+      "hand": ["1m","2m","3m","4m","5m","6m","7s","8s","9s","1p","2p","5s","5s"],
+      "shanten": 0,
+      "waits": ["3p"],
+      "ukeireCount": 4,
+      "source": "79博客 5.3：边张 1 种 4 张",
+      "provenance": "book"
+    },
+    {
+      "id": "G04",
+      "hand": ["1m","2m","3m","4m","5m","6m","7s","8s","9s","8p","9p","5s","5s"],
+      "shanten": 0,
+      "waits": ["7p"],
+      "ukeireCount": 4,
+      "source": "79博客 5.3：边张（89 型）1 种 4 张",
+      "provenance": "book"
+    },
+    {
+      "id": "G05",
+      "hand": ["1m","2m","3m","4m","5m","6m","7s","8s","9s","4p","4p","5s","5s"],
+      "shanten": 0,
+      "waits": ["4p","5s"],
+      "ukeireCount": 4,
+      "source": "79博客·麻雀的基础 11：双碰听（两对子手内各 2 张，各剩 2 张）",
+      "provenance": "book"
+    },
+    {
+      "id": "G06",
+      "hand": ["1m","2m","3m","4m","5m","6m","7s","8s","9s","4p","4p","5p","5p"],
+      "shanten": 0,
+      "waits": ["4p","5p"],
+      "ukeireCount": 4,
+      "source": "79博客·麻雀的基础 11：同花色双碰（44p+55p，各剩 2 张）",
+      "provenance": "book"
+    },
+    {
+      "id": "G07",
+      "hand": ["1m","2m","3m","4m","5m","6m","7s","8s","9s","1p","2p","3p","5p"],
+      "shanten": 0,
+      "waits": ["5p"],
+      "ukeireCount": 3,
+      "source": "79博客·麻雀的基础 11：数牌单骑（手内 1 张剩 3 张）",
+      "provenance": "book"
+    },
+    {
+      "id": "G08",
+      "hand": ["1m","2m","3m","4m","5m","6m","7s","8s","9s","1p","2p","3p","E"],
+      "shanten": 0,
+      "waits": ["E"],
+      "ukeireCount": 3,
+      "source": "79博客·麻雀的基础 11：字牌单骑（手内 1 张剩 3 张）",
+      "provenance": "book"
+    },
+    {
+      "id": "G09",
+      "hand": ["1p","2p","3p","4p","5p","6p","7s","8s","9s","4m","5m","6m","7m"],
+      "shanten": 0,
+      "waits": ["4m","7m"],
+      "ukeireCount": 6,
+      "source": "79博客·麻雀的基础 8-10 复合型：四连形 4567 两面单骑（4m/7m 手内各 1，各剩 3）",
+      "provenance": "book"
+    },
+    {
+      "id": "G10",
+      "hand": ["1m","2m","3m","4m","5m","6m","7s","8s","9s","1p","2p","4s","5s"],
+      "shanten": 1,
+      "waits": ["1p","2p","3p","3s","4s","5s","6s"],
+      "ukeireCount": 24,
+      "source": "79博客·牌效率 2：无雀头一向听进张 = 完成类（3p/3s/6s 各 4）+ 雀头类（手内已有者各 3）",
+      "provenance": "constructed"
+    },
+    {
+      "id": "G11",
+      "hand14": ["1m","2m","3m","4m","5m","6m","7p","8p","6s","6s","9m","3p","c","5s"],
+      "bestIncludes": ["c"],
+      "source": "79博客·牌效率 1 例题思想：完成块外的孤立字牌最无用（构造）",
+      "provenance": "constructed"
+    }
+  ]
+}
