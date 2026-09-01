@@ -7,7 +7,7 @@
 
 | 文件 | 来源 | 许可/性质 | 用途边界 |
 |---|---|---|---|
-| `79博客-目录书签跳转版.pdf`（340 页） | [Seventh9 日麻教程](https://www.seventh9.com/)，社区整理镜像（GitHub: Jackey-Marine/Mahjong-B2D） | 作者免费公开的中文教程 | **中文理论主来源**：L1-L7 讲解出处标注、golden 用例来源。可引用章节定位，讲解文案仍原创表述 |
+| `79博客-目录书签跳转版.pdf`（340 页）**仅本地保留（已 .gitignore，不入公开仓库：社区镜像不宜公开分发；自取：[Mahjong-B2D](https://github.com/Jackey-Marine/Mahjong-B2D) / [seventh9.com](https://www.seventh9.com/)）** | [Seventh9 日麻教程](https://www.seventh9.com/)，社区整理镜像 | 作者免费公开的中文教程 | **中文理论主来源**：L1-L7 讲解出处标注、golden 用例来源。可引用章节定位，讲解文案仍原创表述 |
 | `RiichiBook1.pdf` | [dainachiba/RiichiBooks](https://github.com/dainachiba/RiichiBooks) | CC BY-NC 3.0（作者开源，Daina Chiba） | 理论交叉验证：五搭子法（Ch4）、复杂形（Ch3.3）、防守（Ch7-8）。英文原文可引用需署名非商用 |
 
 ## 二、在线使用、不落盘
