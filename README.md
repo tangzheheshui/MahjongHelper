@@ -34,6 +34,7 @@
 | [docs/design/architecture.md](docs/design/architecture.md) | 怎么实现的：分层、目录、演进路线、决策记录 | 动手写代码前 |
 | [docs/requirements/engine.md](docs/requirements/engine.md) | 进张计算引擎要做什么、怎么验收 | 写引擎前 |
 | [docs/requirements/question-bank.md](docs/requirements/question-bank.md) | 题库数据结构、出题规范、内容生产线 | 出题 / 改题库前 |
+| [docs/theory/foundation.md](docs/theory/foundation.md) | 牌效率理论基础：术语标准、七级理论、考点总索引（内容创作内参） | 写讲解 / 出题 / 定措辞时 |
 | [docs/requirements/web-v1.md](docs/requirements/web-v1.md) | Web V1 的页面、交互、本地存储 | 写前端前 |
 | [docs/operations/server.md](docs/operations/server.md) | 静态服务器怎么部署、更新协议怎么走 | 部署 / 更新题库时 |
 | [docs/references/SOURCES.md](docs/references/SOURCES.md) | 参考资料清单、来源、版权边界 | 出题查理论出处时 |
