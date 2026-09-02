@@ -1,8 +1,8 @@
 /**
- * 手牌记法 → SVG 牌面图（docs/theory/foundation.md 牌例配图用）。
- * 皮肤在 tile-skin.ts（换牌面只动那一个文件，然后逐例重跑本命令即可）。
+ * 手牌记法 → SVG 牌面图（理论书 docs/theory/foundation.md 例题配图用）。
+ * 皮肤在 tile-skin.ts（换牌面只动那一个文件，然后重跑 gen-book-svg.mjs 即可）。
  *
- * 用法：npx tsx content/build/hand-svg.ts -o docs/theory/assets/ex2-1.svg "1m 2m 3m …" [--mark 5s] [--h 64]
+ * 用法：npx tsx content/build/hand-svg.ts -o docs/theory/assets/书例1-1_认雀头.svg "1m 1m 2m 3m …" [--mark 9p] [--h 64]
  *   --mark <牌>  给指定牌加高亮描边（标正确答案 / 被讨论的牌）
  *   --h <像素>   显示高度，默认 64（SVG 矢量，预览可放大）
  */

@@ -33,8 +33,8 @@
 | [docs/prd/](docs/prd/) | 产品要做什么（PRD 原文） | 对需求有疑问时 |
 | [docs/design/architecture.md](docs/design/architecture.md) | 怎么实现的：分层、目录、决策记录、离线更新与静态发布 | 动手写代码 / 部署前 |
 | [docs/requirements/engine.md](docs/requirements/engine.md) | 进张计算引擎要做什么、怎么验收 | 写引擎前 |
-| [docs/requirements/question-bank.md](docs/requirements/question-bank.md) | 题库数据结构、出题规范、内容生产线 | 出题 / 改题库前 |
-| [docs/theory/foundation.md](docs/theory/foundation.md) | 牌效率理论基础：术语标准、七级理论、考点总索引（内容创作内参） | 写讲解 / 出题 / 定措辞时 |
+| [docs/requirements/question-bank.md](docs/requirements/question-bank.md) | 题库数据结构、出题规范、术语/记法/口径、考点总索引、内容生产线 | 出题 / 改题库 / 定措辞时 |
+| [docs/theory/foundation.md](docs/theory/foundation.md) | 《麻将拆搭入门》：面向读者的牌效率理论书（v2.0，七章 27 例） | 写讲解定风格 / 查理论讲解方式时 |
 | [docs/requirements/web-v1.md](docs/requirements/web-v1.md) | Web V1 的页面、交互、本地存储 | 写前端前 |
 | [docs/references/SOURCES.md](docs/references/SOURCES.md) | 参考资料清单、来源、版权边界 | 出题查理论出处时 |
 

@@ -7,7 +7,7 @@
  * - 字牌：明朝体，白板蓝框。
  *
  * 换牌面 = 只改本文件 + App 侧皮肤文件（CLAUDE.md 版权红线：牌面一律自绘，不描摹商业游戏资产）。
- * 重新生成全部文档图：逐例重跑 hand-svg.ts（清单见 docs/theory/foundation.md 附录 B）。
+ * 重新生成全部文档图：跑 content/build/gen-book-svg.mjs（理论书 28 例清单的落地脚本）。
  */
 
 import { V08_FACES } from "../../apps/web/src/tiles/v08-faces";
