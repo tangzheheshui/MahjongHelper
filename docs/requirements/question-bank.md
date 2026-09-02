@@ -71,8 +71,10 @@ content/
 └── build/                            # 构建脚本：校验 → 汇总 → 产出 server/ 分片 + manifest
 ```
 
-- **manifest.json**（发布产物）：`{ bank_version, levels: [{level, file, count, sha256}] }`，
-  客户端据此增量拉取（见 operations/server.md）
+- **manifest.json**（发布产物，M4）：`{ schema_version, bank_version, published_at,
+  levels: [{level, file, count, sha256}] }`，客户端据此增量拉取。协议、分片格式与发布
+  流程见 architecture.md §五；生成脚本 `content/build/publish.mjs`，版本号单点见
+  `content/build/version.mjs`（与 App 内置出厂题库同源，须一致 bump）
 - 出厂题库（App 内置）与服务器题库同源同构，构建时从同一批 `content/questions/` 产出
 
 ## 五、出题流水线（PRD A.3 的落地）

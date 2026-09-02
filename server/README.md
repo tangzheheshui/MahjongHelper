@@ -1,6 +1,29 @@
-# server/（M4 待建）
+# server/（M4 静态分发目录）
 
-纯静态分发目录：`bank/manifest.json` + 按版本分片的题库 JSON + `config.json`。
-由 `content/build` 产出，rsync 上传；无后端代码。
+纯静态分发：`bank/manifest.json` + 按版本目录分片的题库 JSON + `config.json` + `version.json`。
+由 `content/build/publish.mjs` 本地产出后 rsync 上传；无后端代码。
 
-协议与部署：[docs/design/architecture.md](../docs/design/architecture.md) §五「静态服务器与发布」
+## 目录结构
+
+```
+server/
+├── bank/                      # 发布产物（gitignore）：publish.mjs 生成
+│   ├── manifest.json          # 版本清单（客户端更新入口，最后上传）
+│   └── v{bank_version}/       # 旧版本目录保留，回滚 = manifest 指回旧目录
+│       ├── L1.json … L7.json  # 分级分片：{ level, questions }（不含版本号，见 architecture §五）
+├── config.json                # 远程配置（功能开关），拉不到用内置默认
+└── version.json               # App 最新版本号（M5 iOS 检查用）
+```
+
+## 发布
+
+```bash
+npx tsx packages/engine/bin/verify.ts content/questions --write   # 1) 校验并注入快照
+# 改 content/build/version.mjs 的 CURRENT_BANK_VERSION              # 2) bump（单点版本）
+node content/build/roll-bank.mjs                                   # 3) 重滚 App 出厂题库
+node content/build/publish.mjs                                     # 4) 产出分片 + manifest
+rsync -av server/ user@server:/var/www/nanikiru/                   # 5) 上传（manifest 最后）
+```
+
+协议与客户端行为详见 [architecture.md §五](../docs/design/architecture.md)。
+自测：`npx tsx apps/web/scripts/e2e-update.ts`（本地 http 干跑全链路）。

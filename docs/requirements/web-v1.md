@@ -83,6 +83,15 @@
 - `vite-plugin-pwa` + Service Worker 预缓存 App 壳 + 出厂题库
 - 断网时全部功能可用；联网时启动静默检查更新（失败无提示，PRD 6.4）
 
+**题库增量更新（M4，2026-09-02 落地）**：协议与客户端状态机见
+[architecture.md §五](docs/design/architecture.md)；实现收敛在 `lib/update.ts` + `lib/bank.ts`：
+
+- **启动静默**：`App.tsx` 挂载后 fire-and-forget `checkBankUpdate()`，更新成功即清空题库缓存；
+  任何失败吞掉不提示。只测逻辑不动 UI 的覆盖靠 `scripts/e2e-update.ts`（node http 干跑真实链路）。
+- **设置页手动**：`题库` 面板「检查并更新题库」按钮，三种结果态：
+  已是最新 / 已更新到 `{version}`（下载 N 个分片）/ 检查失败（保留本地题库）；成功就地刷新版本与题数。
+- 题库读取与更新的 IndexedDB 访问带 1500ms 超时竞速，悬挂时静默降级内置（同 §二.3）。
+
 ### 5. 关卡抽题
 
 每关题量 8-12（PRD 5.4）；题库不足允许复用题目并提示「该关卡题库较少，可能复现」（PRD 6.4）。

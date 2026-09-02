@@ -3,9 +3,10 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Tile } from "../components/Tile";
-import { loadBank } from "../lib/bank";
+import { checkBankUpdate, loadBank } from "../lib/bank";
 import { clearAllData, loadPlacement, loadSettings, saveSettings } from "../lib/storage";
 import type { Bank } from "../lib/types";
+import type { BankUpdateResult } from "../lib/bank";
 
 /** 皮肤清单（皮肤本体在 tiles/ 注册，这里只管展示与选择） */
 const SKINS = [
@@ -18,11 +19,25 @@ export function Settings() {
   const [bank, setBank] = useState<Bank | null>(null);
   const [confirmClear, setConfirmClear] = useState(false);
   const [tileSkin, setTileSkin] = useState(() => loadSettings().tileSkin);
+  const [checking, setChecking] = useState(false);
+  const [result, setResult] = useState<BankUpdateResult | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     loadBank().then(setBank);
   }, []);
+
+  async function doCheck() {
+    setChecking(true);
+    setResult(null);
+    try {
+      const r = await checkBankUpdate();
+      setResult(r);
+      setBank(await loadBank()); // 更新成功 / 本地已最新：就地刷新版本与题数
+    } finally {
+      setChecking(false);
+    }
+  }
 
   const placement = loadPlacement();
 
@@ -48,7 +63,22 @@ export function Settings() {
         </p>
         <p className="meta" style={{ marginTop: 0 }}>
           联网时启动将静默检查题库增量更新；断网不影响使用（V1 试点题库随 App 内置）。
+          更新失败自动保留本地题库、下次再试（PRD 6.4）。
         </p>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 10, flexWrap: "wrap" }}>
+          <button type="button" className="act" onClick={doCheck} disabled={checking}>
+            {checking ? "检查中…" : "检查并更新题库"}
+          </button>
+          {result && (
+            <span className="meta" style={{ fontSize: 13 }}>
+              {result.status === "updated"
+                ? `✓ 已更新至 ${result.to}：拉取 ${result.downloaded?.length ?? 0} 个分片，净增 ${result.added} 题`
+                : result.status === "up_to_date"
+                  ? `已是最新（${bank?.bank_version ?? ""}）`
+                  : "检查失败（离线或服务器不可用），保持本地题库"}
+            </span>
+          )}
+        </div>
       </div>
 
       <div className="panel">

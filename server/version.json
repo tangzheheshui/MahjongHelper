@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "app_version": "0.1.0",
+  "updated_at": "2026-09-02T00:00:00Z",
+  "_note": "App 最新版本号，M5 iOS 提审前由构建/发布时更新；Web 端暂不消费。"
+}

@@ -94,22 +94,71 @@ nanikiru/
 **URL 结构**
 
 ```
-https://<域名>/                        # Web App 本体（静态托管，同源）
-https://<域名>/bank/manifest.json      # 题库版本清单（客户端更新入口）
-https://<域名>/bank/v{N}/L1.json … L7.json   # 题库分片（按版本目录，天然支持回滚）
-https://<域名>/config.json             # 远程配置（功能开关）
-https://<域名>/version.json            # App 最新版本号（M5 iOS 用）
+https://<域名>/                              # Web App 本体（静态托管，同源）
+https://<域名>/bank/manifest.json            # 题库版本清单（客户端更新入口）
+https://<域名>/bank/v{bank_version}/L1.json … L7.json   # 题库分片（按版本目录，天然支持回滚）
+https://<域名>/config.json                   # 远程配置（功能开关）
+https://<域名>/version.json                  # App 最新版本号（M5 iOS 用）
 ```
 
-**客户端拉取行为**（PRD 6.4 / web-v1.md §2.4）：启动 → GET `bank/manifest.json`（超时 3s）
-→ 比对本地 bank_version → 有新版则按 `levels[].file` 下载变化分片（校验 sha256）→ 合并写入
-IndexedDB → 任一步失败静默保留旧题库、下次启动重试；`config.json` 拉不到用内置默认。全程无上行数据。
+> 版本目录记法 `v{N}` 具体化为 `v{bank_version}`（如 `v2026.09.2-pilot`）。
+> **客户端只认 manifest `levels[].file` 给的路径**，不推断目录名——回滚 = 服务器端把
+> manifest 指回旧目录，客户端无感知。
 
-**发布（操作流程）**：本地 `content/build` 流水线校验全量题库 → 产出 `server/bank/v{N+1}/` 分片
-并更新 manifest → `rsync -av server/ user@server:/var/www/nanikiru/`。
-- manifest 最后上传（先数据后指针，客户端不会拿到 404 分片）
-- 回滚 = 服务器端把 manifest 指回旧版本目录
+**manifest.json 格式**（由 `content/build/publish.mjs` 生成，Schema 权威见 question-bank.md §四）：
+
+```jsonc
+{
+  "schema_version": 1,
+  "bank_version": "2026.09.2-pilot",   // 与 App 内置出厂题库同源的版本号（见下「单点版本」）
+  "published_at": "2026-09-02T12:00:00Z",
+  "levels": [
+    { "level": "L1", "file": "v2026.09.2-pilot/L1.json", "count": 10, "sha256": "…" }
+  ]
+}
+```
+
+分片文件内容：`{ "level": "L1", "questions": […] }`，**不含 bank_version**——同一批
+`content/questions/` 直接产出，与 App 内置出厂题库同源同构。刻意把版本号留在 manifest
+而不写进分片正文：同内容跨版本字节一致 → sha256 不变 → 客户端只拉真正变化的分级
+（否则每发一版全部级哈希都变，增量退化为全量）。
+
+**客户端拉取行为**（PRD 6.4 / web-v1.md §2.4，2026-09-02 定稿）：
+
+- 触发：App 启动静默检查一次 + 设置页「检查并更新题库」手动触发（同一代码路径，失败无提示保留旧题库）
+- 步骤：GET `bank/manifest.json`（超时 3s，AbortController）→ 用 `compareVersion` 比对新旧
+  `bank_version`（数值比较，非字典序）→ 有新版本按 `levels[].sha256` 比对**本地已应用的
+  每级哈希**，只下载变化分片 → 校验下载分片 sha256 逐字节对上 → 解析按 `level` 归并
+  （该级整组替换、manifest 缺省的级删除）→ 写入 IndexedDB 同一 store → 任一步失败静默保留
+  旧题库、下次启动重试。全程无上行数据。
+- **首拉全量、此后增量**：全新安装只种入内置出厂题库，本地没有「已应用分片哈希表」，
+  第一次远程更新不知道内置每级哈希 → 全量拉一遍（200 题 ≈300KB，可接受）；此后每次只拉
+  哈希变化的级。
+- 客户端持久化两个 IDB key：`merged`（当前全量题库 = 内置 + 远程归并结果，Bank 结构）、
+  `update_state`（`{ bank_version, levels: {级: 已应用 sha256} }`）。
+
+**单点版本号**：`content/build/version.mjs` 的 `CURRENT_BANK_VERSION` 是唯一版本源——
+`roll-bank.mjs`（打包出厂题库进 App）与 `publish.mjs`（发布服务器分片）都引它，
+**保证 App 内置 = 服务器当前，换内容只 bump 这一处**。当前值 `2026.09.1-pilot`（与 M3 试点一致）。
+
+**发布（操作流程）**：
+
+```bash
+# 1) 内容入库（出题人）→ content/questions/LX.json；过 engine verify CLI（verify.ts --write 注入快照）
+npx tsx packages/engine/bin/verify.ts content/questions --write
+# 2) bump 单点版本号 content/build/version.mjs（仅此一处）
+# 3) 重滚 App 出厂题库（若同时要发 App 包）
+node content/build/roll-bank.mjs
+# 4) 产出 server/bank/v{version}/ 分片 + manifest（覆盖 server/bank/，产物已 gitignore）
+node content/build/publish.mjs
+# 5) 上传（先数据后指针，客户端不会拿到 404 分片）
+rsync -av server/ user@server:/var/www/nanikiru/
+```
+
+- manifest 最后上传；回滚 = 服务器端把 manifest 指回旧版本目录（旧分片目录不删）
 - 容量：200 题 × ≈1.5KB ≈ 300KB，单级分片 ≤60KB——静态方案无压力
+- e2e 干跑：`npx tsx apps/web/scripts/e2e-update.ts` 本地 http 服务模拟
+  「服务器 v1→v2 发布 → 客户端首拉全量 / 再发单级变更只拉该级」全链路（M4 DoD 自测）
 
 **待办（M4 前确认）**：服务器归属与域名（现有站点 / 新域名 + HTTPS 证书）；Cache-Control 策略
 （manifest `no-cache`、分片 `immutable`）；国内可达性（主要用户在国内则静态资源放国内或 CDN）。

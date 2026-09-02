@@ -9,11 +9,12 @@
 import { readFileSync, readdirSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { CURRENT_BANK_VERSION } from "./version.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SRC = join(HERE, "..", "questions");
 const OUT = join(HERE, "..", "..", "apps", "web", "src", "data", "bank.json");
-const BANK_VERSION = "2026.09.1-pilot";
+const BANK_VERSION = CURRENT_BANK_VERSION;
 
 const files = readdirSync(SRC).filter((f) => f.endsWith(".json")).sort();
 const questions = [];

@@ -20,3 +20,7 @@ __pycache__/
 # 获取方式见 docs/references/SOURCES.md
 docs/references/79博客-目录书签跳转版.pdf
 packages/engine/scripts/out/
+
+# 发布产物：server/bank/ 由 publish.mjs 本地生成后 rsync 上传，不入库
+# （config.json / version.json 骨架仍入库）
+server/bank/

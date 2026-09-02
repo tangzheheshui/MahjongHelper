@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import { TileDefs } from "./components/Tile";
+import { checkBankUpdate } from "./lib/bank";
 import { Home } from "./pages/Home";
 import { Quiz } from "./pages/Quiz";
 import { Result } from "./pages/Result";
@@ -8,6 +10,11 @@ import { Placement } from "./pages/Placement";
 import { Settings } from "./pages/Settings";
 
 export function App() {
+  // 启动静默检查题库增量更新（PRD 6.4）：失败无提示保留本地；成功已刷新题库缓存
+  useEffect(() => {
+    void checkBankUpdate();
+  }, []);
+
   return (
     <div className="app">
       <TileDefs />
