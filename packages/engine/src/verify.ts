@@ -7,7 +7,7 @@
  */
 
 import { analyze14, bestDiscards, ENGINE_VERSION } from "./analyze";
-import { parseTile, toCounts } from "./tiles";
+import { TILE_KINDS, parseTile, toCounts } from "./tiles";
 
 /** 题库单题（校验所需的最小子集，完整 Schema 见 content/schema/，M3 落地） */
 export interface Question {
@@ -188,30 +188,70 @@ export function verifyQuestion(q: Question): VerifyResult {
       } catch {
         /* 手牌非法已由 checkCommon 记录 */
       }
+      // 结构检查：两张、同一 type、形状一致、在手牌内
+      const types = new Set<string>();
+      const correctKeys = new Set<string>();
+      let structural = true;
       correct.forEach((raw, idx) => {
         const c = raw as { tiles?: unknown; type?: unknown };
         if (!c || !Array.isArray(c.tiles) || c.tiles.length !== 2 || !c.tiles.every((t) => typeof t === "string")) {
           errors.push(`correct[${idx}] 须为 {tiles:[两张], type}`);
+          structural = false;
           return;
         }
         if (typeof c.type !== "string" || !MENTSU_TYPES.has(c.type)) {
           errors.push(`correct[${idx}] type 须为 ryanmen/kanchan/penchan/pair`);
+          structural = false;
           return;
         }
-        const [a, b] = c.tiles as [string, string];
-        const shape = mentsuShapeOf(a, b);
-        if (shape !== c.type) {
-          errors.push(`correct[${idx}] [${a} ${b}] 形状为 ${shape ?? "非搭子"}，与 type ${c.type} 不符`);
+        types.add(c.type);
+        const [a, b] = [...(c.tiles as string[])].sort();
+        if (mentsuShapeOf(a, b) !== c.type) {
+          errors.push(`correct[${idx}] [${a} ${b}] 形状与 type ${c.type} 不符`);
+          structural = false;
         }
         if (counts) {
           try {
             const inHand = a === b ? counts[parseTile(a)] >= 2 : counts[parseTile(a)] >= 1 && counts[parseTile(b)] >= 1;
             if (!inHand) errors.push(`correct[${idx}] [${a} ${b}] 不在手牌内`);
+            else correctKeys.add(`${a}|${b}`);
           } catch {
             errors.push(`correct[${idx}] 牌张非法 [${a} ${b}]`);
+            structural = false;
           }
         }
       });
+      // 语义检查（question-bank.md §三 细则）：手牌中该形状的全部两两组合 == correct 集合
+      if (structural && counts && types.size === 1) {
+        const type = [...types][0];
+        const expect = new Set<string>();
+        const kinds = counts
+          .map((n, i) => ({ i, n }))
+          .filter(({ i, n }) => n > 0 && (type === "pair" ? n >= 2 : n >= 1) && i < 27);
+        if (type === "pair") {
+          for (const { i } of kinds) expect.add(`${TILE_KINDS[i]}|${TILE_KINDS[i]}`);
+        } else {
+          for (const { i: ai } of kinds) {
+            for (const { i: bi } of kinds) {
+              if (ai < bi && mentsuShapeOf(TILE_KINDS[ai], TILE_KINDS[bi]) === type) {
+                expect.add(`${TILE_KINDS[ai]}|${TILE_KINDS[bi]}`);
+              }
+            }
+          }
+        }
+        const missing = [...expect].filter((k) => !correctKeys.has(k));
+        const extra = [...correctKeys].filter((k) => !expect.has(k));
+        if (missing.length) {
+          errors.push(
+            `手牌中该形状组合未列全，缺 [${missing.map((k) => k.replace("|", " ")).join(" / ")}]（用户点中会误判错）`,
+          );
+        }
+        if (extra.length) {
+          errors.push(`correct 含非该形状组合 [${extra.map((k) => k.replace("|", " ")).join(" / ")}]`);
+        }
+      } else if (types.size > 1) {
+        errors.push("correct 各项 type 须一致（一题只认一种搭子形状）");
+      }
     }
   }
 

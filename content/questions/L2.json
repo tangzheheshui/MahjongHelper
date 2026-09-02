@@ -260,7 +260,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T13:55:07.201Z"
+      "checked_at": "2026-09-02T14:31:05.392Z"
     }
   },
   {
@@ -441,7 +441,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T13:55:07.201Z"
+      "checked_at": "2026-09-02T14:31:05.392Z"
     }
   },
   {
@@ -619,7 +619,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T13:55:07.201Z"
+      "checked_at": "2026-09-02T14:31:05.392Z"
     }
   },
   {
@@ -890,31 +890,31 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T13:55:07.201Z"
+      "checked_at": "2026-09-02T14:31:05.392Z"
     }
   },
   {
     "schema_version": 1,
     "id": "L2_005",
     "level": "L2",
-    "knowledge_point": "嵌张方向辨析：24 嵌的是 3",
+    "knowledge_point": "嵌张识别：24 型等中间那张",
     "question_type": "mentsu_identify",
     "difficulty": "medium",
     "hand": [
       "2m",
-      "3m",
-      "4m",
-      "6m",
-      "7m",
+      "2m",
+      "2m",
       "8m",
-      "7p",
-      "8p",
+      "8m",
+      "8m",
+      "5m",
+      "3p",
+      "3p",
+      "3p",
+      "9p",
       "9p",
       "2s",
-      "4s",
-      "6s",
-      "6s",
-      "9s"
+      "4s"
     ],
     "answer": {
       "correct": [
@@ -929,36 +929,36 @@
       "options": null
     },
     "explanation": {
-      "best": "2条4条 中间等 3条——嵌张。方向别搞反：24 嵌 3，不是等 1。",
+      "best": "点 2条4条：中间等 3条——嵌张。方向别搞反：24 嵌 3，不是等 1。",
       "source": "79博客·麻雀的基础4「面子和搭子」"
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T13:55:07.201Z"
+      "checked_at": "2026-09-02T14:31:05.392Z"
     }
   },
   {
     "schema_version": 1,
     "id": "L2_006",
     "level": "L2",
-    "knowledge_point": "边张误判：89 不是两面",
+    "knowledge_point": "边张识别：89 在边端不是两面",
     "question_type": "mentsu_identify",
     "difficulty": "medium",
     "hand": [
-      "3m",
-      "4m",
+      "1m",
+      "1m",
+      "1m",
       "5m",
-      "6m",
-      "7m",
+      "5m",
+      "5m",
       "8m",
-      "1p",
       "2p",
-      "3p",
+      "2p",
+      "2p",
+      "6p",
+      "6p",
       "8s",
-      "9s",
-      "5s",
-      "5s",
-      "3s"
+      "9s"
     ],
     "answer": {
       "correct": [
@@ -973,36 +973,36 @@
       "options": null
     },
     "explanation": {
-      "best": "8条9条 看着像两面，其实在数牌边端：只等 7条（4 张），第二头不存在——边张。",
+      "best": "点 8条9条：看着像两面，其实在数牌边端——只等 7条 一种 4 张。",
       "source": "79博客·麻雀的基础4「面子和搭子」"
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T13:55:07.201Z"
+      "checked_at": "2026-09-02T14:31:05.392Z"
     }
   },
   {
     "schema_version": 1,
     "id": "L2_007",
     "level": "L2",
-    "knowledge_point": "两面误判：78 不是边张",
+    "knowledge_point": "两面识别：78 在中段不是边张",
     "question_type": "mentsu_identify",
     "difficulty": "medium",
     "hand": [
-      "2m",
-      "3m",
-      "4m",
-      "5m",
-      "6m",
-      "7m",
-      "7p",
-      "8p",
+      "5p",
+      "5p",
+      "5p",
       "9p",
+      "9p",
+      "9p",
+      "2p",
+      "1s",
+      "1s",
+      "1s",
+      "3s",
+      "3s",
       "7s",
-      "8s",
-      "2s",
-      "2s",
-      "9m"
+      "8s"
     ],
     "answer": {
       "correct": [
@@ -1017,12 +1017,12 @@
       "options": null
     },
     "explanation": {
-      "best": "7条8条 是两面不是边张：两头都有路，等 6条/9条 共 8 张。78 与 89 一字之差，张数差一倍。",
+      "best": "点 7条8条：两头都有路，等 6条/9条 共 8 张——两面。78 与 89 一字之差，张数差一倍。",
       "source": "79博客·麻雀的基础4「面子和搭子」"
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T13:55:07.201Z"
+      "checked_at": "2026-09-02T14:31:05.392Z"
     }
   },
   {
@@ -1233,7 +1233,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T13:55:07.202Z"
+      "checked_at": "2026-09-02T14:31:05.393Z"
     }
   },
   {
@@ -1421,7 +1421,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T13:55:07.202Z"
+      "checked_at": "2026-09-02T14:31:05.393Z"
     }
   },
   {
@@ -1676,7 +1676,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T13:55:07.202Z"
+      "checked_at": "2026-09-02T14:31:05.393Z"
     }
   }
 ]

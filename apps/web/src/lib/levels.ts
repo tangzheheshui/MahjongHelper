@@ -33,27 +33,30 @@ export const MENTSU_TYPE_LABEL: Record<MentsuType, string> = {
   pair: "对子",
 };
 
+/** mi 的两张答案编码：无序两张 → 排序后 "a|b"（与题库 correct[].tiles 同构） */
+export function mentsuPairKey(tiles: string[]): string {
+  return [...tiles].sort().join("|");
+}
+
 /** 判分（web-v1.md §二.2 / §二.5a）：比对 answer.correct，不实时算引擎。
- *  wtd/uc 比切牌、wc 比 value、mi 比 {tiles,type} 的 type（两张由题目高亮固定）。 */
+ *  wtd/uc 比切牌、wc 比 value、mi 比两张的无序组合（correct 全列该形状组合）。 */
 export function isCorrect(q: Question, userAnswer: string): boolean {
   if (q.question_type === "mentsu_identify") {
-    return (q.answer.correct as MentsuAnswer[]).some((c) => c.type === userAnswer);
+    return (q.answer.correct as MentsuAnswer[]).some((c) => mentsuPairKey(c.tiles) === userAnswer);
   }
   return (q.answer.correct as string[]).includes(userAnswer);
 }
 
-/** mentsu_identify 的高亮两张（题面固定展示，用户只选类型） */
-export function mentsuPairOf(q: Question): string[] {
-  if (q.question_type !== "mentsu_identify") return [];
-  return (q.answer.correct as MentsuAnswer[])[0]?.tiles ?? [];
+/** mi 题面要求点选的搭子类型（全部 correct 项同型，verify CLI 保证） */
+export function mentsuTypeOf(q: Question): MentsuType | null {
+  if (q.question_type !== "mentsu_identify") return null;
+  return (q.answer.correct as MentsuAnswer[])[0]?.type ?? null;
 }
 
 /** 判分后的正确答案文案（verdict 行用）：切牌 / 类型 / 留法 label */
 export function correctLabelOf(q: Question): string {
   if (q.question_type === "mentsu_identify") {
-    return (q.answer.correct as MentsuAnswer[])
-      .map((c) => `${tilesLabel(c.tiles)} = ${MENTSU_TYPE_LABEL[c.type]}`)
-      .join(" / ");
+    return (q.answer.correct as MentsuAnswer[]).map((c) => tilesLabel(c.tiles)).join(" / ");
   }
   if (q.question_type === "wait_choose") {
     const byValue = new Map(((q.answer.options as WaitOption[]) ?? []).map((o) => [o.value, o.label]));

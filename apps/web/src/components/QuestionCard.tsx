@@ -10,13 +10,14 @@ import {
   candidatesOf,
   correctLabelOf,
   isCorrect,
-  mentsuPairOf,
+  mentsuPairKey,
+  mentsuTypeOf,
   orderHand,
   shantenBefore,
   tileLabel,
   tilesLabel,
 } from "../lib/levels";
-import type { MentsuType, Question, WaitOption } from "../lib/types";
+import type { Question, WaitOption } from "../lib/types";
 
 export interface QuestionCardProps {
   q: Question;
@@ -27,6 +28,7 @@ export interface QuestionCardProps {
 
 export function QuestionCard({ q, onAnswered }: QuestionCardProps) {
   const [picked, setPicked] = useState<string | null>(null);
+  const [miSel, setMiSel] = useState<string[]>([]);
   const [judged, setJudged] = useState(false);
   const [showExp, setShowExp] = useState(false);
 
@@ -40,11 +42,19 @@ export function QuestionCard({ q, onAnswered }: QuestionCardProps) {
     onAnswered?.(isCorrect(q, answer), answer);
   }
 
+  /** mi：从 14 张里点选两张组成题目要求的搭子（再点取消；选第三张换掉最早那张） */
+  function toggleMi(t: string) {
+    if (judged) return;
+    const next = miSel.includes(t) ? miSel.filter((x) => x !== t) : miSel.length >= 2 ? [miSel[1], t] : [...miSel, t];
+    setMiSel(next);
+    if (next.length === 2) judge(mentsuPairKey(next));
+  }
+
   const sh = shantenBefore(q);
   const isWtd = q.question_type === "what_to_discard";
   const isMi = q.question_type === "mentsu_identify";
   const isWc = q.question_type === "wait_choose";
-  const miPair = mentsuPairOf(q);
+  const miType = mentsuTypeOf(q);
 
   const prompt =
     isWtd
@@ -52,14 +62,14 @@ export function QuestionCard({ q, onAnswered }: QuestionCardProps) {
       : q.question_type === "ukeire_compare"
         ? "两种切法，哪种进张更多？"
         : isMi
-          ? "高亮的这两张是什么搭子？"
+          ? `从手牌中点选两张，组成一个【${miType ? MENTSU_TYPE_LABEL[miType] : "搭子"}】`
           : "两种听牌留法，哪种和牌张数更多？";
 
   return (
     <div className="qcard">
       <p className="sub">
         考点：{q.knowledge_point}
-        {isWtd ? "" : isMi ? " · 搭子识别" : " · 二选一"} ·{" "}
+        {isWtd ? "" : isMi ? ` · 已选 ${miSel.length}/2 张` : " · 二选一"} ·{" "}
         {q.difficulty === "easy" ? "易" : q.difficulty === "medium" ? "中" : "难"}
       </p>
       <p className="shanten-line">{prompt}</p>
@@ -70,21 +80,15 @@ export function QuestionCard({ q, onAnswered }: QuestionCardProps) {
             key={`${t}-${i}`}
             id={t}
             size={isWtd || isMi ? 46 : 32}
-            selected={(isWtd && picked === t) || (isMi && !judged && miPair.includes(t))}
-            onClick={isWtd && !judged ? () => judge(t) : undefined}
+            selected={(isWtd && picked === t) || (isMi && miSel.includes(t))}
+            onClick={isWtd && !judged ? () => judge(t) : isMi && !judged ? () => toggleMi(t) : undefined}
           />
         ))}
       </div>
 
       {!isWtd && !judged && (
         <div>
-          {isMi
-            ? (Object.keys(MENTSU_TYPE_LABEL) as MentsuType[]).map((t) => (
-                <button key={t} type="button" className="act" onClick={() => judge(t)}>
-                  {MENTSU_TYPE_LABEL[t]}
-                </button>
-              ))
-            : isWc
+          {isMi ? null : isWc
               ? ((q.answer.options as WaitOption[]) ?? []).map((o) => (
                   <button key={o.value} type="button" className="act" onClick={() => judge(o.value)}>
                     {o.label}
@@ -109,7 +113,7 @@ export function QuestionCard({ q, onAnswered }: QuestionCardProps) {
             {ok
               ? isWtd
                 ? `✅ 正确！切 ${picked ? tileLabel(picked) : ""} 是最优解`
-                : `✅ 正确！${isMi ? MENTSU_TYPE_LABEL[picked as MentsuType] : picked}`
+                : `✅ 正确！${isMi ? tilesLabel(miSel) : picked}`
               : `❌ 应选：${correctLabelOf(q)}${!isMi && correct.length > 1 ? "（并列最优）" : ""}`}
           </div>
           <button type="button" className="act" onClick={() => setShowExp(true)}>

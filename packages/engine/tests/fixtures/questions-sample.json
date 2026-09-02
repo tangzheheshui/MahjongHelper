@@ -6,13 +6,40 @@
     "knowledge_point": "浮牌切序：孤立字牌先切",
     "question_type": "what_to_discard",
     "difficulty": "medium",
-    "hand": ["1m", "2m", "3m", "4m", "5m", "6m", "7p", "8p", "6s", "6s", "9m", "3p", "c", "5s"],
-    "answer": { "correct": ["c"], "options": null },
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "4m",
+      "5m",
+      "6m",
+      "7p",
+      "8p",
+      "6s",
+      "6s",
+      "9m",
+      "3p",
+      "c",
+      "5s"
+    ],
+    "answer": {
+      "correct": [
+        "c"
+      ],
+      "options": null
+    },
     "explanation": {
       "best": "切 c。孤立字牌是最差搭子候补，先于 9m/5s 切出（进张 55 张 vs 47/43）。",
       "ukeire_table": [
-        { "discard": "c", "ukeire_count": 55, "note": "全孤立，进张面最大" },
-        { "discard": "9m", "ukeire_count": 47 }
+        {
+          "discard": "c",
+          "ukeire_count": 55,
+          "note": "全孤立，进张面最大"
+        },
+        {
+          "discard": "9m",
+          "ukeire_count": 47
+        }
       ],
       "source": "79博客·牌效率1"
     }
@@ -24,9 +51,32 @@
     "knowledge_point": "反例：非最优切牌",
     "question_type": "what_to_discard",
     "difficulty": "easy",
-    "hand": ["1m", "2m", "3m", "4m", "5m", "6m", "7p", "8p", "6s", "6s", "9m", "3p", "c", "5s"],
-    "answer": { "correct": ["9m"], "options": null },
-    "explanation": { "best": "（故意写错：9m 进张 47 < c 的 55）", "source": "测试反例" }
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "4m",
+      "5m",
+      "6m",
+      "7p",
+      "8p",
+      "6s",
+      "6s",
+      "9m",
+      "3p",
+      "c",
+      "5s"
+    ],
+    "answer": {
+      "correct": [
+        "9m"
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "（故意写错：9m 进张 47 < c 的 55）",
+      "source": "测试反例"
+    }
   },
   {
     "schema_version": 1,
@@ -35,9 +85,32 @@
     "knowledge_point": "反例：并列最优未列全",
     "question_type": "what_to_discard",
     "difficulty": "easy",
-    "hand": ["1m", "2m", "3m", "4m", "5m", "6m", "7s", "8s", "9s", "3p", "4p", "5p", "6p", "7p"],
-    "answer": { "correct": ["3p"], "options": null },
-    "explanation": { "best": "（故意只列一半：3p 与 7p 并列各 6 张）", "source": "测试反例" }
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "4m",
+      "5m",
+      "6m",
+      "7s",
+      "8s",
+      "9s",
+      "3p",
+      "4p",
+      "5p",
+      "6p",
+      "7p"
+    ],
+    "answer": {
+      "correct": [
+        "3p"
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "（故意只列一半：3p 与 7p 并列各 6 张）",
+      "source": "测试反例"
+    }
   },
   {
     "schema_version": 1,
@@ -46,8 +119,35 @@
     "knowledge_point": "进张对比：两面搭子 vs 部分搭子",
     "question_type": "ukeire_compare",
     "difficulty": "medium",
-    "hand": ["1m", "2m", "3m", "4m", "5m", "6m", "3p", "4p", "5p", "6p", "7p", "2s", "3s", "8s"],
-    "answer": { "correct": ["8s"], "options": [{ "discard": "8s" }, { "discard": "3p" }] },
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "4m",
+      "5m",
+      "6m",
+      "3p",
+      "4p",
+      "5p",
+      "6p",
+      "7p",
+      "2s",
+      "3s",
+      "8s"
+    ],
+    "answer": {
+      "correct": [
+        "8s"
+      ],
+      "options": [
+        {
+          "discard": "8s"
+        },
+        {
+          "discard": "3p"
+        }
+      ]
+    },
     "explanation": {
       "best": "切 8s 进张 37 张，切 3p 仅 17 张。",
       "source": "测试样例"
@@ -60,9 +160,39 @@
     "knowledge_point": "反例：进张并列不能出比较题",
     "question_type": "ukeire_compare",
     "difficulty": "easy",
-    "hand": ["1m", "2m", "3m", "4m", "5m", "6m", "3p", "4p", "5p", "6p", "7p", "2s", "3s", "8s"],
-    "answer": { "correct": ["3p"], "options": [{ "discard": "3p" }, { "discard": "7p" }] },
-    "explanation": { "best": "（故意选并列：3p 与 7p 进张同为 17）", "source": "测试反例" }
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "4m",
+      "5m",
+      "6m",
+      "3p",
+      "4p",
+      "5p",
+      "6p",
+      "7p",
+      "2s",
+      "3s",
+      "8s"
+    ],
+    "answer": {
+      "correct": [
+        "3p"
+      ],
+      "options": [
+        {
+          "discard": "3p"
+        },
+        {
+          "discard": "7p"
+        }
+      ]
+    },
+    "explanation": {
+      "best": "（故意选并列：3p 与 7p 进张同为 17）",
+      "source": "测试反例"
+    }
   },
   {
     "schema_version": 1,
@@ -71,37 +201,124 @@
     "knowledge_point": "听牌形式：两面 vs 双碰",
     "question_type": "wait_choose",
     "difficulty": "easy",
-    "hand": ["1m", "2m", "3m", "4p", "5p", "6p", "9p", "9p", "2s", "2s", "3s", "7s", "8s", "9s"],
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "4p",
+      "5p",
+      "6p",
+      "9p",
+      "9p",
+      "2s",
+      "2s",
+      "3s",
+      "7s",
+      "8s",
+      "9s"
+    ],
     "answer": {
-      "correct": ["a"],
+      "correct": [
+        "a"
+      ],
       "options": [
-        { "value": "a", "label": "切 2条 · 留两面听", "discard": "2s" },
-        { "value": "b", "label": "切 3条 · 留双碰听", "discard": "3s" }
+        {
+          "value": "a",
+          "label": "切 2条 · 留两面听",
+          "discard": "2s"
+        },
+        {
+          "value": "b",
+          "label": "切 3条 · 留双碰听",
+          "discard": "3s"
+        }
       ]
     },
-    "explanation": { "best": "切 2条 留 23条 两面，听 1条/4条 8 张；切 3条 留 22条+99筒 双碰只 4 张。", "source": "测试样例" }
+    "explanation": {
+      "best": "切 2条 留 23条 两面，听 1条/4条 8 张；切 3条 留 22条+99筒 双碰只 4 张。",
+      "source": "测试样例"
+    }
   },
   {
     "schema_version": 1,
     "id": "SAMPLE_007",
     "level": "L1",
-    "knowledge_point": "搭子分类：嵌张的辨认",
+    "knowledge_point": "搭子识别：点出手牌中的两面搭子",
     "question_type": "mentsu_identify",
     "difficulty": "easy",
-    "hand": ["1m", "2m", "3m", "4m", "5m", "6m", "1p", "7p", "8p", "9p", "3s", "5s", "7s", "7s"],
-    "answer": { "correct": [{ "tiles": ["3s", "5s"], "type": "kanchan" }], "options": null },
-    "explanation": { "best": "3条5条 隔着一张，只等 4条——嵌张。", "source": "测试样例" }
+    "hand": [
+      "1m",
+      "1m",
+      "1m",
+      "9m",
+      "9m",
+      "9m",
+      "5m",
+      "4p",
+      "4p",
+      "4p",
+      "8p",
+      "8p",
+      "4s",
+      "5s"
+    ],
+    "answer": {
+      "correct": [
+        {
+          "tiles": [
+            "4s",
+            "5s"
+          ],
+          "type": "ryanmen"
+        }
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "点 4条5条：相邻且两头有路（等 3条/6条）。刻子与对子不产生两面组合，唯一答案。",
+      "source": "测试样例"
+    }
   },
   {
     "schema_version": 1,
     "id": "SAMPLE_008",
     "level": "L1",
-    "knowledge_point": "反例：类型标错（嵌张写成两面）",
+    "knowledge_point": "反例：漏列合法组合（456 条里有两个两面）",
     "question_type": "mentsu_identify",
     "difficulty": "easy",
-    "hand": ["1m", "2m", "3m", "4m", "5m", "6m", "1p", "7p", "8p", "9p", "3s", "5s", "7s", "7s"],
-    "answer": { "correct": [{ "tiles": ["3s", "5s"], "type": "ryanmen" }], "options": null },
-    "explanation": { "best": "（故意标错：3s5s 形状是 kanchan）", "source": "测试反例" }
+    "hand": [
+      "2m",
+      "2m",
+      "2m",
+      "8m",
+      "8m",
+      "8m",
+      "5m",
+      "3p",
+      "3p",
+      "3p",
+      "9p",
+      "9p",
+      "4s",
+      "5s",
+      "6s"
+    ],
+    "answer": {
+      "correct": [
+        {
+          "tiles": [
+            "4s",
+            "5s"
+          ],
+          "type": "ryanmen"
+        }
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "（故意漏列：456s 中 45 与 56 都算两面，correct 只列了 45）",
+      "source": "测试反例"
+    }
   },
   {
     "schema_version": 1,
@@ -110,14 +327,42 @@
     "knowledge_point": "反例：留法进张未严格最多",
     "question_type": "wait_choose",
     "difficulty": "easy",
-    "hand": ["1m", "2m", "3m", "4p", "5p", "6p", "9p", "9p", "2s", "2s", "3s", "7s", "8s", "9s"],
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "4p",
+      "5p",
+      "6p",
+      "9p",
+      "9p",
+      "2s",
+      "2s",
+      "3s",
+      "7s",
+      "8s",
+      "9s"
+    ],
     "answer": {
-      "correct": ["b"],
+      "correct": [
+        "b"
+      ],
       "options": [
-        { "value": "a", "label": "切 2条 · 留两面听", "discard": "2s" },
-        { "value": "b", "label": "切 3条 · 留双碰听", "discard": "3s" }
+        {
+          "value": "a",
+          "label": "切 2条 · 留两面听",
+          "discard": "2s"
+        },
+        {
+          "value": "b",
+          "label": "切 3条 · 留双碰听",
+          "discard": "3s"
+        }
       ]
     },
-    "explanation": { "best": "（故意选错：b 双碰 4 张 < a 两面 8 张）", "source": "测试反例" }
+    "explanation": {
+      "best": "（故意选错：b 双碰 4 张 < a 两面 8 张）",
+      "source": "测试反例"
+    }
   }
 ]

@@ -19,7 +19,7 @@ const { loadBank, questionsOf } = await import("../src/lib/bank");
 const { LEVELS } = await import("../src/lib/types");
 const {
   isCorrect, candidatesOf, shantenBefore, pickStageQuestions,
-  applyRunResult, pickPlacementQuestions, gradePlacement,
+  applyRunResult, pickPlacementQuestions, gradePlacement, mentsuPairKey,
 } = await import("../src/lib/levels");
 const {
   loadProgress, saveProgress, recordWrong, loadWrongBook,
@@ -57,12 +57,19 @@ for (const lv of LEVELS) {
 console.log("③ 判分与讲解（isCorrect / candidatesOf / shantenBefore）");
 for (const q of bank.questions) {
   const hasSnapshot = q.question_type === "what_to_discard" || q.question_type === "ukeire_compare";
-  // 正解串按题型：mi 的用户答案是 type、其余是切牌 / value
+  // 正解串按题型：mi 的用户答案是两张的无序 key、其余是切牌 / value
   const right =
     q.question_type === "mentsu_identify"
-      ? (q.answer.correct as { type: string }[])[0].type
+      ? mentsuPairKey((q.answer.correct as { tiles: string[] }[])[0].tiles)
       : (q.answer.correct as string[])[0];
   if (!isCorrect(q, right)) check(`${q.id} 正解判对`, false);
+  if (q.question_type === "mentsu_identify") {
+    // 必错的组合：同一个刻子里抽两张（对子 key，不在 correct 集合里——刻子题除外）
+    const dup = q.hand.find((t, i) => q.hand.indexOf(t) !== i);
+    const others = q.hand.filter((t) => t !== dup);
+    const wrongKey = mentsuPairKey([dup ?? q.hand[0], others[0]]);
+    if (isCorrect(q, wrongKey)) check(`${q.id} mi 错选判错`, false, `误判 ${wrongKey}`);
+  }
   if (hasSnapshot) {
     const wrong = q.engine_snapshot!.candidates.find((c) => !(q.answer.correct as string[]).includes(c.discard))!.discard;
     if (isCorrect(q, wrong)) check(`${q.id} 错解判错`, false, `误判 ${wrong}`);

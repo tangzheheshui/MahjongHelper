@@ -1,6 +1,6 @@
 {
- "bank_version": "2026.09.2-pilot",
- "generated_at": "2026-09-02T13:56:16.163Z",
+ "bank_version": "2026.09.3-pilot",
+ "generated_at": "2026-09-02T14:31:06.023Z",
  "questions": [
   {
    "schema_version": 1,
@@ -175,7 +175,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.085Z"
+    "checked_at": "2026-09-02T14:31:05.275Z"
    }
   },
   {
@@ -359,7 +359,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.086Z"
+    "checked_at": "2026-09-02T14:31:05.276Z"
    }
   },
   {
@@ -552,7 +552,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.086Z"
+    "checked_at": "2026-09-02T14:31:05.276Z"
    }
   },
   {
@@ -752,31 +752,31 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.086Z"
+    "checked_at": "2026-09-02T14:31:05.276Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L1_005",
    "level": "L1",
-   "knowledge_point": "搭子分类：两面搭的辨认",
+   "knowledge_point": "搭子识别：点出手牌中的两面",
    "question_type": "mentsu_identify",
    "difficulty": "easy",
    "hand": [
     "1m",
-    "2m",
-    "3m",
-    "4m",
+    "1m",
+    "1m",
+    "9m",
+    "9m",
+    "9m",
     "5m",
-    "6m",
-    "7p",
+    "4p",
+    "4p",
+    "4p",
     "8p",
-    "9p",
+    "8p",
     "4s",
-    "5s",
-    "6s",
-    "6s",
-    "9s"
+    "5s"
    ],
    "answer": {
     "correct": [
@@ -791,36 +791,36 @@
     "options": null
    },
    "explanation": {
-    "best": "4条5条 相邻、两头都有出路（等 3条/6条）——两面，四种搭子里进张最宽：2 种 8 张。",
+    "best": "点 4条5条：相邻、两头都有出路（等 3条/6条 各 4 张）——两面。刻子与对子不产生两面组合，这是手牌里唯一的一个。",
     "source": "79博客·麻雀的基础4「面子和搭子」"
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.086Z"
+    "checked_at": "2026-09-02T14:31:05.276Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L1_006",
    "level": "L1",
-   "knowledge_point": "搭子分类：边张搭的辨认",
+   "knowledge_point": "搭子识别：点出手牌中的边张",
    "question_type": "mentsu_identify",
    "difficulty": "easy",
    "hand": [
     "2m",
-    "3m",
-    "4m",
+    "2m",
+    "2m",
+    "8m",
+    "8m",
+    "8m",
     "5m",
-    "6m",
-    "7m",
-    "7p",
-    "8p",
+    "3p",
+    "3p",
+    "3p",
+    "9p",
     "9p",
     "1s",
-    "2s",
-    "5s",
-    "5s",
-    "9s"
+    "2s"
    ],
    "answer": {
     "correct": [
@@ -835,31 +835,31 @@
     "options": null
    },
    "explanation": {
-    "best": "1条2条 在数牌边端：只等 3条 一条路（4 张），第二头永远等不来——边张。",
+    "best": "点 1条2条：在数牌边端，只等 3条 一种 4 张，第二头永远等不来——边张。",
     "source": "79博客·麻雀的基础4「面子和搭子」"
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.086Z"
+    "checked_at": "2026-09-02T14:31:05.276Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L1_007",
    "level": "L1",
-   "knowledge_point": "搭子分类：对子的辨认",
+   "knowledge_point": "搭子识别：点出手牌中的对子",
    "question_type": "mentsu_identify",
    "difficulty": "easy",
    "hand": [
+    "2m",
     "3m",
     "4m",
-    "5m",
     "6m",
     "7m",
     "8m",
+    "5p",
+    "6p",
     "7p",
-    "8p",
-    "9p",
     "1s",
     "2s",
     "7s",
@@ -879,36 +879,36 @@
     "options": null
    },
    "explanation": {
-    "best": "7条7条 完全相同的一对——对子。它身份特殊：既能当雀头，也能摸第三张升刻子。",
+    "best": "点 7条7条：完全相同的一对——对子。既能当雀头、也能摸第三张升刻子。顺子里没有重张，唯一。",
     "source": "79博客·麻雀的基础4「面子和搭子」"
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.086Z"
+    "checked_at": "2026-09-02T14:31:05.276Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L1_008",
    "level": "L1",
-   "knowledge_point": "搭子分类：嵌张搭的辨认",
+   "knowledge_point": "搭子识别：点出手牌中的嵌张",
    "question_type": "mentsu_identify",
    "difficulty": "easy",
    "hand": [
-    "3m",
-    "4m",
-    "5m",
-    "6m",
-    "7m",
-    "8m",
     "1p",
-    "2p",
-    "3p",
+    "1p",
+    "1p",
+    "9p",
+    "9p",
+    "9p",
+    "5p",
+    "3m",
+    "3m",
+    "3m",
+    "6m",
+    "6m",
     "3s",
-    "5s",
-    "6s",
-    "6s",
-    "9s"
+    "5s"
    ],
    "answer": {
     "correct": [
@@ -923,12 +923,12 @@
     "options": null
    },
    "explanation": {
-    "best": "3条5条 隔着一张，只等中间的 4条（4 张）——嵌张。别当成两面数成 8 张。",
+    "best": "点 3条5条：隔着一张，只等中间的 4条（4 张）——嵌张。",
     "source": "79博客·麻雀的基础4「面子和搭子」"
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.086Z"
+    "checked_at": "2026-09-02T14:31:05.276Z"
    }
   },
   {
@@ -1133,7 +1133,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.086Z"
+    "checked_at": "2026-09-02T14:31:05.277Z"
    }
   },
   {
@@ -1327,7 +1327,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.086Z"
+    "checked_at": "2026-09-02T14:31:05.277Z"
    }
   },
   {
@@ -1591,7 +1591,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.201Z"
+    "checked_at": "2026-09-02T14:31:05.392Z"
    }
   },
   {
@@ -1772,7 +1772,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.201Z"
+    "checked_at": "2026-09-02T14:31:05.392Z"
    }
   },
   {
@@ -1950,7 +1950,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.201Z"
+    "checked_at": "2026-09-02T14:31:05.392Z"
    }
   },
   {
@@ -2221,31 +2221,31 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.201Z"
+    "checked_at": "2026-09-02T14:31:05.392Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L2_005",
    "level": "L2",
-   "knowledge_point": "嵌张方向辨析：24 嵌的是 3",
+   "knowledge_point": "嵌张识别：24 型等中间那张",
    "question_type": "mentsu_identify",
    "difficulty": "medium",
    "hand": [
     "2m",
-    "3m",
-    "4m",
-    "6m",
-    "7m",
+    "2m",
+    "2m",
     "8m",
-    "7p",
-    "8p",
+    "8m",
+    "8m",
+    "5m",
+    "3p",
+    "3p",
+    "3p",
+    "9p",
     "9p",
     "2s",
-    "4s",
-    "6s",
-    "6s",
-    "9s"
+    "4s"
    ],
    "answer": {
     "correct": [
@@ -2260,36 +2260,36 @@
     "options": null
    },
    "explanation": {
-    "best": "2条4条 中间等 3条——嵌张。方向别搞反：24 嵌 3，不是等 1。",
+    "best": "点 2条4条：中间等 3条——嵌张。方向别搞反：24 嵌 3，不是等 1。",
     "source": "79博客·麻雀的基础4「面子和搭子」"
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.201Z"
+    "checked_at": "2026-09-02T14:31:05.392Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L2_006",
    "level": "L2",
-   "knowledge_point": "边张误判：89 不是两面",
+   "knowledge_point": "边张识别：89 在边端不是两面",
    "question_type": "mentsu_identify",
    "difficulty": "medium",
    "hand": [
-    "3m",
-    "4m",
+    "1m",
+    "1m",
+    "1m",
     "5m",
-    "6m",
-    "7m",
+    "5m",
+    "5m",
     "8m",
-    "1p",
     "2p",
-    "3p",
+    "2p",
+    "2p",
+    "6p",
+    "6p",
     "8s",
-    "9s",
-    "5s",
-    "5s",
-    "3s"
+    "9s"
    ],
    "answer": {
     "correct": [
@@ -2304,36 +2304,36 @@
     "options": null
    },
    "explanation": {
-    "best": "8条9条 看着像两面，其实在数牌边端：只等 7条（4 张），第二头不存在——边张。",
+    "best": "点 8条9条：看着像两面，其实在数牌边端——只等 7条 一种 4 张。",
     "source": "79博客·麻雀的基础4「面子和搭子」"
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.201Z"
+    "checked_at": "2026-09-02T14:31:05.392Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L2_007",
    "level": "L2",
-   "knowledge_point": "两面误判：78 不是边张",
+   "knowledge_point": "两面识别：78 在中段不是边张",
    "question_type": "mentsu_identify",
    "difficulty": "medium",
    "hand": [
-    "2m",
-    "3m",
-    "4m",
-    "5m",
-    "6m",
-    "7m",
-    "7p",
-    "8p",
+    "5p",
+    "5p",
+    "5p",
     "9p",
+    "9p",
+    "9p",
+    "2p",
+    "1s",
+    "1s",
+    "1s",
+    "3s",
+    "3s",
     "7s",
-    "8s",
-    "2s",
-    "2s",
-    "9m"
+    "8s"
    ],
    "answer": {
     "correct": [
@@ -2348,12 +2348,12 @@
     "options": null
    },
    "explanation": {
-    "best": "7条8条 是两面不是边张：两头都有路，等 6条/9条 共 8 张。78 与 89 一字之差，张数差一倍。",
+    "best": "点 7条8条：两头都有路，等 6条/9条 共 8 张——两面。78 与 89 一字之差，张数差一倍。",
     "source": "79博客·麻雀的基础4「面子和搭子」"
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.201Z"
+    "checked_at": "2026-09-02T14:31:05.392Z"
    }
   },
   {
@@ -2564,7 +2564,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.202Z"
+    "checked_at": "2026-09-02T14:31:05.393Z"
    }
   },
   {
@@ -2752,7 +2752,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.202Z"
+    "checked_at": "2026-09-02T14:31:05.393Z"
    }
   },
   {
@@ -3007,7 +3007,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.202Z"
+    "checked_at": "2026-09-02T14:31:05.393Z"
    }
   },
   {
@@ -3176,7 +3176,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.328Z"
+    "checked_at": "2026-09-02T14:31:05.517Z"
    }
   },
   {
@@ -3406,7 +3406,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.328Z"
+    "checked_at": "2026-09-02T14:31:05.517Z"
    }
   },
   {
@@ -3653,7 +3653,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.328Z"
+    "checked_at": "2026-09-02T14:31:05.517Z"
    }
   },
   {
@@ -3934,7 +3934,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.329Z"
+    "checked_at": "2026-09-02T14:31:05.518Z"
    }
   },
   {
@@ -4121,7 +4121,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.329Z"
+    "checked_at": "2026-09-02T14:31:05.518Z"
    }
   },
   {
@@ -4304,7 +4304,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.329Z"
+    "checked_at": "2026-09-02T14:31:05.518Z"
    }
   },
   {
@@ -4536,7 +4536,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.329Z"
+    "checked_at": "2026-09-02T14:31:05.518Z"
    }
   },
   {
@@ -4712,7 +4712,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.329Z"
+    "checked_at": "2026-09-02T14:31:05.518Z"
    }
   },
   {
@@ -4899,7 +4899,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.329Z"
+    "checked_at": "2026-09-02T14:31:05.518Z"
    }
   },
   {
@@ -5090,7 +5090,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.329Z"
+    "checked_at": "2026-09-02T14:31:05.519Z"
    }
   },
   {
@@ -5278,7 +5278,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.422Z"
+    "checked_at": "2026-09-02T14:31:05.607Z"
    }
   },
   {
@@ -5515,7 +5515,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.422Z"
+    "checked_at": "2026-09-02T14:31:05.607Z"
    }
   },
   {
@@ -5697,7 +5697,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.423Z"
+    "checked_at": "2026-09-02T14:31:05.608Z"
    }
   },
   {
@@ -5904,7 +5904,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.423Z"
+    "checked_at": "2026-09-02T14:31:05.608Z"
    }
   },
   {
@@ -6137,7 +6137,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.423Z"
+    "checked_at": "2026-09-02T14:31:05.608Z"
    }
   },
   {
@@ -6334,7 +6334,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.423Z"
+    "checked_at": "2026-09-02T14:31:05.608Z"
    }
   },
   {
@@ -6578,7 +6578,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.423Z"
+    "checked_at": "2026-09-02T14:31:05.608Z"
    }
   },
   {
@@ -6768,7 +6768,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.423Z"
+    "checked_at": "2026-09-02T14:31:05.608Z"
    }
   },
   {
@@ -7013,7 +7013,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.423Z"
+    "checked_at": "2026-09-02T14:31:05.608Z"
    }
   },
   {
@@ -7226,7 +7226,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.424Z"
+    "checked_at": "2026-09-02T14:31:05.609Z"
    }
   },
   {
@@ -7442,7 +7442,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.544Z"
+    "checked_at": "2026-09-02T14:31:05.729Z"
    }
   },
   {
@@ -7673,7 +7673,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.544Z"
+    "checked_at": "2026-09-02T14:31:05.729Z"
    }
   },
   {
@@ -7931,7 +7931,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.544Z"
+    "checked_at": "2026-09-02T14:31:05.729Z"
    }
   },
   {
@@ -8186,7 +8186,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.545Z"
+    "checked_at": "2026-09-02T14:31:05.729Z"
    }
   },
   {
@@ -8235,7 +8235,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.545Z"
+    "checked_at": "2026-09-02T14:31:05.729Z"
    }
   },
   {
@@ -8284,7 +8284,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.545Z"
+    "checked_at": "2026-09-02T14:31:05.729Z"
    }
   },
   {
@@ -8333,7 +8333,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.545Z"
+    "checked_at": "2026-09-02T14:31:05.729Z"
    }
   },
   {
@@ -8382,7 +8382,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.545Z"
+    "checked_at": "2026-09-02T14:31:05.729Z"
    }
   },
   {
@@ -8619,7 +8619,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.545Z"
+    "checked_at": "2026-09-02T14:31:05.730Z"
    }
   },
   {
@@ -8806,7 +8806,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.545Z"
+    "checked_at": "2026-09-02T14:31:05.730Z"
    }
   },
   {
@@ -8999,7 +8999,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.650Z"
+    "checked_at": "2026-09-02T14:31:05.836Z"
    }
   },
   {
@@ -9173,7 +9173,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.650Z"
+    "checked_at": "2026-09-02T14:31:05.836Z"
    }
   },
   {
@@ -9373,7 +9373,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.650Z"
+    "checked_at": "2026-09-02T14:31:05.836Z"
    }
   },
   {
@@ -9542,7 +9542,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.650Z"
+    "checked_at": "2026-09-02T14:31:05.836Z"
    }
   },
   {
@@ -9719,7 +9719,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.651Z"
+    "checked_at": "2026-09-02T14:31:05.836Z"
    }
   },
   {
@@ -9906,7 +9906,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.651Z"
+    "checked_at": "2026-09-02T14:31:05.836Z"
    }
   },
   {
@@ -10078,7 +10078,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.651Z"
+    "checked_at": "2026-09-02T14:31:05.837Z"
    }
   },
   {
@@ -10267,7 +10267,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.651Z"
+    "checked_at": "2026-09-02T14:31:05.837Z"
    }
   },
   {
@@ -10450,7 +10450,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.651Z"
+    "checked_at": "2026-09-02T14:31:05.837Z"
    }
   },
   {
@@ -10721,7 +10721,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.651Z"
+    "checked_at": "2026-09-02T14:31:05.837Z"
    }
   },
   {
@@ -10900,7 +10900,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.741Z"
+    "checked_at": "2026-09-02T14:31:05.927Z"
    }
   },
   {
@@ -11090,7 +11090,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.741Z"
+    "checked_at": "2026-09-02T14:31:05.928Z"
    }
   },
   {
@@ -11279,7 +11279,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.741Z"
+    "checked_at": "2026-09-02T14:31:05.928Z"
    }
   },
   {
@@ -11574,7 +11574,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.741Z"
+    "checked_at": "2026-09-02T14:31:05.928Z"
    }
   },
   {
@@ -11766,7 +11766,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.741Z"
+    "checked_at": "2026-09-02T14:31:05.928Z"
    }
   },
   {
@@ -11958,7 +11958,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.741Z"
+    "checked_at": "2026-09-02T14:31:05.928Z"
    }
   },
   {
@@ -12200,7 +12200,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.742Z"
+    "checked_at": "2026-09-02T14:31:05.928Z"
    }
   },
   {
@@ -12396,7 +12396,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.742Z"
+    "checked_at": "2026-09-02T14:31:05.929Z"
    }
   },
   {
@@ -12626,7 +12626,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.742Z"
+    "checked_at": "2026-09-02T14:31:05.929Z"
    }
   },
   {
@@ -12810,7 +12810,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T13:55:07.742Z"
+    "checked_at": "2026-09-02T14:31:05.929Z"
    }
   }
  ]

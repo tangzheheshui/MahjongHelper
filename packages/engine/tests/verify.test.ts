@@ -52,10 +52,24 @@ describe("verifyQuestion · mentsu_identify（M3 语义校验）", () => {
     expect(r.errors).toEqual([]);
   });
 
-  it("类型标错（嵌张写成两面）→ 拒绝", () => {
+  it("漏列合法组合（456s 里 45/56 都是两面）→ 拒绝", () => {
     const r = verifyQuestion(sample.find((q) => q.id === "SAMPLE_008")!);
     expect(r.ok).toBe(false);
-    expect(r.errors.join("\n")).toContain("形状为 kanchan");
+    expect(r.errors.join("\n")).toContain("未列全");
+    expect(r.errors.join("\n")).toContain("5s 6s");
+  });
+
+  it("类型标错（嵌张写成两面）→ 拒绝", () => {
+    const r = verifyQuestion({
+      schema_version: 1,
+      id: "BAD_MI_002",
+      level: "L1",
+      question_type: "mentsu_identify",
+      hand: ["1m", "1m", "1m", "9m", "9m", "9m", "5m", "4p", "4p", "4p", "8p", "8p", "3s", "5s"],
+      answer: { correct: [{ tiles: ["3s", "5s"], type: "ryanmen" }] },
+    });
+    expect(r.ok).toBe(false);
+    expect(r.errors.join("\n")).toContain("形状与 type ryanmen 不符");
   });
 
   it("边张与两面的分界：12/89 是 penchan，23/78 才是 ryanmen", () => {
