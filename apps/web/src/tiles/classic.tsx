@@ -40,34 +40,36 @@ function stick(x: number, y: number, h: number, col: string = C.green): ReactNod
   );
 }
 
-/** 一索雀鸟（正面小猫头鹰式）：耳羽 / 双眼 / 喙 / 翅 / 腹 / 爪 */
+/** 一索雀鸟（正面雏雀式，居中小幅构图）：耳羽 / 头 / 眼 / 喙 / 翅 / 腹 / 栖枝。
+ *  2026-09-02 按用户意见重画：整体居中、体量收敛（不再铺满整牌）、左右对称。 */
 function bird(): ReactNode {
   return (
     <g>
-      {/* 耳羽 */}
-      <path d="M44 44 L50 30 L55 42 Z" fill={C.green} stroke="rgba(18,34,20,.25)" strokeWidth={1} />
-      <path d="M76 44 L70 30 L65 42 Z" fill={C.green} stroke="rgba(18,34,20,.25)" strokeWidth={1} />
-      {/* 头 / 身 */}
-      <circle cx={60} cy={62} r={16} fill={C.green} stroke="rgba(18,34,20,.25)" strokeWidth={1} />
-      <ellipse cx={60} cy={104} rx={25} ry={30} fill={C.green} stroke="rgba(18,34,20,.25)" strokeWidth={1} />
-      {/* 翅 */}
-      <path d="M38 92 Q30 106 38 122 Q46 110 44 94 Z" fill="#337a44" />
-      <path d="M82 92 Q90 106 82 122 Q74 110 76 94 Z" fill="#337a44" />
+      {/* 耳羽（头顶两侧） */}
+      <path d="M50 68 L44 52 L58 62 Z" fill={C.green} stroke="rgba(18,34,20,.22)" strokeWidth={0.9} />
+      <path d="M70 68 L76 52 L62 62 Z" fill={C.green} stroke="rgba(18,34,20,.22)" strokeWidth={0.9} />
+      {/* 头 */}
+      <circle cx={60} cy={76} r={15} fill={C.green} stroke="rgba(18,34,20,.25)" strokeWidth={1.2} />
+      {/* 身 */}
+      <ellipse cx={60} cy={106} rx={23} ry={29} fill={C.green} stroke="rgba(18,34,20,.25)" strokeWidth={1.2} />
+      {/* 翅（贴合两侧） */}
+      <path d="M40 96 Q31 111 39 126 Q48 115 46 98 Z" fill="#337a44" />
+      <path d="M80 96 Q89 111 81 126 Q72 115 74 98 Z" fill="#337a44" />
       {/* 腹 */}
-      <ellipse cx={60} cy={110} rx={14} ry={18} fill="#eef4e6" />
+      <ellipse cx={60} cy={114} rx={12} ry={17} fill="#eef4e6" />
       {/* 眼 */}
-      <circle cx={51.5} cy={60} r={6.4} fill="#fff" stroke={C.ink} strokeWidth={1.2} />
-      <circle cx={68.5} cy={60} r={6.4} fill="#fff" stroke={C.ink} strokeWidth={1.2} />
-      <circle cx={52.3} cy={61} r={2.9} fill={C.ink} />
-      <circle cx={67.7} cy={61} r={2.9} fill={C.ink} />
-      <circle cx={53.3} cy={59.8} r={0.9} fill="#fff" />
-      <circle cx={68.7} cy={59.8} r={0.9} fill="#fff" />
+      <circle cx={53.5} cy={75} r={5.8} fill="#fff" stroke={C.ink} strokeWidth={1.1} />
+      <circle cx={66.5} cy={75} r={5.8} fill="#fff" stroke={C.ink} strokeWidth={1.1} />
+      <circle cx={54.2} cy={75.8} r={2.6} fill={C.ink} />
+      <circle cx={65.8} cy={75.8} r={2.6} fill={C.ink} />
+      <circle cx={55} cy={74.6} r={0.8} fill="#fff" />
+      <circle cx={66.6} cy={74.6} r={0.8} fill="#fff" />
       {/* 喙 */}
-      <path d="M60 67 L55 74 L65 74 Z" fill="#d98a2b" stroke="rgba(90,52,10,.3)" strokeWidth={0.9} />
-      {/* 爪 + 栖枝 */}
-      <rect x={44} y={134} width={32} height={5} rx={2.5} fill="#8a6a3a" />
-      <rect x={51} y={139} width={3} height={8} fill={C.ink} />
-      <rect x={66} y={139} width={3} height={8} fill={C.ink} />
+      <path d="M60 84 L56 90 L64 90 Z" fill="#d98a2b" stroke="rgba(90,52,10,.28)" strokeWidth={0.8} />
+      {/* 爪 + 栖枝（鸟踩枝上，枝在身下） */}
+      <rect x={44} y={140} width={32} height={5.5} rx={2.5} fill="#8a6a3a" />
+      <rect x={54} y={133} width={3} height={8} fill={C.ink} />
+      <rect x={63} y={133} width={3} height={8} fill={C.ink} />
     </g>
   );
 }
