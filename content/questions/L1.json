@@ -1,0 +1,779 @@
+[
+  {
+    "schema_version": 1,
+    "id": "L1_001",
+    "level": "L1",
+    "knowledge_point": "孤立字牌识别：面子 / 搭子 / 雀头之外的最无用牌",
+    "question_type": "what_to_discard",
+    "difficulty": "easy",
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "4m",
+      "5m",
+      "6m",
+      "7p",
+      "8p",
+      "9p",
+      "1s",
+      "2s",
+      "E",
+      "E",
+      "N"
+    ],
+    "answer": {
+      "correct": [
+        "N"
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "切 N。先把手牌分块：123m、456m、789p 三副完整面子，EE 一对雀头，1s2s 一个边张搭子，N 什么都组不成——它不是面子、不是搭子、也当不了雀头（EE 已经在位）。14 张里唯一游离在牌形之外的只有 N，切掉后 13 张 = 三面子 + 雀头 + 边张搭，正好听牌（等 3s）。",
+      "ukeire_table": [
+        {
+          "discard": "N",
+          "ukeire_count": 4,
+          "note": "切后听牌，和了牌 3s 剩 4 张"
+        },
+        {
+          "discard": "1s",
+          "ukeire_count": 20,
+          "note": "切后变一向听——向听数变差，见 L6"
+        }
+      ],
+      "source": "79博客·麻雀的基础4「面子和搭子」"
+    },
+    "engine_snapshot": {
+      "shanten_before": 0,
+      "candidates": [
+        {
+          "discard": "N",
+          "shanten_after": 0,
+          "ukeire_count": 4,
+          "ukeire_tiles": [
+            "3s"
+          ]
+        },
+        {
+          "discard": "1s",
+          "shanten_after": 1,
+          "ukeire_count": 20,
+          "ukeire_tiles": [
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "E",
+            "N"
+          ]
+        },
+        {
+          "discard": "2s",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "1s",
+            "2s",
+            "3s",
+            "E",
+            "N"
+          ]
+        },
+        {
+          "discard": "1m",
+          "shanten_after": 1,
+          "ukeire_count": 15,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "7m",
+            "3s"
+          ]
+        },
+        {
+          "discard": "4m",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "4m",
+            "7m",
+            "3s"
+          ]
+        },
+        {
+          "discard": "9p",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "6p",
+            "9p",
+            "3s"
+          ]
+        },
+        {
+          "discard": "6m",
+          "shanten_after": 1,
+          "ukeire_count": 11,
+          "ukeire_tiles": [
+            "3m",
+            "6m",
+            "3s"
+          ]
+        },
+        {
+          "discard": "E",
+          "shanten_after": 1,
+          "ukeire_count": 10,
+          "ukeire_tiles": [
+            "3s",
+            "E",
+            "N"
+          ]
+        },
+        {
+          "discard": "2m",
+          "shanten_after": 1,
+          "ukeire_count": 8,
+          "ukeire_tiles": [
+            "2m",
+            "3s"
+          ]
+        },
+        {
+          "discard": "3m",
+          "shanten_after": 1,
+          "ukeire_count": 8,
+          "ukeire_tiles": [
+            "3m",
+            "3s"
+          ]
+        },
+        {
+          "discard": "5m",
+          "shanten_after": 1,
+          "ukeire_count": 8,
+          "ukeire_tiles": [
+            "5m",
+            "3s"
+          ]
+        },
+        {
+          "discard": "7p",
+          "shanten_after": 1,
+          "ukeire_count": 8,
+          "ukeire_tiles": [
+            "7p",
+            "3s"
+          ]
+        },
+        {
+          "discard": "8p",
+          "shanten_after": 1,
+          "ukeire_count": 8,
+          "ukeire_tiles": [
+            "8p",
+            "3s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T02:43:42.884Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L1_002",
+    "level": "L1",
+    "knowledge_point": "孤张与两面搭的分辨：切谁一听便知",
+    "question_type": "what_to_discard",
+    "difficulty": "easy",
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "4p",
+      "5p",
+      "6p",
+      "7s",
+      "8s",
+      "9s",
+      "2s",
+      "3s",
+      "N",
+      "N",
+      "9s"
+    ],
+    "answer": {
+      "correct": [
+        "9s"
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "切 9s。分块：123m、456p、789s 三面子，NN 雀头，2s3s 一个两面搭子，9s 是孤张。9s 虽然是数牌，但手里没有 7s/8s 以外的索子伙伴（789s 已自成面子），它联络不上任何搭子；而 2s3s 是价值最高的两面搭。切 9s 后听 1s/4s 两面共 8 张。",
+      "ukeire_table": [
+        {
+          "discard": "9s",
+          "ukeire_count": 8,
+          "note": "两面 1s、4s 各 4 张"
+        },
+        {
+          "discard": "2s",
+          "ukeire_count": 33,
+          "note": "切搭子保孤张反而退回一向听"
+        }
+      ],
+      "source": "79博客·麻雀的基础4「面子和搭子」"
+    },
+    "engine_snapshot": {
+      "shanten_before": 0,
+      "candidates": [
+        {
+          "discard": "9s",
+          "shanten_after": 0,
+          "ukeire_count": 8,
+          "ukeire_tiles": [
+            "1s",
+            "4s"
+          ]
+        },
+        {
+          "discard": "2s",
+          "shanten_after": 1,
+          "ukeire_count": 33,
+          "ukeire_tiles": [
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s",
+            "N"
+          ]
+        },
+        {
+          "discard": "3s",
+          "shanten_after": 1,
+          "ukeire_count": 29,
+          "ukeire_tiles": [
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "6s",
+            "7s",
+            "8s",
+            "9s",
+            "N"
+          ]
+        },
+        {
+          "discard": "N",
+          "shanten_after": 1,
+          "ukeire_count": 17,
+          "ukeire_tiles": [
+            "1s",
+            "4s",
+            "6s",
+            "9s",
+            "N"
+          ]
+        },
+        {
+          "discard": "1m",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "1s",
+            "4s"
+          ]
+        },
+        {
+          "discard": "4p",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "4p",
+            "7p",
+            "1s",
+            "4s"
+          ]
+        },
+        {
+          "discard": "6p",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "3p",
+            "6p",
+            "1s",
+            "4s"
+          ]
+        },
+        {
+          "discard": "7s",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "1s",
+            "4s",
+            "7s",
+            "9s",
+            "N"
+          ]
+        },
+        {
+          "discard": "8s",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "1s",
+            "4s",
+            "8s",
+            "9s",
+            "N"
+          ]
+        },
+        {
+          "discard": "2m",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "2m",
+            "1s",
+            "4s"
+          ]
+        },
+        {
+          "discard": "3m",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "3m",
+            "1s",
+            "4s"
+          ]
+        },
+        {
+          "discard": "5p",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "5p",
+            "1s",
+            "4s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T02:43:42.885Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L1_003",
+    "level": "L1",
+    "knowledge_point": "雀头识别：11m 可作雀头，23m 即成两面",
+    "question_type": "what_to_discard",
+    "difficulty": "easy",
+    "hand": [
+      "1m",
+      "1m",
+      "2m",
+      "3m",
+      "4p",
+      "5p",
+      "6p",
+      "7s",
+      "8s",
+      "9s",
+      "1p",
+      "2p",
+      "3p",
+      "E"
+    ],
+    "answer": {
+      "correct": [
+        "E"
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "切 E。分块：1m1m 一对、2m3m 搭子、456p、789s、123p 三面子。把 1m1m 当雀头，2m3m 就是两面搭，切掉孤立字牌 E 后手牌 = 三面子 + 雀头 + 两面搭，听 1m/4m。1m 手里已有 2 张所以只剩 2 张可摸，4m 还有 4 张，合计 6 张。注意不要把 123m 拆开当面子——那样 1m 只剩单骑 3 张。",
+      "ukeire_table": [
+        {
+          "discard": "E",
+          "ukeire_count": 6,
+          "note": "两面听：4m×4 + 1m×2（手内已占 2 张）"
+        },
+        {
+          "discard": "1m",
+          "ukeire_count": 3,
+          "note": "误把 123m 当面子 → 单骑 E"
+        }
+      ],
+      "source": "79博客·麻雀的基础4「面子和搭子」"
+    },
+    "engine_snapshot": {
+      "shanten_before": 0,
+      "candidates": [
+        {
+          "discard": "E",
+          "shanten_after": 0,
+          "ukeire_count": 6,
+          "ukeire_tiles": [
+            "1m",
+            "4m"
+          ]
+        },
+        {
+          "discard": "1m",
+          "shanten_after": 0,
+          "ukeire_count": 3,
+          "ukeire_tiles": [
+            "E"
+          ]
+        },
+        {
+          "discard": "2m",
+          "shanten_after": 1,
+          "ukeire_count": 20,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "5m",
+            "E"
+          ]
+        },
+        {
+          "discard": "1p",
+          "shanten_after": 1,
+          "ukeire_count": 20,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "1p",
+            "4p",
+            "7p",
+            "E"
+          ]
+        },
+        {
+          "discard": "4p",
+          "shanten_after": 1,
+          "ukeire_count": 17,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "4p",
+            "7p",
+            "E"
+          ]
+        },
+        {
+          "discard": "9s",
+          "shanten_after": 1,
+          "ukeire_count": 17,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "6s",
+            "9s",
+            "E"
+          ]
+        },
+        {
+          "discard": "3m",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "E"
+          ]
+        },
+        {
+          "discard": "6p",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "3p",
+            "6p",
+            "E"
+          ]
+        },
+        {
+          "discard": "2p",
+          "shanten_after": 1,
+          "ukeire_count": 13,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "2p",
+            "E"
+          ]
+        },
+        {
+          "discard": "3p",
+          "shanten_after": 1,
+          "ukeire_count": 13,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "3p",
+            "E"
+          ]
+        },
+        {
+          "discard": "5p",
+          "shanten_after": 1,
+          "ukeire_count": 13,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "5p",
+            "E"
+          ]
+        },
+        {
+          "discard": "7s",
+          "shanten_after": 1,
+          "ukeire_count": 13,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "7s",
+            "E"
+          ]
+        },
+        {
+          "discard": "8s",
+          "shanten_after": 1,
+          "ukeire_count": 13,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "8s",
+            "E"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T02:43:42.885Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L1_004",
+    "level": "L1",
+    "knowledge_point": "听牌张数对比：两面 6 张 vs 单骑 3 张",
+    "question_type": "ukeire_compare",
+    "difficulty": "easy",
+    "hand": [
+      "1m",
+      "1m",
+      "2m",
+      "3m",
+      "4p",
+      "5p",
+      "6p",
+      "7s",
+      "8s",
+      "9s",
+      "1p",
+      "2p",
+      "3p",
+      "E"
+    ],
+    "answer": {
+      "correct": [
+        "E"
+      ],
+      "options": [
+        {
+          "discard": "E"
+        },
+        {
+          "discard": "1m"
+        }
+      ]
+    },
+    "explanation": {
+      "best": "切 E 听两面 6 张，切 1m 只听单骑 E 3 张。两种切法都能听牌，差别全在「和了牌还剩几张」：两面 1m+4m 里 4m 完整 4 张、1m 被手内占 2 张剩 2 张；单骑 E 手内 1 张剩 3 张。6 > 3，明显切 E。",
+      "source": "79博客·牌效率2「有效牌和张数」"
+    },
+    "engine_snapshot": {
+      "shanten_before": 0,
+      "candidates": [
+        {
+          "discard": "E",
+          "shanten_after": 0,
+          "ukeire_count": 6,
+          "ukeire_tiles": [
+            "1m",
+            "4m"
+          ]
+        },
+        {
+          "discard": "1m",
+          "shanten_after": 0,
+          "ukeire_count": 3,
+          "ukeire_tiles": [
+            "E"
+          ]
+        },
+        {
+          "discard": "2m",
+          "shanten_after": 1,
+          "ukeire_count": 20,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "5m",
+            "E"
+          ]
+        },
+        {
+          "discard": "1p",
+          "shanten_after": 1,
+          "ukeire_count": 20,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "1p",
+            "4p",
+            "7p",
+            "E"
+          ]
+        },
+        {
+          "discard": "4p",
+          "shanten_after": 1,
+          "ukeire_count": 17,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "4p",
+            "7p",
+            "E"
+          ]
+        },
+        {
+          "discard": "9s",
+          "shanten_after": 1,
+          "ukeire_count": 17,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "6s",
+            "9s",
+            "E"
+          ]
+        },
+        {
+          "discard": "3m",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "E"
+          ]
+        },
+        {
+          "discard": "6p",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "3p",
+            "6p",
+            "E"
+          ]
+        },
+        {
+          "discard": "2p",
+          "shanten_after": 1,
+          "ukeire_count": 13,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "2p",
+            "E"
+          ]
+        },
+        {
+          "discard": "3p",
+          "shanten_after": 1,
+          "ukeire_count": 13,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "3p",
+            "E"
+          ]
+        },
+        {
+          "discard": "5p",
+          "shanten_after": 1,
+          "ukeire_count": 13,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "5p",
+            "E"
+          ]
+        },
+        {
+          "discard": "7s",
+          "shanten_after": 1,
+          "ukeire_count": 13,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "7s",
+            "E"
+          ]
+        },
+        {
+          "discard": "8s",
+          "shanten_after": 1,
+          "ukeire_count": 13,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "8s",
+            "E"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T02:43:42.885Z"
+    }
+  }
+]

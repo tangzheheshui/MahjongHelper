@@ -60,7 +60,7 @@ nanikiru/
 |---|---|---|
 | M0 | 规划与骨架：本仓库结构 + 全套文档 + 参考资料入库 | ✅ 2026-08-31 |
 | M1 | 引擎：向听数 / 进张计算 / 最优切牌排序 + golden 测试 + 第三方对拍 ≥20 题 | ✅ 2026-09-02：golden 74 例 + 随机自洽 + 校验测试共 101 绿；对拍 Python `mahjong` 151 手 0 差异（[报告](docs/references/duipai-report.md)）；verify CLI 可用（`npm run verify -w @nanikiru/engine -- <题库.json>`） |
-| M2 | Web V1：做题闭环（判分 / 讲解 / 错题本 / 关卡树），内置 20~30 题样例库 | ⬜ |
+| M2 | Web V1：做题闭环（判分 / 讲解 / 错题本 / 关卡树），内置 20~30 题样例库 | ✅ 2026-09-02：试点题库 28 题（L1-L7，全过 verify CLI）；闭环冒烟 `npx tsx apps/web/scripts/smoke-loop.ts` 全绿；Edge 无头渲染五页 + SW 预缓存核实；PWA 安装与断网真机体验待用户验收 |
 | M3 | 内容建设：起步每级 ≥10 题（共 ≥70）先上线，后续补至 200（PRD 目标） | ⬜ |
 | M4 | 上线 Web / PWA，服务器静态部署 + 题库增量更新跑通 | ⬜ |
 | M5 | Capacitor 打包 iOS，App Store 提审 | ⬜ |

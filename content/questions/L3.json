@@ -1,0 +1,973 @@
+[
+  {
+    "schema_version": 1,
+    "id": "L3_001",
+    "level": "L3",
+    "knowledge_point": "四张复合形（帽子形）：112m 切重张即成面子",
+    "question_type": "what_to_discard",
+    "difficulty": "medium",
+    "hand": [
+      "1m",
+      "1m",
+      "2m",
+      "3m",
+      "4p",
+      "5p",
+      "6p",
+      "7s",
+      "8s",
+      "9s",
+      "5s",
+      "5s",
+      "E",
+      "E"
+    ],
+    "answer": {
+      "correct": [
+        "1m"
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "切 1m。1m1m2m3m 是「对子 + 顺子」重叠的复合形：切掉一张 1m，剩 123m 直接成为完整面子，同时 5s5s、EE 两对子留作双碰听牌（等 5s 或 E 成刻）。复合形的要诀是看出「四张里其实只多一张」——不需要把 11m 和 23m 当成两个独立搭子去纠结。",
+      "ukeire_table": [
+        {
+          "discard": "1m",
+          "ukeire_count": 4,
+          "note": "双碰听 5s/E：手内各 2 张 → 各剩 2，共 4"
+        },
+        {
+          "discard": "5s",
+          "ukeire_count": 32,
+          "note": "拆对子退一向听，换大进张面"
+        }
+      ],
+      "source": "79博客·麻雀的基础8「基本形与复合型」"
+    },
+    "engine_snapshot": {
+      "shanten_before": 0,
+      "candidates": [
+        {
+          "discard": "1m",
+          "shanten_after": 0,
+          "ukeire_count": 4,
+          "ukeire_tiles": [
+            "5s",
+            "E"
+          ]
+        },
+        {
+          "discard": "5s",
+          "shanten_after": 1,
+          "ukeire_count": 32,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "E"
+          ]
+        },
+        {
+          "discard": "E",
+          "shanten_after": 1,
+          "ukeire_count": 17,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "5s",
+            "E"
+          ]
+        },
+        {
+          "discard": "4p",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "4p",
+            "7p",
+            "5s",
+            "E"
+          ]
+        },
+        {
+          "discard": "6p",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "3p",
+            "6p",
+            "5s",
+            "E"
+          ]
+        },
+        {
+          "discard": "9s",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "5s",
+            "6s",
+            "9s",
+            "E"
+          ]
+        },
+        {
+          "discard": "2m",
+          "shanten_after": 1,
+          "ukeire_count": 10,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "5s",
+            "E"
+          ]
+        },
+        {
+          "discard": "3m",
+          "shanten_after": 1,
+          "ukeire_count": 10,
+          "ukeire_tiles": [
+            "1m",
+            "3m",
+            "5s",
+            "E"
+          ]
+        },
+        {
+          "discard": "5p",
+          "shanten_after": 1,
+          "ukeire_count": 8,
+          "ukeire_tiles": [
+            "5p",
+            "5s",
+            "E"
+          ]
+        },
+        {
+          "discard": "7s",
+          "shanten_after": 1,
+          "ukeire_count": 8,
+          "ukeire_tiles": [
+            "5s",
+            "7s",
+            "E"
+          ]
+        },
+        {
+          "discard": "8s",
+          "shanten_after": 1,
+          "ukeire_count": 8,
+          "ukeire_tiles": [
+            "5s",
+            "8s",
+            "E"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T02:43:43.067Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L3_002",
+    "level": "L3",
+    "knowledge_point": "四连 + 对子复合：556p 的三面听结构",
+    "question_type": "what_to_discard",
+    "difficulty": "hard",
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "7p",
+      "8p",
+      "9p",
+      "2s",
+      "3s",
+      "4s",
+      "5s",
+      "6s",
+      "5p",
+      "5p",
+      "6p"
+    ],
+    "answer": {
+      "correct": [
+        "6p",
+        "9p"
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "切 6p 或 9p（并列）。饼子六张 5p5p6p7p8p9p 是「对子 + 面子」的复合形：切 6p 剩 5p5p + 789p，切 9p 剩 5p5p + 678p，都留下「完整面子 + 5p5p 雀头」，配合 2s-6s 五连展开成三面听 1s/4s/7s 共 11 张（1s、7s 各 4 张，4s 手内占 1 张剩 3 张）。两种切法结构完全等价，所以并列最优——并列时怎么切都不算错。",
+      "ukeire_table": [
+        {
+          "discard": "6p",
+          "ukeire_count": 11,
+          "note": "三面听 1s(4)/4s(3)/7s(4)"
+        },
+        {
+          "discard": "9p",
+          "ukeire_count": 11,
+          "note": "与切 6p 等价"
+        },
+        {
+          "discard": "2s",
+          "ukeire_count": 46,
+          "note": "退一向听，进张虽多但慢一巡"
+        }
+      ],
+      "source": "79博客·麻雀的基础8「基本形与复合型」/ Riichi Book I §3.3"
+    },
+    "engine_snapshot": {
+      "shanten_before": 0,
+      "candidates": [
+        {
+          "discard": "6p",
+          "shanten_after": 0,
+          "ukeire_count": 11,
+          "ukeire_tiles": [
+            "1s",
+            "4s",
+            "7s"
+          ]
+        },
+        {
+          "discard": "9p",
+          "shanten_after": 0,
+          "ukeire_count": 11,
+          "ukeire_tiles": [
+            "1s",
+            "4s",
+            "7s"
+          ]
+        },
+        {
+          "discard": "2s",
+          "shanten_after": 1,
+          "ukeire_count": 46,
+          "ukeire_tiles": [
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "8p",
+            "9p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s"
+          ]
+        },
+        {
+          "discard": "5p",
+          "shanten_after": 1,
+          "ukeire_count": 42,
+          "ukeire_tiles": [
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "8p",
+            "9p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s"
+          ]
+        },
+        {
+          "discard": "6s",
+          "shanten_after": 1,
+          "ukeire_count": 42,
+          "ukeire_tiles": [
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "8p",
+            "9p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s"
+          ]
+        },
+        {
+          "discard": "5s",
+          "shanten_after": 1,
+          "ukeire_count": 40,
+          "ukeire_tiles": [
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "8p",
+            "9p",
+            "1s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s"
+          ]
+        },
+        {
+          "discard": "3s",
+          "shanten_after": 1,
+          "ukeire_count": 36,
+          "ukeire_tiles": [
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "8p",
+            "9p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "7s"
+          ]
+        },
+        {
+          "discard": "8p",
+          "shanten_after": 1,
+          "ukeire_count": 20,
+          "ukeire_tiles": [
+            "5p",
+            "8p",
+            "9p",
+            "1s",
+            "4s",
+            "7s"
+          ]
+        },
+        {
+          "discard": "1m",
+          "shanten_after": 1,
+          "ukeire_count": 19,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "1s",
+            "4s",
+            "7s"
+          ]
+        },
+        {
+          "discard": "2m",
+          "shanten_after": 1,
+          "ukeire_count": 15,
+          "ukeire_tiles": [
+            "2m",
+            "1s",
+            "4s",
+            "7s"
+          ]
+        },
+        {
+          "discard": "3m",
+          "shanten_after": 1,
+          "ukeire_count": 15,
+          "ukeire_tiles": [
+            "3m",
+            "1s",
+            "4s",
+            "7s"
+          ]
+        },
+        {
+          "discard": "7p",
+          "shanten_after": 1,
+          "ukeire_count": 15,
+          "ukeire_tiles": [
+            "7p",
+            "1s",
+            "4s",
+            "7s"
+          ]
+        },
+        {
+          "discard": "4s",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "1s",
+            "4s",
+            "7s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T02:43:43.067Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L3_003",
+    "level": "L3",
+    "knowledge_point": "一色长连：八连张的两端三面听",
+    "question_type": "what_to_discard",
+    "difficulty": "medium",
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "4p",
+      "5p",
+      "6p",
+      "2s",
+      "3s",
+      "4s",
+      "5s",
+      "6s",
+      "7s",
+      "8s",
+      "9s"
+    ],
+    "answer": {
+      "correct": [
+        "2s",
+        "9s"
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "切 2s 或 9s（并列）。2s-9s 八连切掉一端后剩七连 = 两副面子 + 单骑：切 2s 后单骑位可在 3s/6s/9s 里选（三面单骑），切 9s 则对称地单骑 2s/5s/8s。三种进张手内各占 1 张、各剩 3 张，合计都是 9 张。八连以上的一色长连是天然多面张素材，两端的切法等价并列；切中间（如 3s）只剩单骑 2s 一种解、3 张。",
+      "ukeire_table": [
+        {
+          "discard": "2s",
+          "ukeire_count": 9,
+          "note": "三面单骑 3s/6s/9s 各 3"
+        },
+        {
+          "discard": "9s",
+          "ukeire_count": 9,
+          "note": "2s(3)/5s(3)/8s(3)，与切 2s 对称"
+        },
+        {
+          "discard": "3s",
+          "ukeire_count": 3,
+          "note": "切中间只剩单骑 2s"
+        }
+      ],
+      "source": "Riichi Book I §3.3 复合形"
+    },
+    "engine_snapshot": {
+      "shanten_before": 0,
+      "candidates": [
+        {
+          "discard": "2s",
+          "shanten_after": 0,
+          "ukeire_count": 9,
+          "ukeire_tiles": [
+            "3s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "9s",
+          "shanten_after": 0,
+          "ukeire_count": 9,
+          "ukeire_tiles": [
+            "2s",
+            "5s",
+            "8s"
+          ]
+        },
+        {
+          "discard": "5s",
+          "shanten_after": 0,
+          "ukeire_count": 6,
+          "ukeire_tiles": [
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "6s",
+          "shanten_after": 0,
+          "ukeire_count": 6,
+          "ukeire_tiles": [
+            "2s",
+            "5s"
+          ]
+        },
+        {
+          "discard": "3s",
+          "shanten_after": 0,
+          "ukeire_count": 3,
+          "ukeire_tiles": [
+            "2s"
+          ]
+        },
+        {
+          "discard": "8s",
+          "shanten_after": 0,
+          "ukeire_count": 3,
+          "ukeire_tiles": [
+            "9s"
+          ]
+        },
+        {
+          "discard": "1m",
+          "shanten_after": 1,
+          "ukeire_count": 42,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "4p",
+          "shanten_after": 1,
+          "ukeire_count": 42,
+          "ukeire_tiles": [
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "6p",
+          "shanten_after": 1,
+          "ukeire_count": 42,
+          "ukeire_tiles": [
+            "3p",
+            "4p",
+            "5p",
+            "6p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "2m",
+          "shanten_after": 1,
+          "ukeire_count": 38,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "3m",
+          "shanten_after": 1,
+          "ukeire_count": 38,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "5p",
+          "shanten_after": 1,
+          "ukeire_count": 38,
+          "ukeire_tiles": [
+            "4p",
+            "5p",
+            "6p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "4s",
+          "shanten_after": 1,
+          "ukeire_count": 29,
+          "ukeire_tiles": [
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "7s",
+          "shanten_after": 1,
+          "ukeire_count": 29,
+          "ukeire_tiles": [
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T02:43:43.067Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L3_004",
+    "level": "L3",
+    "knowledge_point": "五连 + 两面：复合形进张的并集有多大",
+    "question_type": "ukeire_compare",
+    "difficulty": "hard",
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "7p",
+      "8p",
+      "9p",
+      "2s",
+      "3s",
+      "4s",
+      "5s",
+      "6s",
+      "5p",
+      "6p",
+      "E"
+    ],
+    "answer": {
+      "correct": [
+        "E"
+      ],
+      "options": [
+        {
+          "discard": "E"
+        },
+        {
+          "discard": "5p"
+        }
+      ]
+    },
+    "explanation": {
+      "best": "切 E 进张 42 张，切 5p 只剩 20 张。23456s 五连可以容纳「面子 + 两面搭」的任何组合，56p 两面独立并进，两个复合形同时推进时有效牌覆盖 4p-9p 与 1s-7s 十三种 42 张。切 5p 拆掉一面搭子，进张立刻腰斩。复合形的价值就在「一张牌同时服务多种完成方式」。",
+      "source": "Riichi Book I §3.3 / 79博客·牌效率2「有效牌和张数」"
+    },
+    "engine_snapshot": {
+      "shanten_before": 1,
+      "candidates": [
+        {
+          "discard": "E",
+          "shanten_after": 1,
+          "ukeire_count": 42,
+          "ukeire_tiles": [
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "8p",
+            "9p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s"
+          ]
+        },
+        {
+          "discard": "5p",
+          "shanten_after": 1,
+          "ukeire_count": 20,
+          "ukeire_tiles": [
+            "6p",
+            "9p",
+            "1s",
+            "4s",
+            "7s",
+            "E"
+          ]
+        },
+        {
+          "discard": "9p",
+          "shanten_after": 1,
+          "ukeire_count": 20,
+          "ukeire_tiles": [
+            "5p",
+            "8p",
+            "1s",
+            "4s",
+            "7s",
+            "E"
+          ]
+        },
+        {
+          "discard": "6p",
+          "shanten_after": 1,
+          "ukeire_count": 17,
+          "ukeire_tiles": [
+            "5p",
+            "1s",
+            "4s",
+            "7s",
+            "E"
+          ]
+        },
+        {
+          "discard": "8p",
+          "shanten_after": 1,
+          "ukeire_count": 17,
+          "ukeire_tiles": [
+            "9p",
+            "1s",
+            "4s",
+            "7s",
+            "E"
+          ]
+        },
+        {
+          "discard": "2s",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "4p",
+            "7p",
+            "3s",
+            "6s",
+            "E"
+          ]
+        },
+        {
+          "discard": "6s",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "4p",
+            "7p",
+            "2s",
+            "5s",
+            "E"
+          ]
+        },
+        {
+          "discard": "3s",
+          "shanten_after": 1,
+          "ukeire_count": 13,
+          "ukeire_tiles": [
+            "4p",
+            "7p",
+            "2s",
+            "E"
+          ]
+        },
+        {
+          "discard": "5s",
+          "shanten_after": 1,
+          "ukeire_count": 13,
+          "ukeire_tiles": [
+            "4p",
+            "7p",
+            "6s",
+            "E"
+          ]
+        },
+        {
+          "discard": "1m",
+          "shanten_after": 2,
+          "ukeire_count": 59,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "8p",
+            "9p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "E"
+          ]
+        },
+        {
+          "discard": "2m",
+          "shanten_after": 2,
+          "ukeire_count": 55,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "8p",
+            "9p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "E"
+          ]
+        },
+        {
+          "discard": "3m",
+          "shanten_after": 2,
+          "ukeire_count": 55,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "8p",
+            "9p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "E"
+          ]
+        },
+        {
+          "discard": "7p",
+          "shanten_after": 2,
+          "ukeire_count": 46,
+          "ukeire_tiles": [
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "8p",
+            "9p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "E"
+          ]
+        },
+        {
+          "discard": "4s",
+          "shanten_after": 2,
+          "ukeire_count": 46,
+          "ukeire_tiles": [
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "8p",
+            "9p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "E"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T02:43:43.067Z"
+    }
+  }
+]

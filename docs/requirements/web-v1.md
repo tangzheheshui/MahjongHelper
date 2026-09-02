@@ -65,7 +65,10 @@
 | `nk.wrong_book` | localStorage | 错题 ID 列表 + 重做结果 |
 | `nk.placement` | localStorage | 最近一次定级结果 + 日期 |
 | `nk.settings` | localStorage | 用户偏好 |
-| `nk.bank` | IndexedDB | 合并后的全量题库（内置 + 远程增量），含 bank_version |
+| `nk.bank` | IndexedDB（库名 `nanikiru` / store `bank` / key `merged`） | 合并后的全量题库（内置 + 远程增量），含 bank_version |
+
+题库读取带 1500ms 超时竞速：IndexedDB 回调悬挂（隐私模式 / 部分嵌入式 WebView）时静默降级
+内置题库，功能不缺（2026-09-02 实测无头环境发现，落实为 `bank.ts` 的 `withTimeout`）。
 
 ### 4. PWA / 离线
 
@@ -75,6 +78,15 @@
 ### 5. 关卡抽题
 
 每关题量 8-12（PRD 5.4）；题库不足允许复用题目并提示「该关卡题库较少，可能复现」（PRD 6.4）。
+
+### 6. 自测通道（M2 起固定）
+
+- **闭环冒烟**：`npx tsx apps/web/scripts/smoke-loop.ts` —— node 内存 localStorage 模拟
+  练 → 判 → 讲 → 结算/解锁 → 错题本 → 水平测试 全链路（IndexedDB 缺席走内置降级，顺带覆盖离线口径），
+  改 lib 层后必跑
+- **渲染自测**：`vite preview` + Edge headless `--dump-dom` 核对五页关键内容与牌面 SVG 数量
+- 结算/记错题逻辑收敛在 `lib/levels.ts` 的 `applyRunResult` 与 `lib/storage.ts` 的 `recordWrong`，
+  页面只做展示层调用（保证冒烟测的就是线上跑的）
 
 ## 三、V1 不做（PRD 4.2 全文照抄执行）
 

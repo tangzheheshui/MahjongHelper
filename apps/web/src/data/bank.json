@@ -1,0 +1,6316 @@
+{
+ "bank_version": "2026.09.0-pilot",
+ "generated_at": "2026-09-02T02:43:53.782Z",
+ "questions": [
+  {
+   "schema_version": 1,
+   "id": "L1_001",
+   "level": "L1",
+   "knowledge_point": "孤立字牌识别：面子 / 搭子 / 雀头之外的最无用牌",
+   "question_type": "what_to_discard",
+   "difficulty": "easy",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "4m",
+    "5m",
+    "6m",
+    "7p",
+    "8p",
+    "9p",
+    "1s",
+    "2s",
+    "E",
+    "E",
+    "N"
+   ],
+   "answer": {
+    "correct": [
+     "N"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 N。先把手牌分块：123m、456m、789p 三副完整面子，EE 一对雀头，1s2s 一个边张搭子，N 什么都组不成——它不是面子、不是搭子、也当不了雀头（EE 已经在位）。14 张里唯一游离在牌形之外的只有 N，切掉后 13 张 = 三面子 + 雀头 + 边张搭，正好听牌（等 3s）。",
+    "ukeire_table": [
+     {
+      "discard": "N",
+      "ukeire_count": 4,
+      "note": "切后听牌，和了牌 3s 剩 4 张"
+     },
+     {
+      "discard": "1s",
+      "ukeire_count": 20,
+      "note": "切后变一向听——向听数变差，见 L6"
+     }
+    ],
+    "source": "79博客·麻雀的基础4「面子和搭子」"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "N",
+      "shanten_after": 0,
+      "ukeire_count": 4,
+      "ukeire_tiles": [
+       "3s"
+      ]
+     },
+     {
+      "discard": "1s",
+      "shanten_after": 1,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "E",
+       "N"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "E",
+       "N"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 1,
+      "ukeire_count": 15,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "7m",
+       "3s"
+      ]
+     },
+     {
+      "discard": "4m",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "4m",
+       "7m",
+       "3s"
+      ]
+     },
+     {
+      "discard": "9p",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "6p",
+       "9p",
+       "3s"
+      ]
+     },
+     {
+      "discard": "6m",
+      "shanten_after": 1,
+      "ukeire_count": 11,
+      "ukeire_tiles": [
+       "3m",
+       "6m",
+       "3s"
+      ]
+     },
+     {
+      "discard": "E",
+      "shanten_after": 1,
+      "ukeire_count": 10,
+      "ukeire_tiles": [
+       "3s",
+       "E",
+       "N"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "2m",
+       "3s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "3m",
+       "3s"
+      ]
+     },
+     {
+      "discard": "5m",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "5m",
+       "3s"
+      ]
+     },
+     {
+      "discard": "7p",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "7p",
+       "3s"
+      ]
+     },
+     {
+      "discard": "8p",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "8p",
+       "3s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:42.884Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L1_002",
+   "level": "L1",
+   "knowledge_point": "孤张与两面搭的分辨：切谁一听便知",
+   "question_type": "what_to_discard",
+   "difficulty": "easy",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "4p",
+    "5p",
+    "6p",
+    "7s",
+    "8s",
+    "9s",
+    "2s",
+    "3s",
+    "N",
+    "N",
+    "9s"
+   ],
+   "answer": {
+    "correct": [
+     "9s"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 9s。分块：123m、456p、789s 三面子，NN 雀头，2s3s 一个两面搭子，9s 是孤张。9s 虽然是数牌，但手里没有 7s/8s 以外的索子伙伴（789s 已自成面子），它联络不上任何搭子；而 2s3s 是价值最高的两面搭。切 9s 后听 1s/4s 两面共 8 张。",
+    "ukeire_table": [
+     {
+      "discard": "9s",
+      "ukeire_count": 8,
+      "note": "两面 1s、4s 各 4 张"
+     },
+     {
+      "discard": "2s",
+      "ukeire_count": 33,
+      "note": "切搭子保孤张反而退回一向听"
+     }
+    ],
+    "source": "79博客·麻雀的基础4「面子和搭子」"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "9s",
+      "shanten_after": 0,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 1,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "N"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 1,
+      "ukeire_count": 29,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "N"
+      ]
+     },
+     {
+      "discard": "N",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "1s",
+       "4s",
+       "6s",
+       "9s",
+       "N"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "4p",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "4p",
+       "7p",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "3p",
+       "6p",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1s",
+       "4s",
+       "7s",
+       "9s",
+       "N"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1s",
+       "4s",
+       "8s",
+       "9s",
+       "N"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "2m",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3m",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "5p",
+       "1s",
+       "4s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:42.885Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L1_003",
+   "level": "L1",
+   "knowledge_point": "雀头识别：11m 可作雀头，23m 即成两面",
+   "question_type": "what_to_discard",
+   "difficulty": "easy",
+   "hand": [
+    "1m",
+    "1m",
+    "2m",
+    "3m",
+    "4p",
+    "5p",
+    "6p",
+    "7s",
+    "8s",
+    "9s",
+    "1p",
+    "2p",
+    "3p",
+    "E"
+   ],
+   "answer": {
+    "correct": [
+     "E"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 E。分块：1m1m 一对、2m3m 搭子、456p、789s、123p 三面子。把 1m1m 当雀头，2m3m 就是两面搭，切掉孤立字牌 E 后手牌 = 三面子 + 雀头 + 两面搭，听 1m/4m。1m 手里已有 2 张所以只剩 2 张可摸，4m 还有 4 张，合计 6 张。注意不要把 123m 拆开当面子——那样 1m 只剩单骑 3 张。",
+    "ukeire_table": [
+     {
+      "discard": "E",
+      "ukeire_count": 6,
+      "note": "两面听：4m×4 + 1m×2（手内已占 2 张）"
+     },
+     {
+      "discard": "1m",
+      "ukeire_count": 3,
+      "note": "误把 123m 当面子 → 单骑 E"
+     }
+    ],
+    "source": "79博客·麻雀的基础4「面子和搭子」"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "E",
+      "shanten_after": 0,
+      "ukeire_count": 6,
+      "ukeire_tiles": [
+       "1m",
+       "4m"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "E"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "5m",
+       "E"
+      ]
+     },
+     {
+      "discard": "1p",
+      "shanten_after": 1,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "1p",
+       "4p",
+       "7p",
+       "E"
+      ]
+     },
+     {
+      "discard": "4p",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "4p",
+       "7p",
+       "E"
+      ]
+     },
+     {
+      "discard": "9s",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "6s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "E"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "3p",
+       "6p",
+       "E"
+      ]
+     },
+     {
+      "discard": "2p",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "2p",
+       "E"
+      ]
+     },
+     {
+      "discard": "3p",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "3p",
+       "E"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "5p",
+       "E"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "7s",
+       "E"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "8s",
+       "E"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:42.885Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L1_004",
+   "level": "L1",
+   "knowledge_point": "听牌张数对比：两面 6 张 vs 单骑 3 张",
+   "question_type": "ukeire_compare",
+   "difficulty": "easy",
+   "hand": [
+    "1m",
+    "1m",
+    "2m",
+    "3m",
+    "4p",
+    "5p",
+    "6p",
+    "7s",
+    "8s",
+    "9s",
+    "1p",
+    "2p",
+    "3p",
+    "E"
+   ],
+   "answer": {
+    "correct": [
+     "E"
+    ],
+    "options": [
+     {
+      "discard": "E"
+     },
+     {
+      "discard": "1m"
+     }
+    ]
+   },
+   "explanation": {
+    "best": "切 E 听两面 6 张，切 1m 只听单骑 E 3 张。两种切法都能听牌，差别全在「和了牌还剩几张」：两面 1m+4m 里 4m 完整 4 张、1m 被手内占 2 张剩 2 张；单骑 E 手内 1 张剩 3 张。6 > 3，明显切 E。",
+    "source": "79博客·牌效率2「有效牌和张数」"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "E",
+      "shanten_after": 0,
+      "ukeire_count": 6,
+      "ukeire_tiles": [
+       "1m",
+       "4m"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "E"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "5m",
+       "E"
+      ]
+     },
+     {
+      "discard": "1p",
+      "shanten_after": 1,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "1p",
+       "4p",
+       "7p",
+       "E"
+      ]
+     },
+     {
+      "discard": "4p",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "4p",
+       "7p",
+       "E"
+      ]
+     },
+     {
+      "discard": "9s",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "6s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "E"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "3p",
+       "6p",
+       "E"
+      ]
+     },
+     {
+      "discard": "2p",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "2p",
+       "E"
+      ]
+     },
+     {
+      "discard": "3p",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "3p",
+       "E"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "5p",
+       "E"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "7s",
+       "E"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "8s",
+       "E"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:42.885Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L2_001",
+   "level": "L2",
+   "knowledge_point": "浮牌理论：孤立字牌让位给两面搭",
+   "question_type": "what_to_discard",
+   "difficulty": "medium",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "4m",
+    "5m",
+    "6m",
+    "7p",
+    "8p",
+    "9p",
+    "1s",
+    "2s",
+    "4s",
+    "5s",
+    "E"
+   ],
+   "answer": {
+    "correct": [
+     "E"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 E。手牌结构：123m、456m、789p 三面子 + 1s2s（边张搭）+ 4s5s（两面搭）+ 浮牌 E。两个搭子正好凑第四副面子，切 E 后一向听，进张覆盖 1s2s3s4s5s6s 共 20 张。E 无法参与任何搭子，是标准浮牌——「不能让手牌前进的牌先切」。",
+    "ukeire_table": [
+     {
+      "discard": "E",
+      "ukeire_count": 20,
+      "note": "双搭并进：1s-6s 全是有效牌"
+     },
+     {
+      "discard": "1s",
+      "ukeire_count": 17,
+      "note": "拆边张搭损失部分进张"
+     },
+     {
+      "discard": "2s",
+      "ukeire_count": 14,
+      "note": "拆掉搭子中段，进张进一步缩水"
+     }
+    ],
+    "source": "79博客·牌效率3「浮牌理论」"
+   },
+   "engine_snapshot": {
+    "shanten_before": 1,
+    "candidates": [
+     {
+      "discard": "E",
+      "shanten_after": 1,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s"
+      ]
+     },
+     {
+      "discard": "1s",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "2s",
+       "3s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 1,
+      "ukeire_count": 14,
+      "ukeire_tiles": [
+       "1s",
+       "3s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "5s",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "1s",
+       "3s",
+       "4s",
+       "E"
+      ]
+     },
+     {
+      "discard": "4s",
+      "shanten_after": 1,
+      "ukeire_count": 10,
+      "ukeire_tiles": [
+       "3s",
+       "5s",
+       "E"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 2,
+      "ukeire_count": 46,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "5m",
+       "6m",
+       "7m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "6m",
+      "shanten_after": 2,
+      "ukeire_count": 42,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "5m",
+       "6m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "4m",
+      "shanten_after": 2,
+      "ukeire_count": 37,
+      "ukeire_tiles": [
+       "4m",
+       "5m",
+       "6m",
+       "7m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "9p",
+      "shanten_after": 2,
+      "ukeire_count": 37,
+      "ukeire_tiles": [
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 2,
+      "ukeire_count": 36,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "6m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "5m",
+      "shanten_after": 2,
+      "ukeire_count": 36,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "5m",
+       "6m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 2,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "7p",
+      "shanten_after": 2,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "8p",
+      "shanten_after": 2,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:42.953Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L2_002",
+   "level": "L2",
+   "knowledge_point": "进张张数口径：剩余张数 = 4 − 手内张数",
+   "question_type": "what_to_discard",
+   "difficulty": "medium",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "4m",
+    "5m",
+    "6m",
+    "7p",
+    "8p",
+    "9p",
+    "1s",
+    "2s",
+    "3s",
+    "3s",
+    "E"
+   ],
+   "answer": {
+    "correct": [
+     "3s"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 3s，单骑 E。四面子（123m、456m、789p、123s）+ 3s3s + E，切一张后就是「四面子 + 单骑」的听牌形。两种选择：单骑 E（手内 1 张，剩 3 张可摸）或单骑 3s（手内已有 2 张，只剩 2 张）。3 张 > 2 张，切 3s。关键口径：进张张数按「4 − 手内该牌张数」计，手里已有的牌会把剩余张数吃掉。",
+    "ukeire_table": [
+     {
+      "discard": "3s",
+      "ukeire_count": 3,
+      "note": "单骑 E：手内 1 张 → 剩 3"
+     },
+     {
+      "discard": "E",
+      "ukeire_count": 2,
+      "note": "单骑 3s：手内 2 张 → 只剩 2"
+     }
+    ],
+    "source": "79博客·牌效率2「有效牌和张数」"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "3s",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "E"
+      ]
+     },
+     {
+      "discard": "E",
+      "shanten_after": 0,
+      "ukeire_count": 2,
+      "ukeire_tiles": [
+       "3s"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "7m",
+       "3s",
+       "E"
+      ]
+     },
+     {
+      "discard": "1s",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "E"
+      ]
+     },
+     {
+      "discard": "4m",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "4m",
+       "7m",
+       "3s",
+       "E"
+      ]
+     },
+     {
+      "discard": "9p",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "6p",
+       "9p",
+       "3s",
+       "E"
+      ]
+     },
+     {
+      "discard": "6m",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3m",
+       "6m",
+       "3s",
+       "E"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "E"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 9,
+      "ukeire_tiles": [
+       "2m",
+       "3s",
+       "E"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 9,
+      "ukeire_tiles": [
+       "3m",
+       "3s",
+       "E"
+      ]
+     },
+     {
+      "discard": "5m",
+      "shanten_after": 1,
+      "ukeire_count": 9,
+      "ukeire_tiles": [
+       "5m",
+       "3s",
+       "E"
+      ]
+     },
+     {
+      "discard": "7p",
+      "shanten_after": 1,
+      "ukeire_count": 9,
+      "ukeire_tiles": [
+       "7p",
+       "3s",
+       "E"
+      ]
+     },
+     {
+      "discard": "8p",
+      "shanten_after": 1,
+      "ukeire_count": 9,
+      "ukeire_tiles": [
+       "8p",
+       "3s",
+       "E"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:42.954Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L2_003",
+   "level": "L2",
+   "knowledge_point": "嵌张搭子：3s5s 型只等中间一张",
+   "question_type": "what_to_discard",
+   "difficulty": "medium",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "4p",
+    "5p",
+    "6p",
+    "7s",
+    "8s",
+    "9s",
+    "3s",
+    "5s",
+    "1p",
+    "1p",
+    "9m"
+   ],
+   "answer": {
+    "correct": [
+     "9m"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 9m。结构：123m、456p、789s 三面子 + 3s5s 嵌张搭 + 1p1p 雀头 + 9m 浮牌。切 9m 后听牌，和了牌只有 4s 一种 4 张。嵌张搭（间隔一张）只接受中间那一张，进张天生只有两面搭的一半——但它依然是搭子，比孤张 9m 值钱。",
+    "ukeire_table": [
+     {
+      "discard": "9m",
+      "ukeire_count": 4,
+      "note": "嵌张 4s 剩 4 张"
+     },
+     {
+      "discard": "5s",
+      "ukeire_count": 32,
+      "note": "退回一向听换大进张，见 L6 倒退专题"
+     }
+    ],
+    "source": "79博客·麻雀的基础4「面子和搭子」/ 牌效率3「浮牌理论」"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "9m",
+      "shanten_after": 0,
+      "ukeire_count": 4,
+      "ukeire_tiles": [
+       "4s"
+      ]
+     },
+     {
+      "discard": "5s",
+      "shanten_after": 1,
+      "ukeire_count": 32,
+      "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
+       "1p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 1,
+      "ukeire_count": 31,
+      "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
+       "1p",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "4s"
+      ]
+     },
+     {
+      "discard": "4p",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "4p",
+       "7p",
+       "4s"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3p",
+       "6p",
+       "4s"
+      ]
+     },
+     {
+      "discard": "9s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "4s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "1p",
+      "shanten_after": 1,
+      "ukeire_count": 10,
+      "ukeire_tiles": [
+       "9m",
+       "1p",
+       "4s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "2m",
+       "4s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "3m",
+       "4s"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "5p",
+       "4s"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "4s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "4s",
+       "8s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:42.954Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L2_004",
+   "level": "L2",
+   "knowledge_point": "保搭 vs 拆搭：双两面并进的进张面",
+   "question_type": "ukeire_compare",
+   "difficulty": "medium",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "4m",
+    "5m",
+    "6m",
+    "7p",
+    "8p",
+    "9p",
+    "1s",
+    "2s",
+    "4s",
+    "5s",
+    "E"
+   ],
+   "answer": {
+    "correct": [
+     "E"
+    ],
+    "options": [
+     {
+      "discard": "E"
+     },
+     {
+      "discard": "2s"
+     }
+    ]
+   },
+   "explanation": {
+    "best": "切 E 进张 20 张，切 2s 只剩 14 张。两个搭子（12s 边张 + 45s 两面）都保留时，1s-6s 六种牌全有效；拆掉 12s 后，进张只剩 45s 两面相关的 4 种。同为一向听，进张面差 6 张——这就是「浮牌先切、搭子全保」的量化理由。",
+    "source": "79博客·牌效率2「有效牌和张数」"
+   },
+   "engine_snapshot": {
+    "shanten_before": 1,
+    "candidates": [
+     {
+      "discard": "E",
+      "shanten_after": 1,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s"
+      ]
+     },
+     {
+      "discard": "1s",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "2s",
+       "3s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 1,
+      "ukeire_count": 14,
+      "ukeire_tiles": [
+       "1s",
+       "3s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "5s",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "1s",
+       "3s",
+       "4s",
+       "E"
+      ]
+     },
+     {
+      "discard": "4s",
+      "shanten_after": 1,
+      "ukeire_count": 10,
+      "ukeire_tiles": [
+       "3s",
+       "5s",
+       "E"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 2,
+      "ukeire_count": 46,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "5m",
+       "6m",
+       "7m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "6m",
+      "shanten_after": 2,
+      "ukeire_count": 42,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "5m",
+       "6m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "4m",
+      "shanten_after": 2,
+      "ukeire_count": 37,
+      "ukeire_tiles": [
+       "4m",
+       "5m",
+       "6m",
+       "7m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "9p",
+      "shanten_after": 2,
+      "ukeire_count": 37,
+      "ukeire_tiles": [
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 2,
+      "ukeire_count": 36,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "6m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "5m",
+      "shanten_after": 2,
+      "ukeire_count": 36,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "5m",
+       "6m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 2,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "7p",
+      "shanten_after": 2,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "8p",
+      "shanten_after": 2,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:42.954Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L3_001",
+   "level": "L3",
+   "knowledge_point": "四张复合形（帽子形）：112m 切重张即成面子",
+   "question_type": "what_to_discard",
+   "difficulty": "medium",
+   "hand": [
+    "1m",
+    "1m",
+    "2m",
+    "3m",
+    "4p",
+    "5p",
+    "6p",
+    "7s",
+    "8s",
+    "9s",
+    "5s",
+    "5s",
+    "E",
+    "E"
+   ],
+   "answer": {
+    "correct": [
+     "1m"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 1m。1m1m2m3m 是「对子 + 顺子」重叠的复合形：切掉一张 1m，剩 123m 直接成为完整面子，同时 5s5s、EE 两对子留作双碰听牌（等 5s 或 E 成刻）。复合形的要诀是看出「四张里其实只多一张」——不需要把 11m 和 23m 当成两个独立搭子去纠结。",
+    "ukeire_table": [
+     {
+      "discard": "1m",
+      "ukeire_count": 4,
+      "note": "双碰听 5s/E：手内各 2 张 → 各剩 2，共 4"
+     },
+     {
+      "discard": "5s",
+      "ukeire_count": 32,
+      "note": "拆对子退一向听，换大进张面"
+     }
+    ],
+    "source": "79博客·麻雀的基础8「基本形与复合型」"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "1m",
+      "shanten_after": 0,
+      "ukeire_count": 4,
+      "ukeire_tiles": [
+       "5s",
+       "E"
+      ]
+     },
+     {
+      "discard": "5s",
+      "shanten_after": 1,
+      "ukeire_count": 32,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "E"
+      ]
+     },
+     {
+      "discard": "E",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "5s",
+       "E"
+      ]
+     },
+     {
+      "discard": "4p",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "4p",
+       "7p",
+       "5s",
+       "E"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3p",
+       "6p",
+       "5s",
+       "E"
+      ]
+     },
+     {
+      "discard": "9s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "5s",
+       "6s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 10,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "5s",
+       "E"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 10,
+      "ukeire_tiles": [
+       "1m",
+       "3m",
+       "5s",
+       "E"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "5p",
+       "5s",
+       "E"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "5s",
+       "7s",
+       "E"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "5s",
+       "8s",
+       "E"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.067Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L3_002",
+   "level": "L3",
+   "knowledge_point": "四连 + 对子复合：556p 的三面听结构",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "7p",
+    "8p",
+    "9p",
+    "2s",
+    "3s",
+    "4s",
+    "5s",
+    "6s",
+    "5p",
+    "5p",
+    "6p"
+   ],
+   "answer": {
+    "correct": [
+     "6p",
+     "9p"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 6p 或 9p（并列）。饼子六张 5p5p6p7p8p9p 是「对子 + 面子」的复合形：切 6p 剩 5p5p + 789p，切 9p 剩 5p5p + 678p，都留下「完整面子 + 5p5p 雀头」，配合 2s-6s 五连展开成三面听 1s/4s/7s 共 11 张（1s、7s 各 4 张，4s 手内占 1 张剩 3 张）。两种切法结构完全等价，所以并列最优——并列时怎么切都不算错。",
+    "ukeire_table": [
+     {
+      "discard": "6p",
+      "ukeire_count": 11,
+      "note": "三面听 1s(4)/4s(3)/7s(4)"
+     },
+     {
+      "discard": "9p",
+      "ukeire_count": 11,
+      "note": "与切 6p 等价"
+     },
+     {
+      "discard": "2s",
+      "ukeire_count": 46,
+      "note": "退一向听，进张虽多但慢一巡"
+     }
+    ],
+    "source": "79博客·麻雀的基础8「基本形与复合型」/ Riichi Book I §3.3"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "6p",
+      "shanten_after": 0,
+      "ukeire_count": 11,
+      "ukeire_tiles": [
+       "1s",
+       "4s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "9p",
+      "shanten_after": 0,
+      "ukeire_count": 11,
+      "ukeire_tiles": [
+       "1s",
+       "4s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 1,
+      "ukeire_count": 46,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 1,
+      "ukeire_count": 42,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 1,
+      "ukeire_count": 42,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "5s",
+      "shanten_after": 1,
+      "ukeire_count": 40,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 1,
+      "ukeire_count": 36,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "8p",
+      "shanten_after": 1,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "5p",
+       "8p",
+       "9p",
+       "1s",
+       "4s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 1,
+      "ukeire_count": 19,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "1s",
+       "4s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 15,
+      "ukeire_tiles": [
+       "2m",
+       "1s",
+       "4s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 15,
+      "ukeire_tiles": [
+       "3m",
+       "1s",
+       "4s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "7p",
+      "shanten_after": 1,
+      "ukeire_count": 15,
+      "ukeire_tiles": [
+       "7p",
+       "1s",
+       "4s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "4s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "1s",
+       "4s",
+       "7s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.067Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L3_003",
+   "level": "L3",
+   "knowledge_point": "一色长连：八连张的两端三面听",
+   "question_type": "what_to_discard",
+   "difficulty": "medium",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "4p",
+    "5p",
+    "6p",
+    "2s",
+    "3s",
+    "4s",
+    "5s",
+    "6s",
+    "7s",
+    "8s",
+    "9s"
+   ],
+   "answer": {
+    "correct": [
+     "2s",
+     "9s"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 2s 或 9s（并列）。2s-9s 八连切掉一端后剩七连 = 两副面子 + 单骑：切 2s 后单骑位可在 3s/6s/9s 里选（三面单骑），切 9s 则对称地单骑 2s/5s/8s。三种进张手内各占 1 张、各剩 3 张，合计都是 9 张。八连以上的一色长连是天然多面张素材，两端的切法等价并列；切中间（如 3s）只剩单骑 2s 一种解、3 张。",
+    "ukeire_table": [
+     {
+      "discard": "2s",
+      "ukeire_count": 9,
+      "note": "三面单骑 3s/6s/9s 各 3"
+     },
+     {
+      "discard": "9s",
+      "ukeire_count": 9,
+      "note": "2s(3)/5s(3)/8s(3)，与切 2s 对称"
+     },
+     {
+      "discard": "3s",
+      "ukeire_count": 3,
+      "note": "切中间只剩单骑 2s"
+     }
+    ],
+    "source": "Riichi Book I §3.3 复合形"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "2s",
+      "shanten_after": 0,
+      "ukeire_count": 9,
+      "ukeire_tiles": [
+       "3s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "9s",
+      "shanten_after": 0,
+      "ukeire_count": 9,
+      "ukeire_tiles": [
+       "2s",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "5s",
+      "shanten_after": 0,
+      "ukeire_count": 6,
+      "ukeire_tiles": [
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 0,
+      "ukeire_count": 6,
+      "ukeire_tiles": [
+       "2s",
+       "5s"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "2s"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "9s"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 1,
+      "ukeire_count": 42,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "4p",
+      "shanten_after": 1,
+      "ukeire_count": 42,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 1,
+      "ukeire_count": 42,
+      "ukeire_tiles": [
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 38,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 38,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 1,
+      "ukeire_count": 38,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "4s",
+      "shanten_after": 1,
+      "ukeire_count": 29,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 29,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.067Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L3_004",
+   "level": "L3",
+   "knowledge_point": "五连 + 两面：复合形进张的并集有多大",
+   "question_type": "ukeire_compare",
+   "difficulty": "hard",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "7p",
+    "8p",
+    "9p",
+    "2s",
+    "3s",
+    "4s",
+    "5s",
+    "6s",
+    "5p",
+    "6p",
+    "E"
+   ],
+   "answer": {
+    "correct": [
+     "E"
+    ],
+    "options": [
+     {
+      "discard": "E"
+     },
+     {
+      "discard": "5p"
+     }
+    ]
+   },
+   "explanation": {
+    "best": "切 E 进张 42 张，切 5p 只剩 20 张。23456s 五连可以容纳「面子 + 两面搭」的任何组合，56p 两面独立并进，两个复合形同时推进时有效牌覆盖 4p-9p 与 1s-7s 十三种 42 张。切 5p 拆掉一面搭子，进张立刻腰斩。复合形的价值就在「一张牌同时服务多种完成方式」。",
+    "source": "Riichi Book I §3.3 / 79博客·牌效率2「有效牌和张数」"
+   },
+   "engine_snapshot": {
+    "shanten_before": 1,
+    "candidates": [
+     {
+      "discard": "E",
+      "shanten_after": 1,
+      "ukeire_count": 42,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 1,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "6p",
+       "9p",
+       "1s",
+       "4s",
+       "7s",
+       "E"
+      ]
+     },
+     {
+      "discard": "9p",
+      "shanten_after": 1,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "5p",
+       "8p",
+       "1s",
+       "4s",
+       "7s",
+       "E"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "5p",
+       "1s",
+       "4s",
+       "7s",
+       "E"
+      ]
+     },
+     {
+      "discard": "8p",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "9p",
+       "1s",
+       "4s",
+       "7s",
+       "E"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "4p",
+       "7p",
+       "3s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "4p",
+       "7p",
+       "2s",
+       "5s",
+       "E"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "4p",
+       "7p",
+       "2s",
+       "E"
+      ]
+     },
+     {
+      "discard": "5s",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "4p",
+       "7p",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 2,
+      "ukeire_count": 59,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "E"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 2,
+      "ukeire_count": 55,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "E"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 2,
+      "ukeire_count": 55,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "E"
+      ]
+     },
+     {
+      "discard": "7p",
+      "shanten_after": 2,
+      "ukeire_count": 46,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "E"
+      ]
+     },
+     {
+      "discard": "4s",
+      "shanten_after": 2,
+      "ukeire_count": 46,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "E"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.067Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L4_001",
+   "level": "L4",
+   "knowledge_point": "四连张切端：五连里藏着的面子 + 对子",
+   "question_type": "what_to_discard",
+   "difficulty": "medium",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "4p",
+    "5p",
+    "6p",
+    "2s",
+    "3s",
+    "5s",
+    "6s",
+    "7s",
+    "8s",
+    "9s",
+    "9s"
+   ],
+   "answer": {
+    "correct": [
+     "5s",
+     "8s"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 5s 或 8s（并列）。5s-9s 五连 + 9s 重张，切掉两端任意一张，剩下「567s 或 678s 完整面子 + 9s9s 对子」，配合 2s3s 两面成为第四块搭子，听 1s/4s 共 8 张。对比：切 2s 虽然也听牌，但只剩 4 张。五连的正确用法是「两端出一张、中间留面子」，从端点切起永远不吃亏。",
+    "ukeire_table": [
+     {
+      "discard": "5s",
+      "ukeire_count": 8,
+      "note": "听 1s(4)/4s(4)"
+     },
+     {
+      "discard": "8s",
+      "ukeire_count": 8,
+      "note": "与切 5s 等价"
+     },
+     {
+      "discard": "2s",
+      "ukeire_count": 4,
+      "note": "拆两面搭，只剩坎张 4s 一种"
+     },
+     {
+      "discard": "3s",
+      "ukeire_count": 29,
+      "note": "退一向听，见 L6 倒退专题"
+     }
+    ],
+    "source": "Riichi Book I §4 五搭子原则 / 79博客·牌效率5"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "5s",
+      "shanten_after": 0,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 0,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 0,
+      "ukeire_count": 4,
+      "ukeire_tiles": [
+       "4s"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 1,
+      "ukeire_count": 29,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "9s",
+      "shanten_after": 1,
+      "ukeire_count": 29,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 1,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "4s",
+       "5s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "4p",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "4p",
+       "7p",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "3p",
+       "6p",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "2m",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3m",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "5p",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "1s",
+       "4s",
+       "7s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.171Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L4_002",
+   "level": "L4",
+   "knowledge_point": "搭子满员：多余牌之间互相等价",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "2s",
+    "3s",
+    "5s",
+    "6s",
+    "7s",
+    "8s",
+    "2p",
+    "3p",
+    "5p",
+    "5p",
+    "E"
+   ],
+   "answer": {
+    "correct": [
+     "5s",
+     "8s",
+     "E"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 5s、8s 或 E（三者并列）。数一下块数：123m（面子）、23s、23p、5p5p（雀头）、5s-8s 四连——五块搭子加雀头已经满员。满员之后，多余的牌互相等价：切浮字 E 是最直观的；四连 5s-8s 本身也比普通搭子多一张，切它的两端（5s 或 8s）效果完全相同。三种切法都是一向听 16 张，进张同为 1p/4p/1s/4s 各 4 张。",
+    "ukeire_table": [
+     {
+      "discard": "E",
+      "ukeire_count": 16,
+      "note": "1p/4p/1s/4s 各 4 张"
+     },
+     {
+      "discard": "5s",
+      "ukeire_count": 16,
+      "note": "与切 E 完全等价"
+     },
+     {
+      "discard": "8s",
+      "ukeire_count": 16,
+      "note": "同上，四连端与浮牌等价"
+     },
+     {
+      "discard": "2s",
+      "ukeire_count": 12,
+      "note": "拆真搭子就亏了"
+     }
+    ],
+    "source": "Riichi Book I §4 五搭子原则"
+   },
+   "engine_snapshot": {
+    "shanten_before": 1,
+    "candidates": [
+     {
+      "discard": "5s",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1p",
+       "4p",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1p",
+       "4p",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "E",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1p",
+       "4p",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "1p",
+       "4p",
+       "4s"
+      ]
+     },
+     {
+      "discard": "2p",
+      "shanten_after": 2,
+      "ukeire_count": 50,
+      "ukeire_tiles": [
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "5p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "3p",
+      "shanten_after": 2,
+      "ukeire_count": 50,
+      "ukeire_tiles": [
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "5p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 2,
+      "ukeire_count": 44,
+      "ukeire_tiles": [
+       "1p",
+       "4p",
+       "5p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 2,
+      "ukeire_count": 34,
+      "ukeire_tiles": [
+       "1p",
+       "2p",
+       "4p",
+       "5p",
+       "1s",
+       "2s",
+       "4s",
+       "5s",
+       "8s",
+       "E"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 2,
+      "ukeire_count": 24,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "1p",
+       "4p",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 2,
+      "ukeire_count": 24,
+      "ukeire_tiles": [
+       "1p",
+       "4p",
+       "1s",
+       "4s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 2,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "2m",
+       "1p",
+       "4p",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 2,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "3m",
+       "1p",
+       "4p",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 2,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "1p",
+       "4p",
+       "1s",
+       "4s",
+       "7s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.171Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L4_003",
+   "level": "L4",
+   "knowledge_point": "对子过剩：重叠处合并，块数刚好",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "hand": [
+    "2m",
+    "2m",
+    "5m",
+    "6m",
+    "7m",
+    "3p",
+    "3p",
+    "4p",
+    "5p",
+    "8s",
+    "8s",
+    "W",
+    "W",
+    "9s"
+   ],
+   "answer": {
+    "correct": [
+     "3p"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 3p。这手有 22m、33p、88s、WW 四个对子，明显过剩。3p3p 与 4p5p 重叠：切一张 3p 就把它们粘成 345p 完整面子，块数立刻降到刚好五块（567m、345p 两个面子 + 22m、88s、WW 三个对子取一作雀头）。进张 2m/8s/W 各 2 张，还有一条暗线——8s8s9s 摸 7s 直接成 789s，7s 有 4 张——合计 10 张全场最优。切 8s 同为一向听只剩 8 张；切 9s 掉到 6 张。",
+    "ukeire_table": [
+     {
+      "discard": "3p",
+      "ukeire_count": 10,
+      "note": "2m(2)/8s(2)/W(2) + 暗线 7s(4)"
+     },
+     {
+      "discard": "8s",
+      "ukeire_count": 8,
+      "note": "2m(2)/7s(4)/W(2)，六块抢雀头反而变少"
+     },
+     {
+      "discard": "9s",
+      "ukeire_count": 6,
+      "note": "2m(2)/8s(2)/W(2)，丢掉 7s 暗线"
+     }
+    ],
+    "source": "79博客·牌效率7「对子的处理」/ Riichi Book I §4"
+   },
+   "engine_snapshot": {
+    "shanten_before": 1,
+    "candidates": [
+     {
+      "discard": "3p",
+      "shanten_after": 1,
+      "ukeire_count": 10,
+      "ukeire_tiles": [
+       "2m",
+       "7s",
+       "8s",
+       "W"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "2m",
+       "7s",
+       "W"
+      ]
+     },
+     {
+      "discard": "9s",
+      "shanten_after": 1,
+      "ukeire_count": 6,
+      "ukeire_tiles": [
+       "2m",
+       "8s",
+       "W"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 2,
+      "ukeire_count": 50,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "W"
+      ]
+     },
+     {
+      "discard": "W",
+      "shanten_after": 2,
+      "ukeire_count": 38,
+      "ukeire_tiles": [
+       "2m",
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "W"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 2,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "2m",
+       "2p",
+       "3p",
+       "5p",
+       "7s",
+       "8s",
+       "W"
+      ]
+     },
+     {
+      "discard": "5m",
+      "shanten_after": 2,
+      "ukeire_count": 18,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "8m",
+       "7s",
+       "8s",
+       "W"
+      ]
+     },
+     {
+      "discard": "7m",
+      "shanten_after": 2,
+      "ukeire_count": 18,
+      "ukeire_tiles": [
+       "2m",
+       "4m",
+       "7m",
+       "7s",
+       "8s",
+       "W"
+      ]
+     },
+     {
+      "discard": "4p",
+      "shanten_after": 2,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "2m",
+       "3p",
+       "4p",
+       "7s",
+       "8s",
+       "W"
+      ]
+     },
+     {
+      "discard": "6m",
+      "shanten_after": 2,
+      "ukeire_count": 14,
+      "ukeire_tiles": [
+       "2m",
+       "6m",
+       "7s",
+       "8s",
+       "W"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.171Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L4_004",
+   "level": "L4",
+   "knowledge_point": "拆搭顺序：两面 > 嵌张，拆最弱的一块",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "5m",
+    "6m",
+    "7m",
+    "2p",
+    "4p",
+    "6p",
+    "6p",
+    "3s",
+    "4s",
+    "7s",
+    "8s"
+   ],
+   "answer": {
+    "correct": [
+     "2p",
+     "4p"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 2p 或 4p（并列）。已有 123m、567m 两个面子，剩下四块：24p 嵌张、66p 对子（雀头）、34s 两面、78s 两面。搭子过剩一块，拆价值最低的嵌张 24p——嵌张只有 4 张进张，两面有 8 张。嵌张两端等价，切 2p 或 4p 都是 16 张（2s/5s/6s/9s 各 4 张）。切任何一张索子搭子都掉到 12 张；切雀头 6p 直接退到二向听。",
+    "ukeire_table": [
+     {
+      "discard": "2p",
+      "ukeire_count": 16,
+      "note": "2s/5s/6s/9s 各 4 张"
+     },
+     {
+      "discard": "4p",
+      "ukeire_count": 16,
+      "note": "嵌张两端等价"
+     },
+     {
+      "discard": "3s",
+      "ukeire_count": 12,
+      "note": "拆两面亏 4 张"
+     },
+     {
+      "discard": "6p",
+      "ukeire_count": 45,
+      "note": "拆雀头退二向听，进张虽多但慢两巡"
+     }
+    ],
+    "source": "79博客·牌效率4「搭子的价值排序」"
+   },
+   "engine_snapshot": {
+    "shanten_before": 1,
+    "candidates": [
+     {
+      "discard": "2p",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "2s",
+       "5s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "4p",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "2s",
+       "5s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3p",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "4s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3p",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3p",
+       "2s",
+       "5s"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3p",
+       "2s",
+       "5s"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 2,
+      "ukeire_count": 45,
+      "ukeire_tiles": [
+       "2p",
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 2,
+      "ukeire_count": 28,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "3p",
+       "2s",
+       "5s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "5m",
+      "shanten_after": 2,
+      "ukeire_count": 28,
+      "ukeire_tiles": [
+       "5m",
+       "8m",
+       "3p",
+       "2s",
+       "5s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "7m",
+      "shanten_after": 2,
+      "ukeire_count": 28,
+      "ukeire_tiles": [
+       "4m",
+       "7m",
+       "3p",
+       "2s",
+       "5s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 2,
+      "ukeire_count": 24,
+      "ukeire_tiles": [
+       "2m",
+       "3p",
+       "2s",
+       "5s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 2,
+      "ukeire_count": 24,
+      "ukeire_tiles": [
+       "3m",
+       "3p",
+       "2s",
+       "5s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "6m",
+      "shanten_after": 2,
+      "ukeire_count": 24,
+      "ukeire_tiles": [
+       "6m",
+       "3p",
+       "2s",
+       "5s",
+       "6s",
+       "9s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.171Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L4_005",
+   "level": "L4",
+   "knowledge_point": "满员时浮牌 vs 搭子：一字之差 4 张",
+   "question_type": "ukeire_compare",
+   "difficulty": "hard",
+   "hand": [
+    "2m",
+    "3m",
+    "4m",
+    "2p",
+    "3p",
+    "5p",
+    "6p",
+    "7p",
+    "8p",
+    "2s",
+    "4s",
+    "6s",
+    "6s",
+    "E"
+   ],
+   "answer": {
+    "correct": [
+     "E"
+    ],
+    "options": [
+     {
+      "discard": "E"
+     },
+     {
+      "discard": "2p"
+     }
+    ]
+   },
+   "explanation": {
+    "best": "切 E 进张 12 张（1p/4p/3s 各 4 张），切 2p 只剩 8 张。块数：234m 面子、23p 两面、5s-8p 复合连、24s 嵌张、66s 雀头、E 浮牌——五块加雀头已满，E 是标准的零价值牌。拆 23p 两面等于亲手扔掉 1p/4p 的 4 张进张。「有浮牌切浮牌，没浮牌才谈拆搭」就是这道题的全部。",
+    "source": "Riichi Book I §4 五搭子原则 / 79博客·牌效率6"
+   },
+   "engine_snapshot": {
+    "shanten_before": 1,
+    "candidates": [
+     {
+      "discard": "5p",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "1p",
+       "4p",
+       "3s"
+      ]
+     },
+     {
+      "discard": "8p",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "1p",
+       "4p",
+       "3s"
+      ]
+     },
+     {
+      "discard": "E",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "1p",
+       "4p",
+       "3s"
+      ]
+     },
+     {
+      "discard": "2p",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "4p",
+       "3s"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 2,
+      "ukeire_count": 50,
+      "ukeire_tiles": [
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "4s",
+      "shanten_after": 2,
+      "ukeire_count": 50,
+      "ukeire_tiles": [
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "3p",
+      "shanten_after": 2,
+      "ukeire_count": 40,
+      "ukeire_tiles": [
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "3s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 2,
+      "ukeire_count": 34,
+      "ukeire_tiles": [
+       "1p",
+       "2p",
+       "4p",
+       "5p",
+       "8p",
+       "2s",
+       "3s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 2,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "1p",
+       "4p",
+       "3s"
+      ]
+     },
+     {
+      "discard": "4m",
+      "shanten_after": 2,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "1p",
+       "4p",
+       "3s"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 2,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "1p",
+       "4p",
+       "6p",
+       "9p",
+       "3s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 2,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "3m",
+       "1p",
+       "4p",
+       "3s"
+      ]
+     },
+     {
+      "discard": "7p",
+      "shanten_after": 2,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1p",
+       "4p",
+       "7p",
+       "3s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.171Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L5_001",
+   "level": "L5",
+   "knowledge_point": "五连展开三面：复合形最强的时刻",
+   "question_type": "what_to_discard",
+   "difficulty": "medium",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "4p",
+    "5p",
+    "6p",
+    "3s",
+    "4s",
+    "5s",
+    "6s",
+    "7s",
+    "9s",
+    "9s",
+    "E"
+   ],
+   "answer": {
+    "correct": [
+     "E"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 E。3s-7s 五连自动展开成「面子 + 两面搭」：切掉孤字 E 后听三面 2s/5s/8s——2s 和 8s 各 4 张、5s 手里占 1 张剩 3 张，共 11 张。五连是复合形里最舒服的素材，不用任何操作就给出三面听；真正要做的是别去动它（切 7s 拆五连退一向听，换来的 33 张未必划算）。",
+    "ukeire_table": [
+     {
+      "discard": "E",
+      "ukeire_count": 11,
+      "note": "三面 2s(4)/5s(3)/8s(4)"
+     },
+     {
+      "discard": "7s",
+      "ukeire_count": 33,
+      "note": "拆五连退一向听，见 L6"
+     },
+     {
+      "discard": "1m",
+      "ukeire_count": 19,
+      "note": "拆面子最亏"
+     }
+    ],
+    "source": "79博客·牌效率13「多面张的构成」"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "E",
+      "shanten_after": 0,
+      "ukeire_count": 11,
+      "ukeire_tiles": [
+       "2s",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 1,
+      "ukeire_count": 29,
+      "ukeire_tiles": [
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "4s",
+      "shanten_after": 1,
+      "ukeire_count": 27,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "8s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 1,
+      "ukeire_count": 23,
+      "ukeire_tiles": [
+       "2s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "9s",
+      "shanten_after": 1,
+      "ukeire_count": 23,
+      "ukeire_tiles": [
+       "2s",
+       "3s",
+       "5s",
+       "6s",
+       "8s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 1,
+      "ukeire_count": 19,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "2s",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "4p",
+      "shanten_after": 1,
+      "ukeire_count": 19,
+      "ukeire_tiles": [
+       "4p",
+       "7p",
+       "2s",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 1,
+      "ukeire_count": 19,
+      "ukeire_tiles": [
+       "3p",
+       "6p",
+       "2s",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 15,
+      "ukeire_tiles": [
+       "2m",
+       "2s",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 15,
+      "ukeire_tiles": [
+       "3m",
+       "2s",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 1,
+      "ukeire_count": 15,
+      "ukeire_tiles": [
+       "5p",
+       "2s",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "5s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "2s",
+       "5s",
+       "8s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.300Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L5_002",
+   "level": "L5",
+   "knowledge_point": "同形两种听法：三面单骑 vs 三面听",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "4p",
+    "5p",
+    "6p",
+    "7s",
+    "8s",
+    "9s",
+    "3s",
+    "4s",
+    "5s",
+    "5s",
+    "6s"
+   ],
+   "answer": {
+    "correct": [
+     "5s",
+     "9s"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 5s 或 9s（并列，各 9 张）。同一个复合形有两种听法：切 5s，剩 3s-9s 七连，作「两面子 + 单骑」，单骑位可在 3s/6s/9s 里选，三面单骑各 3 张；切 9s，789s 独立成面子，3s4s5s5s6s 听 2s/5s/8s（4+2+3）。同为 9 张并列正解。对比之下切 6s 只剩 6 张、切 8s 剩 3 张——同一个复合形，切不同张进张差三倍。",
+    "ukeire_table": [
+     {
+      "discard": "5s",
+      "ukeire_count": 9,
+      "note": "三面单骑 3s/6s/9s 各 3"
+     },
+     {
+      "discard": "9s",
+      "ukeire_count": 9,
+      "note": "2s(4)/5s(2)/8s(3)，等价"
+     },
+     {
+      "discard": "6s",
+      "ukeire_count": 6,
+      "note": "2s(4)/5s(2)"
+     },
+     {
+      "discard": "8s",
+      "ukeire_count": 3,
+      "note": "只剩单骑 9s"
+     }
+    ],
+    "source": "79博客·牌效率14「听牌形式的选择」"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "5s",
+      "shanten_after": 0,
+      "ukeire_count": 9,
+      "ukeire_tiles": [
+       "3s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "9s",
+      "shanten_after": 0,
+      "ukeire_count": 9,
+      "ukeire_tiles": [
+       "2s",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 0,
+      "ukeire_count": 6,
+      "ukeire_tiles": [
+       "2s",
+       "5s"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "9s"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 0,
+      "ukeire_count": 2,
+      "ukeire_tiles": [
+       "5s"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 1,
+      "ukeire_count": 38,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "4p",
+      "shanten_after": 1,
+      "ukeire_count": 38,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 1,
+      "ukeire_count": 38,
+      "ukeire_tiles": [
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 34,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 34,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 1,
+      "ukeire_count": 34,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "4s",
+      "shanten_after": 1,
+      "ukeire_count": 29,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 25,
+      "ukeire_tiles": [
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.301Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L5_003",
+   "level": "L5",
+   "knowledge_point": "五连切端不切中：四连双解的用法",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "4p",
+    "5p",
+    "6p",
+    "2s",
+    "3s",
+    "4s",
+    "5s",
+    "6s",
+    "7p",
+    "8p",
+    "7s"
+   ],
+   "answer": {
+    "correct": [
+     "4p",
+     "8p"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 4p 或 8p（并列）。手牌三块：123m、2s-7s 六连（两面子）、4p-8p 五连（面子 + 一张余牌）。五连从端点切一张后剩四连，四连有两种「面子 + 单骑余牌」的用法：切 4p 剩 5678p，可作 567p+单骑 8p 或 678p+单骑 5p，听 5p/8p 各 3 张共 6 张；切 8p 对称地听 4p/7p。切中间（如 5p、7p）只剩一种用法，进张腰斩到 3 张。「五连切端、四连双解」是复合形基本功。",
+    "ukeire_table": [
+     {
+      "discard": "4p",
+      "ukeire_count": 6,
+      "note": "单骑 5p(3)/8p(3) 二选一"
+     },
+     {
+      "discard": "8p",
+      "ukeire_count": 6,
+      "note": "单骑 4p(3)/7p(3)，等价"
+     },
+     {
+      "discard": "5p",
+      "ukeire_count": 3,
+      "note": "切中间只剩单骑 4p 一种解"
+     },
+     {
+      "discard": "7p",
+      "ukeire_count": 3,
+      "note": "只剩单骑 8p"
+     }
+    ],
+    "source": "79博客·牌效率15「连续形的切法」"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "4p",
+      "shanten_after": 0,
+      "ukeire_count": 6,
+      "ukeire_tiles": [
+       "5p",
+       "8p"
+      ]
+     },
+     {
+      "discard": "8p",
+      "shanten_after": 0,
+      "ukeire_count": 6,
+      "ukeire_tiles": [
+       "4p",
+       "7p"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "4p"
+      ]
+     },
+     {
+      "discard": "7p",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "8p"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 1,
+      "ukeire_count": 46,
+      "ukeire_tiles": [
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 46,
+      "ukeire_tiles": [
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 1,
+      "ukeire_count": 37,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p"
+      ]
+     },
+     {
+      "discard": "4s",
+      "shanten_after": 1,
+      "ukeire_count": 37,
+      "ukeire_tiles": [
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "5s",
+      "shanten_after": 1,
+      "ukeire_count": 37,
+      "ukeire_tiles": [
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "5s",
+       "6s",
+       "7s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 1,
+      "ukeire_count": 36,
+      "ukeire_tiles": [
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "2s",
+       "3s",
+       "4s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 1,
+      "ukeire_count": 36,
+      "ukeire_tiles": [
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "2s",
+       "5s",
+       "6s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 1,
+      "ukeire_count": 24,
+      "ukeire_tiles": [
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.301Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L5_004",
+   "level": "L5",
+   "knowledge_point": "同为一向听推进后：听牌形式的优劣对比",
+   "question_type": "ukeire_compare",
+   "difficulty": "hard",
+   "hand": [
+    "2m",
+    "3m",
+    "4m",
+    "5p",
+    "6p",
+    "7p",
+    "8p",
+    "9p",
+    "2s",
+    "3s",
+    "4s",
+    "5s",
+    "6s",
+    "7s"
+   ],
+   "answer": {
+    "correct": [
+     "5p"
+    ],
+    "options": [
+     {
+      "discard": "5p"
+     },
+     {
+      "discard": "6p"
+     }
+    ]
+   },
+   "explanation": {
+    "best": "切 5p 听 6 张，切 6p 只听 3 张，差一倍。切 5p 后 6789p 四连双解：678p+单骑 9p 或 789p+单骑 6p，听 6p/9p 各 3 张共 6 张；切 6p 从中间下刀，四连被砍成 5p+789p，只剩单骑 5p 一种解、3 张。2s-7s 六连稳定提供两面子，胜负手全在饼子五连怎么切——端点出牌是复合形的第一原则。",
+    "source": "79博客·牌效率15「连续形的切法」"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "5p",
+      "shanten_after": 0,
+      "ukeire_count": 6,
+      "ukeire_tiles": [
+       "6p",
+       "9p"
+      ]
+     },
+     {
+      "discard": "9p",
+      "shanten_after": 0,
+      "ukeire_count": 6,
+      "ukeire_tiles": [
+       "5p",
+       "8p"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "5p"
+      ]
+     },
+     {
+      "discard": "8p",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "9p"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 1,
+      "ukeire_count": 42,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 42,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "2m",
+       "3m",
+       "4m",
+       "5m",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p"
+      ]
+     },
+     {
+      "discard": "4m",
+      "shanten_after": 1,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p"
+      ]
+     },
+     {
+      "discard": "4s",
+      "shanten_after": 1,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "5s",
+      "shanten_after": 1,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "5s",
+       "6s",
+       "7s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 1,
+      "ukeire_count": 32,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "2s",
+       "3s",
+       "4s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 1,
+      "ukeire_count": 32,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "2s",
+       "5s",
+       "6s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 29,
+      "ukeire_tiles": [
+       "2m",
+       "3m",
+       "4m",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p"
+      ]
+     },
+     {
+      "discard": "7p",
+      "shanten_after": 1,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.301Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L6_001",
+   "level": "L6",
+   "knowledge_point": "不倒退原则：听牌 8 张不换一向听 39 张",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "4p",
+    "5p",
+    "6p",
+    "7s",
+    "8s",
+    "9s",
+    "2s",
+    "3s",
+    "9p",
+    "9p",
+    "5m"
+   ],
+   "answer": {
+    "correct": [
+     "5m"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 5m，保持听牌。切 5m 后 2s3s 两面听 1s/4s 共 8 张。诱惑在另一边：切 2s 退回一向听能换到 39 张大进张（3m-7m、1s-5s、9p 一大片）。但退向听意味着要多摸两巡才能和了，听牌的「随时能和」本身就有价值——除巡目极早等特殊局面外，默认不倒退。V1 判分按向听数优先：不倒退即正解。",
+    "ukeire_table": [
+     {
+      "discard": "5m",
+      "ukeire_count": 8,
+      "note": "听牌：1s(4)/4s(4)"
+     },
+     {
+      "discard": "2s",
+      "ukeire_count": 39,
+      "note": "退一向听换大进张，默认不选"
+     },
+     {
+      "discard": "1m",
+      "ukeire_count": 16,
+      "note": "拆面子也退向听"
+     }
+    ],
+    "source": "79博客·牌效率20「向听数倒退」"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "5m",
+      "shanten_after": 0,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 1,
+      "ukeire_count": 39,
+      "ukeire_tiles": [
+       "3m",
+       "4m",
+       "5m",
+       "6m",
+       "7m",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 1,
+      "ukeire_count": 35,
+      "ukeire_tiles": [
+       "3m",
+       "4m",
+       "5m",
+       "6m",
+       "7m",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "2m",
+       "4m",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "4p",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "4p",
+       "7p",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "3p",
+       "6p",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "9s",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1s",
+       "4s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "9p",
+      "shanten_after": 1,
+      "ukeire_count": 14,
+      "ukeire_tiles": [
+       "5m",
+       "9p",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3m",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "5p",
+       "1s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "1s",
+       "4s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "1s",
+       "4s",
+       "8s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.371Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L6_002",
+   "level": "L6",
+   "knowledge_point": "倒退边界例：4 张听牌 vs 27 张一向听",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "4p",
+    "5p",
+    "6p",
+    "7s",
+    "8s",
+    "9s",
+    "2s",
+    "4s",
+    "6p",
+    "6p",
+    "E"
+   ],
+   "answer": {
+    "correct": [
+     "E"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 E。这是倒退诱惑最强的边界形：切 E 后 24s 嵌张听 3s，只有 4 张；拆 2s 或 4s 退一向听能换 27 张。差距虽大，退向听仍要多花整整一巡，期望上通常持平或略亏——V1 引擎按「先保向听数、再比进张数」判分，切 E 是正解。练这道题的目标不是背答案，而是看清两种选择各自的进张面：4 张听牌、27 张一向听，摆在桌面上再结合巡目与场面做实战决策。",
+    "ukeire_table": [
+     {
+      "discard": "E",
+      "ukeire_count": 4,
+      "note": "听牌：嵌张 3s(4)"
+     },
+     {
+      "discard": "2s",
+      "ukeire_count": 27,
+      "note": "退一向听换 27 张（3p/6p/2s-6s/E）"
+     },
+     {
+      "discard": "4p",
+      "ukeire_count": 18,
+      "note": "拆面子退向听，两头不讨好"
+     }
+    ],
+    "source": "79博客·牌效率20「向听数倒退」"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "E",
+      "shanten_after": 0,
+      "ukeire_count": 4,
+      "ukeire_tiles": [
+       "3s"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 1,
+      "ukeire_count": 27,
+      "ukeire_tiles": [
+       "3p",
+       "6p",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "E"
+      ]
+     },
+     {
+      "discard": "4s",
+      "shanten_after": 1,
+      "ukeire_count": 23,
+      "ukeire_tiles": [
+       "3p",
+       "6p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "E"
+      ]
+     },
+     {
+      "discard": "4p",
+      "shanten_after": 1,
+      "ukeire_count": 18,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "7p",
+       "3s",
+       "E"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 1,
+      "ukeire_count": 14,
+      "ukeire_tiles": [
+       "4p",
+       "5p",
+       "3s",
+       "E"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "3p",
+       "6p",
+       "3s",
+       "E"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "3s"
+      ]
+     },
+     {
+      "discard": "9s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "2m",
+       "3s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "3m",
+       "3s"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "3s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "3s",
+       "8s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.371Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L6_003",
+   "level": "L6",
+   "knowledge_point": "引擎并列时看什么：单骑 3 张的安全度与改良",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "hand": [
+    "2m",
+    "3m",
+    "4m",
+    "5m",
+    "6m",
+    "7m",
+    "1p",
+    "2p",
+    "3p",
+    "5s",
+    "6s",
+    "7s",
+    "9s",
+    "E"
+   ],
+   "answer": {
+    "correct": [
+     "9s",
+     "E"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 9s 或 E（完全并列）。四面子（234m、567m、123p、567s）已成，剩 9s、E 两张浮牌——切谁都是单骑另一张、3 张进张，引擎判定完全等价。并列之外的判断才是这题的内容：字牌 E 别人很难利用，作为先切的安全牌更稳妥；数牌 9s 留着摸成对子可改雀头（微改良）。V1 里两个答案都判对，讲解只提供附加视角。",
+    "ukeire_table": [
+     {
+      "discard": "9s",
+      "ukeire_count": 3,
+      "note": "单骑 E(3)：字牌更安全"
+     },
+     {
+      "discard": "E",
+      "ukeire_count": 3,
+      "note": "单骑 9s(3)：有摸对改良"
+     },
+     {
+      "discard": "2m",
+      "ukeire_count": 17,
+      "note": "拆面子退一向听，非必要不选"
+     }
+    ],
+    "source": "79博客·牌效率20 / 攻守判断章"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "9s",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "E"
+      ]
+     },
+     {
+      "discard": "E",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "9s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "8m",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "7m",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "7m",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "5s",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "5s",
+       "6s",
+       "8s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "5s",
+       "6s",
+       "8s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "4m",
+      "shanten_after": 1,
+      "ukeire_count": 14,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "5m",
+      "shanten_after": 1,
+      "ukeire_count": 14,
+      "ukeire_tiles": [
+       "5m",
+       "8m",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "1p",
+      "shanten_after": 1,
+      "ukeire_count": 14,
+      "ukeire_tiles": [
+       "1p",
+       "4p",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 14,
+      "ukeire_tiles": [
+       "4s",
+       "7s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 10,
+      "ukeire_tiles": [
+       "3m",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "6m",
+      "shanten_after": 1,
+      "ukeire_count": 10,
+      "ukeire_tiles": [
+       "6m",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "2p",
+      "shanten_after": 1,
+      "ukeire_count": 10,
+      "ukeire_tiles": [
+       "2p",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "3p",
+      "shanten_after": 1,
+      "ukeire_count": 10,
+      "ukeire_tiles": [
+       "3p",
+       "9s",
+       "E"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.371Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L7_001",
+   "level": "L7",
+   "knowledge_point": "并列最优的定性比较：边张 vs 双碰",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "hand": [
+    "1m",
+    "1m",
+    "2m",
+    "4m",
+    "5m",
+    "6m",
+    "4p",
+    "5p",
+    "6p",
+    "7s",
+    "8s",
+    "9s",
+    "W",
+    "W"
+   ],
+   "answer": {
+    "correct": [
+     "1m",
+     "2m"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 1m 或 2m（并列 4 张）。切 1m：1m2m 与 456m 分家，听边张 3m（4 张）。切 2m：1m1m 升格为对子，与 WW 组成双碰听牌，听 1m/W 各 2 张共 4 张。进张数打平，但性质不同：双碰有两张牌可和、鸣牌阶段还能碰加速；边张只有一张但张数不占手内。V1 按引擎并列判分、两个都对，实战中双碰形通常更受偏好。",
+    "ukeire_table": [
+     {
+      "discard": "1m",
+      "ukeire_count": 4,
+      "note": "边张 3m(4)"
+     },
+     {
+      "discard": "2m",
+      "ukeire_count": 4,
+      "note": "双碰 1m(2)/W(2)"
+     },
+     {
+      "discard": "W",
+      "ukeire_count": 19,
+      "note": "退一向听，非必要不选"
+     }
+    ],
+    "source": "79博客·牌效率综合篇 / Riichi Book I §3"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "1m",
+      "shanten_after": 0,
+      "ukeire_count": 4,
+      "ukeire_tiles": [
+       "3m"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 0,
+      "ukeire_count": 4,
+      "ukeire_tiles": [
+       "1m",
+       "W"
+      ]
+     },
+     {
+      "discard": "W",
+      "shanten_after": 1,
+      "ukeire_count": 19,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "7m",
+       "W"
+      ]
+     },
+     {
+      "discard": "4m",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1m",
+       "3m",
+       "4m",
+       "7m",
+       "W"
+      ]
+     },
+     {
+      "discard": "4p",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1m",
+       "3m",
+       "4p",
+       "7p",
+       "W"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1m",
+       "3m",
+       "3p",
+       "6p",
+       "W"
+      ]
+     },
+     {
+      "discard": "9s",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1m",
+       "3m",
+       "6s",
+       "9s",
+       "W"
+      ]
+     },
+     {
+      "discard": "5m",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "1m",
+       "3m",
+       "5m",
+       "W"
+      ]
+     },
+     {
+      "discard": "6m",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "1m",
+       "3m",
+       "6m",
+       "W"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "1m",
+       "3m",
+       "5p",
+       "W"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "1m",
+       "3m",
+       "7s",
+       "W"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "1m",
+       "3m",
+       "8s",
+       "W"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.439Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L7_002",
+   "level": "L7",
+   "knowledge_point": "孤字牌的攻守通用性",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "hand": [
+    "2m",
+    "3m",
+    "4m",
+    "5p",
+    "6p",
+    "7p",
+    "1s",
+    "2s",
+    "3s",
+    "6s",
+    "7s",
+    "E",
+    "E",
+    "N"
+   ],
+   "answer": {
+    "correct": [
+     "N"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 N。三面子（234m、567p、123s）+ 6s7s 两面 + EE 雀头 + 孤字 N，切 N 听 5s/8s 共 8 张。这手即使从防守角度看答案也一致：N 不联络任何搭子（攻），又是全场最安全的牌之一（守）——孤字牌「攻守通用」的性质让这类判断几乎不需要犹豫。综合判断级的要点就是确认这种「怎么做都对得起两个维度」的手感。",
+    "ukeire_table": [
+     {
+      "discard": "N",
+      "ukeire_count": 8,
+      "note": "听牌：5s(4)/8s(4)"
+     },
+     {
+      "discard": "6s",
+      "ukeire_count": 24,
+      "note": "拆两面退一向听"
+     },
+     {
+      "discard": "2m",
+      "ukeire_count": 16,
+      "note": "拆面子，进攻防守都不利"
+     }
+    ],
+    "source": "79博客·攻守判断章"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "N",
+      "shanten_after": 0,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 1,
+      "ukeire_count": 24,
+      "ukeire_tiles": [
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "E",
+       "N"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 24,
+      "ukeire_tiles": [
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "E",
+       "N"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "4m",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "5p",
+       "8p",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "7p",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "4p",
+       "7p",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "1s",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1s",
+       "4s",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "E",
+      "shanten_after": 1,
+      "ukeire_count": 14,
+      "ukeire_tiles": [
+       "5s",
+       "8s",
+       "E",
+       "N"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3m",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "6p",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "2s",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3s",
+       "5s",
+       "8s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.439Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L7_003",
+   "level": "L7",
+   "knowledge_point": "对子过剩的复现：合并重叠 + 暗线进张",
+   "question_type": "ukeire_compare",
+   "difficulty": "hard",
+   "hand": [
+    "2m",
+    "2m",
+    "5m",
+    "6m",
+    "7m",
+    "3p",
+    "3p",
+    "4p",
+    "5p",
+    "8s",
+    "8s",
+    "W",
+    "W",
+    "9s"
+   ],
+   "answer": {
+    "correct": [
+     "3p"
+    ],
+    "options": [
+     {
+      "discard": "3p"
+     },
+     {
+      "discard": "8s"
+     }
+    ]
+   },
+   "explanation": {
+    "best": "切 3p 进张 10 张，切 8s 只剩 8 张（L4_003 的对比版）。同为一向听，切 3p 把 33p+45p 粘成 345p 面子，块数整理到位，进张 2m/8s/W 各 2 张 + 7s 暗线 4 张；切 8s 保留六块结构互相抢雀头，反而丢掉 2 张。综合级的检验点：能否在「都能维持一向听」的选项里，看出块数整理带来的隐性差距。",
+    "source": "Riichi Book I §4 / 79博客·牌效率7"
+   },
+   "engine_snapshot": {
+    "shanten_before": 1,
+    "candidates": [
+     {
+      "discard": "3p",
+      "shanten_after": 1,
+      "ukeire_count": 10,
+      "ukeire_tiles": [
+       "2m",
+       "7s",
+       "8s",
+       "W"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 1,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "2m",
+       "7s",
+       "W"
+      ]
+     },
+     {
+      "discard": "9s",
+      "shanten_after": 1,
+      "ukeire_count": 6,
+      "ukeire_tiles": [
+       "2m",
+       "8s",
+       "W"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 2,
+      "ukeire_count": 50,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "W"
+      ]
+     },
+     {
+      "discard": "W",
+      "shanten_after": 2,
+      "ukeire_count": 38,
+      "ukeire_tiles": [
+       "2m",
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "W"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 2,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "2m",
+       "2p",
+       "3p",
+       "5p",
+       "7s",
+       "8s",
+       "W"
+      ]
+     },
+     {
+      "discard": "5m",
+      "shanten_after": 2,
+      "ukeire_count": 18,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "8m",
+       "7s",
+       "8s",
+       "W"
+      ]
+     },
+     {
+      "discard": "7m",
+      "shanten_after": 2,
+      "ukeire_count": 18,
+      "ukeire_tiles": [
+       "2m",
+       "4m",
+       "7m",
+       "7s",
+       "8s",
+       "W"
+      ]
+     },
+     {
+      "discard": "4p",
+      "shanten_after": 2,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "2m",
+       "3p",
+       "4p",
+       "7s",
+       "8s",
+       "W"
+      ]
+     },
+     {
+      "discard": "6m",
+      "shanten_after": 2,
+      "ukeire_count": 14,
+      "ukeire_tiles": [
+       "2m",
+       "6m",
+       "7s",
+       "8s",
+       "W"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.439Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L7_004",
+   "level": "L7",
+   "knowledge_point": "二向听整序：先切绝对浮牌",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "hand": [
+    "2m",
+    "3m",
+    "4m",
+    "5m",
+    "6p",
+    "7p",
+    "8p",
+    "2s",
+    "3s",
+    "5s",
+    "6s",
+    "8s",
+    "9s",
+    "E"
+   ],
+   "answer": {
+    "correct": [
+     "E"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 E。手牌二向听、五块松散（45m、678p、23s、56s、89s，雀头未定），这种局面容易乱切。第一原则和 L1 一样朴素：完全用不上的字牌先切——切 E 后进张覆盖 2m/5m 与索子 1s-9s，共 36 张是全场最大。向听数越远，越要先做「减法」而不是纠结搭子微调；等进到一向听，L4/L5 的精细比较才轮到上场。",
+    "ukeire_table": [
+     {
+      "discard": "E",
+      "ukeire_count": 36,
+      "note": "2m/5m + 1s-9s 全覆盖"
+     },
+     {
+      "discard": "2m",
+      "ukeire_count": 33,
+      "note": "拆边张搭亏 3 张"
+     },
+     {
+      "discard": "9s",
+      "ukeire_count": 30,
+      "note": "拆搭且丢两端改良"
+     }
+    ],
+    "source": "79博客·牌效率综合篇"
+   },
+   "engine_snapshot": {
+    "shanten_before": 2,
+    "candidates": [
+     {
+      "discard": "E",
+      "shanten_after": 2,
+      "ukeire_count": 36,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 2,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "5m",
+      "shanten_after": 2,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "9s",
+      "shanten_after": 2,
+      "ukeire_count": 30,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "1s",
+       "2s",
+       "4s",
+       "5s",
+       "7s",
+       "8s",
+       "E"
+      ]
+     },
+     {
+      "discard": "5s",
+      "shanten_after": 2,
+      "ukeire_count": 27,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "1s",
+       "4s",
+       "6s",
+       "7s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 2,
+      "ukeire_count": 27,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "1s",
+       "2s",
+       "4s",
+       "5s",
+       "7s",
+       "E"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 2,
+      "ukeire_count": 26,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "3s",
+       "4s",
+       "6s",
+       "7s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 2,
+      "ukeire_count": 24,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "1s",
+       "4s",
+       "7s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 2,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "2s",
+       "4s",
+       "7s",
+       "E"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 3,
+      "ukeire_count": 53,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "8p",
+      "shanten_after": 3,
+      "ukeire_count": 53,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 3,
+      "ukeire_count": 50,
+      "ukeire_tiles": [
+       "2m",
+       "3m",
+       "4m",
+       "5m",
+       "6m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "4m",
+      "shanten_after": 3,
+      "ukeire_count": 50,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "5m",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "E"
+      ]
+     },
+     {
+      "discard": "7p",
+      "shanten_after": 3,
+      "ukeire_count": 49,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "6p",
+       "7p",
+       "8p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s",
+       "E"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-02T02:43:43.439Z"
+   }
+  }
+ ]
+}

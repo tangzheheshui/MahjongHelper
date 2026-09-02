@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 180">
+  <defs>
+    <linearGradient id="gFace" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffdf6"/><stop offset=".55" stop-color="#f5eedb"/><stop offset="1" stop-color="#e7dcc2"/>
+    </linearGradient>
+    <linearGradient id="gSide" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d5cbae"/><stop offset=".45" stop-color="#bfb28f"/><stop offset="1" stop-color="#9a8d6a"/>
+    </linearGradient>
+  </defs>
+  <rect x="5" y="11" width="110" height="164" rx="13" fill="url(#gSide)"/>
+  <rect x="5" y="6" width="110" height="165" rx="13" fill="url(#gFace)"/>
+  <rect x="6.8" y="8" width="106.4" height="161" rx="11.5" fill="none" stroke="rgba(255,255,255,.6)" stroke-width="1.6"/>
+  <g font-family='"Hiragino Mincho ProN","Yu Mincho","Songti SC",serif' text-anchor="middle" font-weight="600">
+    <text x="60.9" y="122" font-size="86" fill="rgba(255,255,255,.8)">中</text>
+    <text x="60" y="121" font-size="86" fill="#c23a2b">中</text>
+  </g>
+</svg>

@@ -86,6 +86,20 @@ content/
 ⑥ 构建：build 脚本产出分片 + manifest → rsync 上服务器
 ```
 
+### 试点批次（M2，2026-09-02 入库）
+
+首批 **28 题**（L1×4 / L2×4 / L3×4 / L4×5 / L5×4 / L6×3 / L7×4）全过 verify CLI，
+`engine_snapshot` 已由 `--write` 注入，bank_version `2026.09.0-pilot`。
+出题工具链实测可用：`content/build/probe.ts`（探引擎数字）→ 写 `content/questions/LX.json`
+→ `npx tsx packages/engine/bin/verify.ts content/questions/*.json --write` →
+`node content/build/roll-bank.mjs`（产出 `apps/web/src/data/bank.json`）。
+
+试点批的出题口径（M3 扩量沿用）：
+
+- 手牌与讲解全部原创；知识点对齐 `LEVEL_META` 各级主题，source 只标章节定位
+- 刻意保留**并列最优**题（切法等价时全列 correct），教「并列不算错」
+- L6 用「不倒退正解 + 倒退边界例」呈现向听倒退专题，边界例讲解如实标注权衡，不装确定论
+
 ## 六、题量与排期（PRD A.1）
 
 **2026-09-01 用户决定：V1 起步题量 = 每级 ≥10 题（共 ≥70 题）先上线跑通，后续再补齐；
