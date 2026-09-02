@@ -30,6 +30,14 @@ function levelRank(level) {
   return n ? Number(n[1]) : Number.MAX_SAFE_INTEGER;
 }
 
+/**
+ * 分片正文：只含 level + questions，【不含 bank_version】——否则每发一版全部级哈希都变、
+ * 增量退化为全量。同内容跨版本字节一致 → sha 不变 → 客户端只拉真变化的级（架构 §五）。
+ */
+function shardBody(level, questions) {
+  return JSON.stringify({ level, questions }, null, 1) + "\n";
+}
+
 /** 读取题源目录 → { level: questions[] } */
 export function readQuestions(srcDir = SRC) {
   const files = readdirSync(srcDir).filter((f) => f.endsWith(".json")).sort();
@@ -68,7 +76,7 @@ export function buildShards({ byLevel, bankVersion, outDir, publishedAt }) {
     const file = `v${bankVersion}/${level}.json`;
     // 分片正文【不含 bank_version】——否则每发一版全部级哈希都变、增量退化为全量；
     // 只含 level + questions，同内容跨版本字节一致 → sha 不变 → 客户端只拉真变化的级
-    const body = JSON.stringify({ level, questions: byLevel[level] }, null, 1) + "\n";
+    const body = shardBody(level, byLevel[level]);
     manifestLevels.push({
       level,
       file,
@@ -111,8 +119,7 @@ export function buildShards({ byLevel, bankVersion, outDir, publishedAt }) {
 
   mkdirSync(join(outDir, `v${bankVersion}`), { recursive: true });
   for (const l of manifestLevels) {
-    const body = JSON.stringify({ level: l.level, questions: byLevel[l.level] }, null, 1) + "\n";
-    writeFileSync(join(outDir, l.file), body, "utf-8");
+    writeFileSync(join(outDir, l.file), shardBody(l.level, byLevel[l.level]), "utf-8");
   }
   const manifest = {
     schema_version: 1,
@@ -129,12 +136,44 @@ export function buildShards({ byLevel, bankVersion, outDir, publishedAt }) {
   return manifest;
 }
 
+/**
+ * 写后自检：re-读产物核对 manifest 与实际字节一致，把「哈希与落盘不同源 / 分片误带
+ * bank_version 导致增量退化」这类回归从 e2e 前移到发布当时硬报错。main 发布即调用，
+ * e2e 脚本也可复用。校验项：分片可解析、sha256(re-read)=manifest、count 一致、正文
+ * 不含 bank_version 键（增量铁律，见架构 §五）。
+ */
+export function verifyPublished(outDir) {
+  const manifestPath = join(outDir, "manifest.json");
+  if (!existsSync(manifestPath)) throw new Error(`${outDir}: 缺 manifest.json，无法自检`);
+  const manifest = JSON.parse(readFileSync(manifestPath, "utf-8"));
+  let total = 0;
+  for (const l of manifest.levels) {
+    const filePath = join(outDir, l.file);
+    if (!existsSync(filePath)) throw new Error(`分片缺失: ${l.file}`);
+    const raw = readFileSync(filePath, "utf-8");
+    const sha = createHash("sha256").update(raw, "utf-8").digest("hex");
+    if (sha !== l.sha256) throw new Error(`${l.file}: 磁盘字节与 manifest sha256 不一致（发布逻辑回归？）`);
+    const body = JSON.parse(raw);
+    if (body.level !== l.level) throw new Error(`${l.file}: 正文 level 与 manifest 不一致`);
+    if (!Array.isArray(body.questions) || body.questions.length !== l.count) {
+      throw new Error(`${l.file}: 题数与 manifest(${l.count}) 不一致`);
+    }
+    if ("bank_version" in body) throw new Error(`${l.file}: 分片正文不得含 bank_version（增量铁律，见架构 §五）`);
+    total += body.questions.length;
+  }
+  console.log(
+    `✓ 写后自检通过：${manifest.levels.length} 级 / ${total} 题 / ${manifest.bank_version}（sha、count、无 bank_version 键均核对）`,
+  );
+  return { levels: manifest.levels.length, total, version: manifest.bank_version };
+}
+
 function main() {
   const args = process.argv.slice(2);
   const out = args.indexOf("--out") >= 0 ? args[args.indexOf("--out") + 1] : DEFAULT_OUT;
   const bankVersion =
     args.indexOf("--bank-version") >= 0 ? args[args.indexOf("--bank-version") + 1] : CURRENT_BANK_VERSION;
   buildShards({ byLevel: readQuestions(SRC), bankVersion, outDir: out });
+  verifyPublished(out); // 发布即自检；校验失败抛错、退出码非 0
 }
 
 const isMain = process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href;

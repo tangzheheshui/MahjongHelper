@@ -17,7 +17,7 @@ import { readFile, rm, stat, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { dirname, join, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
-import { buildShards } from "../../../content/build/publish.mjs";
+import { buildShards, verifyPublished } from "../../../content/build/publish.mjs";
 import { fetchTextTimeout, runBankUpdate } from "../src/lib/update";
 import type { Bank, Question } from "../src/lib/types";
 import type { UpdateState } from "../src/lib/update";
@@ -96,9 +96,11 @@ async function main() {
   try {
     // 服务器先发 v1（== 客户端内置，留存目录模拟回滚基础）
     buildShards({ byLevel: group(bundledRaw.questions), bankVersion: V1, outDir: serverRoot });
+    verifyPublished(serverRoot);
 
     // ===== 场景 1：服务器发 v2 → 全新客户端首拉全量 =====
     buildShards({ byLevel: v2Groups, bankVersion: V2, outDir: serverRoot });
+    verifyPublished(serverRoot);
     let current: Question[] = bundledRaw.questions;
     let state: UpdateState | null = null; // 新装：无已应用哈希
     const r1 = await runBankUpdate({
@@ -123,6 +125,7 @@ async function main() {
 
     // ===== 场景 2：服务器只改 L3 发 v3 → 增量只拉 L3 =====
     buildShards({ byLevel: v3Groups, bankVersion: V3, outDir: serverRoot });
+    verifyPublished(serverRoot);
     const r2 = await runBankUpdate({
       manifest: JSON.parse(await fetchText(manifestUrl)),
       currentVersion: state.bank_version,
