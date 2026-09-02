@@ -15,10 +15,11 @@
     "bank:dist": "node content/build/report-distribution.mjs",
     "bank:refine": "tsx content/build/refine.ts",
     "bank:verify": "tsx packages/engine/bin/verify.ts content/questions",
+    "publish:test": "node content/build/test-publish.mjs",
     "e2e:bank": "tsx apps/web/scripts/e2e-bank.ts",
     "e2e:update": "tsx apps/web/scripts/e2e-update.ts",
     "e2e:smoke": "tsx apps/web/scripts/smoke-loop.ts",
-    "selfcheck": "npm test && npm run typecheck -w @nanikiru/web && npm run bank:verify && npm run e2e:smoke && npm run e2e:update && npm run e2e:bank"
+    "selfcheck": "npm test && npm run typecheck -w @nanikiru/web && npm run bank:verify && npm run publish:test && npm run e2e:smoke && npm run e2e:update && npm run e2e:bank"
   },
   "devDependencies": {
     "@types/node": "^26.4.1",
