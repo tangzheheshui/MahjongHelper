@@ -149,19 +149,24 @@ npx tsx packages/engine/bin/verify.ts content/questions --write
 # 2) bump 单点版本号 content/build/version.mjs（仅此一处）
 # 3) 重滚 App 出厂题库（若同时要发 App 包）
 node content/build/roll-bank.mjs
-# 4) 产出 server/bank/v{version}/ 分片 + manifest（覆盖 server/bank/，产物已 gitignore）
+# 4) 产出 server/bank/v{version}/ 分片 + manifest（累加 v{version} 目录，旧目录保留）
 node content/build/publish.mjs
-# 5) 上传（先数据后指针，客户端不会拿到 404 分片）
+# 5) 上传（可整段走 server/deploy.sh 示例；先数据后指针，客户端不会拿到 404 分片）
 rsync -av server/ user@server:/var/www/nanikiru/
 ```
 
+- **同版本防呆**（2026-09-02 加）：`publish.mjs` 若发现 `server/bank` 已存在同版本 manifest
+  而内容哈希变了 → 拒绝发布（提示先 bump version.mjs）。同版本覆盖 = 客户端 `compareVersion`
+  判等 → 永远收不到更新，是最隐蔽的发布事故。
 - manifest 最后上传；回滚 = 服务器端把 manifest 指回旧版本目录（旧分片目录不删）
+- 缓存策略见 `server/nginx.conf.sample`（manifest/config `no-cache`，分片 immutable）
 - 容量：200 题 × ≈1.5KB ≈ 300KB，单级分片 ≤60KB——静态方案无压力
 - e2e 干跑：`npx tsx apps/web/scripts/e2e-update.ts` 本地 http 服务模拟
   「服务器 v1→v2 发布 → 客户端首拉全量 / 再发单级变更只拉该级」全链路（M4 DoD 自测）
 
-**待办（M4 前确认）**：服务器归属与域名（现有站点 / 新域名 + HTTPS 证书）；Cache-Control 策略
-（manifest `no-cache`、分片 `immutable`）；国内可达性（主要用户在国内则静态资源放国内或 CDN）。
+**待办（M4 上线前，需用户拍板）**：服务器归属与域名（现有站点 / 新域名 + HTTPS 证书）；
+国内可达性（主要用户在国内则静态资源放国内或 CDN）。Cache-Control 策略已定稿并给出
+`server/nginx.conf.sample`；客户端增量更新代码与 e2e 干跑已落地（2026-09-02）。
 
 ## 六、风险清单
 

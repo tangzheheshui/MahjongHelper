@@ -26,4 +26,9 @@ rsync -av server/ user@server:/var/www/nanikiru/                   # 5) 上传�
 ```
 
 协议与客户端行为详见 [architecture.md §五](../docs/design/architecture.md)。
-自测：`npx tsx apps/web/scripts/e2e-update.ts`（本地 http 干跑全链路）。
+
+- 缓存策略示例：`nginx.conf.sample`（manifest/config `no-cache`，分片 immutable）
+- 一键发布示例：`deploy.sh [user@host:path]`（构建 + 校验 + 分片 + rsync，先数据后指针）
+- 自测：`npx tsx apps/web/scripts/e2e-update.ts`（node http 干跑全链路）、
+  `npx tsx apps/web/scripts/e2e-bank.ts`（IDB 层集成）
+- 便捷命令（repo 根）：`npm run bank:publish` / `bank:roll` / `bank:verify` / `e2e:update`

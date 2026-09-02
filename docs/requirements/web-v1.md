@@ -101,6 +101,10 @@
 - **闭环冒烟**：`npx tsx apps/web/scripts/smoke-loop.ts` —— node 内存 localStorage 模拟
   练 → 判 → 讲 → 结算/解锁 → 错题本 → 水平测试 全链路（IndexedDB 缺席走内置降级，顺带覆盖离线口径），
   改 lib 层后必跑
+- **题库更新双自测（M4 起，改 bank.ts/update.ts 后必跑）**：
+  `npx tsx apps/web/scripts/e2e-bank.ts`（内存 fake-indexedDB 跑真实 loadBank/checkBankUpdate，
+  覆盖 IDB 层）+ `npx tsx apps/web/scripts/e2e-update.ts`（node http 干跑
+  manifest→增量→sha 校验纯逻辑链路）
 - **渲染自测**：`vite preview` + Edge headless `--dump-dom` 核对五页关键内容与牌面 SVG 数量
 - 结算/记错题逻辑收敛在 `lib/levels.ts` 的 `applyRunResult` 与 `lib/storage.ts` 的 `recordWrong`，
   页面只做展示层调用（保证冒烟测的就是线上跑的）

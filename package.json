@@ -9,7 +9,15 @@
   ],
   "scripts": {
     "test": "npm run test --workspaces --if-present",
-    "typecheck": "tsc -p packages/engine --noEmit"
+    "typecheck": "tsc -p packages/engine --noEmit",
+    "bank:roll": "node content/build/roll-bank.mjs",
+    "bank:publish": "node content/build/publish.mjs",
+    "bank:dist": "node content/build/report-distribution.mjs",
+    "bank:verify": "tsx packages/engine/bin/verify.ts content/questions",
+    "e2e:bank": "tsx apps/web/scripts/e2e-bank.ts",
+    "e2e:update": "tsx apps/web/scripts/e2e-update.ts",
+    "e2e:smoke": "tsx apps/web/scripts/smoke-loop.ts",
+    "selfcheck": "npm test && npm run typecheck -w @nanikiru/web && npm run bank:verify && npm run e2e:smoke && npm run e2e:update && npm run e2e:bank"
   },
   "devDependencies": {
     "@types/node": "^26.4.1",

@@ -120,3 +120,9 @@ content/
 
 > 内容红线：题目手牌与讲解全部原创（CLAUDE.md 版权红线）；经典牌型覆盖度用
 > 「考察点清单」勾稽，不用题数凑。
+
+**分布 QA（M3，2026-09-02 加）**：`node content/build/report-distribution.mjs`
+（`npm run bank:dist`）只读对照 PRD A.1 打印每级题量 / 题型 / 难度与缺口，起步批
+（七级每级 ≥10）达标退出码 0。2026-09-02 试点批复盘信号：题型仅 what_to_discard 22 +
+ukeire_compare 6（**缺 mentsu_identify / wait_choose**），难度 hard 16 偏高——起步扩量应
+easy/medium 打底，四种题型按 §一 占比补齐。

@@ -15,7 +15,7 @@
  */
 
 import { createHash } from "node:crypto";
-import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { CURRENT_BANK_VERSION } from "./version.mjs";
@@ -62,16 +62,13 @@ export function buildShards({ byLevel, bankVersion, outDir, publishedAt }) {
   const empty = levels.filter((lv) => byLevel[lv].length === 0);
   if (empty.length > 0) console.warn(`跳过空级: ${empty.join(",")}`);
 
-  const versionDir = join(outDir, `v${bankVersion}`);
-  mkdirSync(versionDir, { recursive: true });
-
+  // 先全部算好（分片正文、sha、id 校验、同版本防呆），再落盘 —— 避免写到一半报错留下残缺产物
   const manifestLevels = [];
   for (const level of nonEmpty) {
     const file = `v${bankVersion}/${level}.json`;
     // 分片正文【不含 bank_version】——否则每发一版全部级哈希都变、增量退化为全量；
     // 只含 level + questions，同内容跨版本字节一致 → sha 不变 → 客户端只拉真变化的级
     const body = JSON.stringify({ level, questions: byLevel[level] }, null, 1) + "\n";
-    writeFileSync(join(outDir, file), body, "utf-8");
     manifestLevels.push({
       level,
       file,
@@ -89,6 +86,34 @@ export function buildShards({ byLevel, bankVersion, outDir, publishedAt }) {
     }
   }
 
+  // 同版本防呆：server/bank 已有同版本 manifest 且内容哈希不同 → 说明改内容忘 bump
+  // version.mjs。同版本覆盖 = 客户端 compareVersion 判等 → 永不更新，必须拒绝。
+  const prevPath = join(outDir, "manifest.json");
+  if (existsSync(prevPath)) {
+    let prev;
+    try {
+      prev = JSON.parse(readFileSync(prevPath, "utf-8"));
+    } catch {
+      prev = null; // manifest 损坏：覆盖为全新发布
+    }
+    if (prev && prev.bank_version === bankVersion) {
+      const prevSha = new Map(prev.levels.map((l) => [l.level, l.sha256]));
+      const drift = manifestLevels.filter((l) => prevSha.get(l.level) !== l.sha256);
+      if (drift.length > 0) {
+        throw new Error(
+          `同版本 ${bankVersion} 内容已变化（${drift.map((d) => d.level).join(",")}）——` +
+            `请先 bump content/build/version.mjs 再发布，否则客户端永远收不到更新`,
+        );
+      }
+      console.warn(`⚠ ${bankVersion} 已在 ${outDir} 发布过且内容一致（幂等重发，跳过覆盖）`);
+    }
+  }
+
+  mkdirSync(join(outDir, `v${bankVersion}`), { recursive: true });
+  for (const l of manifestLevels) {
+    const body = JSON.stringify({ level: l.level, questions: byLevel[l.level] }, null, 1) + "\n";
+    writeFileSync(join(outDir, l.file), body, "utf-8");
+  }
   const manifest = {
     schema_version: 1,
     bank_version: bankVersion,
