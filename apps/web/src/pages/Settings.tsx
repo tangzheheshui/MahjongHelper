@@ -9,7 +9,7 @@ import type { Bank } from "../lib/types";
 
 /** 皮肤清单（皮肤本体在 tiles/ 注册，这里只管展示与选择） */
 const SKINS = [
-  { name: "placeholder", label: "教学（占位）", desc: "v0.8 行楷萬/索 + 同心圆新饼" },
+  { name: "placeholder", label: "教学（占位）", desc: "v0.8 行楷萬/索 + 暗沉哑光筒（丁案）" },
   { name: "classic", label: "经典", desc: "参考实物图风格原创重绘：靛蓝饼 / 绿竹 / 一索雀鸟" },
 ];
 const SKIN_PREVIEW = ["1m", "5p", "1s", "E", "c", "h"];

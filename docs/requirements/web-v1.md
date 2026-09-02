@@ -55,7 +55,7 @@
 
 | 皮肤 | 内容 | 说明 |
 |---|---|---|
-| `placeholder` | 万/条 = `docs/design/tile-samples-v0.8.html` 定稿素材（行楷萬子 + 放大一索），**饼面重绘**为「外环 + 白隔圈 + 红心」同心圆纹，字牌明朝体 | 教学占位，全站默认；素材经 `apps/web/scripts/extract-v08-tiles.mjs` 提取生成 `tiles/v08-faces.ts`，勿手改 |
+| `placeholder` | 万/条 = `docs/design/tile-samples-v0.8.html` 定稿素材（行楷萬子 + 放大一索）；饼 = 五案选型定「丁·暗沉哑光」+ 实物排布修正（3p 斜排、7p 上斜下四不重叠、9p 3×3 小饼）；字牌明朝体 | 教学占位，全站默认；万/条素材经 `apps/web/scripts/extract-v08-tiles.mjs` 提取生成 `tiles/v08-faces.ts`，勿手改；选型记录见 `docs/design/pin-options.html` |
 | `classic` | 参考用户提供的实物图风格**原创重绘**（象牙白面、靛蓝饼、绿竹、朱红萬/中、一索雀鸟） | 不复制任何商业素材，遵守上方红线 |
 
 - 选择持久化在 `nk.settings.tileSkin`，设置页可切换并实时预览；`<Tile>` 支持 `skin` 覆盖参数（预览用）
