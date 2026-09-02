@@ -5,8 +5,18 @@
 
 import { useState } from "react";
 import { Tile } from "./Tile";
-import { candidatesOf, isCorrect, orderHand, shantenBefore, tileLabel, tilesLabel } from "../lib/levels";
-import type { Question } from "../lib/types";
+import {
+  MENTSU_TYPE_LABEL,
+  candidatesOf,
+  correctLabelOf,
+  isCorrect,
+  mentsuPairOf,
+  orderHand,
+  shantenBefore,
+  tileLabel,
+  tilesLabel,
+} from "../lib/levels";
+import type { MentsuType, Question, WaitOption } from "../lib/types";
 
 export interface QuestionCardProps {
   q: Question;
@@ -32,27 +42,35 @@ export function QuestionCard({ q, onAnswered }: QuestionCardProps) {
 
   const sh = shantenBefore(q);
   const isWtd = q.question_type === "what_to_discard";
+  const isMi = q.question_type === "mentsu_identify";
+  const isWc = q.question_type === "wait_choose";
+  const miPair = mentsuPairOf(q);
+
+  const prompt =
+    isWtd
+      ? sh === 0 ? "切最优牌后听牌" : `切最优牌后 ${sh} 向听`
+      : q.question_type === "ukeire_compare"
+        ? "两种切法，哪种进张更多？"
+        : isMi
+          ? "高亮的这两张是什么搭子？"
+          : "两种听牌留法，哪种和牌张数更多？";
 
   return (
     <div className="qcard">
       <p className="sub">
         考点：{q.knowledge_point}
-        {isWtd ? "" : " · 二选一"} ·{" "}
+        {isWtd ? "" : isMi ? " · 搭子识别" : " · 二选一"} ·{" "}
         {q.difficulty === "easy" ? "易" : q.difficulty === "medium" ? "中" : "难"}
       </p>
-      <p className="shanten-line">
-        {isWtd
-          ? sh === 0 ? "切最优牌后听牌" : `切最优牌后 ${sh} 向听`
-          : "两种切法，哪种进张更多？"}
-      </p>
+      <p className="shanten-line">{prompt}</p>
 
       <div className="hand">
         {orderHand(q.hand).map((t, i) => (
           <Tile
             key={`${t}-${i}`}
             id={t}
-            size={isWtd ? 46 : 32}
-            selected={isWtd && picked === t}
+            size={isWtd || isMi ? 46 : 32}
+            selected={(isWtd && picked === t) || (isMi && !judged && miPair.includes(t))}
             onClick={isWtd && !judged ? () => judge(t) : undefined}
           />
         ))}
@@ -60,16 +78,28 @@ export function QuestionCard({ q, onAnswered }: QuestionCardProps) {
 
       {!isWtd && !judged && (
         <div>
-          {(q.answer.options ?? []).map((o) => (
-            <button
-              key={o.discard}
-              type="button"
-              className="act"
-              onClick={() => o.discard && judge(o.discard)}
-            >
-              切 {tileLabel(o.discard ?? "")}
-            </button>
-          ))}
+          {isMi
+            ? (Object.keys(MENTSU_TYPE_LABEL) as MentsuType[]).map((t) => (
+                <button key={t} type="button" className="act" onClick={() => judge(t)}>
+                  {MENTSU_TYPE_LABEL[t]}
+                </button>
+              ))
+            : isWc
+              ? ((q.answer.options as WaitOption[]) ?? []).map((o) => (
+                  <button key={o.value} type="button" className="act" onClick={() => judge(o.value)}>
+                    {o.label}
+                  </button>
+                ))
+              : (q.answer.options ?? []).map((o) => (
+                  <button
+                    key={o.discard}
+                    type="button"
+                    className="act"
+                    onClick={() => o.discard && judge(o.discard)}
+                  >
+                    切 {tileLabel(o.discard ?? "")}
+                  </button>
+                ))}
         </div>
       )}
 
@@ -77,8 +107,10 @@ export function QuestionCard({ q, onAnswered }: QuestionCardProps) {
         <div className="panel">
           <div className={`verdict ${ok ? "ok" : "ng"}`}>
             {ok
-              ? `✅ 正确！切 ${picked ? tileLabel(picked) : ""} 是最优解`
-              : `❌ 应切：${correct.map(tileLabel).join(" / ")}${correct.length > 1 ? "（并列最优）" : ""}`}
+              ? isWtd
+                ? `✅ 正确！切 ${picked ? tileLabel(picked) : ""} 是最优解`
+                : `✅ 正确！${isMi ? MENTSU_TYPE_LABEL[picked as MentsuType] : picked}`
+              : `❌ 应选：${correctLabelOf(q)}${!isMi && correct.length > 1 ? "（并列最优）" : ""}`}
           </div>
           <button type="button" className="act" onClick={() => setShowExp(true)}>
             查看讲解
@@ -105,44 +137,52 @@ function ExplanationDrawer({
   ok: boolean;
   onClose: () => void;
 }) {
+  // mi/wc 无切牌快照语义（web-v1.md §二.5a）：讲解只走文案与出处，不显示进张对比表
+  const showTable =
+    q.question_type === "what_to_discard" || q.question_type === "ukeire_compare";
   const cands = candidatesOf(q);
   const top = cands.slice(0, 8);
   const bestShanten = top[0]?.shanten_after ?? 0;
   const bestUkeire = top[0]?.ukeire_count ?? 0;
   const notes = (q.explanation.ukeire_table ?? []).filter((r) => r.note);
+  void picked;
 
   return (
     <>
       <div className="drawer-mask" onClick={onClose} />
       <div className="drawer">
         <button type="button" className="close" onClick={onClose}>关闭 ✕</button>
-        <h3>{ok ? "✅ 做对了，确认一下理由" : `📖 为什么切 ${q.answer.correct.map(tileLabel).join(" / ")}`}</h3>
+        <h3>{ok ? "✅ 做对了，确认一下理由" : `📖 为什么是 ${correctLabelOf(q)}`}</h3>
         <p style={{ lineHeight: 1.8, marginTop: 0 }}>{q.explanation.best}</p>
 
-        <h3>进张对比（前 8 候选）</h3>
-        <table className="cmp">
-          <thead>
-            <tr><th>切牌</th><th>切后</th><th>进张</th><th>进张种类</th></tr>
-          </thead>
-          <tbody>
-            {top.map((c) => {
-              const isBest = c.shanten_after === bestShanten && c.ukeire_count === bestUkeire;
-              const isMine = picked === c.discard;
-              return (
-                <tr key={c.discard} className={isMine ? "me" : undefined}>
-                  <td className={isBest ? "best" : undefined}>
-                    <Tile id={c.discard} size={22} /> {tileLabel(c.discard)}
-                  </td>
-                  <td>{c.shanten_after === 0 ? "听牌" : `${c.shanten_after} 向听`}</td>
-                  <td>{c.ukeire_count} 张</td>
-                  <td style={{ color: "var(--ink-dim)" }}>{tilesLabel(c.ukeire_tiles) || "—"}</td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-        {notes.length > 0 && (
-          <p className="meta">{notes.map((r) => `${tileLabel(r.discard)}：${r.note}`).join("；")}</p>
+        {showTable && (
+          <>
+            <h3>进张对比（前 8 候选）</h3>
+            <table className="cmp">
+              <thead>
+                <tr><th>切牌</th><th>切后</th><th>进张</th><th>进张种类</th></tr>
+              </thead>
+              <tbody>
+                {top.map((c) => {
+                  const isBest = c.shanten_after === bestShanten && c.ukeire_count === bestUkeire;
+                  const isMine = picked === c.discard;
+                  return (
+                    <tr key={c.discard} className={isMine ? "me" : undefined}>
+                      <td className={isBest ? "best" : undefined}>
+                        <Tile id={c.discard} size={22} /> {tileLabel(c.discard)}
+                      </td>
+                      <td>{c.shanten_after === 0 ? "听牌" : `${c.shanten_after} 向听`}</td>
+                      <td>{c.ukeire_count} 张</td>
+                      <td style={{ color: "var(--ink-dim)" }}>{tilesLabel(c.ukeire_tiles) || "—"}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+            {notes.length > 0 && (
+              <p className="meta">{notes.map((r) => `${tileLabel(r.discard)}：${r.note}`).join("；")}</p>
+            )}
+          </>
         )}
 
         <p className="meta">理论出处：{q.explanation.source}</p>

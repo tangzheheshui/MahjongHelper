@@ -212,7 +212,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T08:37:33.993Z"
+      "checked_at": "2026-09-02T13:55:07.544Z"
     }
   },
   {
@@ -443,7 +443,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T08:37:33.994Z"
+      "checked_at": "2026-09-02T13:55:07.544Z"
     }
   },
   {
@@ -701,7 +701,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T08:37:33.994Z"
+      "checked_at": "2026-09-02T13:55:07.544Z"
     }
   },
   {
@@ -956,7 +956,627 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T08:37:33.994Z"
+      "checked_at": "2026-09-02T13:55:07.545Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L5_005",
+    "level": "L5",
+    "knowledge_point": "听牌留法：两面 vs 双碰",
+    "question_type": "wait_choose",
+    "difficulty": "easy",
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "4p",
+      "5p",
+      "6p",
+      "9p",
+      "9p",
+      "2s",
+      "2s",
+      "3s",
+      "7s",
+      "8s",
+      "9s"
+    ],
+    "answer": {
+      "correct": [
+        "a"
+      ],
+      "options": [
+        {
+          "value": "a",
+          "label": "切 2条 · 留两面听",
+          "discard": "2s"
+        },
+        {
+          "value": "b",
+          "label": "切 3条 · 留双碰听",
+          "discard": "3s"
+        }
+      ]
+    },
+    "explanation": {
+      "best": "切 2条 留 23条 两面：听 1条/4条 8 张；切 3条 留 22条+99筒 双碰只有 4 张（每张各剩 2）。两面 8 > 双碰 4。",
+      "source": "79博客·牌效率13-19『一向听的牌理 / 听牌时的牌理』"
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T13:55:07.545Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L5_006",
+    "level": "L5",
+    "knowledge_point": "听牌留法：复合双读 vs 两面",
+    "question_type": "wait_choose",
+    "difficulty": "medium",
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "4p",
+      "5p",
+      "6p",
+      "5p",
+      "5p",
+      "7s",
+      "8s",
+      "9s",
+      "3s",
+      "4s",
+      "5s"
+    ],
+    "answer": {
+      "correct": [
+        "a"
+      ],
+      "options": [
+        {
+          "value": "a",
+          "label": "切 4筒 · 留复合听",
+          "discard": "4p"
+        },
+        {
+          "value": "b",
+          "label": "切 3条 · 留两面听",
+          "discard": "3s"
+        }
+      ]
+    },
+    "explanation": {
+      "best": "切 4筒（11 张）：筒子 45556 双读——55 雀头 + 56 搭，或 555 刻子 + 单骑 6，并起来等 4/6/7筒；切 3条 留 45条 两面只 8 张。复合读法的并集赢过单一两面。",
+      "source": "79博客·牌效率13-19『一向听的牌理 / 听牌时的牌理』"
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T13:55:07.545Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L5_007",
+    "level": "L5",
+    "knowledge_point": "听牌留法：亚两面 vs 单骑",
+    "question_type": "wait_choose",
+    "difficulty": "medium",
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "4m",
+      "5m",
+      "6m",
+      "9m",
+      "7p",
+      "8p",
+      "9p",
+      "3s",
+      "4s",
+      "5s",
+      "5s"
+    ],
+    "answer": {
+      "correct": [
+        "a"
+      ],
+      "options": [
+        {
+          "value": "a",
+          "label": "切 9万 · 留亚两面听",
+          "discard": "9m"
+        },
+        {
+          "value": "b",
+          "label": "切 5条 · 留单骑听",
+          "discard": "5s"
+        }
+      ]
+    },
+    "explanation": {
+      "best": "切 9万 留 3455条 亚两面：34 两面 + 55 雀头，等 2条（4 张）+ 5条（剩 2）共 6 张；切 5条 变 345 面子 + 单骑 9万 只 3 张。对子贴在端上，抽出来当雀头剩下的是两面。",
+      "source": "79博客·牌效率13-19『一向听的牌理 / 听牌时的牌理』"
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T13:55:07.545Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L5_008",
+    "level": "L5",
+    "knowledge_point": "听牌留法：单骑 vs 中膨重张",
+    "question_type": "wait_choose",
+    "difficulty": "medium",
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "4m",
+      "5m",
+      "6m",
+      "7p",
+      "8p",
+      "9p",
+      "4s",
+      "5s",
+      "5s",
+      "6s",
+      "9m"
+    ],
+    "answer": {
+      "correct": [
+        "a"
+      ],
+      "options": [
+        {
+          "value": "a",
+          "label": "切 5条 · 留单骑听",
+          "discard": "5s"
+        },
+        {
+          "value": "b",
+          "label": "切 9万 · 留中膨听",
+          "discard": "9m"
+        }
+      ]
+    },
+    "explanation": {
+      "best": "都听牌，比张数：切 5条 兑现 456条 面子、单骑 9万 3 张；切 9万 抱住 4556 中膨，55 雀 + 46 嵌只等 5条——自己拿着两张、外面剩 2。3 > 2，「浮牌先走」的口诀在这里输给尺子。",
+      "source": "79博客·牌效率13-19『一向听的牌理 / 听牌时的牌理』"
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T13:55:07.545Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L5_009",
+    "level": "L5",
+    "knowledge_point": "长连切法对比：端与腰",
+    "question_type": "ukeire_compare",
+    "difficulty": "hard",
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "4p",
+      "5p",
+      "6p",
+      "7s",
+      "8s",
+      "9s",
+      "3s",
+      "4s",
+      "5s",
+      "5s",
+      "6s"
+    ],
+    "answer": {
+      "correct": [
+        "5s"
+      ],
+      "options": [
+        {
+          "discard": "5s"
+        },
+        {
+          "discard": "6s"
+        }
+      ]
+    },
+    "explanation": {
+      "best": "切 5条 → 3456789 七连三面（3/6/9 各剩 3 共 9 张）；切 6条 把长连从腰上斩断只剩 6 张。长连的余牌永远从两端找。",
+      "source": "79博客·牌效率4-7『搭子理论 / 切牌选择的思考方法』"
+    },
+    "engine_snapshot": {
+      "shanten_before": 0,
+      "candidates": [
+        {
+          "discard": "5s",
+          "shanten_after": 0,
+          "ukeire_count": 9,
+          "ukeire_tiles": [
+            "3s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "9s",
+          "shanten_after": 0,
+          "ukeire_count": 9,
+          "ukeire_tiles": [
+            "2s",
+            "5s",
+            "8s"
+          ]
+        },
+        {
+          "discard": "6s",
+          "shanten_after": 0,
+          "ukeire_count": 6,
+          "ukeire_tiles": [
+            "2s",
+            "5s"
+          ]
+        },
+        {
+          "discard": "8s",
+          "shanten_after": 0,
+          "ukeire_count": 3,
+          "ukeire_tiles": [
+            "9s"
+          ]
+        },
+        {
+          "discard": "3s",
+          "shanten_after": 0,
+          "ukeire_count": 2,
+          "ukeire_tiles": [
+            "5s"
+          ]
+        },
+        {
+          "discard": "1m",
+          "shanten_after": 1,
+          "ukeire_count": 38,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "4p",
+          "shanten_after": 1,
+          "ukeire_count": 38,
+          "ukeire_tiles": [
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "6p",
+          "shanten_after": 1,
+          "ukeire_count": 38,
+          "ukeire_tiles": [
+            "3p",
+            "4p",
+            "5p",
+            "6p",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "2m",
+          "shanten_after": 1,
+          "ukeire_count": 34,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "3m",
+          "shanten_after": 1,
+          "ukeire_count": 34,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "5p",
+          "shanten_after": 1,
+          "ukeire_count": 34,
+          "ukeire_tiles": [
+            "4p",
+            "5p",
+            "6p",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "4s",
+          "shanten_after": 1,
+          "ukeire_count": 29,
+          "ukeire_tiles": [
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "7s",
+          "shanten_after": 1,
+          "ukeire_count": 25,
+          "ukeire_tiles": [
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T13:55:07.545Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L5_010",
+    "level": "L5",
+    "knowledge_point": "听牌选择：五连路 vs 双碰路",
+    "question_type": "what_to_discard",
+    "difficulty": "hard",
+    "hand": [
+      "2m",
+      "3m",
+      "4m",
+      "7m",
+      "8m",
+      "9m",
+      "1s",
+      "2s",
+      "3s",
+      "4s",
+      "5s",
+      "5s",
+      "9p",
+      "9p"
+    ],
+    "answer": {
+      "correct": [
+        "5s"
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "切 5条（7 张）：条子连成 12345 五连，听 3条/6条。切 1条/4条 转双碰（55条+99筒）只 4 张；切 99筒 退回一向听 29 张更是倒退。同是听牌，挑张数多的那条路。",
+      "source": "79博客·牌效率4-7『搭子理论 / 切牌选择的思考方法』"
+    },
+    "engine_snapshot": {
+      "shanten_before": 0,
+      "candidates": [
+        {
+          "discard": "5s",
+          "shanten_after": 0,
+          "ukeire_count": 7,
+          "ukeire_tiles": [
+            "3s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "1s",
+          "shanten_after": 0,
+          "ukeire_count": 4,
+          "ukeire_tiles": [
+            "9p",
+            "5s"
+          ]
+        },
+        {
+          "discard": "4s",
+          "shanten_after": 0,
+          "ukeire_count": 4,
+          "ukeire_tiles": [
+            "9p",
+            "5s"
+          ]
+        },
+        {
+          "discard": "9p",
+          "shanten_after": 1,
+          "ukeire_count": 29,
+          "ukeire_tiles": [
+            "7p",
+            "8p",
+            "9p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "2s",
+          "shanten_after": 1,
+          "ukeire_count": 25,
+          "ukeire_tiles": [
+            "9p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s"
+          ]
+        },
+        {
+          "discard": "2m",
+          "shanten_after": 1,
+          "ukeire_count": 19,
+          "ukeire_tiles": [
+            "2m",
+            "5m",
+            "9p",
+            "3s",
+            "5s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "4m",
+          "shanten_after": 1,
+          "ukeire_count": 19,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "9p",
+            "3s",
+            "5s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "9m",
+          "shanten_after": 1,
+          "ukeire_count": 19,
+          "ukeire_tiles": [
+            "6m",
+            "9m",
+            "9p",
+            "3s",
+            "5s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "3m",
+          "shanten_after": 1,
+          "ukeire_count": 15,
+          "ukeire_tiles": [
+            "3m",
+            "9p",
+            "3s",
+            "5s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "7m",
+          "shanten_after": 1,
+          "ukeire_count": 15,
+          "ukeire_tiles": [
+            "7m",
+            "9p",
+            "3s",
+            "5s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "8m",
+          "shanten_after": 1,
+          "ukeire_count": 15,
+          "ukeire_tiles": [
+            "8m",
+            "9p",
+            "3s",
+            "5s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "3s",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "9p",
+            "3s",
+            "5s",
+            "6s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T13:55:07.545Z"
     }
   }
 ]

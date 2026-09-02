@@ -15,5 +15,6 @@ export {
   verifyQuestionBank,
   buildSnapshot,
   buildVerified,
+  mentsuShapeOf,
 } from "./verify";
 export type { Question, VerifyResult, EngineSnapshot } from "./verify";

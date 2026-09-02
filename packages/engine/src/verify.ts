@@ -7,7 +7,7 @@
  */
 
 import { analyze14, bestDiscards, ENGINE_VERSION } from "./analyze";
-import { toCounts } from "./tiles";
+import { parseTile, toCounts } from "./tiles";
 
 /** 题库单题（校验所需的最小子集，完整 Schema 见 content/schema/，M3 落地） */
 export interface Question {
@@ -52,6 +52,31 @@ const QUESTION_TYPES = new Set([
   "wait_choose",
 ]);
 
+const MENTSU_TYPES = new Set(["ryanmen", "kanchan", "penchan", "pair"]);
+
+/**
+ * 两张牌的搭子形状分类（question-bank.md §三 细则）：
+ * 同花色数牌 n,n+1 且非 12/89 → ryanmen；12/89 → penchan；n,n+2 → kanchan；
+ * 同牌两张 → pair；跨花色 / 字牌 / 其他间距 → null（不构成搭子形状）。
+ */
+export function mentsuShapeOf(a: string, b: string): string | null {
+  if (a === b) return "pair";
+  let ia: number;
+  let ib: number;
+  try {
+    ia = parseTile(a);
+    ib = parseTile(b);
+  } catch {
+    return null;
+  }
+  if (ia >= 27 || ib >= 27 || Math.floor(ia / 9) !== Math.floor(ib / 9)) return null;
+  const lo = Math.min(ia, ib);
+  const d = Math.abs(ia - ib);
+  if (d === 1) return lo % 9 === 0 || lo % 9 === 7 ? "penchan" : "ryanmen";
+  if (d === 2) return "kanchan";
+  return null;
+}
+
 /** 生成 14 张手牌的引擎快照（question-bank.md §二 的 engine_snapshot 结构） */
 export function buildSnapshot(hand: string[]): EngineSnapshot {
   const a = analyze14(hand);
@@ -94,7 +119,10 @@ function checkCommon(q: Question, errors: string[]): 13 | 14 | null {
  *    否则判分会把并列正解标错——PRD A.3 #3）
  * - ukeire_compare：correct 与 options 均须是合法切牌、切后向听相同，
  *   且 correct 进张严格更多（进张并列的牌型不能出比较题）
- * - mentsu_identify / wait_choose：V1 仅做结构校验（题型语义校验 M3 随题库一起落地）
+ * - mentsu_identify：correct 每项 {tiles:[两张], type} 须形状与 type 一致、
+ *   且两张都在手牌内（2026-09-02 M3 落地语义校验）
+ * - wait_choose：options 绑定切牌，全部切后须 0 向听（听牌留法），
+ *   correct 须恰为「进张最多的留法」集合（并列全列，2026-09-02 M3 落地）
  */
 export function verifyQuestion(q: Question): VerifyResult {
   const errors: string[] = [];
@@ -149,9 +177,108 @@ export function verifyQuestion(q: Question): VerifyResult {
     }
   }
 
-  if (q.question_type === "mentsu_identify" || q.question_type === "wait_choose") {
-    if (q.answer.correct === undefined || q.answer.correct === null) {
-      errors.push(`${q.question_type} 缺少 answer.correct`);
+  if (q.question_type === "mentsu_identify") {
+    const correct = q.answer.correct;
+    if (!Array.isArray(correct) || correct.length === 0) {
+      errors.push("mentsu_identify 的 answer.correct 须为非空数组（{tiles,type}）");
+    } else {
+      let counts: number[] | null = null;
+      try {
+        counts = toCounts(q.hand);
+      } catch {
+        /* 手牌非法已由 checkCommon 记录 */
+      }
+      correct.forEach((raw, idx) => {
+        const c = raw as { tiles?: unknown; type?: unknown };
+        if (!c || !Array.isArray(c.tiles) || c.tiles.length !== 2 || !c.tiles.every((t) => typeof t === "string")) {
+          errors.push(`correct[${idx}] 须为 {tiles:[两张], type}`);
+          return;
+        }
+        if (typeof c.type !== "string" || !MENTSU_TYPES.has(c.type)) {
+          errors.push(`correct[${idx}] type 须为 ryanmen/kanchan/penchan/pair`);
+          return;
+        }
+        const [a, b] = c.tiles as [string, string];
+        const shape = mentsuShapeOf(a, b);
+        if (shape !== c.type) {
+          errors.push(`correct[${idx}] [${a} ${b}] 形状为 ${shape ?? "非搭子"}，与 type ${c.type} 不符`);
+        }
+        if (counts) {
+          try {
+            const inHand = a === b ? counts[parseTile(a)] >= 2 : counts[parseTile(a)] >= 1 && counts[parseTile(b)] >= 1;
+            if (!inHand) errors.push(`correct[${idx}] [${a} ${b}] 不在手牌内`);
+          } catch {
+            errors.push(`correct[${idx}] 牌张非法 [${a} ${b}]`);
+          }
+        }
+      });
+    }
+  }
+
+  if (q.question_type === "wait_choose") {
+    if (n !== 14) {
+      errors.push(`wait_choose 手牌须为 14 张，实际 ${n ?? "?"} 张`);
+    } else {
+      const opts = (q.answer.options ?? []) as { value?: unknown; label?: unknown; discard?: unknown }[];
+      const correct = q.answer.correct;
+      if (!Array.isArray(correct) || correct.length === 0 || !correct.every((x) => typeof x === "string")) {
+        errors.push("wait_choose 的 answer.correct 须为非空字符串数组（value 列表）");
+      } else if (opts.length < 2) {
+        errors.push("wait_choose 的 answer.options 须含 ≥2 个 {value,label,discard}");
+      } else {
+        const values = new Set<string>();
+        let structural = true;
+        for (const o of opts) {
+          if (typeof o?.value !== "string" || typeof o?.label !== "string" || typeof o?.discard !== "string") {
+            errors.push("wait_choose 的 options 每项须含 value/label/discard");
+            structural = false;
+            break;
+          }
+          if (values.has(o.value)) {
+            errors.push(`wait_choose 的 options value 重复: ${o.value}`);
+            structural = false;
+            break;
+          }
+          values.add(o.value);
+        }
+        if (structural) {
+          for (const v of correct as string[]) {
+            if (!values.has(v)) {
+              errors.push(`correct value "${v}" 不在 options 内`);
+              structural = false;
+            }
+          }
+        }
+        if (structural) {
+          const byDiscard = new Map(analyze14(q.hand).candidates.map((c) => [c.discard, c]));
+          const rows: { value: string; discard: string; shantenAfter: number; ukeireCount: number }[] = [];
+          for (const o of opts as { value: string; label: string; discard: string }[]) {
+            const c = byDiscard.get(o.discard);
+            if (!c) {
+              errors.push(`选项切牌 "${o.discard}" 不在手牌内`);
+              structural = false;
+              break;
+            }
+            rows.push({ value: o.value, discard: o.discard, shantenAfter: c.shantenAfter, ukeireCount: c.ukeireCount });
+          }
+          if (structural) {
+            const allTenpai = rows.every((r) => r.shantenAfter === 0);
+            if (!allTenpai) {
+              errors.push(
+                `听牌留法题的选项切后均须 0 向听，实际 [${rows.map((r) => `${r.value}:${r.shantenAfter}`).join(" ")}]`,
+              );
+            } else {
+              const max = Math.max(...rows.map((r) => r.ukeireCount));
+              const bestSet = new Set(rows.filter((r) => r.ukeireCount === max).map((r) => r.value));
+              const correctSet = new Set(correct as string[]);
+              const missing = [...bestSet].filter((v) => !correctSet.has(v));
+              const extra = [...correctSet].filter((v) => !bestSet.has(v));
+              if (missing.length) errors.push(`进张最多的留法未列全，缺 [${missing.join(" ")}]（并列必须全列）`);
+              if (extra.length) errors.push(`correct 含非最优留法 [${extra.join(" ")}]（进张未严格最多）`);
+            }
+          }
+        }
+      }
     }
   }
 

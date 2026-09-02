@@ -57,8 +57,19 @@
 |---|---|
 | `what_to_discard` | `{ correct: string[] }`（并列最优全列） |
 | `ukeire_compare` | `{ correct: ["3p"], options: [{discard:"3p"},{discard:"4p"}] }` |
-| `mentsu_identify` | `{ correct: [{tiles:["3p","4p"], type:"ryanmen"}] }` |
-| `wait_choose` | `{ correct: ["shanpon"], options: [...] }` |
+| `mentsu_identify` | `{ correct: [{tiles:["3p","5p"], type:"kanchan"}], options: null }`（交互见 web-v1.md §二.5a） |
+| `wait_choose` | `{ correct: ["a"], options: [{value:"a", label:"切2条·留两面听", discard:"2s"}, {value:"b", label:"切9筒·留双碰听", discard:"9p"}] }` |
+
+**mentsu_identify 细则（2026-09-02 定）**：题干指定类型（`knowledge_point` 对应），
+用户点两张、无序匹配。`type` ∈ `ryanmen`（两面，n,n+1 且 n∈2..7）/ `kanchan`（嵌张，
+n,n+2）/ `penchan`（边张，12 或 89）/ `pair`（对子）。verify 语义校验：枚举手牌中
+该类型全部合法两两组合，必须与 `correct` 组集合**完全一致**（多解漏列 = 拒绝入库）；
+出题建议该类型组合数 ≤3（组合爆炸的手牌不出识别题）。
+
+**wait_choose 细则（2026-09-02 定）**：听牌留法二选一，`options[].discard` 绑定切牌
+（UI 显示 label、判分用 value）。verify 语义校验：两选项切后均须 **0 向听**、
+`correct` 的进张**严格更多**（张数相同的留法并列 → 全列 value 或不出此题）；
+打点 / 安全差异不进判定，只进 `explanation.best`。
 
 ## 四、文件组织与版本
 
@@ -88,12 +99,26 @@ content/
 ⑥ 构建：build 脚本产出分片 + manifest → rsync 上服务器
 ```
 
-**出题辅助脚本（第②步，2026-09-02 补 refine）**：
+**出题辅助脚本（第②步）**：
 `probe` 确认一手已有的牌；`refine` 反向找——手牌「还差一点」时，
 给定目标 `best:9m`（唯一最优）/ `best:A;B`（恰好并列）/ `nobest:T`（T 不该最优），
 枚举单张替换的全部近邻并过引擎，返回满足目标、去重、带最优切张数差的候选，
 供人工挑选改编（只产候选不落库）。用法 `npm run bank:refine -- "<14张>" <目标>`，
 详见文件头注释。
+
+**采集器（2026-09-02 加，起步批起的主力出题法）**：
+`npx tsx content/build/harvest.ts [数量] [种子]` 随机发「无字牌 14 张」并用引擎过滤：
+最优切法 ≤2 种、正解非孤立牌（答案必须在块里）、同向听次优差 1~5 张（真二择）、
+全手孤立 ≤3。背景：手工拼「几副完成面子+赠品浮牌」的模板题正解太明显（用户反馈），
+实战型何切来自自然发牌——采集器模拟该来源，人工只做选题、定考点、写讲解。
+
+### 起步批（M3，2026-09-02 达标：28 → 70 题）
+
+七级各 10 题全达标，四种题型齐：what_to_discard 49 / ukeire_compare 10 /
+mentsu_identify 7 / wait_choose 4（≈ PRD 5.5 占比）。新增 42 题全部「块内抉择」：
+正解非孤立牌、次优进张差 ≤5 张（采集器 + 手工抉择型设计，见 §五）；
+mi/wc 两种题型的语义校验同批落地（verify CLI 拒绝类型标错 / 留法非最优）。
+bank_version `2026.09.2-pilot`。
 
 ### 试点批次（M2，2026-09-02 入库）
 
@@ -296,6 +321,9 @@ easy/medium 打底，四种题型按 §一 占比补齐。
 | L2 | 两嵌辨析：听牌形里的 135 是嵌张 + 雀头 | what_to_discard |
 | L2 | 浮牌价值梯度：端数 → 中张的舍弃顺序（字牌已去） | what_to_discard |
 | L2 | 雀头在与不在：一向听进张的转对组成 | what_to_discard |
+| L2 | **长连形的余张处理**（L2_010 起，采集型） | what_to_discard |
+| L3 | **复合群内外端：134556 切外不切内**（L3_009 起） | what_to_discard |
+| L7 | **三色竞争整序 / 对子群整序**（L7_005-010，采集型） | what_to_discard |
 | L2 | 向听数判读：搭子上限的修正（1 面子 + 4 搭 + 雀实为 2 向听） | （讲解引用） |
 | L3 | **四张复合形（帽子形）：112m 切重张即成面子**（L3_001） | what_to_discard |
 | L3 | **四连 + 对子复合：556p 的三面听结构**（L3_002） | what_to_discard |
@@ -321,6 +349,11 @@ easy/medium 打底，四种题型按 §一 占比补齐。
 | L5 | 好形 / 愚形一向听判别 | what_to_discard |
 | L5 | 听牌升级：嵌张听摸邻牌转两面 | what_to_discard |
 | L5 | 听牌张数公理：双碰 4 张 / 单骑 3 张 | ukeire_compare |
+| L5 | **听牌留法：两面 vs 双碰**（L5_005，wait_choose） | wait_choose |
+| L5 | **听牌留法：复合双读 vs 两面**（L5_006，wait_choose） | wait_choose |
+| L5 | **听牌留法：亚两面 vs 单骑**（L5_007，wait_choose） | wait_choose |
+| L5 | **听牌留法：单骑 vs 中膨重张**（L5_008，wait_choose） | wait_choose |
+| L5 | **同叠三切法：23345 型张数天差地别**（L3_007 起同族） | what_to_discard |
 | L6 | **不倒退原则：听牌 8 张不换一向听 39 张**（L6_001） | what_to_discard |
 | L6 | **倒退边界例：4 张听牌 vs 27 张一向听**（L6_002） | what_to_discard |
 | L6 | **引擎并列时看什么：单骑 3 张的安全度与改良**（L6_003） | what_to_discard |

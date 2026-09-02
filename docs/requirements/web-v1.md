@@ -96,6 +96,24 @@
 
 每关题量 8-12（PRD 5.4）；题库不足允许复用题目并提示「该关卡题库较少，可能复现」（PRD 6.4）。
 
+### 5a. 四种题型的作答交互（2026-09-02 定，M3 扩量先行）
+
+PRD 5.5 四种题型全部进关卡池；**水平测试抽题池保持只抽 `what_to_discard`**
+（定级要横向可比，何切是核心题型，见 `levels.ts` 现状）。
+
+| 题型 | 交互 | 判定 |
+|---|---|---|
+| `what_to_discard` | 手牌点 1 张即判（现状） | `correct` 数组包含（并列全对） |
+| `ukeire_compare` | 「二选一」切牌按钮（现状） | 单选 `discard` ∈ `correct` |
+| `mentsu_identify` | 题干指定搭子类型（两面 / 嵌张 / 边张 / 对子之一），手牌中**点选 2 张**提交 | 所选两张**无序**等于 `correct[].tiles` 任一组即对；该类型全部合法组合必须全列（否则点中合法组被判错） |
+| `wait_choose` | 听牌留法二选一：按钮文案 = `label`（如「切 2条 · 留两面」），判分用 `value` | 单选 `value` ∈ `correct`；两选项切后均须 0 向听，判定口径 = 进张张数（速度），打点差异只进讲解 |
+
+- `mentsu_identify` 的 V1 简化：只做「指定类型的识别」，不做 PRD 5.5 的「找出所有搭子
+  并分类」完整形态（多选 + 逐个分类交互 V2 再做）；识别出 35 与 53 的形状差异本身就在练分类。
+- 讲解抽屉对 `mentsu_identify` / `wait_choose` **不显示切牌进张对比表**（快照语义不匹配），
+  数字写进 `explanation.best` 文案；出处照常显示。
+- `engine_snapshot` 只对 `what_to_discard` / `ukeire_compare` 注入（verify CLI 现状，保持）。
+
 ### 6. 自测通道（M2 起固定）
 
 - **闭环冒烟**：`npx tsx apps/web/scripts/smoke-loop.ts` —— node 内存 localStorage 模拟

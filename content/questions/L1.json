@@ -172,7 +172,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T08:37:33.570Z"
+      "checked_at": "2026-09-02T13:55:07.085Z"
     }
   },
   {
@@ -356,7 +356,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T08:37:33.571Z"
+      "checked_at": "2026-09-02T13:55:07.086Z"
     }
   },
   {
@@ -549,7 +549,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T08:37:33.571Z"
+      "checked_at": "2026-09-02T13:55:07.086Z"
     }
   },
   {
@@ -749,7 +749,582 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T08:37:33.571Z"
+      "checked_at": "2026-09-02T13:55:07.086Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L1_005",
+    "level": "L1",
+    "knowledge_point": "搭子分类：两面搭的辨认",
+    "question_type": "mentsu_identify",
+    "difficulty": "easy",
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "4m",
+      "5m",
+      "6m",
+      "7p",
+      "8p",
+      "9p",
+      "4s",
+      "5s",
+      "6s",
+      "6s",
+      "9s"
+    ],
+    "answer": {
+      "correct": [
+        {
+          "tiles": [
+            "4s",
+            "5s"
+          ],
+          "type": "ryanmen"
+        }
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "4条5条 相邻、两头都有出路（等 3条/6条）——两面，四种搭子里进张最宽：2 种 8 张。",
+      "source": "79博客·麻雀的基础4「面子和搭子」"
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T13:55:07.086Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L1_006",
+    "level": "L1",
+    "knowledge_point": "搭子分类：边张搭的辨认",
+    "question_type": "mentsu_identify",
+    "difficulty": "easy",
+    "hand": [
+      "2m",
+      "3m",
+      "4m",
+      "5m",
+      "6m",
+      "7m",
+      "7p",
+      "8p",
+      "9p",
+      "1s",
+      "2s",
+      "5s",
+      "5s",
+      "9s"
+    ],
+    "answer": {
+      "correct": [
+        {
+          "tiles": [
+            "1s",
+            "2s"
+          ],
+          "type": "penchan"
+        }
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "1条2条 在数牌边端：只等 3条 一条路（4 张），第二头永远等不来——边张。",
+      "source": "79博客·麻雀的基础4「面子和搭子」"
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T13:55:07.086Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L1_007",
+    "level": "L1",
+    "knowledge_point": "搭子分类：对子的辨认",
+    "question_type": "mentsu_identify",
+    "difficulty": "easy",
+    "hand": [
+      "3m",
+      "4m",
+      "5m",
+      "6m",
+      "7m",
+      "8m",
+      "7p",
+      "8p",
+      "9p",
+      "1s",
+      "2s",
+      "7s",
+      "7s",
+      "9s"
+    ],
+    "answer": {
+      "correct": [
+        {
+          "tiles": [
+            "7s",
+            "7s"
+          ],
+          "type": "pair"
+        }
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "7条7条 完全相同的一对——对子。它身份特殊：既能当雀头，也能摸第三张升刻子。",
+      "source": "79博客·麻雀的基础4「面子和搭子」"
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T13:55:07.086Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L1_008",
+    "level": "L1",
+    "knowledge_point": "搭子分类：嵌张搭的辨认",
+    "question_type": "mentsu_identify",
+    "difficulty": "easy",
+    "hand": [
+      "3m",
+      "4m",
+      "5m",
+      "6m",
+      "7m",
+      "8m",
+      "1p",
+      "2p",
+      "3p",
+      "3s",
+      "5s",
+      "6s",
+      "6s",
+      "9s"
+    ],
+    "answer": {
+      "correct": [
+        {
+          "tiles": [
+            "3s",
+            "5s"
+          ],
+          "type": "kanchan"
+        }
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "3条5条 隔着一张，只等中间的 4条（4 张）——嵌张。别当成两面数成 8 张。",
+      "source": "79博客·麻雀的基础4「面子和搭子」"
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T13:55:07.086Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L1_009",
+    "level": "L1",
+    "knowledge_point": "重张识别：复合块里多出来的那张",
+    "question_type": "what_to_discard",
+    "difficulty": "medium",
+    "hand": [
+      "5m",
+      "5m",
+      "6m",
+      "7m",
+      "1p",
+      "2p",
+      "3p",
+      "4p",
+      "5p",
+      "6p",
+      "9s",
+      "9s",
+      "7s",
+      "8s"
+    ],
+    "answer": {
+      "correct": [
+        "5m",
+        "9s"
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "切 5万 或 9条 都对（并列，各 6 张）。5567万 里多的是一张 5万：切它 = 567万 成面子 + 99条 雀头 + 78条 两面；反过来切 9条，就轮到 55万 当雀头 + 67万 两面。两条路 6 张对 6 张完全对称，拆 8条 退回一向听（37 张）才是错。",
+      "source": "79博客·麻雀的基础8『基本形与复合型』"
+    },
+    "engine_snapshot": {
+      "shanten_before": 0,
+      "candidates": [
+        {
+          "discard": "5m",
+          "shanten_after": 0,
+          "ukeire_count": 6,
+          "ukeire_tiles": [
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "9s",
+          "shanten_after": 0,
+          "ukeire_count": 6,
+          "ukeire_tiles": [
+            "5m",
+            "8m"
+          ]
+        },
+        {
+          "discard": "8s",
+          "shanten_after": 1,
+          "ukeire_count": 37,
+          "ukeire_tiles": [
+            "3m",
+            "4m",
+            "5m",
+            "6m",
+            "7m",
+            "8m",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "7s",
+          "shanten_after": 1,
+          "ukeire_count": 33,
+          "ukeire_tiles": [
+            "3m",
+            "4m",
+            "5m",
+            "6m",
+            "7m",
+            "8m",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "6m",
+          "shanten_after": 1,
+          "ukeire_count": 29,
+          "ukeire_tiles": [
+            "5m",
+            "6m",
+            "7m",
+            "8m",
+            "9m",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "7m",
+          "shanten_after": 1,
+          "ukeire_count": 29,
+          "ukeire_tiles": [
+            "4m",
+            "5m",
+            "6m",
+            "7m",
+            "8m",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "1p",
+          "shanten_after": 1,
+          "ukeire_count": 23,
+          "ukeire_tiles": [
+            "5m",
+            "8m",
+            "1p",
+            "4p",
+            "7p",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "4p",
+          "shanten_after": 1,
+          "ukeire_count": 20,
+          "ukeire_tiles": [
+            "5m",
+            "8m",
+            "4p",
+            "7p",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "6p",
+          "shanten_after": 1,
+          "ukeire_count": 19,
+          "ukeire_tiles": [
+            "5m",
+            "8m",
+            "3p",
+            "6p",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "2p",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "5m",
+            "8m",
+            "2p",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "3p",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "5m",
+            "8m",
+            "3p",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "5p",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "5m",
+            "8m",
+            "5p",
+            "6s",
+            "9s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T13:55:07.086Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L1_010",
+    "level": "L1",
+    "knowledge_point": "完成块旁延伸张的价值：刻子跟班不是废牌",
+    "question_type": "what_to_discard",
+    "difficulty": "medium",
+    "hand": [
+      "4m",
+      "4m",
+      "4m",
+      "5m",
+      "1p",
+      "2p",
+      "3p",
+      "4p",
+      "5p",
+      "6p",
+      "7s",
+      "8s",
+      "9s",
+      "5s"
+    ],
+    "answer": {
+      "correct": [
+        "5s"
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "切 5条（11 张）。444万 后面跟着的 5万 不是废牌：摸 3万/6万 都能借刻子里的牌再拼一副 345/456，所以真正多余的是离所有块都远的 5条。切 5万 虽然也听牌，只剩单骑 3 张。",
+      "source": "79博客·麻雀的基础8『基本形与复合型』"
+    },
+    "engine_snapshot": {
+      "shanten_before": 0,
+      "candidates": [
+        {
+          "discard": "5s",
+          "shanten_after": 0,
+          "ukeire_count": 11,
+          "ukeire_tiles": [
+            "3m",
+            "5m",
+            "6m"
+          ]
+        },
+        {
+          "discard": "5m",
+          "shanten_after": 0,
+          "ukeire_count": 3,
+          "ukeire_tiles": [
+            "5s"
+          ]
+        },
+        {
+          "discard": "4m",
+          "shanten_after": 1,
+          "ukeire_count": 35,
+          "ukeire_tiles": [
+            "3m",
+            "4m",
+            "5m",
+            "6m",
+            "7m",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s"
+          ]
+        },
+        {
+          "discard": "1p",
+          "shanten_after": 1,
+          "ukeire_count": 25,
+          "ukeire_tiles": [
+            "3m",
+            "5m",
+            "6m",
+            "1p",
+            "4p",
+            "7p",
+            "5s"
+          ]
+        },
+        {
+          "discard": "8s",
+          "shanten_after": 1,
+          "ukeire_count": 25,
+          "ukeire_tiles": [
+            "3m",
+            "5m",
+            "6m",
+            "5s",
+            "6s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "9s",
+          "shanten_after": 1,
+          "ukeire_count": 25,
+          "ukeire_tiles": [
+            "3m",
+            "5m",
+            "6m",
+            "5s",
+            "6s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "4p",
+          "shanten_after": 1,
+          "ukeire_count": 22,
+          "ukeire_tiles": [
+            "3m",
+            "5m",
+            "6m",
+            "4p",
+            "7p",
+            "5s"
+          ]
+        },
+        {
+          "discard": "6p",
+          "shanten_after": 1,
+          "ukeire_count": 21,
+          "ukeire_tiles": [
+            "3m",
+            "5m",
+            "6m",
+            "3p",
+            "6p",
+            "5s"
+          ]
+        },
+        {
+          "discard": "2p",
+          "shanten_after": 1,
+          "ukeire_count": 18,
+          "ukeire_tiles": [
+            "3m",
+            "5m",
+            "6m",
+            "2p",
+            "5s"
+          ]
+        },
+        {
+          "discard": "3p",
+          "shanten_after": 1,
+          "ukeire_count": 18,
+          "ukeire_tiles": [
+            "3m",
+            "5m",
+            "6m",
+            "3p",
+            "5s"
+          ]
+        },
+        {
+          "discard": "5p",
+          "shanten_after": 1,
+          "ukeire_count": 18,
+          "ukeire_tiles": [
+            "3m",
+            "5m",
+            "6m",
+            "5p",
+            "5s"
+          ]
+        },
+        {
+          "discard": "7s",
+          "shanten_after": 1,
+          "ukeire_count": 18,
+          "ukeire_tiles": [
+            "3m",
+            "5m",
+            "6m",
+            "5s",
+            "7s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T13:55:07.086Z"
     }
   }
 ]

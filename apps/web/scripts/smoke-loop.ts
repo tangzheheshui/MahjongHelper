@@ -39,7 +39,8 @@ function check(name: string, cond: boolean, detail = "") {
 /* ---------- ① 题库加载（离线口径：IDB 缺席 → 内置题库） ---------- */
 console.log("① 题库加载（IndexedDB 缺席，走内置降级）");
 const bank = await loadBank();
-check("题库总量 28", bank.questions.length === 28, `${bank.questions.length} 题`);
+const builtin = (await import("../src/data/bank.json")).default as typeof bank;
+check("题库与内置产物一致", bank.questions.length === builtin.questions.length, `${bank.questions.length} 题`);
 check("bank_version 就位", bank.bank_version.startsWith("2026.09"), bank.bank_version);
 
 /* ---------- ② 出题：各级抽题 + 关卡补足 ---------- */
@@ -49,31 +50,38 @@ for (const lv of LEVELS) byLevel[lv] = questionsOf(bank, lv);
 check("L1-L7 全部有题", LEVELS.every((lv) => byLevel[lv].length > 0));
 for (const lv of LEVELS) {
   const { qs, reused } = pickStageQuestions(byLevel[lv]);
-  check(`${lv} 关卡凑满 8 题`, qs.length === 8, `库存 ${byLevel[lv].length}，复用=${reused}`);
+  check(`${lv} 关卡题量 8-12`, qs.length >= 8 && qs.length <= 12, `出 ${qs.length} 题，库存 ${byLevel[lv].length}，复用=${reused}`);
 }
 
 /* ---------- ③ 判分 + 讲解数据 ---------- */
 console.log("③ 判分与讲解（isCorrect / candidatesOf / shantenBefore）");
 for (const q of bank.questions) {
-  const right = q.answer.correct[0];
+  const hasSnapshot = q.question_type === "what_to_discard" || q.question_type === "ukeire_compare";
+  // 正解串按题型：mi 的用户答案是 type、其余是切牌 / value
+  const right =
+    q.question_type === "mentsu_identify"
+      ? (q.answer.correct as { type: string }[])[0].type
+      : (q.answer.correct as string[])[0];
   if (!isCorrect(q, right)) check(`${q.id} 正解判对`, false);
-  const wrong = q.engine_snapshot!.candidates.find((c) => !q.answer.correct.includes(c.discard))!.discard;
-  if (isCorrect(q, wrong)) check(`${q.id} 错解判错`, false, `误判 ${wrong}`);
-  const rows = candidatesOf(q);
-  // 排序契约：向听数升序为主键，同向听段内进张数降序，且首行必是正解
-  const sortedOk = rows.every(
-    (r, i) => i === 0
-      || r.shanten_after > rows[i - 1].shanten_after
-      || (r.shanten_after === rows[i - 1].shanten_after && r.ukeire_count <= rows[i - 1].ukeire_count),
-  );
-  // 何切题首行必是正解；对比题只要求正解项严格优于干扰项（verify CLI 口径）
-  const headOk = q.question_type === "ukeire_compare" || q.answer.correct.includes(rows[0].discard);
-  if (!(rows.length >= 3 && sortedOk && headOk)) {
-    check(`${q.id} 候选表可用且排序合规`, false, `${rows.length} 行`);
+  if (hasSnapshot) {
+    const wrong = q.engine_snapshot!.candidates.find((c) => !(q.answer.correct as string[]).includes(c.discard))!.discard;
+    if (isCorrect(q, wrong)) check(`${q.id} 错解判错`, false, `误判 ${wrong}`);
+    const rows = candidatesOf(q);
+    // 排序契约：向听数升序为主键，同向听段内进张数降序，且首行必是正解
+    const sortedOk = rows.every(
+      (r, i) => i === 0
+        || r.shanten_after > rows[i - 1].shanten_after
+        || (r.shanten_after === rows[i - 1].shanten_after && r.ukeire_count <= rows[i - 1].ukeire_count),
+    );
+    // 何切题首行必是正解；对比题只要求正解项严格优于干扰项（verify CLI 口径）
+    const headOk = q.question_type === "ukeire_compare" || (q.answer.correct as string[]).includes(rows[0].discard);
+    if (!(rows.length >= 3 && sortedOk && headOk)) {
+      check(`${q.id} 候选表可用且排序合规`, false, `${rows.length} 行`);
+    }
+    if (shantenBefore(q) < 0) check(`${q.id} 向听数异常`, false);
   }
-  if (shantenBefore(q) < 0) check(`${q.id} 向听数异常`, false);
 }
-check("28 题判分/讲解数据全部通过", true);
+check(`${bank.questions.length} 题判分/讲解数据全部通过`, true);
 
 /* ---------- ④ 结算与解锁（applyRunResult） ---------- */
 console.log("④ 结算与解锁（≥80% 达标）");

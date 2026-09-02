@@ -1,7 +1,7 @@
 /** 关卡结构与判分（PRD 5.2 七级分类、6.2 达标解锁、web-v1.md §二.5 抽题） */
 
 import { analyze14 } from "@nanikiru/engine";
-import type { Level, Question, UkeireRow } from "./types";
+import type { Level, MentsuAnswer, MentsuType, Question, UkeireRow, WaitOption } from "./types";
 import { LEVELS } from "./types";
 
 export interface LevelMeta {
@@ -25,9 +25,43 @@ export const STAGE_OF_LEVEL = "S1";
 
 export const PASS_RATE = 0.8;
 
-/** 判分（web-v1.md §二.2）：比对 answer.correct，不实时算引擎 */
+/** 搭子类型 → 中文（mentsu_identify 的选项与判分展示） */
+export const MENTSU_TYPE_LABEL: Record<MentsuType, string> = {
+  ryanmen: "两面",
+  kanchan: "嵌张",
+  penchan: "边张",
+  pair: "对子",
+};
+
+/** 判分（web-v1.md §二.2 / §二.5a）：比对 answer.correct，不实时算引擎。
+ *  wtd/uc 比切牌、wc 比 value、mi 比 {tiles,type} 的 type（两张由题目高亮固定）。 */
 export function isCorrect(q: Question, userAnswer: string): boolean {
-  return q.answer.correct.includes(userAnswer);
+  if (q.question_type === "mentsu_identify") {
+    return (q.answer.correct as MentsuAnswer[]).some((c) => c.type === userAnswer);
+  }
+  return (q.answer.correct as string[]).includes(userAnswer);
+}
+
+/** mentsu_identify 的高亮两张（题面固定展示，用户只选类型） */
+export function mentsuPairOf(q: Question): string[] {
+  if (q.question_type !== "mentsu_identify") return [];
+  return (q.answer.correct as MentsuAnswer[])[0]?.tiles ?? [];
+}
+
+/** 判分后的正确答案文案（verdict 行用）：切牌 / 类型 / 留法 label */
+export function correctLabelOf(q: Question): string {
+  if (q.question_type === "mentsu_identify") {
+    return (q.answer.correct as MentsuAnswer[])
+      .map((c) => `${tilesLabel(c.tiles)} = ${MENTSU_TYPE_LABEL[c.type]}`)
+      .join(" / ");
+  }
+  if (q.question_type === "wait_choose") {
+    const byValue = new Map(((q.answer.options as WaitOption[]) ?? []).map((o) => [o.value, o.label]));
+    return (q.answer.correct as string[])
+      .map((v) => byValue.get(v) ?? v)
+      .join(" / ");
+  }
+  return (q.answer.correct as string[]).map(tileLabel).join(" / ");
 }
 
 /** 讲解用候选表：优先 snapshot；缺失时引擎兜底（题库经 CLI 校验，正常不落此处） */
@@ -75,13 +109,24 @@ export function tilesLabel(ids: string[]): string {
   return ids.map(tileLabel).join(" ");
 }
 
-/** 关卡抽题：题量不足整关时循环复用至下限（试点期策略） */
-export function pickStageQuestions(all: Question[], min = 8): { qs: Question[]; reused: boolean } {
+/** Fisher–Yates 洗牌（原地） */
+function shuffle<T>(arr: T[], rand: () => number = Math.random): T[] {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+/** 关卡抽题（web-v1.md §二.5）：先洗牌再循环补足到下限——题序每次不同，
+ *  题量不足时的复用也从随机位置开始，避免连续两次进关看到同一顺序。 */
+export function pickStageQuestions(all: Question[], min = 8, rand: () => number = Math.random): { qs: Question[]; reused: boolean } {
   if (all.length === 0) return { qs: [], reused: false };
-  const qs = [...all];
+  const pool = shuffle([...all], rand);
+  const qs = [...pool];
   let i = 0;
-  while (qs.length < Math.min(min, 12) && all.length > 0) {
-    qs.push(all[i % all.length]);
+  while (qs.length < Math.min(min, 12)) {
+    qs.push(pool[i % pool.length]);
     i++;
   }
   return { qs, reused: all.length < min };

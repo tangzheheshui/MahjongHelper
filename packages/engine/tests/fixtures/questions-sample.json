@@ -67,12 +67,57 @@
   {
     "schema_version": 1,
     "id": "SAMPLE_006",
-    "level": "L1",
-    "knowledge_point": "听牌形式：两面听",
+    "level": "L5",
+    "knowledge_point": "听牌形式：两面 vs 双碰",
     "question_type": "wait_choose",
     "difficulty": "easy",
-    "hand": ["1m", "2m", "3m", "4m", "5m", "6m", "7s", "8s", "9s", "3p", "4p", "5s", "5s"],
-    "answer": { "correct": ["ryanmen"], "options": [{ "type": "ryanmen" }, { "type": "shanpon" }] },
-    "explanation": { "best": "3p4p 两面听 2 种 8 张。", "source": "测试样例" }
+    "hand": ["1m", "2m", "3m", "4p", "5p", "6p", "9p", "9p", "2s", "2s", "3s", "7s", "8s", "9s"],
+    "answer": {
+      "correct": ["a"],
+      "options": [
+        { "value": "a", "label": "切 2条 · 留两面听", "discard": "2s" },
+        { "value": "b", "label": "切 3条 · 留双碰听", "discard": "3s" }
+      ]
+    },
+    "explanation": { "best": "切 2条 留 23条 两面，听 1条/4条 8 张；切 3条 留 22条+99筒 双碰只 4 张。", "source": "测试样例" }
+  },
+  {
+    "schema_version": 1,
+    "id": "SAMPLE_007",
+    "level": "L1",
+    "knowledge_point": "搭子分类：嵌张的辨认",
+    "question_type": "mentsu_identify",
+    "difficulty": "easy",
+    "hand": ["1m", "2m", "3m", "4m", "5m", "6m", "1p", "7p", "8p", "9p", "3s", "5s", "7s", "7s"],
+    "answer": { "correct": [{ "tiles": ["3s", "5s"], "type": "kanchan" }], "options": null },
+    "explanation": { "best": "3条5条 隔着一张，只等 4条——嵌张。", "source": "测试样例" }
+  },
+  {
+    "schema_version": 1,
+    "id": "SAMPLE_008",
+    "level": "L1",
+    "knowledge_point": "反例：类型标错（嵌张写成两面）",
+    "question_type": "mentsu_identify",
+    "difficulty": "easy",
+    "hand": ["1m", "2m", "3m", "4m", "5m", "6m", "1p", "7p", "8p", "9p", "3s", "5s", "7s", "7s"],
+    "answer": { "correct": [{ "tiles": ["3s", "5s"], "type": "ryanmen" }], "options": null },
+    "explanation": { "best": "（故意标错：3s5s 形状是 kanchan）", "source": "测试反例" }
+  },
+  {
+    "schema_version": 1,
+    "id": "SAMPLE_009",
+    "level": "L5",
+    "knowledge_point": "反例：留法进张未严格最多",
+    "question_type": "wait_choose",
+    "difficulty": "easy",
+    "hand": ["1m", "2m", "3m", "4p", "5p", "6p", "9p", "9p", "2s", "2s", "3s", "7s", "8s", "9s"],
+    "answer": {
+      "correct": ["b"],
+      "options": [
+        { "value": "a", "label": "切 2条 · 留两面听", "discard": "2s" },
+        { "value": "b", "label": "切 3条 · 留双碰听", "discard": "3s" }
+      ]
+    },
+    "explanation": { "best": "（故意选错：b 双碰 4 张 < a 两面 8 张）", "source": "测试反例" }
   }
 ]

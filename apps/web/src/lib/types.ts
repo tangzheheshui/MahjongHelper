@@ -5,6 +5,21 @@ export const LEVELS: Level[] = ["L1", "L2", "L3", "L4", "L5", "L6", "L7"];
 
 export type QuestionType = "what_to_discard" | "ukeire_compare" | "mentsu_identify" | "wait_choose";
 
+/** 搭子类型（mentsu_identify，question-bank.md §三 细则） */
+export type MentsuType = "ryanmen" | "kanchan" | "penchan" | "pair";
+
+export interface MentsuAnswer {
+  tiles: string[];
+  type: MentsuType;
+}
+
+/** wait_choose 的选项（web-v1.md §二.5a）：label 展示、value 判分、discard 绑定切牌 */
+export interface WaitOption {
+  value: string;
+  label: string;
+  discard?: string;
+}
+
 export interface UkeireRow {
   discard: string;
   shanten_after: number;
@@ -21,8 +36,9 @@ export interface Question {
   difficulty: "easy" | "medium" | "hard";
   hand: string[];
   answer: {
-    correct: string[];
-    options?: { discard?: string }[] | null;
+    /** wtd/uc/wc：切牌或 value 字符串；mi：{tiles,type} 数组 */
+    correct: string[] | MentsuAnswer[];
+    options?: { discard?: string }[] | WaitOption[] | null;
   };
   engine_snapshot?: {
     shanten_before: number;

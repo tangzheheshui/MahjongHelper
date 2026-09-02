@@ -184,7 +184,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T08:37:33.867Z"
+      "checked_at": "2026-09-02T13:55:07.422Z"
     }
   },
   {
@@ -421,7 +421,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T08:37:33.867Z"
+      "checked_at": "2026-09-02T13:55:07.422Z"
     }
   },
   {
@@ -603,7 +603,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T08:37:33.867Z"
+      "checked_at": "2026-09-02T13:55:07.423Z"
     }
   },
   {
@@ -810,7 +810,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T08:37:33.867Z"
+      "checked_at": "2026-09-02T13:55:07.423Z"
     }
   },
   {
@@ -1043,7 +1043,1096 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T08:37:33.868Z"
+      "checked_at": "2026-09-02T13:55:07.423Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L4_006",
+    "level": "L4",
+    "knowledge_point": "对子过剩：三对挤位，拆中间",
+    "question_type": "what_to_discard",
+    "difficulty": "hard",
+    "hand": [
+      "3m",
+      "4m",
+      "5m",
+      "7m",
+      "8m",
+      "9m",
+      "2p",
+      "2p",
+      "4p",
+      "4p",
+      "6p",
+      "6p",
+      "7s",
+      "8s"
+    ],
+    "answer": {
+      "correct": [
+        "4p"
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "切 4筒（20 张）。22/44/66 三对挤在一起，雀头只要一个：拆中间对子的一张，余下 24/46 都能接新搭（2,3,5,6筒 全是路）；拆边上的 2筒/6筒 掉到 16 张，拆 78条 两面只剩 14 张。",
+      "source": "79博客·牌效率4-7『搭子理论 / 切牌选择的思考方法』"
+    },
+    "engine_snapshot": {
+      "shanten_before": 1,
+      "candidates": [
+        {
+          "discard": "4p",
+          "shanten_after": 1,
+          "ukeire_count": 20,
+          "ukeire_tiles": [
+            "2p",
+            "3p",
+            "5p",
+            "6p",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "2p",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "3p",
+            "4p",
+            "6p",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "6p",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "2p",
+            "4p",
+            "5p",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "7s",
+          "shanten_after": 1,
+          "ukeire_count": 14,
+          "ukeire_tiles": [
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "6p"
+          ]
+        },
+        {
+          "discard": "8s",
+          "shanten_after": 1,
+          "ukeire_count": 14,
+          "ukeire_tiles": [
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "6p"
+          ]
+        },
+        {
+          "discard": "3m",
+          "shanten_after": 2,
+          "ukeire_count": 30,
+          "ukeire_tiles": [
+            "3m",
+            "6m",
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "6p",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "5m",
+          "shanten_after": 2,
+          "ukeire_count": 30,
+          "ukeire_tiles": [
+            "2m",
+            "5m",
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "6p",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "9m",
+          "shanten_after": 2,
+          "ukeire_count": 30,
+          "ukeire_tiles": [
+            "6m",
+            "9m",
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "6p",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "4m",
+          "shanten_after": 2,
+          "ukeire_count": 26,
+          "ukeire_tiles": [
+            "4m",
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "6p",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "7m",
+          "shanten_after": 2,
+          "ukeire_count": 26,
+          "ukeire_tiles": [
+            "7m",
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "6p",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "8m",
+          "shanten_after": 2,
+          "ukeire_count": 26,
+          "ukeire_tiles": [
+            "8m",
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "6p",
+            "6s",
+            "9s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T13:55:07.423Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L4_007",
+    "level": "L4",
+    "knowledge_point": "愚形双嵌让位：拆窄头保两面",
+    "question_type": "what_to_discard",
+    "difficulty": "hard",
+    "hand": [
+      "2m",
+      "3m",
+      "4m",
+      "5m",
+      "6m",
+      "7m",
+      "5p",
+      "5p",
+      "1s",
+      "3s",
+      "4s",
+      "6s",
+      "4p",
+      "5p"
+    ],
+    "answer": {
+      "correct": [
+        "1s",
+        "6s"
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "切 1条 或 6条（并列 25 张）。13条、46条 两个嵌张搭子和 45筒 两面抢位子，嵌张先离场——且拆外头（1/6）留下内端联络更宽。拆 45筒 两面掉到 20 张，方向反了。",
+      "source": "79博客·牌效率4-7『搭子理论 / 切牌选择的思考方法』"
+    },
+    "engine_snapshot": {
+      "shanten_before": 1,
+      "candidates": [
+        {
+          "discard": "1s",
+          "shanten_after": 1,
+          "ukeire_count": 25,
+          "ukeire_tiles": [
+            "3p",
+            "4p",
+            "6p",
+            "2s",
+            "3s",
+            "5s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "6s",
+          "shanten_after": 1,
+          "ukeire_count": 25,
+          "ukeire_tiles": [
+            "3p",
+            "4p",
+            "6p",
+            "1s",
+            "2s",
+            "4s",
+            "5s"
+          ]
+        },
+        {
+          "discard": "4p",
+          "shanten_after": 1,
+          "ukeire_count": 20,
+          "ukeire_tiles": [
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "3s",
+          "shanten_after": 1,
+          "ukeire_count": 18,
+          "ukeire_tiles": [
+            "3p",
+            "4p",
+            "6p",
+            "1s",
+            "5s"
+          ]
+        },
+        {
+          "discard": "4s",
+          "shanten_after": 1,
+          "ukeire_count": 18,
+          "ukeire_tiles": [
+            "3p",
+            "4p",
+            "6p",
+            "2s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "5p",
+          "shanten_after": 1,
+          "ukeire_count": 8,
+          "ukeire_tiles": [
+            "2s",
+            "5s"
+          ]
+        },
+        {
+          "discard": "2m",
+          "shanten_after": 2,
+          "ukeire_count": 54,
+          "ukeire_tiles": [
+            "2m",
+            "3m",
+            "4m",
+            "5m",
+            "6m",
+            "7m",
+            "8m",
+            "3p",
+            "4p",
+            "6p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "7m",
+          "shanten_after": 2,
+          "ukeire_count": 54,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "5m",
+            "6m",
+            "7m",
+            "3p",
+            "4p",
+            "6p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "4m",
+          "shanten_after": 2,
+          "ukeire_count": 45,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "3p",
+            "4p",
+            "6p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "5m",
+          "shanten_after": 2,
+          "ukeire_count": 45,
+          "ukeire_tiles": [
+            "5m",
+            "6m",
+            "7m",
+            "8m",
+            "3p",
+            "4p",
+            "6p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "3m",
+          "shanten_after": 2,
+          "ukeire_count": 44,
+          "ukeire_tiles": [
+            "2m",
+            "3m",
+            "4m",
+            "7m",
+            "3p",
+            "4p",
+            "6p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "6m",
+          "shanten_after": 2,
+          "ukeire_count": 44,
+          "ukeire_tiles": [
+            "2m",
+            "5m",
+            "6m",
+            "7m",
+            "3p",
+            "4p",
+            "6p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T13:55:07.423Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L4_008",
+    "level": "L4",
+    "knowledge_point": "对子过剩：重叠处合并",
+    "question_type": "what_to_discard",
+    "difficulty": "hard",
+    "hand": [
+      "4m",
+      "4m",
+      "7m",
+      "8m",
+      "9m",
+      "5p",
+      "5p",
+      "6p",
+      "7p",
+      "2p",
+      "2p",
+      "3s",
+      "3s",
+      "2s"
+    ],
+    "answer": {
+      "correct": [
+        "5p"
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "切 5筒（14 张）。四对（44万 55筒 22筒 33条）+ 一副面子：5567筒 是唯一的重叠处——切 5筒 直接换回 567筒 完整面子，三对一个不丢。纯对子（44万 22筒）拆了没救退两向听，33条 带 2条 有连也别先动（12 张次优）。",
+      "source": "79博客·牌效率4-7『搭子理论 / 切牌选择的思考方法』"
+    },
+    "engine_snapshot": {
+      "shanten_before": 1,
+      "candidates": [
+        {
+          "discard": "5p",
+          "shanten_after": 1,
+          "ukeire_count": 14,
+          "ukeire_tiles": [
+            "4m",
+            "2p",
+            "1s",
+            "3s",
+            "4s"
+          ]
+        },
+        {
+          "discard": "3s",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "4m",
+            "2p",
+            "1s",
+            "4s"
+          ]
+        },
+        {
+          "discard": "2s",
+          "shanten_after": 1,
+          "ukeire_count": 6,
+          "ukeire_tiles": [
+            "4m",
+            "2p",
+            "3s"
+          ]
+        },
+        {
+          "discard": "4m",
+          "shanten_after": 2,
+          "ukeire_count": 58,
+          "ukeire_tiles": [
+            "2m",
+            "3m",
+            "4m",
+            "5m",
+            "6m",
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "8p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s"
+          ]
+        },
+        {
+          "discard": "2p",
+          "shanten_after": 2,
+          "ukeire_count": 46,
+          "ukeire_tiles": [
+            "4m",
+            "1p",
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "8p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s"
+          ]
+        },
+        {
+          "discard": "7p",
+          "shanten_after": 2,
+          "ukeire_count": 24,
+          "ukeire_tiles": [
+            "4m",
+            "2p",
+            "4p",
+            "5p",
+            "7p",
+            "1s",
+            "3s",
+            "4s"
+          ]
+        },
+        {
+          "discard": "9m",
+          "shanten_after": 2,
+          "ukeire_count": 22,
+          "ukeire_tiles": [
+            "4m",
+            "6m",
+            "9m",
+            "2p",
+            "1s",
+            "3s",
+            "4s"
+          ]
+        },
+        {
+          "discard": "6p",
+          "shanten_after": 2,
+          "ukeire_count": 20,
+          "ukeire_tiles": [
+            "4m",
+            "2p",
+            "5p",
+            "6p",
+            "1s",
+            "3s",
+            "4s"
+          ]
+        },
+        {
+          "discard": "7m",
+          "shanten_after": 2,
+          "ukeire_count": 18,
+          "ukeire_tiles": [
+            "4m",
+            "7m",
+            "2p",
+            "1s",
+            "3s",
+            "4s"
+          ]
+        },
+        {
+          "discard": "8m",
+          "shanten_after": 2,
+          "ukeire_count": 18,
+          "ukeire_tiles": [
+            "4m",
+            "8m",
+            "2p",
+            "1s",
+            "3s",
+            "4s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T13:55:07.423Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L4_009",
+    "level": "L4",
+    "knowledge_point": "块满并列：多余张与浮牌等价",
+    "question_type": "what_to_discard",
+    "difficulty": "medium",
+    "hand": [
+      "4m",
+      "5m",
+      "6m",
+      "8m",
+      "3p",
+      "4p",
+      "7p",
+      "7p",
+      "3s",
+      "4s",
+      "6s",
+      "7s",
+      "8s",
+      "9s"
+    ],
+    "answer": {
+      "correct": [
+        "8m",
+        "6s",
+        "9s"
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "切 8万、6条、9条 都对（并列 16 张）。位子已满：456万、34筒、34条、5678条 四连——四连只占一个面子位，多出来的 6条/9条 和 8万 一样是「第 13 张」。还在干活的 34条 拆了掉 12 张。",
+      "source": "79博客·牌效率4-7『搭子理论 / 切牌选择的思考方法』"
+    },
+    "engine_snapshot": {
+      "shanten_before": 1,
+      "candidates": [
+        {
+          "discard": "8m",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "2p",
+            "5p",
+            "2s",
+            "5s"
+          ]
+        },
+        {
+          "discard": "6s",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "2p",
+            "5p",
+            "2s",
+            "5s"
+          ]
+        },
+        {
+          "discard": "9s",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "2p",
+            "5p",
+            "2s",
+            "5s"
+          ]
+        },
+        {
+          "discard": "3s",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "2p",
+            "5p",
+            "5s"
+          ]
+        },
+        {
+          "discard": "3p",
+          "shanten_after": 2,
+          "ukeire_count": 69,
+          "ukeire_tiles": [
+            "3m",
+            "6m",
+            "7m",
+            "8m",
+            "9m",
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "4p",
+          "shanten_after": 2,
+          "ukeire_count": 69,
+          "ukeire_tiles": [
+            "3m",
+            "6m",
+            "7m",
+            "8m",
+            "9m",
+            "1p",
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "7p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "4s",
+          "shanten_after": 2,
+          "ukeire_count": 59,
+          "ukeire_tiles": [
+            "3m",
+            "6m",
+            "7m",
+            "8m",
+            "9m",
+            "2p",
+            "5p",
+            "7p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "7p",
+          "shanten_after": 2,
+          "ukeire_count": 31,
+          "ukeire_tiles": [
+            "8m",
+            "2p",
+            "5p",
+            "7p",
+            "2s",
+            "3s",
+            "5s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "4m",
+          "shanten_after": 2,
+          "ukeire_count": 24,
+          "ukeire_tiles": [
+            "4m",
+            "7m",
+            "2p",
+            "5p",
+            "2s",
+            "5s"
+          ]
+        },
+        {
+          "discard": "5m",
+          "shanten_after": 2,
+          "ukeire_count": 24,
+          "ukeire_tiles": [
+            "5m",
+            "7m",
+            "2p",
+            "5p",
+            "2s",
+            "5s"
+          ]
+        },
+        {
+          "discard": "6m",
+          "shanten_after": 2,
+          "ukeire_count": 24,
+          "ukeire_tiles": [
+            "3m",
+            "6m",
+            "2p",
+            "5p",
+            "2s",
+            "5s"
+          ]
+        },
+        {
+          "discard": "7s",
+          "shanten_after": 2,
+          "ukeire_count": 20,
+          "ukeire_tiles": [
+            "2p",
+            "5p",
+            "2s",
+            "5s",
+            "7s"
+          ]
+        },
+        {
+          "discard": "8s",
+          "shanten_after": 2,
+          "ukeire_count": 20,
+          "ukeire_tiles": [
+            "2p",
+            "5p",
+            "2s",
+            "5s",
+            "8s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T13:55:07.423Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L4_010",
+    "level": "L4",
+    "knowledge_point": "拆搭对比：嵌张 vs 两面",
+    "question_type": "ukeire_compare",
+    "difficulty": "medium",
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "5m",
+      "6m",
+      "7m",
+      "2p",
+      "4p",
+      "6p",
+      "6p",
+      "3s",
+      "4s",
+      "7s",
+      "8s"
+    ],
+    "answer": {
+      "correct": [
+        "2p"
+      ],
+      "options": [
+        {
+          "discard": "2p"
+        },
+        {
+          "discard": "3s"
+        }
+      ]
+    },
+    "explanation": {
+      "best": "切 2筒 16 张（2/5/6/9条 各 4 张），切 3条 12 张——24筒 嵌张让位，34条/78条 两个两面全保。",
+      "source": "79博客·牌效率4-7『搭子理论 / 切牌选择的思考方法』"
+    },
+    "engine_snapshot": {
+      "shanten_before": 1,
+      "candidates": [
+        {
+          "discard": "2p",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "2s",
+            "5s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "4p",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "2s",
+            "5s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "3s",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "3p",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "4s",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "3p",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "7s",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "3p",
+            "2s",
+            "5s"
+          ]
+        },
+        {
+          "discard": "8s",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "3p",
+            "2s",
+            "5s"
+          ]
+        },
+        {
+          "discard": "6p",
+          "shanten_after": 2,
+          "ukeire_count": 45,
+          "ukeire_tiles": [
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "6p",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "1m",
+          "shanten_after": 2,
+          "ukeire_count": 28,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "3p",
+            "2s",
+            "5s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "5m",
+          "shanten_after": 2,
+          "ukeire_count": 28,
+          "ukeire_tiles": [
+            "5m",
+            "8m",
+            "3p",
+            "2s",
+            "5s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "7m",
+          "shanten_after": 2,
+          "ukeire_count": 28,
+          "ukeire_tiles": [
+            "4m",
+            "7m",
+            "3p",
+            "2s",
+            "5s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "2m",
+          "shanten_after": 2,
+          "ukeire_count": 24,
+          "ukeire_tiles": [
+            "2m",
+            "3p",
+            "2s",
+            "5s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "3m",
+          "shanten_after": 2,
+          "ukeire_count": 24,
+          "ukeire_tiles": [
+            "3m",
+            "3p",
+            "2s",
+            "5s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "6m",
+          "shanten_after": 2,
+          "ukeire_count": 24,
+          "ukeire_tiles": [
+            "6m",
+            "3p",
+            "2s",
+            "5s",
+            "6s",
+            "9s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-02T13:55:07.424Z"
     }
   }
 ]
