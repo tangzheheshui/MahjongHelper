@@ -15,7 +15,12 @@ export function Home() {
     loadBank().then(setBank);
   }, []);
 
+  /** 自测期关卡全开（web-v1.md §一，2026-09-02 用户裁定）：网页自测不做解锁门槛；
+   *  达标解锁逻辑（applyRunResult）保留仅旁路——上线前翻回 false 恢复门控。 */
+  const ALL_LEVELS_OPEN = true;
+
   function unlocked(lv: Level): boolean {
+    if (ALL_LEVELS_OPEN) return true;
     if (lv === "L1") return true;
     return progress.levels[lv]?.unlocked === true;
   }
