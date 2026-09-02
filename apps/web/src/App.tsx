@@ -8,6 +8,7 @@ import { Result } from "./pages/Result";
 import { WrongBook } from "./pages/WrongBook";
 import { Placement } from "./pages/Placement";
 import { Settings } from "./pages/Settings";
+import { Drill } from "./pages/Drill";
 
 export function App() {
   // 启动静默检查题库增量更新（PRD 6.4）：失败无提示保留本地；成功已刷新题库缓存
@@ -30,6 +31,7 @@ export function App() {
       <main className="page">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/drill/:kp" element={<Drill />} />
           <Route path="/quiz/:level/:stage" element={<Quiz />} />
           <Route path="/result/:level/:stage" element={<Result />} />
           <Route path="/wrong-book" element={<WrongBook />} />

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { loadBank, questionsOf } from "../lib/bank";
 import { LEVEL_META, STAGE_OF_LEVEL } from "../lib/levels";
@@ -24,6 +24,20 @@ export function Home() {
     if (lv === "L1") return true;
     return progress.levels[lv]?.unlocked === true;
   }
+
+  /** 知识点索引：按级分组，点进 /drill/:kp 专项训练（web-v1.md §一） */
+  const kpIndex = useMemo(() => {
+    if (!bank) return [] as { level: Level; name: string; kps: { kp: string; n: number }[] }[];
+    return LEVELS.map((lv) => {
+      const counts = new Map<string, number>();
+      for (const q of questionsOf(bank, lv)) counts.set(q.knowledge_point, (counts.get(q.knowledge_point) ?? 0) + 1);
+      return {
+        level: lv,
+        name: LEVEL_META[lv].name,
+        kps: [...counts.entries()].map(([kp, n]) => ({ kp, n })).sort((a, b) => b.n - a.n),
+      };
+    }).filter((g) => g.kps.length > 0);
+  }, [bank]);
 
   return (
     <div>
@@ -60,6 +74,28 @@ export function Home() {
           );
         })}
       </div>
+
+      {kpIndex.length > 0 && (
+        <section className="panel" style={{ marginTop: 16 }}>
+          <h2 style={{ fontSize: 16, margin: "0 0 6px" }}>知识点专项训练</h2>
+          <p className="meta" style={{ margin: "0 0 8px" }}>按考点单独练：错题照记错题本，不计关卡进度。</p>
+          {kpIndex.map((g) => (
+            <details key={g.level} style={{ marginBottom: 4 }}>
+              <summary style={{ cursor: "pointer" }}>
+                <b>{g.level}</b> {g.name}（{g.kps.length} 个考点）
+              </summary>
+              <ul style={{ margin: "6px 0 0", paddingLeft: 18, lineHeight: 1.9 }}>
+                {g.kps.map(({ kp, n }) => (
+                  <li key={kp}>
+                    <Link to={`/drill/${encodeURIComponent(kp)}`}>{kp}</Link>
+                    <span className="meta">（{n} 题）</span>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ))}
+        </section>
+      )}
 
       <p className="meta" style={{ textAlign: "center" }}>
         {bank ? `题库版本 ${bank.bank_version}` : "题库加载中…"}
