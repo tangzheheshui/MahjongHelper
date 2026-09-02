@@ -88,11 +88,19 @@ content/
 ⑥ 构建：build 脚本产出分片 + manifest → rsync 上服务器
 ```
 
+**出题辅助脚本（第②步，2026-09-02 补 refine）**：
+`probe` 确认一手已有的牌；`refine` 反向找——手牌「还差一点」时，
+给定目标 `best:9m`（唯一最优）/ `best:A;B`（恰好并列）/ `nobest:T`（T 不该最优），
+枚举单张替换的全部近邻并过引擎，返回满足目标、去重、带最优切张数差的候选，
+供人工挑选改编（只产候选不落库）。用法 `npm run bank:refine -- "<14张>" <目标>`，
+详见文件头注释。
+
 ### 试点批次（M2，2026-09-02 入库）
 
 首批 **28 题**（L1×4 / L2×4 / L3×4 / L4×5 / L5×4 / L6×3 / L7×4）全过 verify CLI，
 `engine_snapshot` 已由 `--write` 注入，bank_version `2026.09.0-pilot`。
-出题工具链实测可用：`content/build/probe.ts`（探引擎数字）→ 写 `content/questions/LX.json`
+出题工具链实测可用：`content/build/probe.ts`（探引擎数字）、
+`content/build/refine.ts`（反向搜牌，M3 加）→ 写 `content/questions/LX.json`
 → `npx tsx packages/engine/bin/verify.ts content/questions/*.json --write` →
 `node content/build/roll-bank.mjs`（产出 `apps/web/src/data/bank.json`）。
 

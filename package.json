@@ -13,6 +13,7 @@
     "bank:roll": "node content/build/roll-bank.mjs",
     "bank:publish": "node content/build/publish.mjs",
     "bank:dist": "node content/build/report-distribution.mjs",
+    "bank:refine": "tsx content/build/refine.ts",
     "bank:verify": "tsx packages/engine/bin/verify.ts content/questions",
     "e2e:bank": "tsx apps/web/scripts/e2e-bank.ts",
     "e2e:update": "tsx apps/web/scripts/e2e-update.ts",
