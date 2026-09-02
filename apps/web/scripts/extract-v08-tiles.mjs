@@ -1,5 +1,5 @@
 /**
- * 一次性代码生成：从 docs/design/tile-samples-v0.8.html 提取「行楷萬子 + 索子」牌面，
+ * 一次性代码生成：从同目录 tile-samples-v0.8.html 提取「行楷萬子 + 索子」牌面，
  * 产出 apps/web/src/tiles/v08-faces.ts（占位皮肤万/条直接渲染这份定稿素材）。
  *
  * 用法：node apps/web/scripts/extract-v08-tiles.mjs
@@ -12,7 +12,7 @@ import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "../../..");
-const html = readFileSync(resolve(root, "docs/design/tile-samples-v0.8.html"), "utf8");
+const html = readFileSync(resolve(dirname(fileURLToPath(import.meta.url)), "tile-samples-v0.8.html"), "utf8");
 
 const symbolRe = /<symbol id="([ws])-(\d)([ms])" viewBox="0 0 120 180">([\s\S]*?)<\/symbol>/g;
 const faces = {};
@@ -38,7 +38,7 @@ const body = Object.entries(faces)
   .map(([k, v]) => `  ${JSON.stringify(k)}: ${JSON.stringify(v)},`)
   .join("\n");
 
-const out = `/** 自动生成：apps/web/scripts/extract-v08-tiles.mjs ← docs/design/tile-samples-v0.8.html，勿手改。
+const out = `/** 自动生成：apps/web/scripts/extract-v08-tiles.mjs ← apps/web/scripts/tile-samples-v0.8.html，勿手改。
  * 内容为 v0.8 定稿的行楷萬子与索子牌面（平色 SVG 路径，无全局 id 依赖）；
  * 饼面与字牌不在素材内，由占位皮肤代码绘制。 */
 export const V08_FACES: Record<string, string> = {

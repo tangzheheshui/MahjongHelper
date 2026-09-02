@@ -1,4 +1,4 @@
-/** 自动生成：apps/web/scripts/extract-v08-tiles.mjs ← docs/design/tile-samples-v0.8.html，勿手改。
+/** 自动生成：apps/web/scripts/extract-v08-tiles.mjs ← apps/web/scripts/tile-samples-v0.8.html，勿手改。
  * 内容为 v0.8 定稿的行楷萬子与索子牌面（平色 SVG 路径，无全局 id 依赖）；
  * 饼面与字牌不在素材内，由占位皮肤代码绘制。 */
 export const V08_FACES: Record<string, string> = {

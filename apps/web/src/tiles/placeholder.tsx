@@ -1,7 +1,7 @@
 /**
  * 占位皮肤（开发期默认，2026-09-02 组合定稿）：
- * - 万/条：v0.8 定稿素材（行楷萬子 + 放大一索），由 extract-v08-tiles.mjs 从
- *   docs/design/tile-samples-v0.8.html 生成到 v08-faces.ts，此处仅渲染；
+ * - 万/条：v0.8 定稿素材（行楷萬子 + 放大一索），由 scripts/extract-v08-tiles.mjs 从
+ *   同目录 tile-samples-v0.8.html 生成到 v08-faces.ts，此处仅渲染；
  * - 饼：丁案「暗沉哑光」（v0.8 画风）+ 实物排布修正（三筒斜排、七筒上斜下四
  *   不重叠、九筒 3×3 小饼），2026-09-02 用户五案选型定案；
  * - 字牌：明朝体文字。
@@ -15,7 +15,7 @@ import { V08_FACES } from "./v08-faces";
 const C = { G: "#2e8b4a", R: "#c23a2b", B: "#2f4f9e", ink: "#1c2c54" } as const;
 const MINCHO = '"Hiragino Mincho ProN","Yu Mincho","Songti SC","Noto Serif CJK SC",serif';
 
-/** 饼（丁案·暗沉哑光）：暗色环 + 米白隔环 + 暗芯，轻投影无高光（与 gen-pin-options.mjs 丁案一致） */
+/** 饼（丁案·暗沉哑光）：暗色环 + 米白隔环 + 暗芯，轻投影无高光（2026-09-02 定稿） */
 const PIN_C: Record<string, [string, string]> = {
   g: ["#2d6b3a", "#1a4a25"],
   r: ["#a83226", "#701a14"],
