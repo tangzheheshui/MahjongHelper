@@ -124,7 +124,7 @@ console.log("⑤ 错题本（recordWrong / 答对移出）");
 console.log("⑥ 水平测试（组卷 / 定级 / 解锁范围）");
 {
   const picked = pickPlacementQuestions(byLevel);
-  check("组卷 ≥12 题", picked.length >= 12, `${picked.length} 题`);
+  check("组卷 =8 题（L4-L7 各 2）", picked.length === 8, `${picked.length} 题`);
   check("组卷全为何切题", picked.every((q) => q.question_type === "what_to_discard"));
 
   // 全对 → 高级 / L7

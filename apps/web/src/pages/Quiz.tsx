@@ -61,7 +61,12 @@ export function Quiz() {
 
   return (
     <div>
-      <h2 style={{ fontSize: 17, margin: "0 0 2px" }}>{level} {meta?.name}</h2>
+      <h2 style={{ fontSize: 17, margin: "0 0 2px" }}>
+        {level} {meta?.name}
+        <button type="button" className="act" style={{ float: "right", padding: "2px 10px" }} onClick={() => navigate("/")}>
+          ← 退出
+        </button>
+      </h2>
       <p className="sub">第 {Math.min(idx + 1, qs.length)} / {qs.length} 题</p>
       <div className="progressbar">
         <div style={{ width: `${(answeredCount / qs.length) * 100}%` }} />

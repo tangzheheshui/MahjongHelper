@@ -185,12 +185,11 @@ export const PLACEMENT_GRADES: { grade: "入门" | "初级" | "中级" | "高级
   { grade: "高级", levels: ["L7"] },
 ];
 
-/** 每级抽 1-2 题组卷（题库不足时有多少用多少） */
+/** 每级抽 2 题组卷；只抽 L4-L7（2026-09-02 用户裁定：L1-L3 太简单不进评测，web-v1.md §一） */
 export function pickPlacementQuestions(byLevel: Record<string, Question[]>): Question[] {
   const picked: Question[] = [];
-  for (const lv of LEVELS) {
+  for (const lv of LEVELS.filter((l) => ["L4", "L5", "L6", "L7"].includes(l))) {
     const pool = (byLevel[lv] ?? []).filter((q) => q.question_type === "what_to_discard");
-    // 固定取第 1、3 题（题库小且需稳定；难度混合留给 M3 扩量后随机）
     for (const idx of [0, 2]) {
       if (pool[idx]) picked.push(pool[idx]);
     }

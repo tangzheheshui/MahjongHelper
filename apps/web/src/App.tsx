@@ -21,6 +21,7 @@ export function App() {
       <header className="topbar">
         <Link to="/" className="brand">何切训练</Link>
         <nav className="topnav">
+          <Link to="/">首页</Link>
           <Link to="/wrong-book">错题本</Link>
           <Link to="/placement">水平测试</Link>
           <Link to="/settings">设置</Link>
