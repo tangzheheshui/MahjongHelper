@@ -5,6 +5,7 @@
 
 import type { MouseEventHandler } from "react";
 import { getSkin } from "../tiles/skin";
+import { loadSettings } from "../lib/storage";
 import "./skin-loader";
 
 export type TileSize = 22 | 32 | 46 | 64 | 96;
@@ -16,6 +17,18 @@ export interface TileProps {
   dimmed?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
   title?: string;
+  /** 皮肤覆盖（设置页预览用）；缺省读 nk.settings.tileSkin */
+  skin?: string;
+}
+
+/** 解析当前皮肤：设置值未注册时回落 placeholder（皮肤删除/改名不致白屏） */
+function resolveSkin(override?: string) {
+  const name = override ?? loadSettings().tileSkin ?? "placeholder";
+  try {
+    return getSkin(name);
+  } catch {
+    return getSkin("placeholder");
+  }
 }
 
 export function TileDefs() {
@@ -37,8 +50,8 @@ export function TileDefs() {
   );
 }
 
-export function Tile({ id, size = 46, selected, dimmed, onClick, title }: TileProps) {
-  const skin = getSkin("placeholder");
+export function Tile({ id, size = 46, selected, dimmed, onClick, title, skin }: TileProps) {
+  const sk = resolveSkin(skin);
   const h = Math.round(size * 1.5);
   return (
     <button
@@ -49,8 +62,8 @@ export function Tile({ id, size = 46, selected, dimmed, onClick, title }: TilePr
       aria-label={title ?? id}
     >
       <svg width={size} height={h} viewBox="0 0 120 180" aria-hidden>
-        {skin.shell}
-        {skin.content(id)}
+        {sk.shell}
+        {sk.content(id)}
       </svg>
     </button>
   );

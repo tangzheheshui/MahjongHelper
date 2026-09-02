@@ -2,13 +2,22 @@
 
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Tile } from "../components/Tile";
 import { loadBank } from "../lib/bank";
-import { clearAllData, loadPlacement } from "../lib/storage";
+import { clearAllData, loadPlacement, loadSettings, saveSettings } from "../lib/storage";
 import type { Bank } from "../lib/types";
+
+/** 皮肤清单（皮肤本体在 tiles/ 注册，这里只管展示与选择） */
+const SKINS = [
+  { name: "placeholder", label: "教学（占位）", desc: "v0.8 行楷萬/索 + 同心圆新饼" },
+  { name: "classic", label: "经典", desc: "参考实物图风格原创重绘：靛蓝饼 / 绿竹 / 一索雀鸟" },
+];
+const SKIN_PREVIEW = ["1m", "5p", "1s", "E", "c", "h"];
 
 export function Settings() {
   const [bank, setBank] = useState<Bank | null>(null);
   const [confirmClear, setConfirmClear] = useState(false);
+  const [tileSkin, setTileSkin] = useState(() => loadSettings().tileSkin);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -16,6 +25,11 @@ export function Settings() {
   }, []);
 
   const placement = loadPlacement();
+
+  function pickSkin(name: string) {
+    setTileSkin(name);
+    saveSettings({ tileSkin: name });
+  }
 
   function doClear() {
     clearAllData();
@@ -35,6 +49,41 @@ export function Settings() {
         <p className="meta" style={{ marginTop: 0 }}>
           联网时启动将静默检查题库增量更新；断网不影响使用（V1 试点题库随 App 内置）。
         </p>
+      </div>
+
+      <div className="panel">
+        <h3 style={{ marginTop: 0 }}>牌面皮肤</h3>
+        {SKINS.map((s) => (
+          <label
+            key={s.name}
+            style={{
+              display: "block",
+              border: tileSkin === s.name ? "2px solid var(--accent, #b48a2f)" : "2px solid transparent",
+              borderRadius: 10,
+              padding: "6px 8px",
+              marginBottom: 8,
+              cursor: "pointer",
+            }}
+          >
+            <span style={{ fontSize: 14 }}>
+              <input
+                type="radio"
+                name="tileSkin"
+                checked={tileSkin === s.name}
+                onChange={() => pickSkin(s.name)}
+                style={{ marginRight: 6 }}
+              />
+              <b>{s.label}</b>
+              <span className="meta" style={{ marginLeft: 8 }}>{s.desc}</span>
+            </span>
+            <span className="hand" style={{ justifyContent: "flex-start", marginTop: 6, display: "flex" }}>
+              {SKIN_PREVIEW.map((id) => (
+                <Tile key={`${s.name}-${id}`} id={id} size={32} skin={s.name} />
+              ))}
+            </span>
+          </label>
+        ))}
+        <p className="meta" style={{ margin: 0 }}>立即生效、仅存本机；两套皮肤均为原创 SVG 手绘。</p>
       </div>
 
       <div className="panel">
