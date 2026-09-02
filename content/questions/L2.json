@@ -1,270 +1,6 @@
 [
   {
     "schema_version": 1,
-    "id": "L2_001",
-    "level": "L2",
-    "question_type": "what_to_discard",
-    "difficulty": "medium",
-    "knowledge_point": "浮牌先切：让位给搭子",
-    "hand": [
-      "1m",
-      "2m",
-      "3m",
-      "4m",
-      "5m",
-      "6m",
-      "9m",
-      "7p",
-      "8p",
-      "9p",
-      "1s",
-      "2s",
-      "4s",
-      "5s"
-    ],
-    "answer": {
-      "correct": [
-        "9m"
-      ],
-      "options": null
-    },
-    "explanation": {
-      "best": "切9万。123万、456万、789筒 三副面子；12条（边张）和 45条（两面）两个搭子正好补第四副，只有 9万 是浮牌——万子已排到 1到6，9万 前后接不上。切掉它进一向听，有效牌覆盖 1条~6条，共 20 张。搭子的价值是让手牌前进，浮牌要让位。",
-      "source": "79博客·牌效率3「浮牌理论」"
-    },
-    "engine_snapshot": {
-      "shanten_before": 1,
-      "candidates": [
-        {
-          "discard": "9m",
-          "shanten_after": 1,
-          "ukeire_count": 20,
-          "ukeire_tiles": [
-            "1s",
-            "2s",
-            "3s",
-            "4s",
-            "5s",
-            "6s"
-          ]
-        },
-        {
-          "discard": "1s",
-          "shanten_after": 1,
-          "ukeire_count": 17,
-          "ukeire_tiles": [
-            "9m",
-            "2s",
-            "3s",
-            "5s",
-            "6s"
-          ]
-        },
-        {
-          "discard": "2s",
-          "shanten_after": 1,
-          "ukeire_count": 14,
-          "ukeire_tiles": [
-            "9m",
-            "1s",
-            "3s",
-            "6s"
-          ]
-        },
-        {
-          "discard": "5s",
-          "shanten_after": 1,
-          "ukeire_count": 13,
-          "ukeire_tiles": [
-            "9m",
-            "1s",
-            "3s",
-            "4s"
-          ]
-        },
-        {
-          "discard": "4s",
-          "shanten_after": 1,
-          "ukeire_count": 10,
-          "ukeire_tiles": [
-            "9m",
-            "3s",
-            "5s"
-          ]
-        },
-        {
-          "discard": "1m",
-          "shanten_after": 2,
-          "ukeire_count": 46,
-          "ukeire_tiles": [
-            "1m",
-            "2m",
-            "3m",
-            "4m",
-            "5m",
-            "6m",
-            "7m",
-            "9m",
-            "1s",
-            "2s",
-            "3s",
-            "4s",
-            "5s",
-            "6s"
-          ]
-        },
-        {
-          "discard": "6m",
-          "shanten_after": 2,
-          "ukeire_count": 42,
-          "ukeire_tiles": [
-            "1m",
-            "2m",
-            "3m",
-            "4m",
-            "5m",
-            "6m",
-            "9m",
-            "1s",
-            "2s",
-            "3s",
-            "4s",
-            "5s",
-            "6s"
-          ]
-        },
-        {
-          "discard": "4m",
-          "shanten_after": 2,
-          "ukeire_count": 37,
-          "ukeire_tiles": [
-            "4m",
-            "5m",
-            "6m",
-            "7m",
-            "9m",
-            "1s",
-            "2s",
-            "3s",
-            "4s",
-            "5s",
-            "6s"
-          ]
-        },
-        {
-          "discard": "9p",
-          "shanten_after": 2,
-          "ukeire_count": 37,
-          "ukeire_tiles": [
-            "9m",
-            "6p",
-            "7p",
-            "8p",
-            "9p",
-            "1s",
-            "2s",
-            "3s",
-            "4s",
-            "5s",
-            "6s"
-          ]
-        },
-        {
-          "discard": "2m",
-          "shanten_after": 2,
-          "ukeire_count": 36,
-          "ukeire_tiles": [
-            "1m",
-            "2m",
-            "3m",
-            "6m",
-            "9m",
-            "1s",
-            "2s",
-            "3s",
-            "4s",
-            "5s",
-            "6s"
-          ]
-        },
-        {
-          "discard": "5m",
-          "shanten_after": 2,
-          "ukeire_count": 36,
-          "ukeire_tiles": [
-            "1m",
-            "4m",
-            "5m",
-            "6m",
-            "9m",
-            "1s",
-            "2s",
-            "3s",
-            "4s",
-            "5s",
-            "6s"
-          ]
-        },
-        {
-          "discard": "3m",
-          "shanten_after": 2,
-          "ukeire_count": 33,
-          "ukeire_tiles": [
-            "1m",
-            "2m",
-            "3m",
-            "9m",
-            "1s",
-            "2s",
-            "3s",
-            "4s",
-            "5s",
-            "6s"
-          ]
-        },
-        {
-          "discard": "7p",
-          "shanten_after": 2,
-          "ukeire_count": 33,
-          "ukeire_tiles": [
-            "9m",
-            "7p",
-            "8p",
-            "9p",
-            "1s",
-            "2s",
-            "3s",
-            "4s",
-            "5s",
-            "6s"
-          ]
-        },
-        {
-          "discard": "8p",
-          "shanten_after": 2,
-          "ukeire_count": 33,
-          "ukeire_tiles": [
-            "9m",
-            "7p",
-            "8p",
-            "9p",
-            "1s",
-            "2s",
-            "3s",
-            "4s",
-            "5s",
-            "6s"
-          ]
-        }
-      ]
-    },
-    "verified": {
-      "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T14:31:05.392Z"
-    }
-  },
-  {
-    "schema_version": 1,
     "id": "L2_002",
     "level": "L2",
     "question_type": "what_to_discard",
@@ -441,185 +177,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T14:31:05.392Z"
-    }
-  },
-  {
-    "schema_version": 1,
-    "id": "L2_003",
-    "level": "L2",
-    "question_type": "what_to_discard",
-    "difficulty": "medium",
-    "knowledge_point": "嵌张搭子：35条 只等中间一张 4条",
-    "hand": [
-      "1m",
-      "2m",
-      "3m",
-      "4p",
-      "5p",
-      "6p",
-      "7s",
-      "8s",
-      "9s",
-      "3s",
-      "5s",
-      "1p",
-      "1p",
-      "9m"
-    ],
-    "answer": {
-      "correct": [
-        "9m"
-      ],
-      "options": null
-    },
-    "explanation": {
-      "best": "切9万。123万、456筒、789条 三副面子，11筒 当雀头，35条 是嵌张搭子——中间空一格，只等 4条 一张，剩 4 张；9万 是浮牌。切掉 9万 正好听牌，等 4条。嵌张进张天生只有两面的一半，但再窄也是搭子，比接不上的浮牌 9万 值钱。",
-      "source": "79博客·麻雀的基础4「面子和搭子」/ 牌效率3「浮牌理论」"
-    },
-    "engine_snapshot": {
-      "shanten_before": 0,
-      "candidates": [
-        {
-          "discard": "9m",
-          "shanten_after": 0,
-          "ukeire_count": 4,
-          "ukeire_tiles": [
-            "4s"
-          ]
-        },
-        {
-          "discard": "5s",
-          "shanten_after": 1,
-          "ukeire_count": 32,
-          "ukeire_tiles": [
-            "7m",
-            "8m",
-            "9m",
-            "1p",
-            "1s",
-            "2s",
-            "3s",
-            "4s",
-            "5s"
-          ]
-        },
-        {
-          "discard": "3s",
-          "shanten_after": 1,
-          "ukeire_count": 31,
-          "ukeire_tiles": [
-            "7m",
-            "8m",
-            "9m",
-            "1p",
-            "3s",
-            "4s",
-            "5s",
-            "6s",
-            "7s"
-          ]
-        },
-        {
-          "discard": "1m",
-          "shanten_after": 1,
-          "ukeire_count": 12,
-          "ukeire_tiles": [
-            "1m",
-            "4m",
-            "4s"
-          ]
-        },
-        {
-          "discard": "4p",
-          "shanten_after": 1,
-          "ukeire_count": 12,
-          "ukeire_tiles": [
-            "4p",
-            "7p",
-            "4s"
-          ]
-        },
-        {
-          "discard": "6p",
-          "shanten_after": 1,
-          "ukeire_count": 12,
-          "ukeire_tiles": [
-            "3p",
-            "6p",
-            "4s"
-          ]
-        },
-        {
-          "discard": "9s",
-          "shanten_after": 1,
-          "ukeire_count": 12,
-          "ukeire_tiles": [
-            "4s",
-            "6s",
-            "9s"
-          ]
-        },
-        {
-          "discard": "1p",
-          "shanten_after": 1,
-          "ukeire_count": 10,
-          "ukeire_tiles": [
-            "9m",
-            "1p",
-            "4s"
-          ]
-        },
-        {
-          "discard": "2m",
-          "shanten_after": 1,
-          "ukeire_count": 8,
-          "ukeire_tiles": [
-            "2m",
-            "4s"
-          ]
-        },
-        {
-          "discard": "3m",
-          "shanten_after": 1,
-          "ukeire_count": 8,
-          "ukeire_tiles": [
-            "3m",
-            "4s"
-          ]
-        },
-        {
-          "discard": "5p",
-          "shanten_after": 1,
-          "ukeire_count": 8,
-          "ukeire_tiles": [
-            "5p",
-            "4s"
-          ]
-        },
-        {
-          "discard": "7s",
-          "shanten_after": 1,
-          "ukeire_count": 8,
-          "ukeire_tiles": [
-            "4s",
-            "7s"
-          ]
-        },
-        {
-          "discard": "8s",
-          "shanten_after": 1,
-          "ukeire_count": 8,
-          "ukeire_tiles": [
-            "4s",
-            "8s"
-          ]
-        }
-      ]
-    },
-    "verified": {
-      "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T14:31:05.392Z"
+      "checked_at": "2026-09-02T15:02:39.229Z"
     }
   },
   {
@@ -890,7 +448,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T14:31:05.392Z"
+      "checked_at": "2026-09-02T15:02:39.229Z"
     }
   },
   {
@@ -934,7 +492,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T14:31:05.392Z"
+      "checked_at": "2026-09-02T15:02:39.229Z"
     }
   },
   {
@@ -978,7 +536,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T14:31:05.392Z"
+      "checked_at": "2026-09-02T15:02:39.229Z"
     }
   },
   {
@@ -1022,7 +580,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T14:31:05.392Z"
+      "checked_at": "2026-09-02T15:02:39.229Z"
     }
   },
   {
@@ -1233,7 +791,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T14:31:05.393Z"
+      "checked_at": "2026-09-02T15:02:39.229Z"
     }
   },
   {
@@ -1421,7 +979,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T14:31:05.393Z"
+      "checked_at": "2026-09-02T15:02:39.229Z"
     }
   },
   {
@@ -1676,7 +1234,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T14:31:05.393Z"
+      "checked_at": "2026-09-02T15:02:39.230Z"
     }
   }
 ]
