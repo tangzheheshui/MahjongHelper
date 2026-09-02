@@ -31,12 +31,11 @@
 | 文档 | 回答什么 | 什么时候看 |
 |---|---|---|
 | [docs/prd/](docs/prd/) | 产品要做什么（PRD 原文） | 对需求有疑问时 |
-| [docs/design/architecture.md](docs/design/architecture.md) | 怎么实现的：分层、目录、演进路线、决策记录 | 动手写代码前 |
+| [docs/design/architecture.md](docs/design/architecture.md) | 怎么实现的：分层、目录、决策记录、离线更新与静态发布 | 动手写代码 / 部署前 |
 | [docs/requirements/engine.md](docs/requirements/engine.md) | 进张计算引擎要做什么、怎么验收 | 写引擎前 |
 | [docs/requirements/question-bank.md](docs/requirements/question-bank.md) | 题库数据结构、出题规范、内容生产线 | 出题 / 改题库前 |
 | [docs/theory/foundation.md](docs/theory/foundation.md) | 牌效率理论基础：术语标准、七级理论、考点总索引（内容创作内参） | 写讲解 / 出题 / 定措辞时 |
 | [docs/requirements/web-v1.md](docs/requirements/web-v1.md) | Web V1 的页面、交互、本地存储 | 写前端前 |
-| [docs/operations/server.md](docs/operations/server.md) | 静态服务器怎么部署、更新协议怎么走 | 部署 / 更新题库时 |
 | [docs/references/SOURCES.md](docs/references/SOURCES.md) | 参考资料清单、来源、版权边界 | 出题查理论出处时 |
 
 ## 目录结构
@@ -46,8 +45,7 @@ nanikiru/
 ├── docs/                  # 全部规划文档 + 参考资料（PDF）
 │   ├── prd/               # PRD 原文
 │   ├── requirements/      # 引擎 / 题库 / Web 各自的需求
-│   ├── design/            # 架构与决策
-│   ├── operations/        # 部署运维
+│   ├── design/            # 架构与决策（含静态发布方案）
 │   └── references/        # 79博客 PDF、Riichi Book 1 PDF、来源清单
 ├── packages/engine/       # TS 引擎：向听数 + 进张计算 + 题库校验 CLI（M1）
 ├── apps/web/              # React + TS + Vite 前端，PWA（M2）

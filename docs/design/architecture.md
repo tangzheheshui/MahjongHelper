@@ -86,7 +86,35 @@ nanikiru/
   合并进 IndexedDB；失败静默，下次启动重试（PRD 6.4）
 - **远程配置**：`config.json` 拉不到就用内置默认值
 
-## 五、风险清单
+## 五、静态服务器与发布（M4）
+
+> 结论见 D3：无后端代码，nginx 托管纯静态 JSON。以下 URL 结构与发布流程在 M4 落地时启用。
+> （原独立文档 docs/operations/server.md 于 2026-09-02 并入本节。）
+
+**URL 结构**
+
+```
+https://<域名>/                        # Web App 本体（静态托管，同源）
+https://<域名>/bank/manifest.json      # 题库版本清单（客户端更新入口）
+https://<域名>/bank/v{N}/L1.json … L7.json   # 题库分片（按版本目录，天然支持回滚）
+https://<域名>/config.json             # 远程配置（功能开关）
+https://<域名>/version.json            # App 最新版本号（M5 iOS 用）
+```
+
+**客户端拉取行为**（PRD 6.4 / web-v1.md §2.4）：启动 → GET `bank/manifest.json`（超时 3s）
+→ 比对本地 bank_version → 有新版则按 `levels[].file` 下载变化分片（校验 sha256）→ 合并写入
+IndexedDB → 任一步失败静默保留旧题库、下次启动重试；`config.json` 拉不到用内置默认。全程无上行数据。
+
+**发布（操作流程）**：本地 `content/build` 流水线校验全量题库 → 产出 `server/bank/v{N+1}/` 分片
+并更新 manifest → `rsync -av server/ user@server:/var/www/nanikiru/`。
+- manifest 最后上传（先数据后指针，客户端不会拿到 404 分片）
+- 回滚 = 服务器端把 manifest 指回旧版本目录
+- 容量：200 题 × ≈1.5KB ≈ 300KB，单级分片 ≤60KB——静态方案无压力
+
+**待办（M4 前确认）**：服务器归属与域名（现有站点 / 新域名 + HTTPS 证书）；Cache-Control 策略
+（manifest `no-cache`、分片 `immutable`）；国内可达性（主要用户在国内则静态资源放国内或 CDN）。
+
+## 六、风险清单
 
 | 风险 | 影响 | 对策 |
 |---|---|---|
