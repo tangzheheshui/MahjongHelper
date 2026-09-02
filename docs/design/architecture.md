@@ -58,6 +58,16 @@
 - 题库缓存与合并结果 → IndexedDB；训练进度 / 错题本 / 测试结果 / 设置 → localStorage
 - 无任何上行请求；Capacitor 打包后同样成立（提审隐私问卷简单）
 
+### D5 对拍基准：Python mahjong 库（2026-09-02 定）
+
+- **结论**：M1④ 第三方对拍基准 = PyPI [`mahjong`](https://github.com/MahjongRepository/mahjong)（MIT），
+  用其 `calculate_shanten_for_regular_hand` 复算标准形向听。已执行 151 手
+  （golden 教材锚定 11 + 固定种子随机 140），**0 差异**；报告与逐手明细见
+  `docs/references/duipai-report.md` / `duipai-results.json`（复现：`npm run duipai -w @nanikiru/engine`）
+- **背景**：原候选 npm `mahjong-utils` 发布损坏（安装即失败），2026-09-01 弃用
+- **边界**：Python 侧仅存在于校验工具链（`packages/engine/scripts/duipai.py`），不进引擎依赖、
+  不进产品代码——D2「引擎零依赖」红线不破；CLAUDE.md「不用 Python 写业务」同样不破
+
 ## 三、monorepo 布局（npm workspaces）
 
 ```

@@ -96,7 +96,7 @@ describe("golden 结构族 · 四连形两面单骑（2 种各剩 3 张 = 6 张�
     s: ["1m","2m","3m","4m","5m","6m","7p","8p","9p"],
     m: ["1p","2p","3p","4p","5p","6p","7s","8s","9s"],
   };
-  const cases: [string[], string[], string[], string[], string] = [
+  const cases: [string[], string[], string[], string][] = [
     [threeMelds.p, ["3p","4p","5p","6p"], ["3p","6p"], "3456p"],
     [threeMelds.p, ["4p","5p","6p","7p"], ["4p","7p"], "4567p"],
     [threeMelds.s, ["5s","6s","7s","8s"], ["5s","8s"], "5678s"],

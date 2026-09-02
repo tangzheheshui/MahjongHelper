@@ -9,6 +9,8 @@
   "types": "./src/index.ts",
   "scripts": {
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "verify": "tsx bin/verify.ts",
+    "duipai": "tsx scripts/duipai-export.ts && python scripts/duipai.py"
   }
 }

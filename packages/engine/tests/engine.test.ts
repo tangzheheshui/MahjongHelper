@@ -30,7 +30,7 @@ describe("tiles", () => {
     expect(() => parseTile("0m")).toThrow();
     expect(() => parseTile("10m")).toThrow();
     expect(() => parseTile("3x")).toThrow();
-    expect(() => toCounts(["1m", "1m", "1m", "1m", "1m"], 5)).toThrow(/超过 4 张/);
+    expect(() => toCounts(["1m", "1m", "1m", "1m", "1m"])).toThrow(/超过 4 张/);
     expect(() => toCounts(["1m", "2m"], 13)).toThrow(/张数/);
   });
 });
