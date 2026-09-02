@@ -45,6 +45,8 @@
    - 边界用例：纯搭子手牌 / 字牌对子 / 多并列最优 / 已听牌 / 天听级好形
 2. **第三方对拍 ≥ 20 题**：同一批手牌喂给独立实现（候选：mahjong-utils TS/Python、天凤牌效工具截图），
    比对向听数与进张张数；结果记录进 `docs/references/` 供追溯
+   > 已执行（2026-09-02）：基准 = Python `mahjong` 库（mahjong-utils 发布损坏，弃用，见 architecture.md D5）；
+   > 151 手 0 差异，报告 `docs/references/duipai-report.md`，复现 `npm run duipai -w @nanikiru/engine`
 3. **随机自洽测试**：随机生成 10⁴ 手合法牌型，断言：最优切牌切出后向听数不升、进张枚举无遗漏种类、
    14↔13 张转换一致
 4. **出题校验 CLI**（`engine/bin/verify.ts`）：题库 JSON 全量跑一遍——`correct_discard` 必须落在

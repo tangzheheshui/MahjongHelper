@@ -19,3 +19,4 @@ __pycache__/
 # 参考资料：79博客 PDF 为社区镜像（340页），仅本地保留、不入公开仓库分发
 # 获取方式见 docs/references/SOURCES.md
 docs/references/79博客-目录书签跳转版.pdf
+packages/engine/scripts/out/

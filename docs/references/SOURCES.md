@@ -63,3 +63,10 @@ PRD 5.2 七级分类引用的每一处章节，已在两份 PDF 中确认存在�
 第六章立直 p170、第八章状况判断 p232（V2 备用）。Riichi Book I 为 Version 14，
 前言页 CC BY-NC 3.0 声明与来源清单一致。
 
+## 六、工程依赖与对拍基准（非内容资料）
+
+| 工具 | 来源 | 许可 | 用途边界 |
+|---|---|---|---|
+| Python `mahjong` 库 v2.0.0 | [MahjongRepository/mahjong](https://github.com/MahjongRepository/mahjong)（PyPI） | MIT | **仅作引擎对拍基准**（M1④，标准形向听复算），不进产品代码、不进引擎依赖；报告见 [duipai-report.md](duipai-report.md) |
+| npm `mahjong-utils` | npm | — | ❌ 弃用：发布损坏（README 路线图 2026-09-01 记录），对拍改走上述 Python 库 |
+
