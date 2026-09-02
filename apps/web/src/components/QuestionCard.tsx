@@ -5,7 +5,7 @@
 
 import { useState } from "react";
 import { Tile } from "./Tile";
-import { candidatesOf, isCorrect, shantenBefore } from "../lib/levels";
+import { candidatesOf, isCorrect, orderHand, shantenBefore, tileLabel, tilesLabel } from "../lib/levels";
 import type { Question } from "../lib/types";
 
 export interface QuestionCardProps {
@@ -47,7 +47,7 @@ export function QuestionCard({ q, onAnswered }: QuestionCardProps) {
       </p>
 
       <div className="hand">
-        {q.hand.map((t, i) => (
+        {orderHand(q.hand).map((t, i) => (
           <Tile
             key={`${t}-${i}`}
             id={t}
@@ -67,7 +67,7 @@ export function QuestionCard({ q, onAnswered }: QuestionCardProps) {
               className="act"
               onClick={() => o.discard && judge(o.discard)}
             >
-              切 {o.discard}
+              切 {tileLabel(o.discard ?? "")}
             </button>
           ))}
         </div>
@@ -77,8 +77,8 @@ export function QuestionCard({ q, onAnswered }: QuestionCardProps) {
         <div className="panel">
           <div className={`verdict ${ok ? "ok" : "ng"}`}>
             {ok
-              ? `✅ 正确！${picked} 是最优解`
-              : `❌ 应切：${correct.join(" / ")}${correct.length > 1 ? "（并列最优）" : ""}`}
+              ? `✅ 正确！切 ${picked ? tileLabel(picked) : ""} 是最优解`
+              : `❌ 应切：${correct.map(tileLabel).join(" / ")}${correct.length > 1 ? "（并列最优）" : ""}`}
           </div>
           <button type="button" className="act" onClick={() => setShowExp(true)}>
             查看讲解
@@ -116,7 +116,7 @@ function ExplanationDrawer({
       <div className="drawer-mask" onClick={onClose} />
       <div className="drawer">
         <button type="button" className="close" onClick={onClose}>关闭 ✕</button>
-        <h3>{ok ? "✅ 做对了，确认一下理由" : `📖 为什么切 ${q.answer.correct.join(" / ")}`}</h3>
+        <h3>{ok ? "✅ 做对了，确认一下理由" : `📖 为什么切 ${q.answer.correct.map(tileLabel).join(" / ")}`}</h3>
         <p style={{ lineHeight: 1.8, marginTop: 0 }}>{q.explanation.best}</p>
 
         <h3>进张对比（前 8 候选）</h3>
@@ -131,18 +131,18 @@ function ExplanationDrawer({
               return (
                 <tr key={c.discard} className={isMine ? "me" : undefined}>
                   <td className={isBest ? "best" : undefined}>
-                    <Tile id={c.discard} size={22} /> {c.discard}
+                    <Tile id={c.discard} size={22} /> {tileLabel(c.discard)}
                   </td>
                   <td>{c.shanten_after === 0 ? "听牌" : `${c.shanten_after} 向听`}</td>
                   <td>{c.ukeire_count} 张</td>
-                  <td style={{ color: "var(--ink-dim)" }}>{c.ukeire_tiles.join(" ") || "—"}</td>
+                  <td style={{ color: "var(--ink-dim)" }}>{tilesLabel(c.ukeire_tiles) || "—"}</td>
                 </tr>
               );
             })}
           </tbody>
         </table>
         {notes.length > 0 && (
-          <p className="meta">{notes.map((r) => `${r.discard}：${r.note}`).join("；")}</p>
+          <p className="meta">{notes.map((r) => `${tileLabel(r.discard)}：${r.note}`).join("；")}</p>
         )}
 
         <p className="meta">理论出处：{q.explanation.source}</p>

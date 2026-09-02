@@ -3,13 +3,14 @@
     "schema_version": 1,
     "id": "L5_001",
     "level": "L5",
-    "knowledge_point": "五连展开三面：复合形最强的时刻",
     "question_type": "what_to_discard",
     "difficulty": "medium",
+    "knowledge_point": "五连自动三面：别去动它",
     "hand": [
       "1m",
       "2m",
       "3m",
+      "9m",
       "4p",
       "5p",
       "6p",
@@ -19,41 +20,23 @@
       "6s",
       "7s",
       "9s",
-      "9s",
-      "E"
+      "9s"
     ],
     "answer": {
       "correct": [
-        "E"
+        "9m"
       ],
       "options": null
     },
     "explanation": {
-      "best": "切 E。3s-7s 五连自动展开成「面子 + 两面搭」：切掉孤字 E 后听三面 2s/5s/8s——2s 和 8s 各 4 张、5s 手里占 1 张剩 3 张，共 11 张。五连是复合形里最舒服的素材，不用任何操作就给出三面听；真正要做的是别去动它（切 7s 拆五连退一向听，换来的 33 张未必划算）。",
-      "ukeire_table": [
-        {
-          "discard": "E",
-          "ukeire_count": 11,
-          "note": "三面 2s(4)/5s(3)/8s(4)"
-        },
-        {
-          "discard": "7s",
-          "ukeire_count": 33,
-          "note": "拆五连退一向听，见 L6"
-        },
-        {
-          "discard": "1m",
-          "ukeire_count": 19,
-          "note": "拆面子最亏"
-        }
-      ],
+      "best": "切9万。条子 34567 五连能同时当「面子 + 搭子」用，加 123万、456筒 两副面子就够了：切掉孤张 9万（万子已有 123万，9万 接不上），正好听牌，进张 2条/5条/8条 共 11 张——2条、8条 各 4 张，5条 手内占 1 张剩 3 张。五连是最好用的复合素材，要做的只有一件事：别去切它。",
       "source": "79博客·牌效率13「多面张的构成」"
     },
     "engine_snapshot": {
       "shanten_before": 0,
       "candidates": [
         {
-          "discard": "E",
+          "discard": "9m",
           "shanten_after": 0,
           "ukeire_count": 11,
           "ukeire_tiles": [
@@ -65,8 +48,11 @@
         {
           "discard": "7s",
           "shanten_after": 1,
-          "ukeire_count": 33,
+          "ukeire_count": 41,
           "ukeire_tiles": [
+            "7m",
+            "8m",
+            "9m",
             "1s",
             "2s",
             "3s",
@@ -75,15 +61,17 @@
             "6s",
             "7s",
             "8s",
-            "9s",
-            "E"
+            "9s"
           ]
         },
         {
           "discard": "3s",
           "shanten_after": 1,
-          "ukeire_count": 29,
+          "ukeire_count": 37,
           "ukeire_tiles": [
+            "7m",
+            "8m",
+            "9m",
             "2s",
             "3s",
             "4s",
@@ -91,37 +79,40 @@
             "6s",
             "7s",
             "8s",
-            "9s",
-            "E"
+            "9s"
           ]
         },
         {
           "discard": "4s",
           "shanten_after": 1,
-          "ukeire_count": 27,
+          "ukeire_count": 35,
           "ukeire_tiles": [
+            "7m",
+            "8m",
+            "9m",
             "1s",
             "2s",
             "3s",
             "4s",
             "5s",
             "8s",
-            "9s",
-            "E"
+            "9s"
           ]
         },
         {
           "discard": "6s",
           "shanten_after": 1,
-          "ukeire_count": 23,
+          "ukeire_count": 31,
           "ukeire_tiles": [
+            "7m",
+            "8m",
+            "9m",
             "2s",
             "5s",
             "6s",
             "7s",
             "8s",
-            "9s",
-            "E"
+            "9s"
           ]
         },
         {
@@ -129,13 +120,13 @@
           "shanten_after": 1,
           "ukeire_count": 23,
           "ukeire_tiles": [
+            "9m",
             "2s",
             "3s",
             "5s",
             "6s",
             "8s",
-            "9s",
-            "E"
+            "9s"
           ]
         },
         {
@@ -221,16 +212,16 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T02:43:43.300Z"
+      "checked_at": "2026-09-02T08:37:33.993Z"
     }
   },
   {
     "schema_version": 1,
     "id": "L5_002",
     "level": "L5",
-    "knowledge_point": "同形两种听法：三面单骑 vs 三面听",
     "question_type": "what_to_discard",
     "difficulty": "hard",
+    "knowledge_point": "同一串牌两种听法：都是 9 张",
     "hand": [
       "1m",
       "2m",
@@ -255,29 +246,7 @@
       "options": null
     },
     "explanation": {
-      "best": "切 5s 或 9s（并列，各 9 张）。同一个复合形有两种听法：切 5s，剩 3s-9s 七连，作「两面子 + 单骑」，单骑位可在 3s/6s/9s 里选，三面单骑各 3 张；切 9s，789s 独立成面子，3s4s5s5s6s 听 2s/5s/8s（4+2+3）。同为 9 张并列正解。对比之下切 6s 只剩 6 张、切 8s 剩 3 张——同一个复合形，切不同张进张差三倍。",
-      "ukeire_table": [
-        {
-          "discard": "5s",
-          "ukeire_count": 9,
-          "note": "三面单骑 3s/6s/9s 各 3"
-        },
-        {
-          "discard": "9s",
-          "ukeire_count": 9,
-          "note": "2s(4)/5s(2)/8s(3)，等价"
-        },
-        {
-          "discard": "6s",
-          "ukeire_count": 6,
-          "note": "2s(4)/5s(2)"
-        },
-        {
-          "discard": "8s",
-          "ukeire_count": 3,
-          "note": "只剩单骑 9s"
-        }
-      ],
+      "best": "切5条 或 9条，两解并列，都 9 张。索子 3到9 七连外加一张重 5条：切5条，单骑可以在 3条/6条/9条 里挑位置，各 3 张、共 9 张；切9条，进张 2条/5条/8条——2条 4 张、5条 手内占 2 张剩 2、8条 3 张，也是 9 张。同一串牌，两种摆法殊途同归；中间那张重 5条 反而别切（会打散两边）。",
       "source": "79博客·牌效率14「听牌形式的选择」"
     },
     "engine_snapshot": {
@@ -474,16 +443,16 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T02:43:43.301Z"
+      "checked_at": "2026-09-02T08:37:33.994Z"
     }
   },
   {
     "schema_version": 1,
     "id": "L5_003",
     "level": "L5",
-    "knowledge_point": "五连切端不切中：四连双解的用法",
     "question_type": "what_to_discard",
     "difficulty": "hard",
+    "knowledge_point": "五连切端不切中：四连才有双解",
     "hand": [
       "1m",
       "2m",
@@ -508,29 +477,7 @@
       "options": null
     },
     "explanation": {
-      "best": "切 4p 或 8p（并列）。手牌三块：123m、2s-7s 六连（两面子）、4p-8p 五连（面子 + 一张余牌）。五连从端点切一张后剩四连，四连有两种「面子 + 单骑余牌」的用法：切 4p 剩 5678p，可作 567p+单骑 8p 或 678p+单骑 5p，听 5p/8p 各 3 张共 6 张；切 8p 对称地听 4p/7p。切中间（如 5p、7p）只剩一种用法，进张腰斩到 3 张。「五连切端、四连双解」是复合形基本功。",
-      "ukeire_table": [
-        {
-          "discard": "4p",
-          "ukeire_count": 6,
-          "note": "单骑 5p(3)/8p(3) 二选一"
-        },
-        {
-          "discard": "8p",
-          "ukeire_count": 6,
-          "note": "单骑 4p(3)/7p(3)，等价"
-        },
-        {
-          "discard": "5p",
-          "ukeire_count": 3,
-          "note": "切中间只剩单骑 4p 一种解"
-        },
-        {
-          "discard": "7p",
-          "ukeire_count": 3,
-          "note": "只剩单骑 8p"
-        }
-      ],
+      "best": "切4筒 或 8筒，两解并列，各 6 张。索子 2到7 六连稳成两副面子；饼子 45678 五连是「一副面子 + 一张余牌」，从端点切一张就变四连——四连有两种摆法：切4筒后，可作 567筒 + 单骑 8筒，也可作 678筒 + 单骑 5筒，听 5筒/8筒 共 6 张；切8筒对称，听 4筒/7筒，也 6 张。从中间切（5筒 或 7筒）只剩一种摆法，进张砍到 3 张。",
       "source": "79博客·牌效率15「连续形的切法」"
     },
     "engine_snapshot": {
@@ -754,16 +701,16 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T02:43:43.301Z"
+      "checked_at": "2026-09-02T08:37:33.994Z"
     }
   },
   {
     "schema_version": 1,
     "id": "L5_004",
     "level": "L5",
-    "knowledge_point": "同为一向听推进后：听牌形式的优劣对比",
     "question_type": "ukeire_compare",
     "difficulty": "hard",
+    "knowledge_point": "五连的切法：端点出 vs 中间出",
     "hand": [
       "2m",
       "3m",
@@ -794,7 +741,7 @@
       ]
     },
     "explanation": {
-      "best": "切 5p 听 6 张，切 6p 只听 3 张，差一倍。切 5p 后 6789p 四连双解：678p+单骑 9p 或 789p+单骑 6p，听 6p/9p 各 3 张共 6 张；切 6p 从中间下刀，四连被砍成 5p+789p，只剩单骑 5p 一种解、3 张。2s-7s 六连稳定提供两面子，胜负手全在饼子五连怎么切——端点出牌是复合形的第一原则。",
+      "best": "切5筒 听 6 张，切6筒 只剩 3 张。索子 2到7 六连稳成两副面子，胜负全在饼子 56789 五连怎么切。切5筒：剩 6789筒 四连，两种摆法（678筒 + 单骑 9筒，或 789筒 + 单骑 6筒），听 6筒/9筒 共 6 张。切6筒 从中间下刀，饼子断成 5筒 加 789筒，只剩 5筒 单骑一种解，3 张。端点出牌，是连续形切法的第一原则。",
       "source": "79博客·牌效率15「连续形的切法」"
     },
     "engine_snapshot": {
@@ -1009,7 +956,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T02:43:43.301Z"
+      "checked_at": "2026-09-02T08:37:33.994Z"
     }
   }
 ]

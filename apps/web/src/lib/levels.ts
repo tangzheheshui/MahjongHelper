@@ -46,6 +46,35 @@ export function shantenBefore(q: Question): number {
   return q.engine_snapshot?.shanten_before ?? analyze14(q.hand).shanten;
 }
 
+/* ---------- 展示层：中文牌面文字与手牌排序（web-v1.md §一 卡片展示口径） ---------- */
+
+const SUIT_WORD: Record<string, string> = { m: "万", p: "筒", s: "条" };
+const HONOR_WORD: Record<string, string> = { E: "东", S: "南", W: "西", N: "北", h: "白", f: "发", c: "中" };
+
+/** 单张牌的中文叫法：4s → 4条、E → 东（给人看的文字用；内部 id 不变） */
+export function tileLabel(id: string): string {
+  const m = /^([1-9])([mps])$/i.exec(id);
+  if (m) return `${m[1]}${SUIT_WORD[m[2].toLowerCase()]}`;
+  return HONOR_WORD[id] ?? id;
+}
+
+/** 手牌重排：万→筒→条各自成块，块内 1→9 升序、同张相邻；字牌兜底在最后。
+ *  只用于展示（不帮忙组牌、不提示搭子），题库源数组保持原样。 */
+export function orderHand(hand: string[]): string[] {
+  const zIdx = (t: string): number => {
+    const m = /^([1-9])([mps])$/i.exec(t);
+    if (m) return "mps".indexOf(m[2].toLowerCase()) * 9 + (Number(m[1]) - 1);
+    const j = ["E", "S", "W", "N", "h", "f", "c"].indexOf(t);
+    return j < 0 ? 99 : 27 + j;
+  };
+  return [...hand].sort((a, b) => zIdx(a) - zIdx(b));
+}
+
+/** 一列进张牌的中文表述：["3s","6s"] → "3条 6条" */
+export function tilesLabel(ids: string[]): string {
+  return ids.map(tileLabel).join(" ");
+}
+
 /** 关卡抽题：题量不足整关时循环复用至下限（试点期策略） */
 export function pickStageQuestions(all: Question[], min = 8): { qs: Question[]; reused: boolean } {
   if (all.length === 0) return { qs: [], reused: false };

@@ -1,14 +1,14 @@
 {
- "bank_version": "2026.09.0-pilot",
- "generated_at": "2026-09-02T02:43:53.782Z",
+ "bank_version": "2026.09.1-pilot",
+ "generated_at": "2026-09-02T07:18:34.940Z",
  "questions": [
   {
    "schema_version": 1,
    "id": "L1_001",
    "level": "L1",
-   "knowledge_point": "孤立字牌识别：面子 / 搭子 / 雀头之外的最无用牌",
    "question_type": "what_to_discard",
    "difficulty": "easy",
+   "knowledge_point": "孤立张识别：面子、搭子、雀头之外，谁也用不上",
    "hand": [
     "1m",
     "2m",
@@ -21,37 +21,25 @@
     "9p",
     "1s",
     "2s",
-    "E",
-    "E",
-    "N"
+    "9s",
+    "9s",
+    "9m"
    ],
    "answer": {
     "correct": [
-     "N"
+     "9m"
     ],
     "options": null
    },
    "explanation": {
-    "best": "切 N。先把手牌分块：123m、456m、789p 三副完整面子，EE 一对雀头，1s2s 一个边张搭子，N 什么都组不成——它不是面子、不是搭子、也当不了雀头（EE 已经在位）。14 张里唯一游离在牌形之外的只有 N，切掉后 13 张 = 三面子 + 雀头 + 边张搭，正好听牌（等 3s）。",
-    "ukeire_table": [
-     {
-      "discard": "N",
-      "ukeire_count": 4,
-      "note": "切后听牌，和了牌 3s 剩 4 张"
-     },
-     {
-      "discard": "1s",
-      "ukeire_count": 20,
-      "note": "切后变一向听——向听数变差，见 L6"
-     }
-    ],
+    "best": "切9万。手里已经排成三副面子：123万、456万、789筒；99条一对当雀头，12条是边张搭子。剩下的 9万 谁也接不上——它不在面子、不在搭子、也当不了雀头，是纯孤张。切掉 9万 正好听牌，等 3条，还剩 4 张。",
     "source": "79博客·麻雀的基础4「面子和搭子」"
    },
    "engine_snapshot": {
     "shanten_before": 0,
     "candidates": [
      {
-      "discard": "N",
+      "discard": "9m",
       "shanten_after": 0,
       "ukeire_count": 4,
       "ukeire_tiles": [
@@ -61,26 +49,30 @@
      {
       "discard": "1s",
       "shanten_after": 1,
-      "ukeire_count": 20,
+      "ukeire_count": 28,
       "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
        "1s",
        "2s",
        "3s",
        "4s",
-       "E",
-       "N"
+       "9s"
       ]
      },
      {
       "discard": "2s",
       "shanten_after": 1,
-      "ukeire_count": 16,
+      "ukeire_count": 24,
       "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
        "1s",
        "2s",
        "3s",
-       "E",
-       "N"
+       "9s"
       ]
      },
      {
@@ -125,13 +117,13 @@
       ]
      },
      {
-      "discard": "E",
+      "discard": "9s",
       "shanten_after": 1,
       "ukeire_count": 10,
       "ukeire_tiles": [
+       "9m",
        "3s",
-       "E",
-       "N"
+       "9s"
       ]
      },
      {
@@ -183,20 +175,22 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:42.884Z"
+    "checked_at": "2026-09-02T07:16:38.149Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L1_002",
    "level": "L1",
-   "knowledge_point": "孤张与两面搭的分辨：切谁一听便知",
    "question_type": "what_to_discard",
    "difficulty": "easy",
+   "knowledge_point": "孤张与两面搭：像连着，其实接不上",
    "hand": [
     "1m",
     "2m",
     "3m",
+    "9m",
+    "9m",
     "4p",
     "5p",
     "6p",
@@ -205,8 +199,6 @@
     "9s",
     "2s",
     "3s",
-    "N",
-    "N",
     "9s"
    ],
    "answer": {
@@ -216,19 +208,7 @@
     "options": null
    },
    "explanation": {
-    "best": "切 9s。分块：123m、456p、789s 三面子，NN 雀头，2s3s 一个两面搭子，9s 是孤张。9s 虽然是数牌，但手里没有 7s/8s 以外的索子伙伴（789s 已自成面子），它联络不上任何搭子；而 2s3s 是价值最高的两面搭。切 9s 后听 1s/4s 两面共 8 张。",
-    "ukeire_table": [
-     {
-      "discard": "9s",
-      "ukeire_count": 8,
-      "note": "两面 1s、4s 各 4 张"
-     },
-     {
-      "discard": "2s",
-      "ukeire_count": 33,
-      "note": "切搭子保孤张反而退回一向听"
-     }
-    ],
+    "best": "切9条。123万、456筒、789条 是三副面子，99万 当雀头，23条 是两面搭子；多出来的那张 9条 贴着 789条 那副面子，却组不进任何搭子，是孤张。切掉它，23条 听 1条/4条 两面，共 8 张。孤张让位给两面搭，别动最值钱的搭子。",
     "source": "79博客·麻雀的基础4「面子和搭子」"
    },
    "engine_snapshot": {
@@ -248,6 +228,7 @@
       "shanten_after": 1,
       "ukeire_count": 33,
       "ukeire_tiles": [
+       "9m",
        "1s",
        "2s",
        "3s",
@@ -256,8 +237,7 @@
        "6s",
        "7s",
        "8s",
-       "9s",
-       "N"
+       "9s"
       ]
      },
      {
@@ -265,6 +245,7 @@
       "shanten_after": 1,
       "ukeire_count": 29,
       "ukeire_tiles": [
+       "9m",
        "1s",
        "2s",
        "3s",
@@ -272,20 +253,19 @@
        "6s",
        "7s",
        "8s",
-       "9s",
-       "N"
+       "9s"
       ]
      },
      {
-      "discard": "N",
+      "discard": "9m",
       "shanten_after": 1,
       "ukeire_count": 17,
       "ukeire_tiles": [
+       "9m",
        "1s",
        "4s",
        "6s",
-       "9s",
-       "N"
+       "9s"
       ]
      },
      {
@@ -326,11 +306,11 @@
       "shanten_after": 1,
       "ukeire_count": 16,
       "ukeire_tiles": [
+       "9m",
        "1s",
        "4s",
        "7s",
-       "9s",
-       "N"
+       "9s"
       ]
      },
      {
@@ -338,11 +318,11 @@
       "shanten_after": 1,
       "ukeire_count": 16,
       "ukeire_tiles": [
+       "9m",
        "1s",
        "4s",
        "8s",
-       "9s",
-       "N"
+       "9s"
       ]
      },
      {
@@ -379,16 +359,16 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:42.885Z"
+    "checked_at": "2026-09-02T07:16:38.150Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L1_003",
    "level": "L1",
-   "knowledge_point": "雀头识别：11m 可作雀头，23m 即成两面",
    "question_type": "what_to_discard",
    "difficulty": "easy",
+   "knowledge_point": "雀头识别：11万 当雀头，23万 就是两面搭",
    "hand": [
     "1m",
     "1m",
@@ -397,41 +377,29 @@
     "4p",
     "5p",
     "6p",
-    "7s",
-    "8s",
-    "9s",
     "1p",
     "2p",
     "3p",
-    "E"
+    "7s",
+    "8s",
+    "9s",
+    "9p"
    ],
    "answer": {
     "correct": [
-     "E"
+     "9p"
     ],
     "options": null
    },
    "explanation": {
-    "best": "切 E。分块：1m1m 一对、2m3m 搭子、456p、789s、123p 三面子。把 1m1m 当雀头，2m3m 就是两面搭，切掉孤立字牌 E 后手牌 = 三面子 + 雀头 + 两面搭，听 1m/4m。1m 手里已有 2 张所以只剩 2 张可摸，4m 还有 4 张，合计 6 张。注意不要把 123m 拆开当面子——那样 1m 只剩单骑 3 张。",
-    "ukeire_table": [
-     {
-      "discard": "E",
-      "ukeire_count": 6,
-      "note": "两面听：4m×4 + 1m×2（手内已占 2 张）"
-     },
-     {
-      "discard": "1m",
-      "ukeire_count": 3,
-      "note": "误把 123m 当面子 → 单骑 E"
-     }
-    ],
+    "best": "切9筒。11万 一对当雀头，23万 就成了两面搭；配上 456筒、123筒、789条 三副面子，只有 9筒 是孤张。切掉 9筒 正好听牌，等 1万/4万：1万 手里已有 2 张、只剩 2 张，4万 还有 4 张，共 6 张。别把 1123万 硬拆成面子——那样 9筒 只能单骑，只剩 3 张。",
     "source": "79博客·麻雀的基础4「面子和搭子」"
    },
    "engine_snapshot": {
     "shanten_before": 0,
     "candidates": [
      {
-      "discard": "E",
+      "discard": "9p",
       "shanten_after": 0,
       "ukeire_count": 6,
       "ukeire_tiles": [
@@ -444,20 +412,36 @@
       "shanten_after": 0,
       "ukeire_count": 3,
       "ukeire_tiles": [
-       "E"
+       "9p"
       ]
      },
      {
       "discard": "2m",
       "shanten_after": 1,
-      "ukeire_count": 20,
+      "ukeire_count": 28,
       "ukeire_tiles": [
        "1m",
        "2m",
        "3m",
        "4m",
        "5m",
-       "E"
+       "7p",
+       "8p",
+       "9p"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 24,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "7p",
+       "8p",
+       "9p"
       ]
      },
      {
@@ -470,7 +454,7 @@
        "1p",
        "4p",
        "7p",
-       "E"
+       "9p"
       ]
      },
      {
@@ -482,7 +466,7 @@
        "4m",
        "4p",
        "7p",
-       "E"
+       "9p"
       ]
      },
      {
@@ -492,21 +476,9 @@
       "ukeire_tiles": [
        "1m",
        "4m",
+       "9p",
        "6s",
-       "9s",
-       "E"
-      ]
-     },
-     {
-      "discard": "3m",
-      "shanten_after": 1,
-      "ukeire_count": 16,
-      "ukeire_tiles": [
-       "1m",
-       "2m",
-       "3m",
-       "4m",
-       "E"
+       "9s"
       ]
      },
      {
@@ -518,7 +490,7 @@
        "4m",
        "3p",
        "6p",
-       "E"
+       "9p"
       ]
      },
      {
@@ -529,7 +501,7 @@
        "1m",
        "4m",
        "2p",
-       "E"
+       "9p"
       ]
      },
      {
@@ -540,7 +512,7 @@
        "1m",
        "4m",
        "3p",
-       "E"
+       "9p"
       ]
      },
      {
@@ -551,7 +523,7 @@
        "1m",
        "4m",
        "5p",
-       "E"
+       "9p"
       ]
      },
      {
@@ -561,8 +533,8 @@
       "ukeire_tiles": [
        "1m",
        "4m",
-       "7s",
-       "E"
+       "9p",
+       "7s"
       ]
      },
      {
@@ -572,24 +544,24 @@
       "ukeire_tiles": [
        "1m",
        "4m",
-       "8s",
-       "E"
+       "9p",
+       "8s"
       ]
      }
     ]
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:42.885Z"
+    "checked_at": "2026-09-02T07:16:38.150Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L1_004",
    "level": "L1",
-   "knowledge_point": "听牌张数对比：两面 6 张 vs 单骑 3 张",
    "question_type": "ukeire_compare",
    "difficulty": "easy",
+   "knowledge_point": "听牌张数对比：两面 6 张 vs 单骑 3 张",
    "hand": [
     "1m",
     "1m",
@@ -598,21 +570,21 @@
     "4p",
     "5p",
     "6p",
-    "7s",
-    "8s",
-    "9s",
     "1p",
     "2p",
     "3p",
-    "E"
+    "7s",
+    "8s",
+    "9s",
+    "9p"
    ],
    "answer": {
     "correct": [
-     "E"
+     "9p"
     ],
     "options": [
      {
-      "discard": "E"
+      "discard": "9p"
      },
      {
       "discard": "1m"
@@ -620,14 +592,14 @@
     ]
    },
    "explanation": {
-    "best": "切 E 听两面 6 张，切 1m 只听单骑 E 3 张。两种切法都能听牌，差别全在「和了牌还剩几张」：两面 1m+4m 里 4m 完整 4 张、1m 被手内占 2 张剩 2 张；单骑 E 手内 1 张剩 3 张。6 > 3，明显切 E。",
+    "best": "两种切法都能听牌，差在「和了牌还剩几张」。切9筒：11万 雀头 + 23万 两面，听 1万/4万——1万 剩 2 张、4万 剩 4 张，共 6 张。切1万：万子凑成 123万 面子，手牌变成四面子 + 单骑 9筒，只能等 9筒 3 张。6 比 3，选切9筒。",
     "source": "79博客·牌效率2「有效牌和张数」"
    },
    "engine_snapshot": {
     "shanten_before": 0,
     "candidates": [
      {
-      "discard": "E",
+      "discard": "9p",
       "shanten_after": 0,
       "ukeire_count": 6,
       "ukeire_tiles": [
@@ -640,20 +612,36 @@
       "shanten_after": 0,
       "ukeire_count": 3,
       "ukeire_tiles": [
-       "E"
+       "9p"
       ]
      },
      {
       "discard": "2m",
       "shanten_after": 1,
-      "ukeire_count": 20,
+      "ukeire_count": 28,
       "ukeire_tiles": [
        "1m",
        "2m",
        "3m",
        "4m",
        "5m",
-       "E"
+       "7p",
+       "8p",
+       "9p"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 24,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "7p",
+       "8p",
+       "9p"
       ]
      },
      {
@@ -666,7 +654,7 @@
        "1p",
        "4p",
        "7p",
-       "E"
+       "9p"
       ]
      },
      {
@@ -678,7 +666,7 @@
        "4m",
        "4p",
        "7p",
-       "E"
+       "9p"
       ]
      },
      {
@@ -688,21 +676,9 @@
       "ukeire_tiles": [
        "1m",
        "4m",
+       "9p",
        "6s",
-       "9s",
-       "E"
-      ]
-     },
-     {
-      "discard": "3m",
-      "shanten_after": 1,
-      "ukeire_count": 16,
-      "ukeire_tiles": [
-       "1m",
-       "2m",
-       "3m",
-       "4m",
-       "E"
+       "9s"
       ]
      },
      {
@@ -714,7 +690,7 @@
        "4m",
        "3p",
        "6p",
-       "E"
+       "9p"
       ]
      },
      {
@@ -725,7 +701,7 @@
        "1m",
        "4m",
        "2p",
-       "E"
+       "9p"
       ]
      },
      {
@@ -736,7 +712,7 @@
        "1m",
        "4m",
        "3p",
-       "E"
+       "9p"
       ]
      },
      {
@@ -747,7 +723,7 @@
        "1m",
        "4m",
        "5p",
-       "E"
+       "9p"
       ]
      },
      {
@@ -757,8 +733,8 @@
       "ukeire_tiles": [
        "1m",
        "4m",
-       "7s",
-       "E"
+       "9p",
+       "7s"
       ]
      },
      {
@@ -768,24 +744,24 @@
       "ukeire_tiles": [
        "1m",
        "4m",
-       "8s",
-       "E"
+       "9p",
+       "8s"
       ]
      }
     ]
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:42.885Z"
+    "checked_at": "2026-09-02T07:16:38.150Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L2_001",
    "level": "L2",
-   "knowledge_point": "浮牌理论：孤立字牌让位给两面搭",
    "question_type": "what_to_discard",
    "difficulty": "medium",
+   "knowledge_point": "浮牌先切：让位给搭子",
    "hand": [
     "1m",
     "2m",
@@ -793,47 +769,30 @@
     "4m",
     "5m",
     "6m",
+    "9m",
     "7p",
     "8p",
     "9p",
     "1s",
     "2s",
     "4s",
-    "5s",
-    "E"
+    "5s"
    ],
    "answer": {
     "correct": [
-     "E"
+     "9m"
     ],
     "options": null
    },
    "explanation": {
-    "best": "切 E。手牌结构：123m、456m、789p 三面子 + 1s2s（边张搭）+ 4s5s（两面搭）+ 浮牌 E。两个搭子正好凑第四副面子，切 E 后一向听，进张覆盖 1s2s3s4s5s6s 共 20 张。E 无法参与任何搭子，是标准浮牌——「不能让手牌前进的牌先切」。",
-    "ukeire_table": [
-     {
-      "discard": "E",
-      "ukeire_count": 20,
-      "note": "双搭并进：1s-6s 全是有效牌"
-     },
-     {
-      "discard": "1s",
-      "ukeire_count": 17,
-      "note": "拆边张搭损失部分进张"
-     },
-     {
-      "discard": "2s",
-      "ukeire_count": 14,
-      "note": "拆掉搭子中段，进张进一步缩水"
-     }
-    ],
+    "best": "切9万。123万、456万、789筒 三副面子；12条（边张）和 45条（两面）两个搭子正好补第四副，只有 9万 是浮牌——万子已排到 1到6，9万 前后接不上。切掉它进一向听，有效牌覆盖 1条~6条，共 20 张。搭子的价值是让手牌前进，浮牌要让位。",
     "source": "79博客·牌效率3「浮牌理论」"
    },
    "engine_snapshot": {
     "shanten_before": 1,
     "candidates": [
      {
-      "discard": "E",
+      "discard": "9m",
       "shanten_after": 1,
       "ukeire_count": 20,
       "ukeire_tiles": [
@@ -850,11 +809,11 @@
       "shanten_after": 1,
       "ukeire_count": 17,
       "ukeire_tiles": [
+       "9m",
        "2s",
        "3s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -862,10 +821,10 @@
       "shanten_after": 1,
       "ukeire_count": 14,
       "ukeire_tiles": [
+       "9m",
        "1s",
        "3s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -873,10 +832,10 @@
       "shanten_after": 1,
       "ukeire_count": 13,
       "ukeire_tiles": [
+       "9m",
        "1s",
        "3s",
-       "4s",
-       "E"
+       "4s"
       ]
      },
      {
@@ -884,9 +843,9 @@
       "shanten_after": 1,
       "ukeire_count": 10,
       "ukeire_tiles": [
+       "9m",
        "3s",
-       "5s",
-       "E"
+       "5s"
       ]
      },
      {
@@ -901,13 +860,13 @@
        "5m",
        "6m",
        "7m",
+       "9m",
        "1s",
        "2s",
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -921,13 +880,13 @@
        "4m",
        "5m",
        "6m",
+       "9m",
        "1s",
        "2s",
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -939,13 +898,13 @@
        "5m",
        "6m",
        "7m",
+       "9m",
        "1s",
        "2s",
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -953,6 +912,7 @@
       "shanten_after": 2,
       "ukeire_count": 37,
       "ukeire_tiles": [
+       "9m",
        "6p",
        "7p",
        "8p",
@@ -962,8 +922,7 @@
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -975,13 +934,13 @@
        "2m",
        "3m",
        "6m",
+       "9m",
        "1s",
        "2s",
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -993,13 +952,13 @@
        "4m",
        "5m",
        "6m",
+       "9m",
        "1s",
        "2s",
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -1010,13 +969,13 @@
        "1m",
        "2m",
        "3m",
+       "9m",
        "1s",
        "2s",
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -1024,6 +983,7 @@
       "shanten_after": 2,
       "ukeire_count": 33,
       "ukeire_tiles": [
+       "9m",
        "7p",
        "8p",
        "9p",
@@ -1032,8 +992,7 @@
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -1041,6 +1000,7 @@
       "shanten_after": 2,
       "ukeire_count": 33,
       "ukeire_tiles": [
+       "9m",
        "7p",
        "8p",
        "9p",
@@ -1049,24 +1009,23 @@
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      }
     ]
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:42.953Z"
+    "checked_at": "2026-09-02T07:16:38.221Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L2_002",
    "level": "L2",
-   "knowledge_point": "进张张数口径：剩余张数 = 4 − 手内张数",
    "question_type": "what_to_discard",
    "difficulty": "medium",
+   "knowledge_point": "进张口径：剩几张 = 4 − 手内已有几张",
    "hand": [
     "1m",
     "2m",
@@ -1074,14 +1033,14 @@
     "4m",
     "5m",
     "6m",
+    "9m",
     "7p",
     "8p",
     "9p",
     "1s",
     "2s",
     "3s",
-    "3s",
-    "E"
+    "3s"
    ],
    "answer": {
     "correct": [
@@ -1090,19 +1049,7 @@
     "options": null
    },
    "explanation": {
-    "best": "切 3s，单骑 E。四面子（123m、456m、789p、123s）+ 3s3s + E，切一张后就是「四面子 + 单骑」的听牌形。两种选择：单骑 E（手内 1 张，剩 3 张可摸）或单骑 3s（手内已有 2 张，只剩 2 张）。3 张 > 2 张，切 3s。关键口径：进张张数按「4 − 手内该牌张数」计，手里已有的牌会把剩余张数吃掉。",
-    "ukeire_table": [
-     {
-      "discard": "3s",
-      "ukeire_count": 3,
-      "note": "单骑 E：手内 1 张 → 剩 3"
-     },
-     {
-      "discard": "E",
-      "ukeire_count": 2,
-      "note": "单骑 3s：手内 2 张 → 只剩 2"
-     }
-    ],
+    "best": "切3条。四副面子（123万、456万、789筒、123条）已经齐了，剩 9万 和一张多出来的 3条——切一张就是「四面子 + 单骑」的听牌形。关键看单骑哪张剩下的多：留 9万 单骑，手内只有 1 张，还能摸 3 张；留 3条 单骑，它已占 123条 面子一张、手里又有一张，只剩 2 张。3 比 2 多，切掉多余的 3条。记口径：剩几张 = 4 − 手内已有几张。",
     "source": "79博客·牌效率2「有效牌和张数」"
    },
    "engine_snapshot": {
@@ -1113,14 +1060,41 @@
       "shanten_after": 0,
       "ukeire_count": 3,
       "ukeire_tiles": [
-       "E"
+       "9m"
       ]
      },
      {
-      "discard": "E",
+      "discard": "9m",
       "shanten_after": 0,
       "ukeire_count": 2,
       "ukeire_tiles": [
+       "3s"
+      ]
+     },
+     {
+      "discard": "1s",
+      "shanten_after": 1,
+      "ukeire_count": 24,
+      "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
+       "1s",
+       "2s",
+       "3s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 1,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
+       "1s",
+       "2s",
        "3s"
       ]
      },
@@ -1132,20 +1106,8 @@
        "1m",
        "4m",
        "7m",
-       "3s",
-       "E"
-      ]
-     },
-     {
-      "discard": "1s",
-      "shanten_after": 1,
-      "ukeire_count": 16,
-      "ukeire_tiles": [
-       "1s",
-       "2s",
-       "3s",
-       "4s",
-       "E"
+       "9m",
+       "3s"
       ]
      },
      {
@@ -1155,8 +1117,8 @@
       "ukeire_tiles": [
        "4m",
        "7m",
-       "3s",
-       "E"
+       "9m",
+       "3s"
       ]
      },
      {
@@ -1164,10 +1126,10 @@
       "shanten_after": 1,
       "ukeire_count": 13,
       "ukeire_tiles": [
+       "9m",
        "6p",
        "9p",
-       "3s",
-       "E"
+       "3s"
       ]
      },
      {
@@ -1177,19 +1139,8 @@
       "ukeire_tiles": [
        "3m",
        "6m",
-       "3s",
-       "E"
-      ]
-     },
-     {
-      "discard": "2s",
-      "shanten_after": 1,
-      "ukeire_count": 12,
-      "ukeire_tiles": [
-       "1s",
-       "2s",
-       "3s",
-       "E"
+       "9m",
+       "3s"
       ]
      },
      {
@@ -1198,8 +1149,8 @@
       "ukeire_count": 9,
       "ukeire_tiles": [
        "2m",
-       "3s",
-       "E"
+       "9m",
+       "3s"
       ]
      },
      {
@@ -1208,8 +1159,8 @@
       "ukeire_count": 9,
       "ukeire_tiles": [
        "3m",
-       "3s",
-       "E"
+       "9m",
+       "3s"
       ]
      },
      {
@@ -1218,8 +1169,8 @@
       "ukeire_count": 9,
       "ukeire_tiles": [
        "5m",
-       "3s",
-       "E"
+       "9m",
+       "3s"
       ]
      },
      {
@@ -1227,9 +1178,9 @@
       "shanten_after": 1,
       "ukeire_count": 9,
       "ukeire_tiles": [
+       "9m",
        "7p",
-       "3s",
-       "E"
+       "3s"
       ]
      },
      {
@@ -1237,25 +1188,25 @@
       "shanten_after": 1,
       "ukeire_count": 9,
       "ukeire_tiles": [
+       "9m",
        "8p",
-       "3s",
-       "E"
+       "3s"
       ]
      }
     ]
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:42.954Z"
+    "checked_at": "2026-09-02T07:16:38.221Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L2_003",
    "level": "L2",
-   "knowledge_point": "嵌张搭子：3s5s 型只等中间一张",
    "question_type": "what_to_discard",
    "difficulty": "medium",
+   "knowledge_point": "嵌张搭子：35条 只等中间一张 4条",
    "hand": [
     "1m",
     "2m",
@@ -1279,19 +1230,7 @@
     "options": null
    },
    "explanation": {
-    "best": "切 9m。结构：123m、456p、789s 三面子 + 3s5s 嵌张搭 + 1p1p 雀头 + 9m 浮牌。切 9m 后听牌，和了牌只有 4s 一种 4 张。嵌张搭（间隔一张）只接受中间那一张，进张天生只有两面搭的一半——但它依然是搭子，比孤张 9m 值钱。",
-    "ukeire_table": [
-     {
-      "discard": "9m",
-      "ukeire_count": 4,
-      "note": "嵌张 4s 剩 4 张"
-     },
-     {
-      "discard": "5s",
-      "ukeire_count": 32,
-      "note": "退回一向听换大进张，见 L6 倒退专题"
-     }
-    ],
+    "best": "切9万。123万、456筒、789条 三副面子，11筒 当雀头，35条 是嵌张搭子——中间空一格，只等 4条 一张，剩 4 张；9万 是浮牌。切掉 9万 正好听牌，等 4条。嵌张进张天生只有两面的一半，但再窄也是搭子，比接不上的浮牌 9万 值钱。",
     "source": "79博客·麻雀的基础4「面子和搭子」/ 牌效率3「浮牌理论」"
    },
    "engine_snapshot": {
@@ -1436,16 +1375,16 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:42.954Z"
+    "checked_at": "2026-09-02T07:16:38.221Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L2_004",
    "level": "L2",
-   "knowledge_point": "保搭 vs 拆搭：双两面并进的进张面",
    "question_type": "ukeire_compare",
    "difficulty": "medium",
+   "knowledge_point": "保搭 vs 拆搭：进张面差多少",
    "hand": [
     "1m",
     "2m",
@@ -1453,22 +1392,22 @@
     "4m",
     "5m",
     "6m",
+    "9m",
     "7p",
     "8p",
     "9p",
     "1s",
     "2s",
     "4s",
-    "5s",
-    "E"
+    "5s"
    ],
    "answer": {
     "correct": [
-     "E"
+     "9m"
     ],
     "options": [
      {
-      "discard": "E"
+      "discard": "9m"
      },
      {
       "discard": "2s"
@@ -1476,14 +1415,14 @@
     ]
    },
    "explanation": {
-    "best": "切 E 进张 20 张，切 2s 只剩 14 张。两个搭子（12s 边张 + 45s 两面）都保留时，1s-6s 六种牌全有效；拆掉 12s 后，进张只剩 45s 两面相关的 4 种。同为一向听，进张面差 6 张——这就是「浮牌先切、搭子全保」的量化理由。",
+    "best": "切9万 进张 20 张，拆 12条（切2条）只剩 14 张。12条 边张和 45条 两面都留着，1条~6条 六种牌全是进张；拆掉 12条，进张就只剩 45条 那一片。同是一向听，差 6 张——「有浮牌先切浮牌、搭子一个不拆」的道理就在这里。",
     "source": "79博客·牌效率2「有效牌和张数」"
    },
    "engine_snapshot": {
     "shanten_before": 1,
     "candidates": [
      {
-      "discard": "E",
+      "discard": "9m",
       "shanten_after": 1,
       "ukeire_count": 20,
       "ukeire_tiles": [
@@ -1500,11 +1439,11 @@
       "shanten_after": 1,
       "ukeire_count": 17,
       "ukeire_tiles": [
+       "9m",
        "2s",
        "3s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -1512,10 +1451,10 @@
       "shanten_after": 1,
       "ukeire_count": 14,
       "ukeire_tiles": [
+       "9m",
        "1s",
        "3s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -1523,10 +1462,10 @@
       "shanten_after": 1,
       "ukeire_count": 13,
       "ukeire_tiles": [
+       "9m",
        "1s",
        "3s",
-       "4s",
-       "E"
+       "4s"
       ]
      },
      {
@@ -1534,9 +1473,9 @@
       "shanten_after": 1,
       "ukeire_count": 10,
       "ukeire_tiles": [
+       "9m",
        "3s",
-       "5s",
-       "E"
+       "5s"
       ]
      },
      {
@@ -1551,13 +1490,13 @@
        "5m",
        "6m",
        "7m",
+       "9m",
        "1s",
        "2s",
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -1571,13 +1510,13 @@
        "4m",
        "5m",
        "6m",
+       "9m",
        "1s",
        "2s",
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -1589,13 +1528,13 @@
        "5m",
        "6m",
        "7m",
+       "9m",
        "1s",
        "2s",
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -1603,6 +1542,7 @@
       "shanten_after": 2,
       "ukeire_count": 37,
       "ukeire_tiles": [
+       "9m",
        "6p",
        "7p",
        "8p",
@@ -1612,8 +1552,7 @@
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -1625,13 +1564,13 @@
        "2m",
        "3m",
        "6m",
+       "9m",
        "1s",
        "2s",
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -1643,13 +1582,13 @@
        "4m",
        "5m",
        "6m",
+       "9m",
        "1s",
        "2s",
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -1660,13 +1599,13 @@
        "1m",
        "2m",
        "3m",
+       "9m",
        "1s",
        "2s",
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -1674,6 +1613,7 @@
       "shanten_after": 2,
       "ukeire_count": 33,
       "ukeire_tiles": [
+       "9m",
        "7p",
        "8p",
        "9p",
@@ -1682,8 +1622,7 @@
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -1691,6 +1630,7 @@
       "shanten_after": 2,
       "ukeire_count": 33,
       "ukeire_tiles": [
+       "9m",
        "7p",
        "8p",
        "9p",
@@ -1699,24 +1639,23 @@
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      }
     ]
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:42.954Z"
+    "checked_at": "2026-09-02T07:16:38.221Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L3_001",
    "level": "L3",
-   "knowledge_point": "四张复合形（帽子形）：112m 切重张即成面子",
    "question_type": "what_to_discard",
    "difficulty": "medium",
+   "knowledge_point": "复合形：1123万 四张里其实只多一张",
    "hand": [
     "1m",
     "1m",
@@ -1725,13 +1664,13 @@
     "4p",
     "5p",
     "6p",
+    "9p",
+    "9p",
     "7s",
     "8s",
     "9s",
     "5s",
-    "5s",
-    "E",
-    "E"
+    "5s"
    ],
    "answer": {
     "correct": [
@@ -1740,19 +1679,7 @@
     "options": null
    },
    "explanation": {
-    "best": "切 1m。1m1m2m3m 是「对子 + 顺子」重叠的复合形：切掉一张 1m，剩 123m 直接成为完整面子，同时 5s5s、EE 两对子留作双碰听牌（等 5s 或 E 成刻）。复合形的要诀是看出「四张里其实只多一张」——不需要把 11m 和 23m 当成两个独立搭子去纠结。",
-    "ukeire_table": [
-     {
-      "discard": "1m",
-      "ukeire_count": 4,
-      "note": "双碰听 5s/E：手内各 2 张 → 各剩 2，共 4"
-     },
-     {
-      "discard": "5s",
-      "ukeire_count": 32,
-      "note": "拆对子退一向听，换大进张面"
-     }
-    ],
+    "best": "切1万。1万1万2万3万 是「对子 + 顺子」叠出来的复合形，四张里只多一张：切掉一张 1万，剩 123万 直接成面子；配上 456筒、789条，再剩 99筒、55条 两对，正好双碰听牌，等 9筒 或 5条，各剩 2 张、共 4 张。看清「多一张」，就别再纠结 11万 和 23万 该留谁。",
     "source": "79博客·麻雀的基础8「基本形与复合型」"
    },
    "engine_snapshot": {
@@ -1763,8 +1690,8 @@
       "shanten_after": 0,
       "ukeire_count": 4,
       "ukeire_tiles": [
-       "5s",
-       "E"
+       "9p",
+       "5s"
       ]
      },
      {
@@ -1776,25 +1703,27 @@
        "2m",
        "3m",
        "4m",
+       "9p",
        "3s",
        "4s",
        "5s",
        "6s",
-       "7s",
-       "E"
+       "7s"
       ]
      },
      {
-      "discard": "E",
+      "discard": "9p",
       "shanten_after": 1,
-      "ukeire_count": 17,
+      "ukeire_count": 25,
       "ukeire_tiles": [
        "1m",
        "2m",
        "3m",
        "4m",
-       "5s",
-       "E"
+       "7p",
+       "8p",
+       "9p",
+       "5s"
       ]
      },
      {
@@ -1804,8 +1733,8 @@
       "ukeire_tiles": [
        "4p",
        "7p",
-       "5s",
-       "E"
+       "9p",
+       "5s"
       ]
      },
      {
@@ -1815,8 +1744,8 @@
       "ukeire_tiles": [
        "3p",
        "6p",
-       "5s",
-       "E"
+       "9p",
+       "5s"
       ]
      },
      {
@@ -1824,10 +1753,10 @@
       "shanten_after": 1,
       "ukeire_count": 12,
       "ukeire_tiles": [
+       "9p",
        "5s",
        "6s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -1837,8 +1766,8 @@
       "ukeire_tiles": [
        "1m",
        "2m",
-       "5s",
-       "E"
+       "9p",
+       "5s"
       ]
      },
      {
@@ -1848,8 +1777,8 @@
       "ukeire_tiles": [
        "1m",
        "3m",
-       "5s",
-       "E"
+       "9p",
+       "5s"
       ]
      },
      {
@@ -1858,8 +1787,8 @@
       "ukeire_count": 8,
       "ukeire_tiles": [
        "5p",
-       "5s",
-       "E"
+       "9p",
+       "5s"
       ]
      },
      {
@@ -1867,9 +1796,9 @@
       "shanten_after": 1,
       "ukeire_count": 8,
       "ukeire_tiles": [
+       "9p",
        "5s",
-       "7s",
-       "E"
+       "7s"
       ]
      },
      {
@@ -1877,25 +1806,25 @@
       "shanten_after": 1,
       "ukeire_count": 8,
       "ukeire_tiles": [
+       "9p",
        "5s",
-       "8s",
-       "E"
+       "8s"
       ]
      }
     ]
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.067Z"
+    "checked_at": "2026-09-02T07:16:38.337Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L3_002",
    "level": "L3",
-   "knowledge_point": "四连 + 对子复合：556p 的三面听结构",
    "question_type": "what_to_discard",
    "difficulty": "hard",
+   "knowledge_point": "饼子六张复合：55筒 + 顺子怎么拆都等价",
    "hand": [
     "1m",
     "2m",
@@ -1920,24 +1849,7 @@
     "options": null
    },
    "explanation": {
-    "best": "切 6p 或 9p（并列）。饼子六张 5p5p6p7p8p9p 是「对子 + 面子」的复合形：切 6p 剩 5p5p + 789p，切 9p 剩 5p5p + 678p，都留下「完整面子 + 5p5p 雀头」，配合 2s-6s 五连展开成三面听 1s/4s/7s 共 11 张（1s、7s 各 4 张，4s 手内占 1 张剩 3 张）。两种切法结构完全等价，所以并列最优——并列时怎么切都不算错。",
-    "ukeire_table": [
-     {
-      "discard": "6p",
-      "ukeire_count": 11,
-      "note": "三面听 1s(4)/4s(3)/7s(4)"
-     },
-     {
-      "discard": "9p",
-      "ukeire_count": 11,
-      "note": "与切 6p 等价"
-     },
-     {
-      "discard": "2s",
-      "ukeire_count": 46,
-      "note": "退一向听，进张虽多但慢一巡"
-     }
-    ],
+    "best": "切6筒 或 9筒，两解并列。饼子 556789筒 六张是「对子 + 面子」叠成的复合形：切 6筒 留 55筒 + 789筒，切 9筒 留 55筒 + 678筒，都剩完整面子 + 55筒 雀头，完全等价。索子 23456 五连展开成三面听，进张 1条/4条/7条 共 11 张（4条 手内占 1 张剩 3，另两种各 4）。怎么切都不算错。",
     "source": "79博客·麻雀的基础8「基本形与复合型」/ Riichi Book I §3.3"
    },
    "engine_snapshot": {
@@ -2133,16 +2045,16 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.067Z"
+    "checked_at": "2026-09-02T07:16:38.337Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L3_003",
    "level": "L3",
-   "knowledge_point": "一色长连：八连张的两端三面听",
    "question_type": "what_to_discard",
    "difficulty": "medium",
+   "knowledge_point": "八连张：两端各给三面",
    "hand": [
     "1m",
     "2m",
@@ -2167,24 +2079,7 @@
     "options": null
    },
    "explanation": {
-    "best": "切 2s 或 9s（并列）。2s-9s 八连切掉一端后剩七连 = 两副面子 + 单骑：切 2s 后单骑位可在 3s/6s/9s 里选（三面单骑），切 9s 则对称地单骑 2s/5s/8s。三种进张手内各占 1 张、各剩 3 张，合计都是 9 张。八连以上的一色长连是天然多面张素材，两端的切法等价并列；切中间（如 3s）只剩单骑 2s 一种解、3 张。",
-    "ukeire_table": [
-     {
-      "discard": "2s",
-      "ukeire_count": 9,
-      "note": "三面单骑 3s/6s/9s 各 3"
-     },
-     {
-      "discard": "9s",
-      "ukeire_count": 9,
-      "note": "2s(3)/5s(3)/8s(3)，与切 2s 对称"
-     },
-     {
-      "discard": "3s",
-      "ukeire_count": 3,
-      "note": "切中间只剩单骑 2s"
-     }
-    ],
+    "best": "切2条 或 9条，两解并列。2条到9条 八连张，切掉一端就变七连：七连能拆成两副面子加一张单骑，单骑有三个位置可挑——切2条后是 3条/6条/9条，切9条后是 2条/5条/8条，每种剩 3 张，合计都是 9 张。八连以上是天然多面素材，两端切法并列；从中间切会把能拆两副面子的连张打断，进张最多只剩 6 张、少的只有 3 张，明显吃亏。",
     "source": "Riichi Book I §3.3 复合形"
    },
    "engine_snapshot": {
@@ -2397,20 +2292,23 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.067Z"
+    "checked_at": "2026-09-02T07:16:38.337Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L3_004",
    "level": "L3",
-   "knowledge_point": "五连 + 两面：复合形进张的并集有多大",
    "question_type": "ukeire_compare",
    "difficulty": "hard",
+   "knowledge_point": "两个五连：进张并集有多大",
    "hand": [
     "1m",
     "2m",
     "3m",
+    "9m",
+    "5p",
+    "6p",
     "7p",
     "8p",
     "9p",
@@ -2418,18 +2316,15 @@
     "3s",
     "4s",
     "5s",
-    "6s",
-    "5p",
-    "6p",
-    "E"
+    "6s"
    ],
    "answer": {
     "correct": [
-     "E"
+     "9m"
     ],
     "options": [
      {
-      "discard": "E"
+      "discard": "9m"
      },
      {
       "discard": "5p"
@@ -2437,14 +2332,14 @@
     ]
    },
    "explanation": {
-    "best": "切 E 进张 42 张，切 5p 只剩 20 张。23456s 五连可以容纳「面子 + 两面搭」的任何组合，56p 两面独立并进，两个复合形同时推进时有效牌覆盖 4p-9p 与 1s-7s 十三种 42 张。切 5p 拆掉一面搭子，进张立刻腰斩。复合形的价值就在「一张牌同时服务多种完成方式」。",
+    "best": "切9万 进张 42 张，切5筒 只剩 20 张。饼子 56789 和条子 23456 是两个五连，都能当「面子 + 搭子」两用，两个一起推进，有效牌覆盖 4筒~9筒 与 1条~7条，共 42 张。切 5筒 等于亲手拆掉一个五连，进张几乎减半。复合形的价值，就在一张牌同时服务好几种成牌方式。",
     "source": "Riichi Book I §3.3 / 79博客·牌效率2「有效牌和张数」"
    },
    "engine_snapshot": {
     "shanten_before": 1,
     "candidates": [
      {
-      "discard": "E",
+      "discard": "9m",
       "shanten_after": 1,
       "ukeire_count": 42,
       "ukeire_tiles": [
@@ -2468,12 +2363,12 @@
       "shanten_after": 1,
       "ukeire_count": 20,
       "ukeire_tiles": [
+       "9m",
        "6p",
        "9p",
        "1s",
        "4s",
-       "7s",
-       "E"
+       "7s"
       ]
      },
      {
@@ -2481,12 +2376,12 @@
       "shanten_after": 1,
       "ukeire_count": 20,
       "ukeire_tiles": [
+       "9m",
        "5p",
        "8p",
        "1s",
        "4s",
-       "7s",
-       "E"
+       "7s"
       ]
      },
      {
@@ -2494,11 +2389,11 @@
       "shanten_after": 1,
       "ukeire_count": 17,
       "ukeire_tiles": [
+       "9m",
        "5p",
        "1s",
        "4s",
-       "7s",
-       "E"
+       "7s"
       ]
      },
      {
@@ -2506,11 +2401,11 @@
       "shanten_after": 1,
       "ukeire_count": 17,
       "ukeire_tiles": [
+       "9m",
        "9p",
        "1s",
        "4s",
-       "7s",
-       "E"
+       "7s"
       ]
      },
      {
@@ -2518,11 +2413,11 @@
       "shanten_after": 1,
       "ukeire_count": 16,
       "ukeire_tiles": [
+       "9m",
        "4p",
        "7p",
        "3s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -2530,11 +2425,11 @@
       "shanten_after": 1,
       "ukeire_count": 16,
       "ukeire_tiles": [
+       "9m",
        "4p",
        "7p",
        "2s",
-       "5s",
-       "E"
+       "5s"
       ]
      },
      {
@@ -2542,10 +2437,10 @@
       "shanten_after": 1,
       "ukeire_count": 13,
       "ukeire_tiles": [
+       "9m",
        "4p",
        "7p",
-       "2s",
-       "E"
+       "2s"
       ]
      },
      {
@@ -2553,10 +2448,10 @@
       "shanten_after": 1,
       "ukeire_count": 13,
       "ukeire_tiles": [
+       "9m",
        "4p",
        "7p",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -2568,6 +2463,7 @@
        "2m",
        "3m",
        "4m",
+       "9m",
        "4p",
        "5p",
        "6p",
@@ -2580,8 +2476,7 @@
        "4s",
        "5s",
        "6s",
-       "7s",
-       "E"
+       "7s"
       ]
      },
      {
@@ -2592,6 +2487,7 @@
        "1m",
        "2m",
        "3m",
+       "9m",
        "4p",
        "5p",
        "6p",
@@ -2604,8 +2500,7 @@
        "4s",
        "5s",
        "6s",
-       "7s",
-       "E"
+       "7s"
       ]
      },
      {
@@ -2616,6 +2511,7 @@
        "1m",
        "2m",
        "3m",
+       "9m",
        "4p",
        "5p",
        "6p",
@@ -2628,8 +2524,7 @@
        "4s",
        "5s",
        "6s",
-       "7s",
-       "E"
+       "7s"
       ]
      },
      {
@@ -2637,6 +2532,7 @@
       "shanten_after": 2,
       "ukeire_count": 46,
       "ukeire_tiles": [
+       "9m",
        "4p",
        "5p",
        "6p",
@@ -2649,8 +2545,7 @@
        "4s",
        "5s",
        "6s",
-       "7s",
-       "E"
+       "7s"
       ]
      },
      {
@@ -2658,6 +2553,7 @@
       "shanten_after": 2,
       "ukeire_count": 46,
       "ukeire_tiles": [
+       "9m",
        "4p",
        "5p",
        "6p",
@@ -2670,24 +2566,23 @@
        "4s",
        "5s",
        "6s",
-       "7s",
-       "E"
+       "7s"
       ]
      }
     ]
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.067Z"
+    "checked_at": "2026-09-02T07:16:38.338Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L4_001",
    "level": "L4",
-   "knowledge_point": "四连张切端：五连里藏着的面子 + 对子",
    "question_type": "what_to_discard",
    "difficulty": "medium",
+   "knowledge_point": "五连切端：端出一张，中间留面子",
    "hand": [
     "1m",
     "2m",
@@ -2712,29 +2607,7 @@
     "options": null
    },
    "explanation": {
-    "best": "切 5s 或 8s（并列）。5s-9s 五连 + 9s 重张，切掉两端任意一张，剩下「567s 或 678s 完整面子 + 9s9s 对子」，配合 2s3s 两面成为第四块搭子，听 1s/4s 共 8 张。对比：切 2s 虽然也听牌，但只剩 4 张。五连的正确用法是「两端出一张、中间留面子」，从端点切起永远不吃亏。",
-    "ukeire_table": [
-     {
-      "discard": "5s",
-      "ukeire_count": 8,
-      "note": "听 1s(4)/4s(4)"
-     },
-     {
-      "discard": "8s",
-      "ukeire_count": 8,
-      "note": "与切 5s 等价"
-     },
-     {
-      "discard": "2s",
-      "ukeire_count": 4,
-      "note": "拆两面搭，只剩坎张 4s 一种"
-     },
-     {
-      "discard": "3s",
-      "ukeire_count": 29,
-      "note": "退一向听，见 L6 倒退专题"
-     }
-    ],
+    "best": "切5条 或 8条，两解并列。索子 56789 五连外带一张 9条：从五连端点切一张，剩「567条 或 678条 面子 + 99条 对子」，配 23条 两面，听 1条/4条，共 8 张。若反过来拆 23条（切2条），虽然也听牌，但只剩 4 张。五连的规矩：端出一张、中间留面子。",
     "source": "Riichi Book I §4 五搭子原则 / 79博客·牌效率5"
    },
    "engine_snapshot": {
@@ -2888,20 +2761,21 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.171Z"
+    "checked_at": "2026-09-02T07:16:38.450Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L4_002",
    "level": "L4",
-   "knowledge_point": "搭子满员：多余牌之间互相等价",
    "question_type": "what_to_discard",
    "difficulty": "hard",
+   "knowledge_point": "搭子满员：多出来的牌互相等价",
    "hand": [
     "1m",
     "2m",
     "3m",
+    "9m",
     "2s",
     "3s",
     "5s",
@@ -2911,47 +2785,35 @@
     "2p",
     "3p",
     "5p",
-    "5p",
-    "E"
+    "5p"
    ],
    "answer": {
     "correct": [
+     "9m",
      "5s",
-     "8s",
-     "E"
+     "8s"
     ],
     "options": null
    },
    "explanation": {
-    "best": "切 5s、8s 或 E（三者并列）。数一下块数：123m（面子）、23s、23p、5p5p（雀头）、5s-8s 四连——五块搭子加雀头已经满员。满员之后，多余的牌互相等价：切浮字 E 是最直观的；四连 5s-8s 本身也比普通搭子多一张，切它的两端（5s 或 8s）效果完全相同。三种切法都是一向听 16 张，进张同为 1p/4p/1s/4s 各 4 张。",
-    "ukeire_table": [
-     {
-      "discard": "E",
-      "ukeire_count": 16,
-      "note": "1p/4p/1s/4s 各 4 张"
-     },
-     {
-      "discard": "5s",
-      "ukeire_count": 16,
-      "note": "与切 E 完全等价"
-     },
-     {
-      "discard": "8s",
-      "ukeire_count": 16,
-      "note": "同上，四连端与浮牌等价"
-     },
-     {
-      "discard": "2s",
-      "ukeire_count": 12,
-      "note": "拆真搭子就亏了"
-     }
-    ],
+    "best": "切9万、5条 或 8条，三解并列。数块数：123万 面子、23条、23筒、55筒 雀头、加上 5678条 四连——已经满员。满员之后多出来的牌互相等价：9万 是纯浮牌，切它最直观；四连比普通搭子多一张，切它的端点 5条 或 8条，效果一样。三解都进一向听 16 张，进张同为 1筒/4筒/1条/4条 各 4 张。",
     "source": "Riichi Book I §4 五搭子原则"
    },
    "engine_snapshot": {
     "shanten_before": 1,
     "candidates": [
      {
+      "discard": "9m",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1p",
+       "4p",
+       "1s",
+       "4s"
+      ]
+     },
+     {
       "discard": "5s",
       "shanten_after": 1,
       "ukeire_count": 16,
@@ -2964,17 +2826,6 @@
      },
      {
       "discard": "8s",
-      "shanten_after": 1,
-      "ukeire_count": 16,
-      "ukeire_tiles": [
-       "1p",
-       "4p",
-       "1s",
-       "4s"
-      ]
-     },
-     {
-      "discard": "E",
       "shanten_after": 1,
       "ukeire_count": 16,
       "ukeire_tiles": [
@@ -2997,8 +2848,11 @@
      {
       "discard": "2p",
       "shanten_after": 2,
-      "ukeire_count": 50,
+      "ukeire_count": 58,
       "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
        "1p",
        "2p",
        "3p",
@@ -3012,15 +2866,17 @@
        "6s",
        "7s",
        "8s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
       "discard": "3p",
       "shanten_after": 2,
-      "ukeire_count": 50,
+      "ukeire_count": 58,
       "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
        "1p",
        "2p",
        "3p",
@@ -3034,15 +2890,17 @@
        "6s",
        "7s",
        "8s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
       "discard": "3s",
       "shanten_after": 2,
-      "ukeire_count": 44,
+      "ukeire_count": 52,
       "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
        "1p",
        "4p",
        "5p",
@@ -3054,8 +2912,7 @@
        "6s",
        "7s",
        "8s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -3063,6 +2920,7 @@
       "shanten_after": 2,
       "ukeire_count": 34,
       "ukeire_tiles": [
+       "9m",
        "1p",
        "2p",
        "4p",
@@ -3071,8 +2929,7 @@
        "2s",
        "4s",
        "5s",
-       "8s",
-       "E"
+       "8s"
       ]
      },
      {
@@ -3141,16 +2998,16 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.171Z"
+    "checked_at": "2026-09-02T07:16:38.450Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L4_003",
    "level": "L4",
-   "knowledge_point": "对子过剩：重叠处合并，块数刚好",
    "question_type": "what_to_discard",
    "difficulty": "hard",
+   "knowledge_point": "对子过剩：重叠处合并成面子",
    "hand": [
     "2m",
     "2m",
@@ -3161,10 +3018,10 @@
     "3p",
     "4p",
     "5p",
+    "9p",
+    "9p",
     "8s",
     "8s",
-    "W",
-    "W",
     "9s"
    ],
    "answer": {
@@ -3174,24 +3031,7 @@
     "options": null
    },
    "explanation": {
-    "best": "切 3p。这手有 22m、33p、88s、WW 四个对子，明显过剩。3p3p 与 4p5p 重叠：切一张 3p 就把它们粘成 345p 完整面子，块数立刻降到刚好五块（567m、345p 两个面子 + 22m、88s、WW 三个对子取一作雀头）。进张 2m/8s/W 各 2 张，还有一条暗线——8s8s9s 摸 7s 直接成 789s，7s 有 4 张——合计 10 张全场最优。切 8s 同为一向听只剩 8 张；切 9s 掉到 6 张。",
-    "ukeire_table": [
-     {
-      "discard": "3p",
-      "ukeire_count": 10,
-      "note": "2m(2)/8s(2)/W(2) + 暗线 7s(4)"
-     },
-     {
-      "discard": "8s",
-      "ukeire_count": 8,
-      "note": "2m(2)/7s(4)/W(2)，六块抢雀头反而变少"
-     },
-     {
-      "discard": "9s",
-      "ukeire_count": 6,
-      "note": "2m(2)/8s(2)/W(2)，丢掉 7s 暗线"
-     }
-    ],
+    "best": "切3筒。这手有 22万、33筒、99筒、88条 四个对子，明显过剩；而 33筒 正贴着 45筒——切掉一张 3筒，就粘成 345筒 完整面子。切后进一向听：直等 2万/9筒/8条 各 2 张成刻，另有 88条 摸 7条 成 789条 的暗线 4 张，合计 10 张全场最大。切8条 同是一向听，只剩 8 张。",
     "source": "79博客·牌效率7「对子的处理」/ Riichi Book I §4"
    },
    "engine_snapshot": {
@@ -3203,9 +3043,9 @@
       "ukeire_count": 10,
       "ukeire_tiles": [
        "2m",
+       "9p",
        "7s",
-       "8s",
-       "W"
+       "8s"
       ]
      },
      {
@@ -3214,8 +3054,8 @@
       "ukeire_count": 8,
       "ukeire_tiles": [
        "2m",
-       "7s",
-       "W"
+       "9p",
+       "7s"
       ]
      },
      {
@@ -3224,8 +3064,8 @@
       "ukeire_count": 6,
       "ukeire_tiles": [
        "2m",
-       "8s",
-       "W"
+       "9p",
+       "8s"
       ]
      },
      {
@@ -3243,17 +3083,17 @@
        "4p",
        "5p",
        "6p",
+       "9p",
        "6s",
        "7s",
        "8s",
-       "9s",
-       "W"
+       "9s"
       ]
      },
      {
-      "discard": "W",
+      "discard": "9p",
       "shanten_after": 2,
-      "ukeire_count": 38,
+      "ukeire_count": 46,
       "ukeire_tiles": [
        "2m",
        "1p",
@@ -3262,11 +3102,13 @@
        "4p",
        "5p",
        "6p",
+       "7p",
+       "8p",
+       "9p",
        "6s",
        "7s",
        "8s",
-       "9s",
-       "W"
+       "9s"
       ]
      },
      {
@@ -3278,9 +3120,9 @@
        "2p",
        "3p",
        "5p",
+       "9p",
        "7s",
-       "8s",
-       "W"
+       "8s"
       ]
      },
      {
@@ -3291,9 +3133,9 @@
        "2m",
        "5m",
        "8m",
+       "9p",
        "7s",
-       "8s",
-       "W"
+       "8s"
       ]
      },
      {
@@ -3304,9 +3146,9 @@
        "2m",
        "4m",
        "7m",
+       "9p",
        "7s",
-       "8s",
-       "W"
+       "8s"
       ]
      },
      {
@@ -3317,9 +3159,9 @@
        "2m",
        "3p",
        "4p",
+       "9p",
        "7s",
-       "8s",
-       "W"
+       "8s"
       ]
      },
      {
@@ -3329,25 +3171,25 @@
       "ukeire_tiles": [
        "2m",
        "6m",
+       "9p",
        "7s",
-       "8s",
-       "W"
+       "8s"
       ]
      }
     ]
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.171Z"
+    "checked_at": "2026-09-02T07:16:38.450Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L4_004",
    "level": "L4",
-   "knowledge_point": "拆搭顺序：两面 > 嵌张，拆最弱的一块",
    "question_type": "what_to_discard",
    "difficulty": "hard",
+   "knowledge_point": "拆搭顺序：先拆最弱的嵌张",
    "hand": [
     "1m",
     "2m",
@@ -3372,29 +3214,7 @@
     "options": null
    },
    "explanation": {
-    "best": "切 2p 或 4p（并列）。已有 123m、567m 两个面子，剩下四块：24p 嵌张、66p 对子（雀头）、34s 两面、78s 两面。搭子过剩一块，拆价值最低的嵌张 24p——嵌张只有 4 张进张，两面有 8 张。嵌张两端等价，切 2p 或 4p 都是 16 张（2s/5s/6s/9s 各 4 张）。切任何一张索子搭子都掉到 12 张；切雀头 6p 直接退到二向听。",
-    "ukeire_table": [
-     {
-      "discard": "2p",
-      "ukeire_count": 16,
-      "note": "2s/5s/6s/9s 各 4 张"
-     },
-     {
-      "discard": "4p",
-      "ukeire_count": 16,
-      "note": "嵌张两端等价"
-     },
-     {
-      "discard": "3s",
-      "ukeire_count": 12,
-      "note": "拆两面亏 4 张"
-     },
-     {
-      "discard": "6p",
-      "ukeire_count": 45,
-      "note": "拆雀头退二向听，进张虽多但慢两巡"
-     }
-    ],
+    "best": "切2筒 或 4筒，两解并列。123万、567万 已两副面子，剩 24筒 嵌张、66筒 对子、34条 与 78条 两面——搭子比需要的多一块，先拆最不值钱的。两面搭各等两种牌、8 张进张，嵌张 24筒 只等 3筒、4 张；嵌张两端等价，切2筒或切4筒都进一向听 16 张（2条/5条/6条/9条 各 4 张）。",
     "source": "79博客·牌效率4「搭子的价值排序」"
    },
    "engine_snapshot": {
@@ -3567,20 +3387,21 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.171Z"
+    "checked_at": "2026-09-02T07:16:38.450Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L4_005",
    "level": "L4",
-   "knowledge_point": "满员时浮牌 vs 搭子：一字之差 4 张",
    "question_type": "ukeire_compare",
    "difficulty": "hard",
+   "knowledge_point": "满员时：有浮牌切浮牌",
    "hand": [
     "2m",
     "3m",
     "4m",
+    "9m",
     "2p",
     "3p",
     "5p",
@@ -3590,16 +3411,15 @@
     "2s",
     "4s",
     "6s",
-    "6s",
-    "E"
+    "6s"
    ],
    "answer": {
     "correct": [
-     "E"
+     "9m"
     ],
     "options": [
      {
-      "discard": "E"
+      "discard": "9m"
      },
      {
       "discard": "2p"
@@ -3607,12 +3427,22 @@
     ]
    },
    "explanation": {
-    "best": "切 E 进张 12 张（1p/4p/3s 各 4 张），切 2p 只剩 8 张。块数：234m 面子、23p 两面、5s-8p 复合连、24s 嵌张、66s 雀头、E 浮牌——五块加雀头已满，E 是标准的零价值牌。拆 23p 两面等于亲手扔掉 1p/4p 的 4 张进张。「有浮牌切浮牌，没浮牌才谈拆搭」就是这道题的全部。",
+    "best": "切9万 进张 12 张（1筒/4筒/3条 各 4 张），切2筒 只剩 8 张。数块数：234万 面子、23筒 两面、5678筒 复合连、24条 嵌张、66条 雀头、9万 浮牌——块数已满，9万 是唯一纯多余。拆 23筒 等于扔掉 1筒/4筒 的进张，搭子一个字都别动。有浮牌切浮牌，没浮牌才谈拆搭。",
     "source": "Riichi Book I §4 五搭子原则 / 79博客·牌效率6"
    },
    "engine_snapshot": {
     "shanten_before": 1,
     "candidates": [
+     {
+      "discard": "9m",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "1p",
+       "4p",
+       "3s"
+      ]
+     },
      {
       "discard": "5p",
       "shanten_after": 1,
@@ -3634,16 +3464,6 @@
       ]
      },
      {
-      "discard": "E",
-      "shanten_after": 1,
-      "ukeire_count": 12,
-      "ukeire_tiles": [
-       "1p",
-       "4p",
-       "3s"
-      ]
-     },
-     {
       "discard": "2p",
       "shanten_after": 1,
       "ukeire_count": 8,
@@ -3655,8 +3475,11 @@
      {
       "discard": "2s",
       "shanten_after": 2,
-      "ukeire_count": 50,
+      "ukeire_count": 58,
       "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
        "1p",
        "2p",
        "3p",
@@ -3670,15 +3493,17 @@
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
       "discard": "4s",
       "shanten_after": 2,
-      "ukeire_count": 50,
+      "ukeire_count": 58,
       "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
        "1p",
        "2p",
        "3p",
@@ -3692,15 +3517,17 @@
        "2s",
        "3s",
        "4s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
       "discard": "3p",
       "shanten_after": 2,
-      "ukeire_count": 40,
+      "ukeire_count": 48,
       "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
        "1p",
        "2p",
        "3p",
@@ -3711,8 +3538,7 @@
        "8p",
        "9p",
        "3s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -3720,6 +3546,7 @@
       "shanten_after": 2,
       "ukeire_count": 34,
       "ukeire_tiles": [
+       "9m",
        "1p",
        "2p",
        "4p",
@@ -3728,8 +3555,7 @@
        "2s",
        "3s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
@@ -3794,20 +3620,21 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.171Z"
+    "checked_at": "2026-09-02T07:16:38.451Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L5_001",
    "level": "L5",
-   "knowledge_point": "五连展开三面：复合形最强的时刻",
    "question_type": "what_to_discard",
    "difficulty": "medium",
+   "knowledge_point": "五连自动三面：别去动它",
    "hand": [
     "1m",
     "2m",
     "3m",
+    "9m",
     "4p",
     "5p",
     "6p",
@@ -3817,41 +3644,23 @@
     "6s",
     "7s",
     "9s",
-    "9s",
-    "E"
+    "9s"
    ],
    "answer": {
     "correct": [
-     "E"
+     "9m"
     ],
     "options": null
    },
    "explanation": {
-    "best": "切 E。3s-7s 五连自动展开成「面子 + 两面搭」：切掉孤字 E 后听三面 2s/5s/8s——2s 和 8s 各 4 张、5s 手里占 1 张剩 3 张，共 11 张。五连是复合形里最舒服的素材，不用任何操作就给出三面听；真正要做的是别去动它（切 7s 拆五连退一向听，换来的 33 张未必划算）。",
-    "ukeire_table": [
-     {
-      "discard": "E",
-      "ukeire_count": 11,
-      "note": "三面 2s(4)/5s(3)/8s(4)"
-     },
-     {
-      "discard": "7s",
-      "ukeire_count": 33,
-      "note": "拆五连退一向听，见 L6"
-     },
-     {
-      "discard": "1m",
-      "ukeire_count": 19,
-      "note": "拆面子最亏"
-     }
-    ],
+    "best": "切9万。条子 34567 五连能同时当「面子 + 搭子」用，加 123万、456筒 两副面子就够了：切掉孤张 9万（万子已有 123万，9万 接不上），正好听牌，进张 2条/5条/8条 共 11 张——2条、8条 各 4 张，5条 手内占 1 张剩 3 张。五连是最好用的复合素材，要做的只有一件事：别去切它。",
     "source": "79博客·牌效率13「多面张的构成」"
    },
    "engine_snapshot": {
     "shanten_before": 0,
     "candidates": [
      {
-      "discard": "E",
+      "discard": "9m",
       "shanten_after": 0,
       "ukeire_count": 11,
       "ukeire_tiles": [
@@ -3863,8 +3672,11 @@
      {
       "discard": "7s",
       "shanten_after": 1,
-      "ukeire_count": 33,
+      "ukeire_count": 41,
       "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
        "1s",
        "2s",
        "3s",
@@ -3873,15 +3685,17 @@
        "6s",
        "7s",
        "8s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
       "discard": "3s",
       "shanten_after": 1,
-      "ukeire_count": 29,
+      "ukeire_count": 37,
       "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
        "2s",
        "3s",
        "4s",
@@ -3889,37 +3703,40 @@
        "6s",
        "7s",
        "8s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
       "discard": "4s",
       "shanten_after": 1,
-      "ukeire_count": 27,
+      "ukeire_count": 35,
       "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
        "1s",
        "2s",
        "3s",
        "4s",
        "5s",
        "8s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
       "discard": "6s",
       "shanten_after": 1,
-      "ukeire_count": 23,
+      "ukeire_count": 31,
       "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
        "2s",
        "5s",
        "6s",
        "7s",
        "8s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -3927,13 +3744,13 @@
       "shanten_after": 1,
       "ukeire_count": 23,
       "ukeire_tiles": [
+       "9m",
        "2s",
        "3s",
        "5s",
        "6s",
        "8s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -4019,16 +3836,16 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.300Z"
+    "checked_at": "2026-09-02T07:16:38.585Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L5_002",
    "level": "L5",
-   "knowledge_point": "同形两种听法：三面单骑 vs 三面听",
    "question_type": "what_to_discard",
    "difficulty": "hard",
+   "knowledge_point": "同一串牌两种听法：都是 9 张",
    "hand": [
     "1m",
     "2m",
@@ -4053,29 +3870,7 @@
     "options": null
    },
    "explanation": {
-    "best": "切 5s 或 9s（并列，各 9 张）。同一个复合形有两种听法：切 5s，剩 3s-9s 七连，作「两面子 + 单骑」，单骑位可在 3s/6s/9s 里选，三面单骑各 3 张；切 9s，789s 独立成面子，3s4s5s5s6s 听 2s/5s/8s（4+2+3）。同为 9 张并列正解。对比之下切 6s 只剩 6 张、切 8s 剩 3 张——同一个复合形，切不同张进张差三倍。",
-    "ukeire_table": [
-     {
-      "discard": "5s",
-      "ukeire_count": 9,
-      "note": "三面单骑 3s/6s/9s 各 3"
-     },
-     {
-      "discard": "9s",
-      "ukeire_count": 9,
-      "note": "2s(4)/5s(2)/8s(3)，等价"
-     },
-     {
-      "discard": "6s",
-      "ukeire_count": 6,
-      "note": "2s(4)/5s(2)"
-     },
-     {
-      "discard": "8s",
-      "ukeire_count": 3,
-      "note": "只剩单骑 9s"
-     }
-    ],
+    "best": "切5条 或 9条，两解并列，都 9 张。索子 3到9 七连外加一张重 5条：切5条，单骑可以在 3条/6条/9条 里挑位置，各 3 张、共 9 张；切9条，进张 2条/5条/8条——2条 4 张、5条 手内占 2 张剩 2、8条 3 张，也是 9 张。同一串牌，两种摆法殊途同归；中间那张重 5条 反而别切（会打散两边）。",
     "source": "79博客·牌效率14「听牌形式的选择」"
    },
    "engine_snapshot": {
@@ -4272,16 +4067,16 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.301Z"
+    "checked_at": "2026-09-02T07:16:38.585Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L5_003",
    "level": "L5",
-   "knowledge_point": "五连切端不切中：四连双解的用法",
    "question_type": "what_to_discard",
    "difficulty": "hard",
+   "knowledge_point": "五连切端不切中：四连才有双解",
    "hand": [
     "1m",
     "2m",
@@ -4306,29 +4101,7 @@
     "options": null
    },
    "explanation": {
-    "best": "切 4p 或 8p（并列）。手牌三块：123m、2s-7s 六连（两面子）、4p-8p 五连（面子 + 一张余牌）。五连从端点切一张后剩四连，四连有两种「面子 + 单骑余牌」的用法：切 4p 剩 5678p，可作 567p+单骑 8p 或 678p+单骑 5p，听 5p/8p 各 3 张共 6 张；切 8p 对称地听 4p/7p。切中间（如 5p、7p）只剩一种用法，进张腰斩到 3 张。「五连切端、四连双解」是复合形基本功。",
-    "ukeire_table": [
-     {
-      "discard": "4p",
-      "ukeire_count": 6,
-      "note": "单骑 5p(3)/8p(3) 二选一"
-     },
-     {
-      "discard": "8p",
-      "ukeire_count": 6,
-      "note": "单骑 4p(3)/7p(3)，等价"
-     },
-     {
-      "discard": "5p",
-      "ukeire_count": 3,
-      "note": "切中间只剩单骑 4p 一种解"
-     },
-     {
-      "discard": "7p",
-      "ukeire_count": 3,
-      "note": "只剩单骑 8p"
-     }
-    ],
+    "best": "切4筒 或 8筒，两解并列，各 6 张。索子 2到7 六连稳成两副面子；饼子 45678 五连是「一副面子 + 一张余牌」，从端点切一张就变四连——四连有两种摆法：切4筒后，可作 567筒 + 单骑 8筒，也可作 678筒 + 单骑 5筒，听 5筒/8筒 共 6 张；切8筒对称，听 4筒/7筒，也 6 张。从中间切（5筒 或 7筒）只剩一种摆法，进张砍到 3 张。",
     "source": "79博客·牌效率15「连续形的切法」"
    },
    "engine_snapshot": {
@@ -4552,16 +4325,16 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.301Z"
+    "checked_at": "2026-09-02T07:16:38.585Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L5_004",
    "level": "L5",
-   "knowledge_point": "同为一向听推进后：听牌形式的优劣对比",
    "question_type": "ukeire_compare",
    "difficulty": "hard",
+   "knowledge_point": "五连的切法：端点出 vs 中间出",
    "hand": [
     "2m",
     "3m",
@@ -4592,7 +4365,7 @@
     ]
    },
    "explanation": {
-    "best": "切 5p 听 6 张，切 6p 只听 3 张，差一倍。切 5p 后 6789p 四连双解：678p+单骑 9p 或 789p+单骑 6p，听 6p/9p 各 3 张共 6 张；切 6p 从中间下刀，四连被砍成 5p+789p，只剩单骑 5p 一种解、3 张。2s-7s 六连稳定提供两面子，胜负手全在饼子五连怎么切——端点出牌是复合形的第一原则。",
+    "best": "切5筒 听 6 张，切6筒 只剩 3 张。索子 2到7 六连稳成两副面子，胜负全在饼子 56789 五连怎么切。切5筒：剩 6789筒 四连，两种摆法（678筒 + 单骑 9筒，或 789筒 + 单骑 6筒），听 6筒/9筒 共 6 张。切6筒 从中间下刀，饼子断成 5筒 加 789筒，只剩 5筒 单骑一种解，3 张。端点出牌，是连续形切法的第一原则。",
     "source": "79博客·牌效率15「连续形的切法」"
    },
    "engine_snapshot": {
@@ -4807,16 +4580,16 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.301Z"
+    "checked_at": "2026-09-02T07:16:38.586Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L6_001",
    "level": "L6",
-   "knowledge_point": "不倒退原则：听牌 8 张不换一向听 39 张",
    "question_type": "what_to_discard",
    "difficulty": "hard",
+   "knowledge_point": "不倒退原则：手里的听牌，别用一巡去换",
    "hand": [
     "1m",
     "2m",
@@ -4840,24 +4613,7 @@
     "options": null
    },
    "explanation": {
-    "best": "切 5m，保持听牌。切 5m 后 2s3s 两面听 1s/4s 共 8 张。诱惑在另一边：切 2s 退回一向听能换到 39 张大进张（3m-7m、1s-5s、9p 一大片）。但退向听意味着要多摸两巡才能和了，听牌的「随时能和」本身就有价值——除巡目极早等特殊局面外，默认不倒退。V1 判分按向听数优先：不倒退即正解。",
-    "ukeire_table": [
-     {
-      "discard": "5m",
-      "ukeire_count": 8,
-      "note": "听牌：1s(4)/4s(4)"
-     },
-     {
-      "discard": "2s",
-      "ukeire_count": 39,
-      "note": "退一向听换大进张，默认不选"
-     },
-     {
-      "discard": "1m",
-      "ukeire_count": 16,
-      "note": "拆面子也退向听"
-     }
-    ],
+    "best": "切5万，保持听牌。切后 23条 两面听 1条/4条，共 8 张。诱惑在另一边：拆 2条 会退向听，但能换来 39 张大进张（3万~7万、1条~5条、9筒 一整片）。问题是倒退要白花一巡才和得了，而听牌「随时能和」本身就有价值——除非巡目极早、听口太窄等特殊情况，默认不倒退。",
     "source": "79博客·牌效率20「向听数倒退」"
    },
    "engine_snapshot": {
@@ -5017,64 +4773,47 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.371Z"
+    "checked_at": "2026-09-02T07:16:38.665Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L6_002",
    "level": "L6",
-   "knowledge_point": "倒退边界例：4 张听牌 vs 27 张一向听",
    "question_type": "what_to_discard",
    "difficulty": "hard",
+   "knowledge_point": "倒退的边界：4 张听牌 vs 35 张一向听",
    "hand": [
     "1m",
     "2m",
     "3m",
+    "9m",
     "4p",
     "5p",
+    "6p",
+    "6p",
     "6p",
     "7s",
     "8s",
     "9s",
     "2s",
-    "4s",
-    "6p",
-    "6p",
-    "E"
+    "4s"
    ],
    "answer": {
     "correct": [
-     "E"
+     "9m"
     ],
     "options": null
    },
    "explanation": {
-    "best": "切 E。这是倒退诱惑最强的边界形：切 E 后 24s 嵌张听 3s，只有 4 张；拆 2s 或 4s 退一向听能换 27 张。差距虽大，退向听仍要多花整整一巡，期望上通常持平或略亏——V1 引擎按「先保向听数、再比进张数」判分，切 E 是正解。练这道题的目标不是背答案，而是看清两种选择各自的进张面：4 张听牌、27 张一向听，摆在桌面上再结合巡目与场面做实战决策。",
-    "ukeire_table": [
-     {
-      "discard": "E",
-      "ukeire_count": 4,
-      "note": "听牌：嵌张 3s(4)"
-     },
-     {
-      "discard": "2s",
-      "ukeire_count": 27,
-      "note": "退一向听换 27 张（3p/6p/2s-6s/E）"
-     },
-     {
-      "discard": "4p",
-      "ukeire_count": 18,
-      "note": "拆面子退向听，两头不讨好"
-     }
-    ],
+    "best": "切9万，保持听牌。切后 24条 嵌张听 3条，只有 4 张；若拆 2条（或 4条）退一向听，进张暴涨到 35 张。差距虽大，倒退仍要多花一巡，期望上通常不划算——判分口径是「先保向听数、再比进张数」，所以切9万 是正解。这题不是背答案，是看清 4 张和 35 张摆在一起时，向听数如何压过进张数。",
     "source": "79博客·牌效率20「向听数倒退」"
    },
    "engine_snapshot": {
     "shanten_before": 0,
     "candidates": [
      {
-      "discard": "E",
+      "discard": "9m",
       "shanten_after": 0,
       "ukeire_count": 4,
       "ukeire_tiles": [
@@ -5084,30 +4823,34 @@
      {
       "discard": "2s",
       "shanten_after": 1,
-      "ukeire_count": 27,
+      "ukeire_count": 35,
       "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
        "3p",
        "6p",
        "2s",
        "3s",
        "4s",
        "5s",
-       "6s",
-       "E"
+       "6s"
       ]
      },
      {
       "discard": "4s",
       "shanten_after": 1,
-      "ukeire_count": 23,
+      "ukeire_count": 31,
       "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
        "3p",
        "6p",
        "1s",
        "2s",
        "3s",
-       "4s",
-       "E"
+       "4s"
       ]
      },
      {
@@ -5115,11 +4858,11 @@
       "shanten_after": 1,
       "ukeire_count": 18,
       "ukeire_tiles": [
+       "9m",
        "4p",
        "5p",
        "7p",
-       "3s",
-       "E"
+       "3s"
       ]
      },
      {
@@ -5127,10 +4870,10 @@
       "shanten_after": 1,
       "ukeire_count": 14,
       "ukeire_tiles": [
+       "9m",
        "4p",
        "5p",
-       "3s",
-       "E"
+       "3s"
       ]
      },
      {
@@ -5138,10 +4881,10 @@
       "shanten_after": 1,
       "ukeire_count": 13,
       "ukeire_tiles": [
+       "9m",
        "3p",
        "6p",
-       "3s",
-       "E"
+       "3s"
       ]
      },
      {
@@ -5204,16 +4947,16 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.371Z"
+    "checked_at": "2026-09-02T07:16:38.666Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L6_003",
    "level": "L6",
-   "knowledge_point": "引擎并列时看什么：单骑 3 张的安全度与改良",
    "question_type": "what_to_discard",
    "difficulty": "hard",
+   "knowledge_point": "引擎并列：张数、改良都无差别时，怎么切都对",
    "hand": [
     "2m",
     "3m",
@@ -5221,56 +4964,31 @@
     "5m",
     "6m",
     "7m",
+    "9m",
     "1p",
     "2p",
     "3p",
     "5s",
     "6s",
     "7s",
-    "9s",
-    "E"
+    "9s"
    ],
    "answer": {
     "correct": [
-     "9s",
-     "E"
+     "9m",
+     "9s"
     ],
     "options": null
    },
    "explanation": {
-    "best": "切 9s 或 E（完全并列）。四面子（234m、567m、123p、567s）已成，剩 9s、E 两张浮牌——切谁都是单骑另一张、3 张进张，引擎判定完全等价。并列之外的判断才是这题的内容：字牌 E 别人很难利用，作为先切的安全牌更稳妥；数牌 9s 留着摸成对子可改雀头（微改良）。V1 里两个答案都判对，讲解只提供附加视角。",
-    "ukeire_table": [
-     {
-      "discard": "9s",
-      "ukeire_count": 3,
-      "note": "单骑 E(3)：字牌更安全"
-     },
-     {
-      "discard": "E",
-      "ukeire_count": 3,
-      "note": "单骑 9s(3)：有摸对改良"
-     },
-     {
-      "discard": "2m",
-      "ukeire_count": 17,
-      "note": "拆面子退一向听，非必要不选"
-     }
-    ],
-    "source": "79博客·牌效率20 / 攻守判断章"
+    "best": "切9万 或 9条，两解完全并列，都 3 张。四副面子（234万、567万、123筒、567条）已经齐了，只剩 9万、9条 两张浮牌——切谁都是单骑另一张，进张各 3 张，张数一样。两张还都是端牌，摸成对子的改良也一样小，真刀真枪分不出高下时就认准「并列」：两解都判对，不必纠结。",
+    "source": "79博客·牌效率20「向听数倒退」"
    },
    "engine_snapshot": {
     "shanten_before": 0,
     "candidates": [
      {
-      "discard": "9s",
-      "shanten_after": 0,
-      "ukeire_count": 3,
-      "ukeire_tiles": [
-       "E"
-      ]
-     },
-     {
-      "discard": "E",
+      "discard": "9m",
       "shanten_after": 0,
       "ukeire_count": 3,
       "ukeire_tiles": [
@@ -5278,15 +4996,62 @@
       ]
      },
      {
+      "discard": "9s",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "9m"
+      ]
+     },
+     {
       "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 23,
+      "ukeire_tiles": [
+       "2m",
+       "3m",
+       "5m",
+       "6m",
+       "8m",
+       "9m",
+       "9s"
+      ]
+     },
+     {
+      "discard": "6m",
+      "shanten_after": 1,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "6m",
+       "8m",
+       "9m",
+       "9s"
+      ]
+     },
+     {
+      "discard": "3m",
       "shanten_after": 1,
       "ukeire_count": 17,
       "ukeire_tiles": [
        "2m",
-       "5m",
+       "3m",
        "8m",
-       "9s",
-       "E"
+       "9m",
+       "9s"
+      ]
+     },
+     {
+      "discard": "5m",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "5m",
+       "6m",
+       "8m",
+       "9m",
+       "9s"
       ]
      },
      {
@@ -5297,8 +5062,8 @@
        "1m",
        "4m",
        "7m",
-       "9s",
-       "E"
+       "9m",
+       "9s"
       ]
      },
      {
@@ -5306,11 +5071,11 @@
       "shanten_after": 1,
       "ukeire_count": 17,
       "ukeire_tiles": [
+       "9m",
        "5s",
        "6s",
        "8s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -5318,11 +5083,11 @@
       "shanten_after": 1,
       "ukeire_count": 17,
       "ukeire_tiles": [
+       "9m",
        "5s",
        "6s",
        "8s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -5332,19 +5097,8 @@
       "ukeire_tiles": [
        "1m",
        "4m",
-       "9s",
-       "E"
-      ]
-     },
-     {
-      "discard": "5m",
-      "shanten_after": 1,
-      "ukeire_count": 14,
-      "ukeire_tiles": [
-       "5m",
-       "8m",
-       "9s",
-       "E"
+       "9m",
+       "9s"
       ]
      },
      {
@@ -5352,10 +5106,10 @@
       "shanten_after": 1,
       "ukeire_count": 14,
       "ukeire_tiles": [
+       "9m",
        "1p",
        "4p",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -5363,30 +5117,10 @@
       "shanten_after": 1,
       "ukeire_count": 14,
       "ukeire_tiles": [
+       "9m",
        "4s",
        "7s",
-       "9s",
-       "E"
-      ]
-     },
-     {
-      "discard": "3m",
-      "shanten_after": 1,
-      "ukeire_count": 10,
-      "ukeire_tiles": [
-       "3m",
-       "9s",
-       "E"
-      ]
-     },
-     {
-      "discard": "6m",
-      "shanten_after": 1,
-      "ukeire_count": 10,
-      "ukeire_tiles": [
-       "6m",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -5394,9 +5128,9 @@
       "shanten_after": 1,
       "ukeire_count": 10,
       "ukeire_tiles": [
+       "9m",
        "2p",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -5404,25 +5138,25 @@
       "shanten_after": 1,
       "ukeire_count": 10,
       "ukeire_tiles": [
+       "9m",
        "3p",
-       "9s",
-       "E"
+       "9s"
       ]
      }
     ]
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.371Z"
+    "checked_at": "2026-09-02T07:16:38.666Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L7_001",
    "level": "L7",
-   "knowledge_point": "并列最优的定性比较：边张 vs 双碰",
    "question_type": "what_to_discard",
    "difficulty": "hard",
+   "knowledge_point": "并列最优：边张 vs 双碰怎么选",
    "hand": [
     "1m",
     "1m",
@@ -5433,11 +5167,11 @@
     "4p",
     "5p",
     "6p",
+    "9p",
+    "9p",
     "7s",
     "8s",
-    "9s",
-    "W",
-    "W"
+    "9s"
    ],
    "answer": {
     "correct": [
@@ -5447,24 +5181,7 @@
     "options": null
    },
    "explanation": {
-    "best": "切 1m 或 2m（并列 4 张）。切 1m：1m2m 与 456m 分家，听边张 3m（4 张）。切 2m：1m1m 升格为对子，与 WW 组成双碰听牌，听 1m/W 各 2 张共 4 张。进张数打平，但性质不同：双碰有两张牌可和、鸣牌阶段还能碰加速；边张只有一张但张数不占手内。V1 按引擎并列判分、两个都对，实战中双碰形通常更受偏好。",
-    "ukeire_table": [
-     {
-      "discard": "1m",
-      "ukeire_count": 4,
-      "note": "边张 3m(4)"
-     },
-     {
-      "discard": "2m",
-      "ukeire_count": 4,
-      "note": "双碰 1m(2)/W(2)"
-     },
-     {
-      "discard": "W",
-      "ukeire_count": 19,
-      "note": "退一向听，非必要不选"
-     }
-    ],
+    "best": "切1万 或 2万，两解并列，各 4 张。切1万：12万 留在手里做边张搭子，听 3万，4 张。切2万：11万 升格成对子，和 99筒 组双碰，听 1万/9筒 各 2 张、共 4 张。张数打平，性质不同——双碰能碰牌提速、改良余地略大；边张只等一张、碰不了。实战多半更愿意留双碰，但两解都判对。",
     "source": "79博客·牌效率综合篇 / Riichi Book I §3"
    },
    "engine_snapshot": {
@@ -5484,20 +5201,22 @@
       "ukeire_count": 4,
       "ukeire_tiles": [
        "1m",
-       "W"
+       "9p"
       ]
      },
      {
-      "discard": "W",
+      "discard": "9p",
       "shanten_after": 1,
-      "ukeire_count": 19,
+      "ukeire_count": 27,
       "ukeire_tiles": [
        "1m",
        "2m",
        "3m",
        "4m",
        "7m",
-       "W"
+       "7p",
+       "8p",
+       "9p"
       ]
      },
      {
@@ -5509,7 +5228,7 @@
        "3m",
        "4m",
        "7m",
-       "W"
+       "9p"
       ]
      },
      {
@@ -5521,7 +5240,7 @@
        "3m",
        "4p",
        "7p",
-       "W"
+       "9p"
       ]
      },
      {
@@ -5533,7 +5252,7 @@
        "3m",
        "3p",
        "6p",
-       "W"
+       "9p"
       ]
      },
      {
@@ -5543,9 +5262,9 @@
       "ukeire_tiles": [
        "1m",
        "3m",
+       "9p",
        "6s",
-       "9s",
-       "W"
+       "9s"
       ]
      },
      {
@@ -5556,7 +5275,7 @@
        "1m",
        "3m",
        "5m",
-       "W"
+       "9p"
       ]
      },
      {
@@ -5567,7 +5286,7 @@
        "1m",
        "3m",
        "6m",
-       "W"
+       "9p"
       ]
      },
      {
@@ -5578,7 +5297,7 @@
        "1m",
        "3m",
        "5p",
-       "W"
+       "9p"
       ]
      },
      {
@@ -5588,8 +5307,8 @@
       "ukeire_tiles": [
        "1m",
        "3m",
-       "7s",
-       "W"
+       "9p",
+       "7s"
       ]
      },
      {
@@ -5599,72 +5318,55 @@
       "ukeire_tiles": [
        "1m",
        "3m",
-       "8s",
-       "W"
+       "9p",
+       "8s"
       ]
      }
     ]
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.439Z"
+    "checked_at": "2026-09-02T07:16:38.734Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L7_002",
    "level": "L7",
-   "knowledge_point": "孤字牌的攻守通用性",
    "question_type": "what_to_discard",
    "difficulty": "hard",
+   "knowledge_point": "综合判断：几个角度都指向同一张",
    "hand": [
     "2m",
     "3m",
     "4m",
+    "9m",
     "5p",
     "6p",
     "7p",
+    "9p",
+    "9p",
     "1s",
     "2s",
     "3s",
     "6s",
-    "7s",
-    "E",
-    "E",
-    "N"
+    "7s"
    ],
    "answer": {
     "correct": [
-     "N"
+     "9m"
     ],
     "options": null
    },
    "explanation": {
-    "best": "切 N。三面子（234m、567p、123s）+ 6s7s 两面 + EE 雀头 + 孤字 N，切 N 听 5s/8s 共 8 张。这手即使从防守角度看答案也一致：N 不联络任何搭子（攻），又是全场最安全的牌之一（守）——孤字牌「攻守通用」的性质让这类判断几乎不需要犹豫。综合判断级的要点就是确认这种「怎么做都对得起两个维度」的手感。",
-    "ukeire_table": [
-     {
-      "discard": "N",
-      "ukeire_count": 8,
-      "note": "听牌：5s(4)/8s(4)"
-     },
-     {
-      "discard": "6s",
-      "ukeire_count": 24,
-      "note": "拆两面退一向听"
-     },
-     {
-      "discard": "2m",
-      "ukeire_count": 16,
-      "note": "拆面子，进攻防守都不利"
-     }
-    ],
-    "source": "79博客·攻守判断章"
+    "best": "切9万。234万、567筒、123条 三副面子，99筒 当雀头，67条 两面搭，只剩 9万 是浮牌——切它正好听牌，等 5条/8条，共 8 张。综合级的牌，答案常有好几条路通向同一张：不管从「保持听牌」「搭子全保」还是「先切没用的牌」哪个角度想，都是 9万。能一眼确认这种一致性，判断就扎实了。",
+    "source": "79博客·牌效率综合篇"
    },
    "engine_snapshot": {
     "shanten_before": 0,
     "candidates": [
      {
-      "discard": "N",
+      "discard": "9m",
       "shanten_after": 0,
       "ukeire_count": 8,
       "ukeire_tiles": [
@@ -5675,29 +5377,33 @@
      {
       "discard": "6s",
       "shanten_after": 1,
-      "ukeire_count": 24,
+      "ukeire_count": 32,
       "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
+       "9p",
        "5s",
        "6s",
        "7s",
        "8s",
-       "9s",
-       "E",
-       "N"
+       "9s"
       ]
      },
      {
       "discard": "7s",
       "shanten_after": 1,
-      "ukeire_count": 24,
+      "ukeire_count": 32,
       "ukeire_tiles": [
+       "7m",
+       "8m",
+       "9m",
+       "9p",
        "4s",
        "5s",
        "6s",
        "7s",
-       "8s",
-       "E",
-       "N"
+       "8s"
       ]
      },
      {
@@ -5756,14 +5462,14 @@
       ]
      },
      {
-      "discard": "E",
+      "discard": "9p",
       "shanten_after": 1,
       "ukeire_count": 14,
       "ukeire_tiles": [
+       "9m",
+       "9p",
        "5s",
-       "8s",
-       "E",
-       "N"
+       "8s"
       ]
      },
      {
@@ -5810,16 +5516,16 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.439Z"
+    "checked_at": "2026-09-02T07:16:38.734Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L7_003",
    "level": "L7",
-   "knowledge_point": "对子过剩的复现：合并重叠 + 暗线进张",
    "question_type": "ukeire_compare",
    "difficulty": "hard",
+   "knowledge_point": "对子过剩的比较：合并重叠，差 2 张",
    "hand": [
     "2m",
     "2m",
@@ -5830,10 +5536,10 @@
     "3p",
     "4p",
     "5p",
+    "9p",
+    "9p",
     "8s",
     "8s",
-    "W",
-    "W",
     "9s"
    ],
    "answer": {
@@ -5850,7 +5556,7 @@
     ]
    },
    "explanation": {
-    "best": "切 3p 进张 10 张，切 8s 只剩 8 张（L4_003 的对比版）。同为一向听，切 3p 把 33p+45p 粘成 345p 面子，块数整理到位，进张 2m/8s/W 各 2 张 + 7s 暗线 4 张；切 8s 保留六块结构互相抢雀头，反而丢掉 2 张。综合级的检验点：能否在「都能维持一向听」的选项里，看出块数整理带来的隐性差距。",
+    "best": "切3筒 进张 10 张，切8条 只剩 8 张。切3筒 把 33筒 和 45筒 叠着的部分合并成 345筒 面子，块数理顺，进张 2万/9筒/8条/7条 共 10 张；切8条 让 88条 对子直接消失，反而丢掉一种成刻的可能。同样维持一向听，会不会把重叠处合并成面子，就是这两张的差距。",
     "source": "Riichi Book I §4 / 79博客·牌效率7"
    },
    "engine_snapshot": {
@@ -5862,9 +5568,9 @@
       "ukeire_count": 10,
       "ukeire_tiles": [
        "2m",
+       "9p",
        "7s",
-       "8s",
-       "W"
+       "8s"
       ]
      },
      {
@@ -5873,8 +5579,8 @@
       "ukeire_count": 8,
       "ukeire_tiles": [
        "2m",
-       "7s",
-       "W"
+       "9p",
+       "7s"
       ]
      },
      {
@@ -5883,8 +5589,8 @@
       "ukeire_count": 6,
       "ukeire_tiles": [
        "2m",
-       "8s",
-       "W"
+       "9p",
+       "8s"
       ]
      },
      {
@@ -5902,17 +5608,17 @@
        "4p",
        "5p",
        "6p",
+       "9p",
        "6s",
        "7s",
        "8s",
-       "9s",
-       "W"
+       "9s"
       ]
      },
      {
-      "discard": "W",
+      "discard": "9p",
       "shanten_after": 2,
-      "ukeire_count": 38,
+      "ukeire_count": 46,
       "ukeire_tiles": [
        "2m",
        "1p",
@@ -5921,11 +5627,13 @@
        "4p",
        "5p",
        "6p",
+       "7p",
+       "8p",
+       "9p",
        "6s",
        "7s",
        "8s",
-       "9s",
-       "W"
+       "9s"
       ]
      },
      {
@@ -5937,9 +5645,9 @@
        "2p",
        "3p",
        "5p",
+       "9p",
        "7s",
-       "8s",
-       "W"
+       "8s"
       ]
      },
      {
@@ -5950,9 +5658,9 @@
        "2m",
        "5m",
        "8m",
+       "9p",
        "7s",
-       "8s",
-       "W"
+       "8s"
       ]
      },
      {
@@ -5963,9 +5671,9 @@
        "2m",
        "4m",
        "7m",
+       "9p",
        "7s",
-       "8s",
-       "W"
+       "8s"
       ]
      },
      {
@@ -5976,9 +5684,9 @@
        "2m",
        "3p",
        "4p",
+       "9p",
        "7s",
-       "8s",
-       "W"
+       "8s"
       ]
      },
      {
@@ -5988,30 +5696,31 @@
       "ukeire_tiles": [
        "2m",
        "6m",
+       "9p",
        "7s",
-       "8s",
-       "W"
+       "8s"
       ]
      }
     ]
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.439Z"
+    "checked_at": "2026-09-02T07:16:38.734Z"
    }
   },
   {
    "schema_version": 1,
    "id": "L7_004",
    "level": "L7",
-   "knowledge_point": "二向听整序：先切绝对浮牌",
    "question_type": "what_to_discard",
    "difficulty": "hard",
+   "knowledge_point": "二向听整序：先从纯浮牌下手",
    "hand": [
     "2m",
     "3m",
     "4m",
     "5m",
+    "1p",
     "6p",
     "7p",
     "8p",
@@ -6020,41 +5729,23 @@
     "5s",
     "6s",
     "8s",
-    "9s",
-    "E"
+    "9s"
    ],
    "answer": {
     "correct": [
-     "E"
+     "1p"
     ],
     "options": null
    },
    "explanation": {
-    "best": "切 E。手牌二向听、五块松散（45m、678p、23s、56s、89s，雀头未定），这种局面容易乱切。第一原则和 L1 一样朴素：完全用不上的字牌先切——切 E 后进张覆盖 2m/5m 与索子 1s-9s，共 36 张是全场最大。向听数越远，越要先做「减法」而不是纠结搭子微调；等进到一向听，L4/L5 的精细比较才轮到上场。",
-    "ukeire_table": [
-     {
-      "discard": "E",
-      "ukeire_count": 36,
-      "note": "2m/5m + 1s-9s 全覆盖"
-     },
-     {
-      "discard": "2m",
-      "ukeire_count": 33,
-      "note": "拆边张搭亏 3 张"
-     },
-     {
-      "discard": "9s",
-      "ukeire_count": 30,
-      "note": "拆搭且丢两端改良"
-     }
-    ],
+    "best": "切1筒。手牌还在二向听，离听牌远，第一步永远是切最没用的浮牌：1筒 在筒子这侧只有 678筒 一链，前后都接不上，是纯孤张。切掉它进张最宽，覆盖 2万/5万 与条子 1条~9条 一大片，共 36 张全场最大。向听越早，越该先「做减法」清理浮牌；等进到一向听，拆搭的精细比较才轮得上。",
     "source": "79博客·牌效率综合篇"
    },
    "engine_snapshot": {
     "shanten_before": 2,
     "candidates": [
      {
-      "discard": "E",
+      "discard": "1p",
       "shanten_after": 2,
       "ukeire_count": 36,
       "ukeire_tiles": [
@@ -6076,6 +5767,7 @@
       "shanten_after": 2,
       "ukeire_count": 33,
       "ukeire_tiles": [
+       "1p",
        "1s",
        "2s",
        "3s",
@@ -6084,8 +5776,7 @@
        "6s",
        "7s",
        "8s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -6093,6 +5784,7 @@
       "shanten_after": 2,
       "ukeire_count": 33,
       "ukeire_tiles": [
+       "1p",
        "1s",
        "2s",
        "3s",
@@ -6101,8 +5793,7 @@
        "6s",
        "7s",
        "8s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -6112,13 +5803,13 @@
       "ukeire_tiles": [
        "2m",
        "5m",
+       "1p",
        "1s",
        "2s",
        "4s",
        "5s",
        "7s",
-       "8s",
-       "E"
+       "8s"
       ]
      },
      {
@@ -6128,12 +5819,12 @@
       "ukeire_tiles": [
        "2m",
        "5m",
+       "1p",
        "1s",
        "4s",
        "6s",
        "7s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -6143,12 +5834,12 @@
       "ukeire_tiles": [
        "2m",
        "5m",
+       "1p",
        "1s",
        "2s",
        "4s",
        "5s",
-       "7s",
-       "E"
+       "7s"
       ]
      },
      {
@@ -6158,12 +5849,12 @@
       "ukeire_tiles": [
        "2m",
        "5m",
+       "1p",
        "3s",
        "4s",
        "6s",
        "7s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -6173,11 +5864,11 @@
       "ukeire_tiles": [
        "2m",
        "5m",
+       "1p",
        "1s",
        "4s",
        "7s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -6187,10 +5878,10 @@
       "ukeire_tiles": [
        "2m",
        "5m",
+       "1p",
        "2s",
        "4s",
-       "7s",
-       "E"
+       "7s"
       ]
      },
      {
@@ -6200,6 +5891,7 @@
       "ukeire_tiles": [
        "2m",
        "5m",
+       "1p",
        "6p",
        "7p",
        "8p",
@@ -6212,8 +5904,7 @@
        "6s",
        "7s",
        "8s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -6223,6 +5914,7 @@
       "ukeire_tiles": [
        "2m",
        "5m",
+       "1p",
        "5p",
        "6p",
        "7p",
@@ -6235,8 +5927,7 @@
        "6s",
        "7s",
        "8s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -6249,6 +5940,7 @@
        "4m",
        "5m",
        "6m",
+       "1p",
        "1s",
        "2s",
        "3s",
@@ -6257,8 +5949,7 @@
        "6s",
        "7s",
        "8s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -6271,6 +5962,7 @@
        "3m",
        "4m",
        "5m",
+       "1p",
        "1s",
        "2s",
        "3s",
@@ -6279,8 +5971,7 @@
        "6s",
        "7s",
        "8s",
-       "9s",
-       "E"
+       "9s"
       ]
      },
      {
@@ -6290,6 +5981,7 @@
       "ukeire_tiles": [
        "2m",
        "5m",
+       "1p",
        "6p",
        "7p",
        "8p",
@@ -6301,15 +5993,14 @@
        "6s",
        "7s",
        "8s",
-       "9s",
-       "E"
+       "9s"
       ]
      }
     ]
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T02:43:43.439Z"
+    "checked_at": "2026-09-02T07:16:38.735Z"
    }
   }
  ]
