@@ -34,6 +34,7 @@
 | [docs/design/architecture.md](docs/design/architecture.md) | 怎么实现的：分层、目录、决策记录、离线更新与静态发布 | 动手写代码 / 部署前 |
 | [docs/requirements/engine.md](docs/requirements/engine.md) | 进张计算引擎要做什么、怎么验收 | 写引擎前 |
 | [docs/requirements/question-bank.md](docs/requirements/question-bank.md) | 题库数据结构、出题规范、术语/记法/口径、考点总索引、内容生产线 | 出题 / 改题库 / 定措辞时 |
+| [docs/requirements/vocabulary.md](docs/requirements/vocabulary.md) | 牌効率名词体系：大分类 + 词条登记模板 + 命名(口语化)政策 + 覆盖台账（现 68 题 × 考点 缺口对照） | 加考点 / 定名词 / 查缺题时 |
 | [docs/theory/foundation.md](docs/theory/foundation.md) | 《麻将拆搭入门》：面向读者的牌效率理论书（v2.0，七章 27 例） | 写讲解定风格 / 查理论讲解方式时 |
 | [docs/requirements/web-v1.md](docs/requirements/web-v1.md) | Web V1 的页面、交互、本地存储 | 写前端前 |
 | [docs/references/SOURCES.md](docs/references/SOURCES.md) | 参考资料清单、来源、版权边界 | 出题查理论出处时 |
@@ -60,8 +61,8 @@ nanikiru/
 | M0 | 规划与骨架：本仓库结构 + 全套文档 + 参考资料入库 | ✅ 2026-08-31 |
 | M1 | 引擎：向听数 / 进张计算 / 最优切牌排序 + golden 测试 + 第三方对拍 ≥20 题 | ✅ 2026-09-02：golden 74 例 + 随机自洽 + 校验测试共 101 绿；对拍 Python `mahjong` 151 手 0 差异（[报告](docs/references/duipai-report.md)）；verify CLI 可用（`npm run verify -w @nanikiru/engine -- <题库.json>`） |
 | M2 | Web V1：做题闭环（判分 / 讲解 / 错题本 / 关卡树），内置 20~30 题样例库 | ✅ 2026-09-02：试点题库 28 题（L1-L7，全过 verify CLI）；闭环冒烟 `npx tsx apps/web/scripts/smoke-loop.ts` 全绿；Edge 无头渲染五页 + SW 预缓存核实；PWA 安装与断网真机体验待用户验收 |
-| M3 | 内容建设：起步每级 ≥10 题（共 ≥70）先上线，后续补至 200（PRD 目标） | 🔨 起步批达标：70 题（七级各 10、四题型 49/10/7/4），采集器出题、全部块内抉择；剩余 130 题为完整目标 |
-| M4 | 上线 Web / PWA，服务器静态部署 + 题库增量更新跑通 | 🔨 工程落地（publish 分片+manifest、客户端增量、`e2e-update`/`e2e-bank` 绿、`selfcheck` 全绿）；待 M3 起步批 + 真实域名部署后打勾 |
+| M3 | 内容建设：起步每级 ≥10 题（共 ≥70）先上线，后续补至 200（PRD 目标） | ✅ 起步批达标（2026-09-03）：68 题在库（8/8/11/10/11/10/10），四题型 47/10/7/4；分布闸门过、`selfcheck` 全绿（引擎 108 + publish 幂等/篡改拦 + 闭环冒烟 + IDB 增量链）；查重双闸（骨架 + 考点近亲）落地。后续内容线：新考点判分已收口（仅存 1 候选），扩量走「已踩考点结构变体」+ 词条讲解 + 200 完整目标 |
+| M4 | 上线 Web / PWA，服务器静态部署 + 题库增量更新跑通 | 🔨 工程全落地：publish 分片+manifest、客户端增量、`e2e-update`/`e2e-bank`/`selfcheck` 全绿，M3 起步批达标；剩**真实域名部署** + PWA 断网真机验收后打勾 |
 | M5 | Capacitor 打包 iOS，App Store 提审 | ⬜ |
 | M6 | V2 规划（复盘 / 赖子变体等，PRD 明确不进 V1） | ⬜ |
 
