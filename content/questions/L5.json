@@ -6,6 +6,7 @@
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "knowledge_point": "五连自动三面：别去动它",
+    "category": "composite",
     "hand": [
       "1m",
       "2m",
@@ -222,6 +223,7 @@
     "question_type": "what_to_discard",
     "difficulty": "hard",
     "knowledge_point": "同一串牌两种听法：都是 9 张",
+    "category": "tenpai",
     "hand": [
       "1m",
       "2m",
@@ -453,6 +455,7 @@
     "question_type": "what_to_discard",
     "difficulty": "hard",
     "knowledge_point": "五连切端不切中：四连才有双解",
+    "category": "composite",
     "hand": [
       "1m",
       "2m",
@@ -711,6 +714,7 @@
     "question_type": "ukeire_compare",
     "difficulty": "hard",
     "knowledge_point": "五连的切法：端点出 vs 中间出",
+    "category": "composite",
     "hand": [
       "2m",
       "3m",
@@ -964,6 +968,7 @@
     "id": "L5_005",
     "level": "L5",
     "knowledge_point": "听牌留法：两面 vs 双碰",
+    "category": "tenpai",
     "question_type": "wait_choose",
     "difficulty": "easy",
     "hand": [
@@ -1013,6 +1018,7 @@
     "id": "L5_006",
     "level": "L5",
     "knowledge_point": "听牌留法：复合双读 vs 两面",
+    "category": "tenpai",
     "question_type": "wait_choose",
     "difficulty": "medium",
     "hand": [
@@ -1062,6 +1068,7 @@
     "id": "L5_007",
     "level": "L5",
     "knowledge_point": "听牌留法：亚两面 vs 单骑",
+    "category": "tenpai",
     "question_type": "wait_choose",
     "difficulty": "medium",
     "hand": [
@@ -1111,6 +1118,7 @@
     "id": "L5_008",
     "level": "L5",
     "knowledge_point": "听牌留法：单骑 vs 中膨重张",
+    "category": "tenpai",
     "question_type": "wait_choose",
     "difficulty": "medium",
     "hand": [
@@ -1160,6 +1168,7 @@
     "id": "L5_009",
     "level": "L5",
     "knowledge_point": "长连切法对比：端与腰",
+    "category": "composite",
     "question_type": "ukeire_compare",
     "difficulty": "hard",
     "hand": [
@@ -1397,6 +1406,7 @@
     "id": "L5_010",
     "level": "L5",
     "knowledge_point": "听牌选择：五连路 vs 双碰路",
+    "category": "tenpai",
     "question_type": "what_to_discard",
     "difficulty": "hard",
     "hand": [
@@ -1584,6 +1594,7 @@
     "id": "L5_011",
     "level": "L5",
     "knowledge_point": "听牌升级：三张一叠，留两面不抱嵌张",
+    "category": "tenpai",
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "hand": [

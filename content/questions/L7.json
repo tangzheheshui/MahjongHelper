@@ -6,6 +6,7 @@
     "question_type": "what_to_discard",
     "difficulty": "hard",
     "knowledge_point": "并列最优：边张 vs 双碰怎么选",
+    "category": "strategy",
     "hand": [
       "1m",
       "1m",
@@ -185,6 +186,7 @@
     "question_type": "what_to_discard",
     "difficulty": "hard",
     "knowledge_point": "综合判断：几个角度都指向同一张",
+    "category": "strategy",
     "hand": [
       "2m",
       "3m",
@@ -375,6 +377,7 @@
     "question_type": "ukeire_compare",
     "difficulty": "hard",
     "knowledge_point": "对子过剩的比较：合并重叠，差 2 张",
+    "category": "structure",
     "hand": [
       "2m",
       "2m",
@@ -564,6 +567,7 @@
     "question_type": "what_to_discard",
     "difficulty": "hard",
     "knowledge_point": "二向听整序：先从纯浮牌下手",
+    "category": "structure",
     "hand": [
       "2m",
       "3m",
@@ -857,6 +861,7 @@
     "id": "L7_005",
     "level": "L7",
     "knowledge_point": "二向听整序：块外的多余先走",
+    "category": "structure",
     "question_type": "what_to_discard",
     "difficulty": "hard",
     "hand": [
@@ -1049,6 +1054,7 @@
     "id": "L7_006",
     "level": "L7",
     "knowledge_point": "三色竞争：弱连先离场",
+    "category": "structure",
     "question_type": "what_to_discard",
     "difficulty": "hard",
     "hand": [
@@ -1241,6 +1247,7 @@
     "id": "L7_007",
     "level": "L7",
     "knowledge_point": "四连带队：远端散张让位",
+    "category": "structure",
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "hand": [
@@ -1483,6 +1490,7 @@
     "id": "L7_008",
     "level": "L7",
     "knowledge_point": "愚形散搭取舍：窄头先走",
+    "category": "structure",
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "hand": [
@@ -1679,6 +1687,7 @@
     "id": "L7_009",
     "level": "L7",
     "knowledge_point": "三色同形：孤度最高的先走",
+    "category": "structure",
     "question_type": "what_to_discard",
     "difficulty": "hard",
     "hand": [
@@ -1909,6 +1918,7 @@
     "id": "L7_010",
     "level": "L7",
     "knowledge_point": "对子群整序：中间孤张先走",
+    "category": "structure",
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "hand": [

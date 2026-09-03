@@ -6,6 +6,7 @@
     "question_type": "what_to_discard",
     "difficulty": "easy",
     "knowledge_point": "雀头识别：11万 当雀头，23万 就是两面搭",
+    "category": "basic",
     "hand": [
       "1m",
       "1m",
@@ -199,6 +200,7 @@
     "question_type": "ukeire_compare",
     "difficulty": "easy",
     "knowledge_point": "听牌张数对比：两面 6 张 vs 单骑 3 张",
+    "category": "tenpai",
     "hand": [
       "1m",
       "1m",
@@ -397,6 +399,7 @@
     "id": "L1_005",
     "level": "L1",
     "knowledge_point": "搭子识别：点出手牌中的两面",
+    "category": "basic",
     "question_type": "mentsu_identify",
     "difficulty": "easy",
     "hand": [
@@ -441,6 +444,7 @@
     "id": "L1_006",
     "level": "L1",
     "knowledge_point": "搭子识别：点出手牌中的边张",
+    "category": "basic",
     "question_type": "mentsu_identify",
     "difficulty": "easy",
     "hand": [
@@ -485,6 +489,7 @@
     "id": "L1_007",
     "level": "L1",
     "knowledge_point": "搭子识别：点出手牌中的对子",
+    "category": "basic",
     "question_type": "mentsu_identify",
     "difficulty": "easy",
     "hand": [
@@ -529,6 +534,7 @@
     "id": "L1_008",
     "level": "L1",
     "knowledge_point": "搭子识别：点出手牌中的嵌张",
+    "category": "basic",
     "question_type": "mentsu_identify",
     "difficulty": "easy",
     "hand": [
@@ -573,6 +579,7 @@
     "id": "L1_009",
     "level": "L1",
     "knowledge_point": "重张识别：复合块里多出来的那张",
+    "category": "composite",
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "hand": [
@@ -778,6 +785,7 @@
     "id": "L1_010",
     "level": "L1",
     "knowledge_point": "完成块旁延伸张的价值：刻子跟班不是废牌",
+    "category": "basic",
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "hand": [

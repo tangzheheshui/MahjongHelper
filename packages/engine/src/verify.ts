@@ -15,6 +15,8 @@ export interface Question {
   id: string;
   level: string;
   knowledge_point?: string;
+  /** 专项分类（question-bank.md §九，2026-09-03 加）：App 专项训练按它筛选 */
+  category?: string;
   question_type: "what_to_discard" | "ukeire_compare" | "mentsu_identify" | "wait_choose";
   hand: string[];
   answer: {
@@ -53,6 +55,9 @@ const QUESTION_TYPES = new Set([
 ]);
 
 const MENTSU_TYPES = new Set(["ryanmen", "kanchan", "penchan", "pair"]);
+
+/** 专项分类枚举（question-bank.md §九）：词汇库大分类的 App 5 组映射 */
+const CATEGORIES = new Set(["basic", "composite", "structure", "tenpai", "strategy"]);
 
 /**
  * 两张牌的搭子形状分类（question-bank.md §三 细则）：
@@ -100,6 +105,8 @@ function checkCommon(q: Question, errors: string[]): 13 | 14 | null {
   if (q.schema_version !== 1) errors.push(`schema_version 须为 1，实际 ${q.schema_version}`);
   if (!q.id) errors.push("缺少 id");
   if (!q.level) errors.push("缺少 level");
+  if (q.category === undefined || !CATEGORIES.has(q.category))
+    errors.push(`category 须为 basic/composite/structure/tenpai/strategy 之一（question-bank.md §九），实际: ${q.category ?? "(缺失)"}`);
   if (!QUESTION_TYPES.has(q.question_type)) errors.push(`未知 question_type: ${q.question_type}`);
   let n: 13 | 14 | null = null;
   try {

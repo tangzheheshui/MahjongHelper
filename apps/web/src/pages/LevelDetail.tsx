@@ -83,7 +83,7 @@ export function LevelDetail() {
           </div>
           <div className="kp-chips">
             {kps.map(({ kp, n }) => (
-              <Link key={kp} className="kp-chip" to={`/drill/${encodeURIComponent(kp)}`}>
+              <Link key={kp} className="kp-chip" to={`/drill/${encodeURIComponent(kp)}?from=${encodeURIComponent(`/levels/${level}`)}`}>
                 {kp}<span className="n">· {n}</span>
               </Link>
             ))}

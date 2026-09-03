@@ -1,17 +1,24 @@
-/** 知识点专项训练（web-v1.md §一）：按 knowledge_point 过滤组卷，乱序不补量；
- *  错题照记错题本，但不写关卡进度（练的是考点不是通关）。入口在首页知识点索引。 */
+/** 知识点专项训练（web-v1.md §一）：两种组卷口径——
+ *  /drill/:kp        按 knowledge_point 精确匹配（单考点）
+ *  /drill?cat=&from= 按 category 过滤（整组专项，question-bank.md §九）
+ *  乱序不补量、上限 12；错题照记错题本，但不写关卡进度。
+ *  返回键回来源页（from 参数），不再写死 /levels。 */
 
 import { useEffect, useMemo, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useSearchParams } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { QuestionCard } from "../components/QuestionCard";
 import { loadBank } from "../lib/bank";
 import { pickStageQuestions } from "../lib/levels";
+import { questionsOfSpecial, specialOf } from "../lib/specials";
 import { recordWrong } from "../lib/storage";
 import type { Bank, Question } from "../lib/types";
 
 export function Drill() {
   const { kp = "" } = useParams();
+  const [search] = useSearchParams();
+  const cat = search.get("cat") ?? "";
+  const from = search.get("from") ?? "";
   const [bank, setBank] = useState<Bank | null>(null);
   const [round, setRound] = useState(0); // 「再来一组」时重抽（换个题序）
   const [idx, setIdx] = useState(0);
@@ -21,19 +28,34 @@ export function Drill() {
     loadBank().then(setBank);
   }, []);
 
-  const pool = useMemo(
-    () => (bank ? bank.questions.filter((q) => q.knowledge_point === kp) : []),
-    [bank, kp],
-  );
-  // min=1：不补量（该考点有几题练几题），只用它的洗牌
+  const sp = specialOf(cat);
+  const back = from || (kp ? "/levels" : "/special");
+  const backLabel = from
+    ? from.startsWith("/special/")
+      ? "返回专项"
+      : from.startsWith("/levels")
+        ? "返回关卡"
+        : "返回"
+    : kp
+      ? "返回关卡"
+      : "返回专项";
+
+  const pool = useMemo(() => {
+    if (!bank) return [];
+    if (kp) return bank.questions.filter((q) => q.knowledge_point === kp);
+    if (sp) return questionsOfSpecial(bank.questions, sp.id);
+    return [];
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [bank, kp, cat]);
+  // min=1：不补量（该口径有几题练几题），只用它的洗牌
   const { qs } = useMemo(() => pickStageQuestions(pool, 1), [pool, round]);
   const list = qs.slice(0, 12);
 
   const navbar = (
     <Navbar
       title="专项训练"
-      subtitle={kp}
-      back="/levels"
+      subtitle={kp || (sp ? `${sp.name} · 整组乱序` : "")}
+      back={back}
       right={<span className="nav-count">{Math.min(idx + 1, list.length || 1)}<em>/{list.length}</em></span>}
     />
   );
@@ -42,8 +64,8 @@ export function Drill() {
     return (
       <div>
         {navbar}
-        <p className="empty">没有找到该知识点的题目</p>
-        <p className="center"><Link to="/levels" className="btn">← 返回关卡</Link></p>
+        <p className="empty">{kp ? "没有找到该知识点的题目" : "该专项暂无题目"}</p>
+        <p className="center"><Link to={back} className="btn">← {backLabel}</Link></p>
       </div>
     );
   }
@@ -86,7 +108,7 @@ export function Drill() {
           <p className="meta">本轮完成度 {Math.round((okCount / list.length) * 100)}%</p>
           <div className="btn-row" style={{ justifyContent: "center" }}>
             <button type="button" className="btn primary" onClick={restart}>再来一组</button>
-            <Link to="/levels" className="btn ghost">返回关卡</Link>
+            <Link to={back} className="btn ghost">{backLabel}</Link>
           </div>
         </div>
       ) : (

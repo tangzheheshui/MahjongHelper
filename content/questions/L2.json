@@ -6,6 +6,7 @@
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "knowledge_point": "进张口径：剩几张 = 4 − 手内已有几张",
+    "category": "basic",
     "hand": [
       "1m",
       "2m",
@@ -187,6 +188,7 @@
     "question_type": "ukeire_compare",
     "difficulty": "medium",
     "knowledge_point": "保搭 vs 拆搭：进张面差多少",
+    "category": "structure",
     "hand": [
       "1m",
       "2m",
@@ -456,6 +458,7 @@
     "id": "L2_005",
     "level": "L2",
     "knowledge_point": "嵌张识别：24 型等中间那张",
+    "category": "basic",
     "question_type": "mentsu_identify",
     "difficulty": "medium",
     "hand": [
@@ -500,6 +503,7 @@
     "id": "L2_006",
     "level": "L2",
     "knowledge_point": "边张识别：89 在边端不是两面",
+    "category": "basic",
     "question_type": "mentsu_identify",
     "difficulty": "medium",
     "hand": [
@@ -544,6 +548,7 @@
     "id": "L2_007",
     "level": "L2",
     "knowledge_point": "两面识别：78 在中段不是边张",
+    "category": "basic",
     "question_type": "mentsu_identify",
     "difficulty": "medium",
     "hand": [
@@ -588,6 +593,7 @@
     "id": "L2_008",
     "level": "L2",
     "knowledge_point": "进张对比：拆哪头的损失小",
+    "category": "basic",
     "question_type": "ukeire_compare",
     "difficulty": "medium",
     "hand": [
@@ -799,6 +805,7 @@
     "id": "L2_009",
     "level": "L2",
     "knowledge_point": "搭子排序应用：超载时边张先走",
+    "category": "structure",
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "hand": [
@@ -987,6 +994,7 @@
     "id": "L2_010",
     "level": "L2",
     "knowledge_point": "长连形的余张处理",
+    "category": "composite",
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "hand": [

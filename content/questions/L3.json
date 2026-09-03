@@ -6,6 +6,7 @@
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "knowledge_point": "复合形：1123万 四张里其实只多一张",
+    "category": "composite",
     "hand": [
       "1m",
       "1m",
@@ -175,6 +176,7 @@
     "question_type": "what_to_discard",
     "difficulty": "hard",
     "knowledge_point": "饼子六张复合：55筒 + 顺子怎么拆都等价",
+    "category": "composite",
     "hand": [
       "1m",
       "2m",
@@ -405,6 +407,7 @@
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "knowledge_point": "八连张：两端各给三面",
+    "category": "composite",
     "hand": [
       "1m",
       "2m",
@@ -652,6 +655,7 @@
     "question_type": "ukeire_compare",
     "difficulty": "hard",
     "knowledge_point": "两个五连：进张并集有多大",
+    "category": "composite",
     "hand": [
       "1m",
       "2m",
@@ -931,6 +935,7 @@
     "id": "L3_005",
     "level": "L3",
     "knowledge_point": "帽子形：切重张当场兑现面子",
+    "category": "composite",
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "hand": [
@@ -1118,6 +1123,7 @@
     "id": "L3_006",
     "level": "L3",
     "knowledge_point": "四连多余张：一个面子位用不完的牌",
+    "category": "composite",
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "hand": [
@@ -1301,6 +1307,7 @@
     "id": "L3_007",
     "level": "L3",
     "knowledge_point": "同叠三切法：23345 的张数天差地别",
+    "category": "composite",
     "question_type": "what_to_discard",
     "difficulty": "hard",
     "hand": [
@@ -1533,6 +1540,7 @@
     "id": "L3_008",
     "level": "L3",
     "knowledge_point": "复合群读法：134456 切 1 剩两面",
+    "category": "composite",
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "hand": [
@@ -1709,6 +1717,7 @@
     "id": "L3_009",
     "level": "L3",
     "knowledge_point": "两嵌的内外端：134556 切外不切内",
+    "category": "composite",
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "hand": [
@@ -1896,6 +1905,7 @@
     "id": "L3_010",
     "level": "L3",
     "knowledge_point": "重块兑现 + 五连三面：别被大进张骗",
+    "category": "composite",
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "hand": [
@@ -2087,6 +2097,7 @@
     "id": "L3_011",
     "level": "L3",
     "knowledge_point": "四连形听牌：自带两面单骑，别去切它",
+    "category": "composite",
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "hand": [

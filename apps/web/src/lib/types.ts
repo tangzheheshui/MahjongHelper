@@ -5,6 +5,10 @@ export const LEVELS: Level[] = ["L1", "L2", "L3", "L4", "L5", "L6", "L7"];
 
 export type QuestionType = "what_to_discard" | "ukeire_compare" | "mentsu_identify" | "wait_choose";
 
+/** 专项分类（question-bank.md §九）：词汇库大分类的 App 5 组映射，每题恰属一组 */
+export type Category = "basic" | "composite" | "structure" | "tenpai" | "strategy";
+export const CATEGORIES: Category[] = ["basic", "composite", "structure", "tenpai", "strategy"];
+
 /** 搭子类型（mentsu_identify，question-bank.md §三 细则） */
 export type MentsuType = "ryanmen" | "kanchan" | "penchan" | "pair";
 
@@ -32,6 +36,7 @@ export interface Question {
   id: string;
   level: Level;
   knowledge_point: string;
+  category: Category;
   question_type: QuestionType;
   difficulty: "easy" | "medium" | "hard";
   hand: string[];

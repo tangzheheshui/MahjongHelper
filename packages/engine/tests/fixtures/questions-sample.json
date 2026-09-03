@@ -4,6 +4,7 @@
     "id": "SAMPLE_001",
     "level": "L2",
     "knowledge_point": "浮牌切序：孤立字牌先切",
+    "category": "strategy",
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "hand": [
@@ -49,6 +50,7 @@
     "id": "SAMPLE_002",
     "level": "L2",
     "knowledge_point": "反例：非最优切牌",
+    "category": "basic",
     "question_type": "what_to_discard",
     "difficulty": "easy",
     "hand": [
@@ -83,6 +85,7 @@
     "id": "SAMPLE_003",
     "level": "L5",
     "knowledge_point": "反例：并列最优未列全",
+    "category": "composite",
     "question_type": "what_to_discard",
     "difficulty": "easy",
     "hand": [
@@ -117,6 +120,7 @@
     "id": "SAMPLE_004",
     "level": "L2",
     "knowledge_point": "进张对比：两面搭子 vs 部分搭子",
+    "category": "basic",
     "question_type": "ukeire_compare",
     "difficulty": "medium",
     "hand": [
@@ -158,6 +162,7 @@
     "id": "SAMPLE_005",
     "level": "L2",
     "knowledge_point": "反例：进张并列不能出比较题",
+    "category": "basic",
     "question_type": "ukeire_compare",
     "difficulty": "easy",
     "hand": [
@@ -199,6 +204,7 @@
     "id": "SAMPLE_006",
     "level": "L5",
     "knowledge_point": "听牌形式：两面 vs 双碰",
+    "category": "tenpai",
     "question_type": "wait_choose",
     "difficulty": "easy",
     "hand": [
@@ -244,6 +250,7 @@
     "id": "SAMPLE_007",
     "level": "L1",
     "knowledge_point": "搭子识别：点出手牌中的两面搭子",
+    "category": "basic",
     "question_type": "mentsu_identify",
     "difficulty": "easy",
     "hand": [
@@ -284,6 +291,7 @@
     "id": "SAMPLE_008",
     "level": "L1",
     "knowledge_point": "反例：漏列合法组合（456 条里有两个两面）",
+    "category": "basic",
     "question_type": "mentsu_identify",
     "difficulty": "easy",
     "hand": [
@@ -325,6 +333,7 @@
     "id": "SAMPLE_009",
     "level": "L5",
     "knowledge_point": "反例：留法进张未严格最多",
+    "category": "tenpai",
     "question_type": "wait_choose",
     "difficulty": "easy",
     "hand": [

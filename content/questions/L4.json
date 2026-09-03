@@ -6,6 +6,7 @@
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "knowledge_point": "五连切端：端出一张，中间留面子",
+    "category": "composite",
     "hand": [
       "1m",
       "2m",
@@ -194,6 +195,7 @@
     "question_type": "what_to_discard",
     "difficulty": "hard",
     "knowledge_point": "搭子满员：多出来的牌互相等价",
+    "category": "structure",
     "hand": [
       "1m",
       "2m",
@@ -431,6 +433,7 @@
     "question_type": "what_to_discard",
     "difficulty": "hard",
     "knowledge_point": "对子过剩：重叠处合并成面子",
+    "category": "structure",
     "hand": [
       "2m",
       "2m",
@@ -613,6 +616,7 @@
     "question_type": "what_to_discard",
     "difficulty": "hard",
     "knowledge_point": "拆搭顺序：先拆最弱的嵌张",
+    "category": "structure",
     "hand": [
       "1m",
       "2m",
@@ -820,6 +824,7 @@
     "question_type": "ukeire_compare",
     "difficulty": "hard",
     "knowledge_point": "满员时：有浮牌切浮牌",
+    "category": "structure",
     "hand": [
       "2m",
       "3m",
@@ -1051,6 +1056,7 @@
     "id": "L4_006",
     "level": "L4",
     "knowledge_point": "对子过剩：三对挤位，拆中间",
+    "category": "structure",
     "question_type": "what_to_discard",
     "difficulty": "hard",
     "hand": [
@@ -1248,6 +1254,7 @@
     "id": "L4_007",
     "level": "L4",
     "knowledge_point": "愚形双嵌让位：拆窄头保两面",
+    "category": "structure",
     "question_type": "what_to_discard",
     "difficulty": "hard",
     "hand": [
@@ -1492,6 +1499,7 @@
     "id": "L4_008",
     "level": "L4",
     "knowledge_point": "对子过剩：重叠处合并",
+    "category": "structure",
     "question_type": "what_to_discard",
     "difficulty": "hard",
     "hand": [
@@ -1682,6 +1690,7 @@
     "id": "L4_009",
     "level": "L4",
     "knowledge_point": "块满并列：多余张与浮牌等价",
+    "category": "structure",
     "question_type": "what_to_discard",
     "difficulty": "medium",
     "hand": [
@@ -1927,6 +1936,7 @@
     "id": "L4_010",
     "level": "L4",
     "knowledge_point": "拆搭对比：嵌张 vs 两面",
+    "category": "structure",
     "question_type": "ukeire_compare",
     "difficulty": "medium",
     "hand": [

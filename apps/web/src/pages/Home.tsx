@@ -11,10 +11,10 @@ import type { Bank, Level } from "../lib/types";
 
 const DAILY_GOAL = 10;
 
-/** 6 维能力雷达（从各关卡 bestRate 推导） */
+/** 能力雷达（专项数即维度数，从各关卡 bestRate 推导） */
 function RadarMini({ values }: { values: number[] }) {
   const cx = 40, cy = 40, R = 30;
-  const n = 6;
+  const n = values.length;
   const point = (i: number, r: number) => {
     const angle = (Math.PI * 2 * i) / n - Math.PI / 2;
     return [cx + r * Math.cos(angle), cy + r * Math.sin(angle)];
@@ -95,11 +95,10 @@ export function Home() {
     return best;
   }, [progress]);
 
-  /** 6 维能力值（映射到 6 个专项） */
+  /** 能力值（每个专项一维） */
   const abilityValues = useMemo(() => {
-    if (!bank) return [0, 0, 0, 0, 0, 0];
+    if (!bank) return SPECIALS.map(() => 0);
     return SPECIALS.map((sp) => {
-      if (!sp.available) return 0;
       const qs = questionsOfSpecial(bank.questions, sp.id);
       if (qs.length === 0) return 0;
       // 从这些题所在关卡的 bestRate 取平均
@@ -109,9 +108,9 @@ export function Home() {
     });
   }, [bank, progress]);
 
-  /** 薄弱专项：能力值最低的 3 个 */
+  /** 薄弱专项：能力值最低的 2 个 */
   const weakSpecials = useMemo(() => {
-    return SPECIALS.filter((s) => s.available)
+    return SPECIALS
       .map((s, i) => ({ ...s, value: abilityValues[i] }))
       .sort((a, b) => a.value - b.value)
       .slice(0, 2);
@@ -197,7 +196,7 @@ export function Home() {
           <h3>能力概览</h3>
           <p>
             {abilityValues.some((v) => v > 0)
-              ? `${SPECIALS[abilityValues.indexOf(Math.max(...abilityValues))].name}较强，${SPECIALS[abilityValues.indexOf(Math.min(...abilityValues.filter((v) => v > 0)))]?.name ?? "金钩钓"}有待提升`
+              ? `${SPECIALS[abilityValues.indexOf(Math.max(...abilityValues))].name}较强，${SPECIALS[abilityValues.indexOf(Math.min(...abilityValues.filter((v) => v > 0)))]?.name ?? "基础"}有待提升`
               : "完成评测后生成能力雷达"}
           </p>
           <span className="ability-link">前往评测看完整报告 →</span>
@@ -215,15 +214,15 @@ export function Home() {
             <span className="qi-title">随机10题</span>
             <span className="qi-desc">混合难度</span>
           </Link>
-          <Link className="quick-item-v2" to="/special">
+          <Link className="quick-item-v2" to="/special/structure">
             <span className="qi-icon">🔧</span>
-            <span className="qi-title">拆搭专项</span>
-            <span className="qi-desc">面子拆解</span>
+            <span className="qi-title">整手拆搭</span>
+            <span className="qi-desc">满员与拆搭顺序</span>
           </Link>
-          <Link className="quick-item-v2" to="/special">
+          <Link className="quick-item-v2" to="/special/tenpai">
             <span className="qi-icon">👂</span>
             <span className="qi-title">听牌判断</span>
-            <span className="qi-desc">待牌识别</span>
+            <span className="qi-desc">听牌形式与留法</span>
           </Link>
           <Link className="quick-item-v2" to="/bank">
             <span className="qi-icon">🔥</span>

@@ -4,6 +4,7 @@ import { TileDefs } from "./components/Tile";
 import { checkBankUpdate } from "./lib/bank";
 import { Home } from "./pages/Home";
 import { Special } from "./pages/Special";
+import { SpecialDetail } from "./pages/SpecialDetail";
 import { Bank } from "./pages/Bank";
 import { Eval } from "./pages/Eval";
 import { Mine } from "./pages/Mine";
@@ -36,10 +37,10 @@ const I = {
 };
 
 /** 一级 Tab 页：显示品牌顶栏 + 底部 Tab Bar；
- *  其余（答题/结算/专项/测试/关卡详情）为沉浸页：只有各自的 Navbar。 */
+ *  其余（答题/结算/专项详情/测试/关卡详情）为沉浸页：只有各自的 Navbar。
+ *  精确匹配——/special/:cat 这类二级页必须走沉浸式，否则双顶栏且无返回。 */
 function isTabPage(pathname: string): boolean {
-  const tabs = ["/", "/special", "/bank", "/eval", "/mine"];
-  return tabs.some((t) => (t === "/" ? pathname === "/" : pathname.startsWith(t)));
+  return ["/", "/special", "/bank", "/eval", "/mine"].includes(pathname);
 }
 
 export function App() {
@@ -71,11 +72,13 @@ export function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/special" element={<Special />} />
+          <Route path="/special/:cat" element={<SpecialDetail />} />
           <Route path="/bank" element={<Bank />} />
           <Route path="/eval" element={<Eval />} />
           <Route path="/mine" element={<Mine />} />
           <Route path="/levels" element={<Levels />} />
           <Route path="/levels/:level" element={<LevelDetail />} />
+          <Route path="/drill" element={<Drill />} />
           <Route path="/drill/:kp" element={<Drill />} />
           <Route path="/quiz/:level/:stage" element={<Quiz />} />
           <Route path="/result/:level/:stage" element={<Result />} />

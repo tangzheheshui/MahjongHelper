@@ -145,6 +145,20 @@ describe("verifyQuestion · 结构校验", () => {
     expect(r.errors.join("\n")).toContain("schema_version");
     expect(r.errors.join("\n")).toContain("14 张");
   });
+
+  it("category 缺失 / 非枚举值 → 拒绝（question-bank.md §九，2026-09-03 闸门）", () => {
+    const src = sample.find((x) => x.id === "SAMPLE_001")!;
+    const noCat: Partial<Question> = { ...src, id: "BAD_CAT_001" };
+    delete noCat.category;
+    const r1 = verifyQuestion(noCat as Question);
+    expect(r1.ok).toBe(false);
+    expect(r1.errors.join("\n")).toContain("category 须为 basic/composite/structure/tenpai/strategy");
+    expect(r1.errors.join("\n")).toContain("(缺失)");
+
+    const r2 = verifyQuestion({ ...src, id: "BAD_CAT_002", category: "penggang" });
+    expect(r2.ok).toBe(false);
+    expect(r2.errors.join("\n")).toContain("category 须为 basic/composite/structure/tenpai/strategy");
+  });
 });
 
 describe("verifyQuestionBank", () => {
