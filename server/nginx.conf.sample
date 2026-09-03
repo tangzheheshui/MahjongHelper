@@ -1,34 +1,37 @@
-# nanikiru 静态分发 nginx 站点配置（M4，architecture.md §五）。
-# 域名已定：tangzheheshui.cn（2026-09-03 用户裁定）。
+# nanikiru 静态分发 nginx 站点配置（M4）。
+# 2026-09-03（A 裁定）：独立子域 mahjonghelper.tangzheheshui.cn → /var/www/mahjonghelper。
+# 同一台服务器上 tangzheheshui.cn 根已被用户其他项目占用（biliparser 反代 127.0.0.1:7900、
+# wms 等）——本文件只服务本子域，不改任何其他站点。
 # 缓存策略：manifest/config/index 不缓存（每次回源）；资源/分片 immutable（内容寻址）。
 #
-# 首次启用三步：
-#   1) DNS A 记录 tangzheheshui.cn / www → 服务器 IP
-#   2) 先用仅有 80 端口块（含 ACME）的配置启动，签证书：
-#      certbot certonly --webroot -w /var/www/certbot -d tangzheheshui.cn -d www.tangzheheshui.cn
-#   3) 取消下方 ssl_certificate 两行注释，reload nginx
+# 首次启用：
+#   1) DNS A 记录 mahjonghelper → 服务器 IP（已由用户加）
+#   2) 把本文件放 /etc/nginx/sites-available/mahjonghelper 并 ln -s 到 sites-enabled，
+#      先以仅有 80 端口块（含 ACME）的配置启动
+#   3) 签证书：certbot certonly --webroot -w /var/www/certbot -d mahjonghelper.tangzheheshui.cn
+#   4) 取消下方 ssl_certificate 两行注释，nginx -t && reload
 
-# --- 80：ACME 验证 + 全站跳 HTTPS ---
+# --- 80：ACME 验证 + 跳 HTTPS ---
 server {
   listen 80;
   listen [::]:80;
-  server_name tangzheheshui.cn www.tangzheheshui.cn;
+  server_name mahjonghelper.tangzheheshui.cn;
 
   location /.well-known/acme-challenge/ { root /var/www/certbot; }
-  location / { return 301 https://tangzheheshui.cn$request_uri; }
+  location / { return 301 https://mahjonghelper.tangzheheshui.cn$request_uri; }
 }
 
 # --- 443：本体 ---
 server {
   listen 443 ssl http2;
   listen [::]:443 ssl http2;
-  server_name tangzheheshui.cn www.tangzheheshui.cn;
+  server_name mahjonghelper.tangzheheshui.cn;
 
   # HTTPS 证书（certbot 签发后取消注释）
-  # ssl_certificate     /etc/letsencrypt/live/tangzheheshui.cn/fullchain.pem;
-  # ssl_certificate_key /etc/letsencrypt/live/tangzheheshui.cn/privkey.pem;
+  # ssl_certificate     /etc/letsencrypt/live/mahjonghelper.tangzheheshui.cn/fullchain.pem;
+  # ssl_certificate_key /etc/letsencrypt/live/mahjonghelper.tangzheheshui.cn/privkey.pem;
 
-  root /var/www/nanikiru;
+  root /var/www/mahjonghelper;
 
   # 兜底：SPA 路由 → index.html（manifest.webmanifest / sw 等真实文件优先命中）
   location / { try_files $uri $uri/ /index.html; }
