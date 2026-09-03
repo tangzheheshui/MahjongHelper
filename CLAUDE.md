@@ -14,7 +14,7 @@
 
 ```bash
 npm run dev -w @nanikiru/web    # Web 开发服务器
-npm test                        # 引擎 golden + 自测（全量：npm run selfcheck）
+npm test                        # 引擎 golden + Web 回归（全量：npm run selfcheck）
 npm run bank:verify             # 题库全量校验（correct ⊆ 引擎最优 + 快照）
 npm run bank:dist               # 题量分布 QA
 npm run e2e:smoke               # 做题闭环冒烟（改 lib 层后必跑）
@@ -68,6 +68,9 @@ npm run typecheck               # 引擎 + Web 类型检查
    「出题→校验→讲解→判分→错题」全链路，链路验证通过才允许扩量。
 3. **golden 用例是引擎的宪法**：改引擎行为必须先补 golden 用例再改实现；用例只增不删
    （删除需在 commit 里说明理由）。
+3b. **用户报的 bug 必须先补回归用例再修**（2026-09-03 用户铁律：以后不可以再发生）：
+   先写出能复现该 bug 的失败用例（引擎→tests/，Web→apps/web/src/**/*.test.tsx，jsdom），
+   修复让它变绿，用例永久入库随 `npm test` 跑；修完回报「用例已锁」。
 4. **一次只推进一个里程碑**：开工先列任务清单，完成定义（DoD）达标才切下一个：
    - M1 引擎：golden ≥50 全绿 + 第三方对拍 ≥20 题有报告 + verify CLI 可用（✅ 2026-09-02）
    - M2 Web 闭环：断网状态走通 练→判→讲→错题→解锁 全流程（试点题库），PWA 可安装（✅ 2026-09-02）

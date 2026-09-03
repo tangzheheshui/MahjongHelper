@@ -79,7 +79,10 @@ export function Drill() {
   if (!bank || list.length === 0) return <p className="empty">题库加载中…</p>;
 
   const q: Question = list[Math.min(idx, list.length - 1)];
-  const done = results.length === list.length;
+  // 结算由「看结果」按钮驱动（next 里 idx+1），不能按答题数直接判：
+  // 最后一题答完若立刻结算，会把带「查看讲解」的卡片当场卸载——
+  // 单题专项（如 B站精选）会变成「永远看不到解析」（2026-09-03 用户报告 bug）。
+  const done = idx >= list.length;
   const okCount = results.filter((r) => r.ok).length;
 
   function onAnswered(ok: boolean) {

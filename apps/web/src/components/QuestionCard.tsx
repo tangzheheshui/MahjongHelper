@@ -3,7 +3,8 @@
  * 被 Quiz（关卡）、WrongBook（重做）、Placement（测试）三处复用。
  */
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { Tile } from "./Tile";
 import {
   MENTSU_TYPE_LABEL,
@@ -163,7 +164,19 @@ function ExplanationDrawer({
   const bestUkeire = top[0]?.ukeire_count ?? 0;
   const notes = (q.explanation.ukeire_table ?? []).filter((r) => r.note);
 
-  return (
+  // 弹层开时锁住背景滚动（portal 到 body 后与页面无关，需手动锁）
+  useEffect(() => {
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, []);
+
+  // 讲解为模态底栏：必须 portal 到 document.body。
+  // 原因：.page-trans / .qcard 的入场动画带 transform 且 fill 保留，
+  // 会给 .page/.qcard 建立包含块，让 position:fixed 的抽屉脱离视口（位置错乱）。
+  const content = (
     <>
       <div className="drawer-mask" onClick={onClose} />
       <div className="drawer" role="dialog" aria-label="讲解">
@@ -211,4 +224,5 @@ function ExplanationDrawer({
       </div>
     </>
   );
+  return createPortal(content, document.body);
 }
