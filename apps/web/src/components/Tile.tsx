@@ -8,7 +8,7 @@ import { getSkin } from "../tiles/skin";
 import { loadSettings } from "../lib/storage";
 import "./skin-loader";
 
-export type TileSize = 22 | 32 | 46 | 64 | 96;
+export type TileSize = 22 | 32 | 44 | 46 | 64 | 96;
 
 export interface TileProps {
   id: string;

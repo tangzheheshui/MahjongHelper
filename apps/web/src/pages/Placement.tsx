@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
+import { Navbar } from "../components/Navbar";
 import { QuestionCard } from "../components/QuestionCard";
 import { loadBank } from "../lib/bank";
 import { LEVEL_META, gradePlacement, pickPlacementQuestions } from "../lib/levels";
@@ -37,24 +38,41 @@ export function Placement() {
     const { grade, startLevel } = gradePlacement(perLevel);
     return (
       <div>
-        <div className="score-big ok">{grade}</div>
-        <p style={{ textAlign: "center" }}>推荐从 <b>{startLevel} {LEVEL_META[startLevel].name}</b> 开始训练</p>
+        <Navbar title="水平定级" back="/" />
+        <div className={`score-card pass`}>
+          <div className="score-ring" style={{ width: 140, height: 140 }}>
+            <svg width={140} height={140} viewBox="0 0 160 160">
+              <circle className="bg" cx={80} cy={80} r={70} />
+              <circle className="fg" cx={80} cy={80} r={70} stroke="var(--jade-500)" strokeDasharray={2 * Math.PI * 70} strokeDashoffset={0} />
+            </svg>
+            <div className="num">
+              <span className="pct" style={{ fontSize: 26 }}>{grade}</span>
+              <span className="label">水平定级</span>
+            </div>
+          </div>
+          <p style={{ marginTop: 14, marginBottom: 4 }}>推荐从 <b>{startLevel} {LEVEL_META[startLevel].name}</b> 开始训练</p>
+        </div>
+
         <div className="panel">
-          <h3 style={{ marginTop: 0 }}>分项</h3>
+          <h3>分项正确率</h3>
           {LEVELS.filter((lv) => perLevel[lv]).map((lv) => {
             const s = perLevel[lv]!;
+            const pct = s.total === 0 ? 0 : Math.round((s.ok / s.total) * 100);
             return (
-              <p key={lv} style={{ margin: "4px 0", fontSize: 13 }}>
-                {lv} {LEVEL_META[lv].name}：{s.ok} / {s.total}
-              </p>
+              <div key={lv} className="breakdown-row">
+                <span className="lv">{lv}</span>
+                <span className="label">{LEVEL_META[lv].name}</span>
+                <span className="bar"><div style={{ width: `${pct}%` }} /></span>
+                <span className="val">{s.ok} / {s.total}</span>
+              </div>
             );
           })}
         </div>
-        <div style={{ marginTop: 16 }}>
+
+        <div className="btn-row">
           <Link
-            className="act primary"
+            className="btn primary"
             to={`/quiz/${startLevel}/S1`}
-            style={{ textDecoration: "none" }}
             onClick={() => {
               // 定级即解锁至起始级（含），此前级别视为可跳过
               const p = loadProgress();
@@ -72,7 +90,7 @@ export function Placement() {
           >
             开始训练 →
           </Link>
-          <Link className="act" to="/" style={{ textDecoration: "none" }}>返回首页</Link>
+          <Link className="btn ghost" to="/">返回首页</Link>
         </div>
       </div>
     );
@@ -82,13 +100,17 @@ export function Placement() {
 
   return (
     <div>
-      <h2 style={{ fontSize: 17, margin: "0 0 2px" }}>水平测试</h2>
-      <p className="sub">
-        第 {Math.min(idx + 1, qs.length)} / {qs.length} 题 · 覆盖 L1-L7，测完推荐起始级别
-        {history ? "（将覆盖上次结果）" : ""}
-      </p>
-      <div className="progressbar">
-        <div style={{ width: `${(idx / qs.length) * 100}%` }} />
+      <Navbar
+        title="水平测试"
+        subtitle="测完推荐起始级别"
+        back="/"
+        right={<span className="nav-count">{Math.min(idx + 1, qs.length)}<em>/{qs.length}</em></span>}
+      />
+      <div className="quiz-progress">
+        <div className="progressbar">
+          <div style={{ width: `${(idx / qs.length) * 100}%` }} />
+        </div>
+        <p className="meta center" style={{ marginTop: 6, marginBottom: 0 }}>覆盖 L1–L7{history ? " · 将覆盖上次结果" : ""}</p>
       </div>
 
       <QuestionCard

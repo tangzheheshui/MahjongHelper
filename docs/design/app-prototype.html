@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>麻将拆搭App - 高保真原型</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #1a1a2e;
+    display: flex; justify-content: center; align-items: center;
+    min-height: 100vh; padding: 20px;
+  }
+
+  /* 手机框架 */
+  .phone {
+    width: 375px; height: 812px;
+    border-radius: 44px;
+    background: #F0EBE0;
+    box-shadow: 0 25px 80px rgba(0,0,0,0.5), 0 0 0 12px #1a1a1a, 0 0 0 14px #333;
+    overflow: hidden; position: relative;
+    flex-shrink: 0;
+  }
+
+  /* 状态栏 */
+  .status-bar {
+    height: 44px; display: flex; justify-content: space-between; align-items: center;
+    padding: 0 24px; font-size: 15px; font-weight: 600; color: #1E3D2A;
+    position: relative; z-index: 10;
+  }
+  .status-bar .right { display: flex; align-items: center; gap: 5px; }
+  .status-bar .battery {
+    width: 24px; height: 12px; border: 1.5px solid #1E3D2A; border-radius: 3px;
+    position: relative; padding: 1px;
+  }
+  .status-bar .battery::after {
+    content: ''; position: absolute; right: -3px; top: 3px;
+    width: 2px; height: 6px; background: #1E3D2A; border-radius: 0 1px 1px 0;
+  }
+  .status-bar .battery-level { height: 100%; width: 80%; background: #1E3D2A; border-radius: 1px; }
+
+  /* 页面容器 */
+  .page-container {
+    position: absolute; top: 44px; left: 0; right: 0; bottom: 83px;
+    overflow-y: auto; overflow-x: hidden;
+  }
+  .page-container::-webkit-scrollbar { width: 0; }
+  .page { display: none; padding-bottom: 20px; }
+  .page.active { display: block; animation: fadeIn 0.25s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* 底部 Tab 栏 */
+  .tab-bar {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 83px;
+    background: rgba(255,254,249,0.98); backdrop-filter: blur(20px);
+    border-top: 1px solid #E0D8C8;
+    display: flex; justify-content: space-around; align-items: flex-start;
+    padding-top: 8px; z-index: 100;
+  }
+  .tab-item {
+    display: flex; flex-direction: column; align-items: center; gap: 3px;
+    cursor: pointer; padding: 4px 12px; border-radius: 10px;
+    transition: all 0.2s; color: #9CA3AF;
+  }
+  .tab-item .icon { font-size: 22px; line-height: 1; }
+  .tab-item .label { font-size: 10px; font-weight: 500; }
+  .tab-item.active { color: #2D5A3D; }
+  .tab-item.active .icon { transform: scale(1.1); }
+
+  /* 通用卡片 */
+  .card {
+    background: #FFFEF9; border-radius: 16px; padding: 16px;
+    box-shadow: 0 2px 12px rgba(45,90,61,0.08);
+    margin: 0 16px 12px;
+  }
+  .card-primary {
+    background: linear-gradient(135deg, #2D5A3D 0%, #1E3D2A 100%);
+    color: #F5F0E8;
+  }
+
+  /* 首页 Header */
+  .home-header {
+    padding: 8px 20px 16px; display: flex; align-items: center; gap: 10px;
+  }
+  .home-header .logo {
+    width: 40px; height: 40px; border-radius: 12px;
+    background: linear-gradient(135deg, #2D5A3D, #1E3D2A);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px; color: #C9A961;
+  }
+  .home-header .title { font-size: 18px; font-weight: 700; color: #1E3D2A; }
+  .home-header .subtitle { font-size: 11px; color: #6B7C6E; margin-top: 1px; }
+
+  /* 进度总览卡片 */
+  .progress-card { display: flex; align-items: center; gap: 16px; }
+  .ring-wrap { position: relative; width: 80px; height: 80px; flex-shrink: 0; }
+  .ring-wrap svg { transform: rotate(-90deg); }
+  .ring-text {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    text-align: center;
+  }
+  .ring-text .num { font-size: 20px; font-weight: 700; }
+  .ring-text .unit { font-size: 10px; opacity: 0.7; }
+  .progress-info { flex: 1; }
+  .progress-info .title { font-size: 15px; font-weight: 600; margin-bottom: 8px; }
+  .progress-stats { display: flex; gap: 12px; margin-bottom: 12px; }
+  .progress-stats .stat { text-align: center; }
+  .progress-stats .stat .val { font-size: 16px; font-weight: 700; }
+  .progress-stats .stat .lbl { font-size: 10px; opacity: 0.7; margin-top: 1px; }
+  .btn-primary {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    background: #C9A961; color: #1E3D2A; font-size: 14px; font-weight: 600;
+    padding: 10px 20px; border-radius: 12px; border: none; cursor: pointer;
+    transition: all 0.2s; width: 100%;
+  }
+  .btn-primary:hover { background: #B8943F; transform: translateY(-1px); }
+  .btn-primary:active { transform: translateY(0); }
+
+  /* 薄弱强化卡片 */
+  .weak-card .card-title { font-size: 14px; font-weight: 600; color: #1E3D2A; margin-bottom: 12px; }
+  .weak-items { display: flex; gap: 10px; }
+  .weak-item {
+    flex: 1; background: #F7F3E8; border-radius: 12px; padding: 12px;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .weak-item:hover { background: #EFE8D5; transform: translateY(-1px); }
+  .weak-item .w-icon { font-size: 20px; margin-bottom: 6px; }
+  .weak-item .w-title { font-size: 12px; font-weight: 600; color: #1E3D2A; }
+  .weak-item .w-desc { font-size: 10px; color: #6B7C6E; margin-top: 2px; }
+
+  /* 能力概览卡片 */
+  .ability-card { display: flex; align-items: center; gap: 14px; }
+  .radar-mini { width: 90px; height: 90px; flex-shrink: 0; }
+  .ability-info { flex: 1; }
+  .ability-info .title { font-size: 14px; font-weight: 600; color: #1E3D2A; margin-bottom: 4px; }
+  .ability-info .desc { font-size: 11px; color: #6B7C6E; margin-bottom: 8px; line-height: 1.5; }
+  .ability-link { font-size: 12px; color: #2D5A3D; font-weight: 600; cursor: pointer; }
+  .ability-link:hover { text-decoration: underline; }
+
+  /* 快捷训练横向滚动 */
+  .quick-section { margin: 0 16px 12px; }
+  .quick-title { font-size: 14px; font-weight: 600; color: #1E3D2A; margin-bottom: 10px; padding-left: 2px; }
+  .quick-scroll {
+    display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px;
+    scrollbar-width: none;
+  }
+  .quick-scroll::-webkit-scrollbar { display: none; }
+  .quick-item {
+    flex-shrink: 0; width: 110px; background: #FFFEF9; border-radius: 14px;
+    padding: 14px 12px; box-shadow: 0 2px 8px rgba(45,90,61,0.06);
+    cursor: pointer; transition: all 0.2s;
+  }
+  .quick-item:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(45,90,61,0.12); }
+  .quick-item .q-icon { font-size: 24px; margin-bottom: 8px; }
+  .quick-item .q-title { font-size: 12px; font-weight: 600; color: #1E3D2A; line-height: 1.3; }
+  .quick-item .q-desc { font-size: 10px; color: #6B7C6E; margin-top: 4px; }
+
+  /* 最近练习记录 */
+  .record-card .card-title { font-size: 14px; font-weight: 600; color: #1E3D2A; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: center; }
+  .record-card .card-title .more { font-size: 11px; color: #2D5A3D; font-weight: 500; cursor: pointer; }
+  .record-list { display: flex; flex-direction: column; gap: 10px; }
+  .record-item {
+    display: flex; align-items: center; gap: 10px; padding: 10px;
+    background: #F7F3E8; border-radius: 10px;
+  }
+  .record-item .r-icon {
+    width: 36px; height: 36px; border-radius: 10px; background: #2D5A3D;
+    display: flex; align-items: center; justify-content: center; font-size: 16px;
+    flex-shrink: 0;
+  }
+  .record-item .r-info { flex: 1; min-width: 0; }
+  .record-item .r-name { font-size: 13px; font-weight: 600; color: #1E3D2A; }
+  .record-item .r-meta { font-size: 10px; color: #6B7C6E; margin-top: 2px; }
+  .record-item .r-acc { font-size: 14px; font-weight: 700; color: #2D5A3D; flex-shrink: 0; }
+
+  /* 专项页 */
+  .page-header {
+    padding: 8px 20px 16px;
+  }
+  .page-header .title { font-size: 22px; font-weight: 700; color: #1E3D2A; }
+  .page-header .subtitle { font-size: 12px; color: #6B7C6E; margin-top: 4px; }
+
+  .special-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    padding: 0 16px;
+  }
+  .special-card {
+    background: #FFFEF9; border-radius: 16px; padding: 14px;
+    box-shadow: 0 2px 10px rgba(45,90,61,0.07);
+    cursor: pointer; transition: all 0.2s; position: relative; overflow: hidden;
+  }
+  .special-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(45,90,61,0.12); }
+  .special-card .s-icon {
+    width: 40px; height: 40px; border-radius: 12px; display: flex;
+    align-items: center; justify-content: center; font-size: 20px; margin-bottom: 10px;
+  }
+  .special-card .s-title { font-size: 14px; font-weight: 600; color: #1E3D2A; margin-bottom: 4px; }
+  .special-card .s-progress { font-size: 10px; color: #6B7C6E; margin-bottom: 8px; }
+  .special-card .s-bar { height: 4px; background: #E8E0CC; border-radius: 2px; overflow: hidden; }
+  .special-card .s-bar-fill { height: 100%; border-radius: 2px; transition: width 0.5s; }
+  .special-card .s-acc { position: absolute; top: 12px; right: 12px; font-size: 11px; font-weight: 600; }
+
+  /* 题库页 */
+  .filter-bar {
+    padding: 0 16px 12px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .filter-row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .filter-label { font-size: 11px; color: #6B7C6E; align-self: center; margin-right: 4px; }
+  .filter-chip {
+    padding: 6px 14px; border-radius: 20px; font-size: 12px; font-weight: 500;
+    background: #FFFEF9; color: #6B7C6E; border: 1px solid #E0D8C8;
+    cursor: pointer; transition: all 0.2s;
+  }
+  .filter-chip.active { background: #2D5A3D; color: #fff; border-color: #2D5A3D; }
+  .filter-chip:hover:not(.active) { border-color: #2D5A3D; color: #2D5A3D; }
+
+  .question-list { padding: 0 16px; display: flex; flex-direction: column; gap: 10px; }
+  .question-card {
+    background: #FFFEF9; border-radius: 14px; padding: 14px;
+    box-shadow: 0 2px 8px rgba(45,90,61,0.06); cursor: pointer;
+    transition: all 0.2s; display: flex; gap: 12px;
+  }
+  .question-card:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(45,90,61,0.1); }
+  .tile-preview {
+    width: 72px; height: 56px; background: #2D5A3D; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center; gap: 2px;
+    flex-shrink: 0; padding: 4px;
+  }
+  .mini-tile {
+    width: 18px; height: 26px; background: #FFFEF9; border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 700; color: #1E3D2A;
+  }
+  .mini-tile.red { color: #C0392B; }
+  .mini-tile.green { color: #27AE60; }
+  .question-info { flex: 1; min-width: 0; }
+  .question-tags { display: flex; gap: 6px; margin-bottom: 6px; }
+  .tag {
+    font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: 500;
+  }
+  .tag.easy { background: #D5F5E3; color: #1E8449; }
+  .tag.medium { background: #FEF5E7; color: #B9770E; }
+  .tag.hard { background: #FADBD8; color: #922B21; }
+  .tag.knowledge { background: #EBF5FB; color: #2471A3; }
+  .question-text { font-size: 13px; color: #1E3D2A; line-height: 1.4; font-weight: 500; }
+
+  .filter-result {
+    text-align: center; padding: 16px; font-size: 12px; color: #6B7C6E;
+  }
+
+  /* 评测页 */
+  .eval-intro {
+    margin: 0 16px 16px; background: linear-gradient(135deg, #2D5A3D, #1E3D2A);
+    border-radius: 20px; padding: 24px; color: #F5F0E8; position: relative; overflow: hidden;
+  }
+  .eval-intro::before {
+    content: ''; position: absolute; top: -30px; right: -30px;
+    width: 120px; height: 120px; border-radius: 50%;
+    background: rgba(201,169,97,0.15);
+  }
+  .eval-intro .e-icon { font-size: 36px; margin-bottom: 12px; }
+  .eval-intro .e-title { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+  .eval-intro .e-desc { font-size: 13px; opacity: 0.8; line-height: 1.6; margin-bottom: 16px; }
+  .eval-intro .e-meta { display: flex; gap: 16px; margin-bottom: 20px; }
+  .eval-intro .e-meta .m-item { font-size: 11px; opacity: 0.7; }
+  .eval-intro .e-meta .m-item .m-val { font-size: 16px; font-weight: 700; opacity: 1; display: block; }
+  .btn-eval {
+    background: #C9A961; color: #1E3D2A; font-size: 15px; font-weight: 700;
+    padding: 14px; border-radius: 14px; border: none; cursor: pointer;
+    width: 100%; transition: all 0.2s;
+  }
+  .btn-eval:hover { background: #B8943F; transform: translateY(-1px); }
+
+  .eval-history-title {
+    font-size: 14px; font-weight: 600; color: #1E3D2A; padding: 0 20px 12px;
+  }
+  .eval-history-list { padding: 0 16px; display: flex; flex-direction: column; gap: 10px; }
+  .eval-history-item {
+    background: #FFFEF9; border-radius: 14px; padding: 14px;
+    box-shadow: 0 2px 8px rgba(45,90,61,0.06); cursor: pointer;
+    display: flex; align-items: center; gap: 14px; transition: all 0.2s;
+  }
+  .eval-history-item:hover { transform: translateY(-1px); }
+  .eval-radar-mini { width: 60px; height: 60px; flex-shrink: 0; }
+  .eval-info { flex: 1; }
+  .eval-info .e-date { font-size: 13px; font-weight: 600; color: #1E3D2A; }
+  .eval-info .e-desc { font-size: 11px; color: #6B7C6E; margin-top: 3px; }
+  .eval-score { text-align: center; flex-shrink: 0; }
+  .eval-score .s-val { font-size: 24px; font-weight: 700; color: #2D5A3D; }
+  .eval-score .s-lbl { font-size: 10px; color: #6B7C6E; }
+
+  /* 我的页 */
+  .mine-header {
+    background: linear-gradient(135deg, #2D5A3D, #1E3D2A);
+    padding: 20px 20px 30px; color: #F5F0E8; position: relative;
+  }
+  .mine-user { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
+  .mine-avatar {
+    width: 56px; height: 56px; border-radius: 50%; background: #C9A961;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; color: #1E3D2A;
+  }
+  .mine-name { font-size: 18px; font-weight: 700; }
+  .mine-level { font-size: 12px; opacity: 0.7; margin-top: 2px; }
+  .mine-stats { display: flex; justify-content: space-around; }
+  .mine-stat { text-align: center; }
+  .mine-stat .ms-val { font-size: 22px; font-weight: 700; }
+  .mine-stat .ms-lbl { font-size: 11px; opacity: 0.7; margin-top: 2px; }
+
+  .mine-menu { margin: -16px 16px 0; position: relative; z-index: 2; }
+  .mine-menu-item {
+    background: #FFFEF9; padding: 16px; display: flex; align-items: center; gap: 14px;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .mine-menu-item:first-child { border-radius: 16px 16px 0 0; }
+  .mine-menu-item:last-child { border-radius: 0 0 16px 16px; }
+  .mine-menu-item:not(:last-child) { border-bottom: 1px solid #F0EBE0; }
+  .mine-menu-item:hover { background: #F7F3E8; }
+  .mine-menu-item .mm-icon {
+    width: 36px; height: 36px; border-radius: 10px; display: flex;
+    align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0;
+  }
+  .mine-menu-item .mm-info { flex: 1; }
+  .mine-menu-item .mm-title { font-size: 14px; font-weight: 600; color: #1E3D2A; }
+  .mine-menu-item .mm-desc { font-size: 11px; color: #6B7C6E; margin-top: 2px; }
+  .mine-menu-item .mm-arrow { color: #C0C0C0; font-size: 16px; }
+  .mine-menu-item .mm-badge {
+    background: #C0392B; color: #fff; font-size: 10px; font-weight: 600;
+    padding: 2px 7px; border-radius: 10px; margin-right: 6px;
+  }
+
+  /* 说明面板 */
+  .info-panel {
+    position: fixed; top: 50%; right: 40px; transform: translateY(-50%);
+    width: 240px; color: #aaa; font-size: 13px; line-height: 1.8;
+  }
+  .info-panel h2 { color: #fff; font-size: 18px; margin-bottom: 16px; }
+  .info-panel .tip {
+    background: rgba(255,255,255,0.05); border-radius: 10px; padding: 12px 16px;
+    margin-bottom: 10px; border-left: 3px solid #C9A961;
+  }
+  .info-panel .tip strong { color: #C9A961; }
+
+  @media (max-width: 900px) {
+    .info-panel { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="phone">
+  <!-- 状态栏 -->
+  <div class="status-bar">
+    <span>9:41</span>
+    <div class="right">
+      <span>📶</span>
+      <span>📡</span>
+      <div class="battery"><div class="battery-level"></div></div>
+    </div>
+  </div>
+
+  <!-- 页面容器 -->
+  <div class="page-container" id="pageContainer">
+
+    <!-- ========== 首页 ========== -->
+    <div class="page active" id="page-home">
+      <div class="home-header">
+        <div class="logo">🀄</div>
+        <div>
+          <div class="title">何切训练</div>
+          <div class="subtitle">L1-L7 拆搭进阶</div>
+        </div>
+      </div>
+
+      <!-- 进度总览卡片 -->
+      <div class="card card-primary">
+        <div class="progress-card">
+          <div class="ring-wrap">
+            <svg width="80" height="80">
+              <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="6"/>
+              <circle cx="40" cy="40" r="34" fill="none" stroke="#C9A961" stroke-width="6"
+                stroke-dasharray="213.6" stroke-dashoffset="149.5" stroke-linecap="round"/>
+            </svg>
+            <div class="ring-text">
+              <div class="num">3/10</div>
+              <div class="unit">今日目标</div>
+            </div>
+          </div>
+          <div class="progress-info">
+            <div class="title">今日训练进度</div>
+            <div class="progress-stats">
+              <div class="stat"><div class="val">7</div><div class="lbl">剩余待做</div></div>
+              <div class="stat"><div class="val">128</div><div class="lbl">累计完成</div></div>
+              <div class="stat"><div class="val">76%</div><div class="lbl">正确率</div></div>
+            </div>
+            <button class="btn-primary">▶ 开始今日训练</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 薄弱强化卡片 -->
+      <div class="card weak-card">
+        <div class="card-title">🎯 薄弱强化</div>
+        <div class="weak-items">
+          <div class="weak-item">
+            <div class="w-icon">📒</div>
+            <div class="w-title">错题本</div>
+            <div class="w-desc">12 道待复习</div>
+          </div>
+          <div class="weak-item">
+            <div class="w-icon">⚡</div>
+            <div class="w-title">薄弱专项</div>
+            <div class="w-desc">自动识别 3 项</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 能力概览卡片 -->
+      <div class="card ability-card">
+        <div class="radar-mini">
+          <svg viewBox="0 0 100 100" width="90" height="90">
+            <polygon points="50,10 85,32 85,68 50,90 15,68 15,32" fill="none" stroke="#E0D8C8" stroke-width="1"/>
+            <polygon points="50,25 73,38 73,62 50,75 27,62 27,38" fill="none" stroke="#E0D8C8" stroke-width="1"/>
+            <polygon points="50,40 61,44 61,56 50,60 39,56 39,44" fill="none" stroke="#E0D8C8" stroke-width="1"/>
+            <polygon points="50,15 80,50 70,75 35,80 18,55 25,30" fill="rgba(45,90,61,0.25)" stroke="#2D5A3D" stroke-width="1.5"/>
+            <circle cx="50" cy="15" r="2.5" fill="#2D5A3D"/>
+            <circle cx="80" cy="50" r="2.5" fill="#2D5A3D"/>
+            <circle cx="70" cy="75" r="2.5" fill="#2D5A3D"/>
+            <circle cx="35" cy="80" r="2.5" fill="#2D5A3D"/>
+            <circle cx="18" cy="55" r="2.5" fill="#2D5A3D"/>
+            <circle cx="25" cy="30" r="2.5" fill="#2D5A3D"/>
+          </svg>
+        </div>
+        <div class="ability-info">
+          <div class="title">能力概览</div>
+          <div class="desc">拆搭较强，金钩钓和多面听有待提升</div>
+          <div class="ability-link">前往评测看完整报告 →</div>
+        </div>
+      </div>
+
+      <!-- 快捷训练 -->
+      <div class="quick-section">
+        <div class="quick-title">⚡ 快捷训练</div>
+        <div class="quick-scroll">
+          <div class="quick-item">
+            <div class="q-icon">🎲</div>
+            <div class="q-title">随机10题</div>
+            <div class="q-desc">混合难度</div>
+          </div>
+          <div class="quick-item">
+            <div class="q-icon">🔧</div>
+            <div class="q-title">拆搭专项</div>
+            <div class="q-desc">面子拆解</div>
+          </div>
+          <div class="quick-item">
+            <div class="q-icon">👂</div>
+            <div class="q-title">听牌判断</div>
+            <div class="q-desc">待牌识别</div>
+          </div>
+          <div class="quick-item">
+            <div class="q-icon">🔥</div>
+            <div class="q-title">极限挑战</div>
+            <div class="q-desc">高难牌型</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 最近练习记录 -->
+      <div class="card record-card">
+        <div class="card-title">
+          <span>📝 最近练习</span>
+          <span class="more">查看全部 →</span>
+        </div>
+        <div class="record-list">
+          <div class="record-item">
+            <div class="r-icon">🔧</div>
+            <div class="r-info">
+              <div class="r-name">拆搭基础 · L1</div>
+              <div class="r-meta">今天 09:30 · 10题</div>
+            </div>
+            <div class="r-acc">80%</div>
+          </div>
+          <div class="record-item">
+            <div class="r-icon">👂</div>
+            <div class="r-info">
+              <div class="r-name">听牌判断训练</div>
+              <div class="r-meta">昨天 21:15 · 15题</div>
+            </div>
+            <div class="r-acc">73%</div>
+          </div>
+          <div class="record-item">
+            <div class="r-icon">🎲</div>
+            <div class="r-info">
+              <div class="r-name">随机10题</div>
+              <div class="r-meta">09-01 · 10题</div>
+            </div>
+            <div class="r-acc">65%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 专项页 ========== -->
+    <div class="page" id="page-special">
+      <div class="page-header">
+        <div class="title">专项训练</div>
+        <div class="subtitle">按知识点分类突破，共 6 个专项</div>
+      </div>
+      <div class="special-grid">
+        <div class="special-card">
+          <div class="s-icon" style="background:#D5F5E3;">🔧</div>
+          <div class="s-acc" style="color:#27AE60;">80%</div>
+          <div class="s-title">拆搭基础</div>
+          <div class="s-progress">已练 15/30 题</div>
+          <div class="s-bar"><div class="s-bar-fill" style="width:50%;background:#27AE60;"></div></div>
+        </div>
+        <div class="special-card">
+          <div class="s-icon" style="background:#FEF5E7;">👥</div>
+          <div class="s-acc" style="color:#B9770E;">65%</div>
+          <div class="s-title">对子处理</div>
+          <div class="s-progress">已练 8/20 题</div>
+          <div class="s-bar"><div class="s-bar-fill" style="width:40%;background:#B9770E;"></div></div>
+        </div>
+        <div class="special-card">
+          <div class="s-icon" style="background:#EBF5FB;">👂</div>
+          <div class="s-acc" style="color:#2471A3;">72%</div>
+          <div class="s-title">听牌判断</div>
+          <div class="s-progress">已练 12/25 题</div>
+          <div class="s-bar"><div class="s-bar-fill" style="width:48%;background:#2471A3;"></div></div>
+        </div>
+        <div class="special-card">
+          <div class="s-icon" style="background:#FADBD8;">🎯</div>
+          <div class="s-acc" style="color:#922B21;">60%</div>
+          <div class="s-title">碰杠处理</div>
+          <div class="s-progress">已练 5/15 题</div>
+          <div class="s-bar"><div class="s-bar-fill" style="width:33%;background:#922B21;"></div></div>
+        </div>
+        <div class="special-card">
+          <div class="s-icon" style="background:#F4ECF7;">🎣</div>
+          <div class="s-acc" style="color:#7D3C98;">50%</div>
+          <div class="s-title">金钩钓识别</div>
+          <div class="s-progress">已练 3/10 题</div>
+          <div class="s-bar"><div class="s-bar-fill" style="width:30%;background:#7D3C98;"></div></div>
+        </div>
+        <div class="special-card">
+          <div class="s-icon" style="background:#E8E0CC;">🌀</div>
+          <div class="s-acc" style="color:#6B7C6E;">--</div>
+          <div class="s-title">复杂多面听</div>
+          <div class="s-progress">未开始 · 20 题</div>
+          <div class="s-bar"><div class="s-bar-fill" style="width:0%;background:#6B7C6E;"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 题库页 ========== -->
+    <div class="page" id="page-bank">
+      <div class="page-header">
+        <div class="title">题库</div>
+        <div class="subtitle">按难度和标签筛选题目</div>
+      </div>
+      <div class="filter-bar">
+        <div class="filter-row">
+          <span class="filter-label">难度</span>
+          <div class="filter-chip active">全部</div>
+          <div class="filter-chip">简单</div>
+          <div class="filter-chip">中等</div>
+          <div class="filter-chip">困难</div>
+        </div>
+        <div class="filter-row">
+          <span class="filter-label">标签</span>
+          <div class="filter-chip active">全部</div>
+          <div class="filter-chip">拆搭</div>
+          <div class="filter-chip">听牌</div>
+          <div class="filter-chip">金钩钓</div>
+          <div class="filter-chip">对子</div>
+        </div>
+      </div>
+      <div class="question-list">
+        <div class="question-card">
+          <div class="tile-preview">
+            <div class="mini-tile">一万</div>
+            <div class="mini-tile">二万</div>
+            <div class="mini-tile red">五筒</div>
+          </div>
+          <div class="question-info">
+            <div class="question-tags">
+              <span class="tag easy">简单</span>
+              <span class="tag knowledge">拆搭</span>
+            </div>
+            <div class="question-text">从手牌中选两张，组成一个【两面】搭子</div>
+          </div>
+        </div>
+        <div class="question-card">
+          <div class="tile-preview">
+            <div class="mini-tile">三条</div>
+            <div class="mini-tile">四条</div>
+            <div class="mini-tile green">五条</div>
+          </div>
+          <div class="question-info">
+            <div class="question-tags">
+              <span class="tag medium">中等</span>
+              <span class="tag knowledge">听牌</span>
+            </div>
+            <div class="question-text">判断当前手牌听哪些牌，列出所有待牌</div>
+          </div>
+        </div>
+        <div class="question-card">
+          <div class="tile-preview">
+            <div class="mini-tile">九万</div>
+            <div class="mini-tile">九万</div>
+            <div class="mini-tile red">中</div>
+          </div>
+          <div class="question-info">
+            <div class="question-tags">
+              <span class="tag hard">困难</span>
+              <span class="tag knowledge">金钩钓</span>
+            </div>
+            <div class="question-text">识别是否为金钩钓听牌形，并选择正确的切牌</div>
+          </div>
+        </div>
+        <div class="question-card">
+          <div class="tile-preview">
+            <div class="mini-tile">二筒</div>
+            <div class="mini-tile">三筒</div>
+            <div class="mini-tile green">四筒</div>
+          </div>
+          <div class="question-info">
+            <div class="question-tags">
+              <span class="tag easy">简单</span>
+              <span class="tag knowledge">对子</span>
+            </div>
+            <div class="question-text">手牌中有多个对子，选择应保留的雀头</div>
+          </div>
+        </div>
+        <div class="question-card">
+          <div class="tile-preview">
+            <div class="mini-tile">六万</div>
+            <div class="mini-tile">七万</div>
+            <div class="mini-tile red">发</div>
+          </div>
+          <div class="question-info">
+            <div class="question-tags">
+              <span class="tag medium">中等</span>
+              <span class="tag knowledge">拆搭</span>
+            </div>
+            <div class="question-text">搭子过乘时，选择应拆掉的最差搭子</div>
+          </div>
+        </div>
+      </div>
+      <div class="filter-result">共筛选出 87 题，上滑加载更多</div>
+    </div>
+
+    <!-- ========== 评测页 ========== -->
+    <div class="page" id="page-eval">
+      <div class="page-header">
+        <div class="title">能力评测</div>
+        <div class="subtitle">全面摸底，生成专属能力雷达</div>
+      </div>
+
+      <div class="eval-intro">
+        <div class="e-icon">🧪</div>
+        <div class="e-title">全套能力摸底</div>
+        <div class="e-desc">30 题综合评测，覆盖拆搭、听牌、对子、碰杠、金钩钓五大维度，生成你的专属能力雷达图</div>
+        <div class="e-meta">
+          <div class="m-item"><span class="m-val">30</span>题目数量</div>
+          <div class="m-item"><span class="m-val">~15</span>预计分钟</div>
+          <div class="m-item"><span class="m-val">5</span>能力维度</div>
+        </div>
+        <button class="btn-eval">▶ 开始能力评测</button>
+      </div>
+
+      <div class="eval-history-title">📋 历史评测记录</div>
+      <div class="eval-history-list">
+        <div class="eval-history-item">
+          <div class="eval-radar-mini">
+            <svg viewBox="0 0 100 100" width="60" height="60">
+              <polygon points="50,10 85,32 85,68 50,90 15,68 15,32" fill="none" stroke="#E0D8C8" stroke-width="1"/>
+              <polygon points="50,20 75,40 72,65 50,80 28,65 25,40" fill="rgba(45,90,61,0.3)" stroke="#2D5A3D" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="eval-info">
+            <div class="e-date">2026-09-01</div>
+            <div class="e-desc">拆搭较强，金钩钓待提升</div>
+          </div>
+          <div class="eval-score">
+            <div class="s-val">76</div>
+            <div class="s-lbl">综合得分</div>
+          </div>
+        </div>
+        <div class="eval-history-item">
+          <div class="eval-radar-mini">
+            <svg viewBox="0 0 100 100" width="60" height="60">
+              <polygon points="50,10 85,32 85,68 50,90 15,68 15,32" fill="none" stroke="#E0D8C8" stroke-width="1"/>
+              <polygon points="50,25 70,42 68,62 50,72 32,62 30,42" fill="rgba(201,169,97,0.3)" stroke="#C9A961" stroke-width="1.5"/>
+            </svg>
+          </div>
+          <div class="eval-info">
+            <div class="e-date">2026-08-15</div>
+            <div class="e-desc">初次评测，各维度较均衡</div>
+          </div>
+          <div class="eval-score">
+            <div class="s-val">68</div>
+            <div class="s-lbl">综合得分</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== 我的页 ========== -->
+    <div class="page" id="page-mine">
+      <div class="mine-header">
+        <div class="mine-user">
+          <div class="mine-avatar">🀄</div>
+          <div>
+            <div class="mine-name">麻将学习者</div>
+            <div class="mine-level">Lv.3 · 拆搭进阶中</div>
+          </div>
+        </div>
+        <div class="mine-stats">
+          <div class="mine-stat"><div class="ms-val">128</div><div class="ms-lbl">累计做题</div></div>
+          <div class="mine-stat"><div class="ms-val">76%</div><div class="ms-lbl">总正确率</div></div>
+          <div class="mine-stat"><div class="ms-val">7</div><div class="ms-lbl">连续打卡</div></div>
+        </div>
+      </div>
+
+      <div class="mine-menu">
+        <div class="mine-menu-item">
+          <div class="mm-icon" style="background:#FADBD8;">📒</div>
+          <div class="mm-info">
+            <div class="mm-title">错题本</div>
+            <div class="mm-desc">12 道待复习 · 已掌握 8 道</div>
+          </div>
+          <span class="mm-badge">12</span>
+          <span class="mm-arrow">›</span>
+        </div>
+        <div class="mine-menu-item">
+          <div class="mm-icon" style="background:#EBF5FB;">📊</div>
+          <div class="mm-info">
+            <div class="mm-title">全部练习历史</div>
+            <div class="mm-desc">查看每次练习的详细记录</div>
+          </div>
+          <span class="mm-arrow">›</span>
+        </div>
+        <div class="mine-menu-item">
+          <div class="mm-icon" style="background:#D5F5E3;">📈</div>
+          <div class="mm-info">
+            <div class="mm-title">完整能力雷达报告</div>
+            <div class="mm-desc">5 维度详细分析与提升建议</div>
+          </div>
+          <span class="mm-arrow">›</span>
+        </div>
+        <div class="mine-menu-item">
+          <div class="mm-icon" style="background:#F0EBE0;">⚙️</div>
+          <div class="mm-info">
+            <div class="mm-title">设置</div>
+            <div class="mm-desc">音效、难度、数据管理</div>
+          </div>
+          <span class="mm-arrow">›</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 底部 Tab 栏 -->
+  <div class="tab-bar">
+    <div class="tab-item active" data-page="home">
+      <div class="icon">🏠</div>
+      <div class="label">首页</div>
+    </div>
+    <div class="tab-item" data-page="special">
+      <div class="icon">📑</div>
+      <div class="label">专项</div>
+    </div>
+    <div class="tab-item" data-page="bank">
+      <div class="icon">📚</div>
+      <div class="label">题库</div>
+    </div>
+    <div class="tab-item" data-page="eval">
+      <div class="icon">🧪</div>
+      <div class="label">评测</div>
+    </div>
+    <div class="tab-item" data-page="mine">
+      <div class="icon">👤</div>
+      <div class="label">我的</div>
+    </div>
+  </div>
+</div>
+
+<!-- 右侧说明 -->
+<div class="info-panel">
+  <h2>🀄 麻将拆搭App 原型</h2>
+  <div class="tip"><strong>交互：</strong>点击底部 5 个 Tab 切换页面，页面内容可滚动</div>
+  <div class="tip"><strong>首页：</strong>进度总览 + 薄弱强化 + 能力雷达 + 快捷训练 + 最近记录</div>
+  <div class="tip"><strong>专项：</strong>6 大知识点网格卡片，含进度和正确率</div>
+  <div class="tip"><strong>题库：</strong>难度 + 标签双维度筛选，题目卡片列表</div>
+  <div class="tip"><strong>评测：</strong>30 题能力摸底 + 历史评测雷达记录</div>
+  <div class="tip"><strong>我的：</strong>用户数据 + 错题本/历史/报告/设置入口</div>
+</div>
+
+<script>
+  // Tab 切换
+  const tabItems = document.querySelectorAll('.tab-item');
+  const pages = document.querySelectorAll('.page');
+  const pageContainer = document.getElementById('pageContainer');
+
+  tabItems.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.page;
+      tabItems.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      pages.forEach(p => p.classList.remove('active'));
+      document.getElementById('page-' + target).classList.add('active');
+      pageContainer.scrollTop = 0;
+    });
+  });
+
+  // 筛选 chip 切换（题库页）
+  document.querySelectorAll('.filter-row').forEach(row => {
+    row.querySelectorAll('.filter-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        row.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+      });
+    });
+  });
+
+  // 按钮点击反馈
+  document.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      btn.style.transform = 'scale(0.97)';
+      setTimeout(() => btn.style.transform = '', 150);
+    });
+  });
+</script>
+</body>
+</html>

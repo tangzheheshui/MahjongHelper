@@ -1,4 +1,4 @@
-/** 设置页（PRD 6.4 / web-v1.md §一）：题库信息、重新测试、清除数据（丢失警告）、关于 */
+/** 设置页（PRD 6.4 / web-v1.md §一）：iOS 分组 cell 风格 —— 题库、皮肤、训练、数据、关于 */
 
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -51,105 +51,121 @@ export function Settings() {
 
   return (
     <div>
-      <h2 style={{ fontSize: 17, marginTop: 0 }}>设置</h2>
-
-      <div className="panel">
-        <h3 style={{ marginTop: 0 }}>题库</h3>
-        <p style={{ fontSize: 14, margin: "4px 0" }}>
-          版本 <b>{bank?.bank_version ?? "…"}</b> · 共 {bank?.questions.length ?? 0} 题
-        </p>
-        <p className="meta" style={{ marginTop: 0 }}>
-          联网时启动将静默检查题库增量更新；断网不影响使用（V1 试点题库随 App 内置）。
-          更新失败自动保留本地题库、下次再试（PRD 6.4）。
-        </p>
-        <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 10, flexWrap: "wrap" }}>
-          <button type="button" className="act" onClick={doCheck} disabled={checking}>
-            {checking ? "检查中…" : "检查并更新题库"}
-          </button>
-          {result && (
-            <span className="meta" style={{ fontSize: 13 }}>
-              {result.status === "updated"
-                ? `✓ 已更新至 ${result.to}：拉取 ${result.downloaded?.length ?? 0} 个分片，净增 ${result.added} 题`
-                : result.status === "up_to_date"
-                  ? `已是最新（${bank?.bank_version ?? ""}）`
-                  : "检查失败（离线或服务器不可用），保持本地题库"}
-            </span>
-          )}
-        </div>
+      <div className="section-head" style={{ marginTop: 6 }}>
+        <h2>设置</h2>
+        <span className="hint">本机存储 · 无账号系统</span>
       </div>
 
-      <div className="panel">
-        <h3 style={{ marginTop: 0 }}>牌面皮肤</h3>
-        {SKINS.map((s) => (
-          <label
-            key={s.name}
-            style={{
-              display: "block",
-              border: tileSkin === s.name ? "2px solid var(--accent, #b48a2f)" : "2px solid transparent",
-              borderRadius: 10,
-              padding: "6px 8px",
-              marginBottom: 8,
-              cursor: "pointer",
-            }}
-          >
-            <span style={{ fontSize: 14 }}>
+      {/* —— 训练 —— */}
+      <div className="group-label">训练</div>
+      <div className="group">
+        <Link className="cell" to="/placement">
+          <span className="ico">🧭</span>
+          <span className="label">水平测试</span>
+          <span className="val">
+            {placement ? `${placement.grade} · ${placement.takenAt.slice(0, 10)}` : "未测试"}
+          </span>
+          <span className="chev">›</span>
+        </Link>
+        <Link className="cell" to="/wrong-book">
+          <span className="ico">📕</span>
+          <span className="label">错题本</span>
+          <span className="val">答对即移出</span>
+          <span className="chev">›</span>
+        </Link>
+      </div>
+
+      {/* —— 题库 —— */}
+      <div className="group-label">题库</div>
+      <div className="group">
+        <div className="cell static">
+          <span className="ico">📚</span>
+          <span className="label">当前版本</span>
+          <span className="val">{bank ? `${bank.bank_version} · ${bank.questions.length} 题` : "加载中…"}</span>
+        </div>
+        <button type="button" className="cell" onClick={doCheck} disabled={checking}>
+          <span className="ico">🔄</span>
+          <span className="label">{checking ? "检查中…" : "检查并更新题库"}</span>
+          <span className="chev">›</span>
+        </button>
+      </div>
+      <p className="group-note">
+        联网时启动将静默检查增量更新；断网不影响使用（V1 试点题库随 App 内置），失败自动保留本地、下次再试。
+        {result && (
+          <>
+            <br />
+            <b style={{ color: "var(--jade-600)" }}>
+              {result.status === "updated"
+                ? `✓ 已更新至 ${result.to}：净增 ${result.added} 题`
+                : result.status === "up_to_date"
+                  ? `✓ 已是最新（${bank?.bank_version ?? ""}）`
+                  : "检查失败（离线或服务器不可用），保持本地题库"}
+            </b>
+          </>
+        )}
+      </p>
+
+      {/* —— 牌面皮肤 —— */}
+      <div className="group-label">牌面皮肤</div>
+      <div className="group group-body">
+        <div className="skin-grid">
+          {SKINS.map((s) => (
+            <label key={s.name} className={`skin-card ${tileSkin === s.name ? "selected" : ""}`}>
               <input
                 type="radio"
                 name="tileSkin"
                 checked={tileSkin === s.name}
                 onChange={() => pickSkin(s.name)}
-                style={{ marginRight: 6 }}
+                style={{ position: "absolute", opacity: 0, pointerEvents: "none" }}
               />
-              <b>{s.label}</b>
-              <span className="meta" style={{ marginLeft: 8 }}>{s.desc}</span>
-            </span>
-            <span className="hand" style={{ justifyContent: "flex-start", marginTop: 6, display: "flex" }}>
-              {SKIN_PREVIEW.map((id) => (
-                <Tile key={`${s.name}-${id}`} id={id} size={32} skin={s.name} />
-              ))}
-            </span>
-          </label>
-        ))}
-        <p className="meta" style={{ margin: 0 }}>立即生效、仅存本机；两套皮肤均为原创 SVG 手绘。</p>
+              <span className="info">
+                <span className="label">{s.label}</span>
+                <span className="desc">{s.desc}</span>
+              </span>
+              <span className="preview">
+                {SKIN_PREVIEW.map((id) => (
+                  <Tile key={`${s.name}-${id}`} id={id} size={22} skin={s.name} />
+                ))}
+              </span>
+            </label>
+          ))}
+        </div>
+        <p className="group-note" style={{ marginTop: 10, marginBottom: 2 }}>立即生效、仅存本机；两套皮肤均为原创 SVG 手绘。</p>
       </div>
 
-      <div className="panel">
-        <h3 style={{ marginTop: 0 }}>训练</h3>
-        <p style={{ fontSize: 14 }}>
-          当前定级：{placement ? `${placement.grade}（${placement.takenAt.slice(0, 10)}）` : "未测试"}
-        </p>
-        <Link to="/placement" style={{ textDecoration: "none" }} className="act">重新水平测试</Link>
+      {/* —— 数据 —— */}
+      <div className="group-label">数据</div>
+      <div className="group">
+        <button type="button" className="cell danger" onClick={() => setConfirmClear(true)}>
+          <span className="ico">🗑️</span>
+          <span className="label">清除全部本地数据</span>
+          <span className="chev">›</span>
+        </button>
       </div>
-
-      <div className="panel">
-        <h3 style={{ marginTop: 0 }}>数据</h3>
-        <p className="meta" style={{ marginTop: 0 }}>
-          本应用无账号系统，进度、错题本全部仅存本机。卸载 App 或清除浏览器数据会丢失且无法恢复。
-        </p>
-        {confirmClear ? (
-          <div className="warn-box" style={{ marginTop: 10 }}>
-            确认清空全部本地数据（进度 / 错题本 / 定级 / 设置）？此操作不可恢复。
-            <div style={{ marginTop: 8 }}>
-              <button type="button" className="act primary" onClick={doClear}>确认清空</button>
-              <button type="button" className="act" onClick={() => setConfirmClear(false)}>取消</button>
-            </div>
+      <p className="group-note">进度、错题本、定级全部仅存本机。卸载或清除浏览器数据会丢失且无法恢复。</p>
+      {confirmClear && (
+        <div className="warn-box" style={{ marginTop: 10 }}>
+          <b>⚠ 确认清空全部本地数据</b>（进度 / 错题本 / 定级 / 设置）？此操作不可恢复。
+          <div className="btn-row">
+            <button type="button" className="btn danger" onClick={doClear}>确认清空</button>
+            <button type="button" className="btn" onClick={() => setConfirmClear(false)}>取消</button>
           </div>
-        ) : (
-          <button type="button" className="act" style={{ marginTop: 10 }} onClick={() => setConfirmClear(true)}>
-            清除全部本地数据
-          </button>
-        )}
-      </div>
+        </div>
+      )}
 
-      <div className="panel">
-        <h3 style={{ marginTop: 0 }}>关于</h3>
-        <p className="meta" style={{ marginTop: 0, lineHeight: 1.9 }}>
-          nanikiru 何切训练 v0.1（M2 试点）· 单人开发的离线教学工具<br />
-          训练内容为通用牌效率（国标 / 日麻通用；不含地方规则变体）。<br />
-          判分引擎自研并经第三方对拍验证；题目与讲解全部原创，理论出处逐题标注。<br />
-          参考资料清单与版权边界见仓库 docs/references/SOURCES.md。
-        </p>
+      {/* —— 关于 —— */}
+      <div className="group-label">关于</div>
+      <div className="group">
+        <div className="cell static">
+          <span className="ico">ℹ️</span>
+          <span className="label">版本</span>
+          <span className="val">v0.1（M2 试点）</span>
+        </div>
       </div>
+      <p className="group-note">
+        nanikiru 何切训练 · 单人开发的离线教学工具。训练内容为通用牌效率（国标 / 日麻通用；不含地方规则变体）。
+        判分引擎自研并经第三方对拍验证；题目与讲解全部原创，理论出处逐题标注，版权边界见仓库 docs/references/SOURCES.md。
+      </p>
     </div>
   );
 }

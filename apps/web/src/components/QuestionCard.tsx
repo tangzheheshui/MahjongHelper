@@ -23,7 +23,13 @@ export interface QuestionCardProps {
   q: Question;
   /** 作答后回调（ok=是否正确，answer=用户答案） */
   onAnswered?: (ok: boolean, answer: string) => void;
-  /** 重做场景：换 key 整卡重挂载即可清状态 */
+}
+
+function difficultyClass(d: Question["difficulty"]) {
+  return d === "easy" ? "diff-easy" : d === "medium" ? "diff-medium" : "diff-hard";
+}
+function difficultyLabel(d: Question["difficulty"]) {
+  return d === "easy" ? "易" : d === "medium" ? "中" : "难";
 }
 
 export function QuestionCard({ q, onAnswered }: QuestionCardProps) {
@@ -58,66 +64,73 @@ export function QuestionCard({ q, onAnswered }: QuestionCardProps) {
 
   const prompt =
     isWtd
-      ? sh === 0 ? "切最优牌后听牌" : `切最优牌后 ${sh} 向听`
+      ? sh === 0
+        ? <>切出<b> 最优牌 </b>，<b>听牌</b>。</>
+        : <>切出<b> 最优牌 </b>，进入 <b>{sh} 向听</b>。</>
       : q.question_type === "ukeire_compare"
         ? "两种切法，哪种进张更多？"
         : isMi
-          ? `从手牌中点选两张，组成一个【${miType ? MENTSU_TYPE_LABEL[miType] : "搭子"}】`
+          ? <>从手牌中点选两张，组成一个【{miType ? MENTSU_TYPE_LABEL[miType] : "搭子"}】。</>
           : "两种听牌留法，哪种和牌张数更多？";
 
   return (
     <div className="qcard">
-      <p className="sub">
-        考点：{q.knowledge_point}
-        {isWtd ? "" : isMi ? ` · 已选 ${miSel.length}/2 张` : " · 二选一"} ·{" "}
-        {q.difficulty === "easy" ? "易" : q.difficulty === "medium" ? "中" : "难"}
-      </p>
+      <div className="qhead">
+        <span className="chip kp">{q.knowledge_point}</span>
+        {!isWtd && <span className="chip">{isMi ? `已选 ${miSel.length}/2` : "二选一"}</span>}
+        <span className={`chip ${difficultyClass(q.difficulty)}`}>{difficultyLabel(q.difficulty)}</span>
+      </div>
       <p className="shanten-line">{prompt}</p>
 
-      <div className="hand">
-        {orderHand(q.hand).map((t, i) => (
-          <Tile
-            key={`${t}-${i}`}
-            id={t}
-            size={isWtd || isMi ? 46 : 32}
-            selected={(isWtd && picked === t) || (isMi && miSel.includes(t))}
-            onClick={isWtd && !judged ? () => judge(t) : isMi && !judged ? () => toggleMi(t) : undefined}
-          />
-        ))}
+      <div className="hand-panel">
+        <div className="hand">
+          {orderHand(q.hand).map((t, i) => (
+            <Tile
+              key={`${t}-${i}`}
+              id={t}
+              size={isWtd || isMi ? 44 : 32}
+              selected={(isWtd && picked === t) || (isMi && miSel.includes(t))}
+              onClick={isWtd && !judged ? () => judge(t) : isMi && !judged ? () => toggleMi(t) : undefined}
+            />
+          ))}
+        </div>
       </div>
 
       {!isWtd && !judged && (
-        <div>
+        <div className="options">
           {isMi ? null : isWc
-              ? ((q.answer.options as WaitOption[]) ?? []).map((o) => (
-                  <button key={o.value} type="button" className="act" onClick={() => judge(o.value)}>
-                    {o.label}
-                  </button>
-                ))
-              : (q.answer.options ?? []).map((o) => (
-                  <button
-                    key={o.discard}
-                    type="button"
-                    className="act"
-                    onClick={() => o.discard && judge(o.discard)}
-                  >
-                    切 {tileLabel(o.discard ?? "")}
-                  </button>
-                ))}
+            ? ((q.answer.options as WaitOption[]) ?? []).map((o) => (
+                <button key={o.value} type="button" className="opt-card" onClick={() => judge(o.value)}>
+                  <span className="label">{o.label}</span>
+                </button>
+              ))
+            : (q.answer.options ?? []).map((o) => (
+                <button
+                  key={o.discard}
+                  type="button"
+                  className="opt-card"
+                  onClick={() => o.discard && judge(o.discard)}
+                >
+                  <Tile id={o.discard ?? ""} size={32} />
+                  <span className="label">切 {tileLabel(o.discard ?? "")}</span>
+                  <span className="meta">→</span>
+                </button>
+              ))}
         </div>
       )}
 
       {judged && (
-        <div className="panel">
-          <div className={`verdict ${ok ? "ok" : "ng"}`}>
+        <div className={`verdict ${ok ? "ok" : "ng"}`}>
+          <span className="icon">{ok ? "✅" : "❌"}</span>
+          <div>
             {ok
               ? isWtd
-                ? `✅ 正确！切 ${picked ? tileLabel(picked) : ""} 是最优解`
-                : `✅ 正确！${isMi ? tilesLabel(miSel) : picked}`
-              : `❌ 应选：${correctLabelOf(q)}${!isMi && correct.length > 1 ? "（并列最优）" : ""}`}
+                ? <>正确！切 <span className="ans">{picked ? tileLabel(picked) : ""}</span> 是最优解。</>
+                : <>正确！{isMi ? tilesLabel(miSel) : picked}</>
+              : <>应选：<span className="ans">{correctLabelOf(q)}</span>{!isMi && correct.length > 1 ? "（并列最优）" : ""}</>}
           </div>
-          <button type="button" className="act" onClick={() => setShowExp(true)}>
-            查看讲解
+          <button type="button" className="btn ghost" style={{ marginLeft: "auto" }} onClick={() => setShowExp(true)}>
+            查看讲解 →
           </button>
         </div>
       )}
@@ -154,14 +167,17 @@ function ExplanationDrawer({
   return (
     <>
       <div className="drawer-mask" onClick={onClose} />
-      <div className="drawer">
-        <button type="button" className="close" onClick={onClose}>关闭 ✕</button>
-        <h3>{ok ? "✅ 做对了，确认一下理由" : `📖 为什么是 ${correctLabelOf(q)}`}</h3>
-        <p style={{ lineHeight: 1.8, marginTop: 0 }}>{q.explanation.best}</p>
+      <div className="drawer" role="dialog" aria-label="讲解">
+        <div className="handle" />
+        <h3>
+          <span>{ok ? "✅ 做对了，确认一下理由" : `📖 为什么是 ${correctLabelOf(q)}`}</span>
+          <button type="button" className="close" onClick={onClose} aria-label="关闭">✕</button>
+        </h3>
+        <div className="exp-text">{q.explanation.best}</div>
 
         {showTable && (
           <>
-            <h3>进张对比（前 8 候选）</h3>
+            <h3 style={{ fontSize: 14, marginTop: 18 }}>进张对比（前 8 候选）</h3>
             <table className="cmp">
               <thead>
                 <tr><th>切牌</th><th>切后</th><th>进张</th><th>进张种类</th></tr>
@@ -189,8 +205,10 @@ function ExplanationDrawer({
           </>
         )}
 
-        <p className="meta">理论出处：{q.explanation.source}</p>
-        <button type="button" className="act primary" onClick={onClose}>继续</button>
+        <p className="meta" style={{ marginTop: 14 }}>理论出处：{q.explanation.source}</p>
+        <div className="btn-row">
+          <button type="button" className="btn primary" onClick={onClose}>继续下一题</button>
+        </div>
       </div>
     </>
   );

@@ -3,6 +3,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
+import { Navbar } from "../components/Navbar";
 import { QuestionCard } from "../components/QuestionCard";
 import { loadBank } from "../lib/bank";
 import { pickStageQuestions } from "../lib/levels";
@@ -28,11 +29,21 @@ export function Drill() {
   const { qs } = useMemo(() => pickStageQuestions(pool, 1), [pool, round]);
   const list = qs.slice(0, 12);
 
+  const navbar = (
+    <Navbar
+      title="专项训练"
+      subtitle={kp}
+      back="/levels"
+      right={<span className="nav-count">{Math.min(idx + 1, list.length || 1)}<em>/{list.length}</em></span>}
+    />
+  );
+
   if (bank && pool.length === 0) {
     return (
       <div>
+        {navbar}
         <p className="empty">没有找到该知识点的题目</p>
-        <Link to="/" className="act">← 回首页</Link>
+        <p className="center"><Link to="/levels" className="btn">← 返回关卡</Link></p>
       </div>
     );
   }
@@ -59,34 +70,32 @@ export function Drill() {
 
   return (
     <div>
-      <h2 style={{ fontSize: 16, margin: "0 0 2px" }}>
-        专项：{kp}
-        <button type="button" className="act" style={{ float: "right", padding: "2px 10px" }}>
-          <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>← 退出</Link>
-        </button>
-      </h2>
-      <p className="sub">第 {Math.min(idx + 1, list.length)} / {list.length} 题 · 不计关卡进度</p>
+      {navbar}
+      <div className="quiz-progress">
+        <div className="progressbar">
+          <div style={{ width: `${(results.length / list.length) * 100}%` }} />
+        </div>
+        <p className="meta center" style={{ marginTop: 6, marginBottom: 0 }}>不计关卡进度 · 错题照记错题本</p>
+      </div>
 
       {done ? (
-        <div className="panel">
-          <p style={{ margin: 0 }}>
-            完成：{okCount} / {list.length}（{Math.round((okCount / list.length) * 100)}%）
-          </p>
-          <div style={{ display: "flex", gap: 8, marginTop: 10 }}>
-            <button type="button" className="act primary" onClick={restart}>再来一组</button>
-            <Link to="/" className="act">回首页</Link>
+        <div className="panel center">
+          <div style={{ fontSize: 36, fontWeight: 800, color: okCount === list.length ? "var(--jade-600)" : "var(--ink)", margin: "8px 0" }}>
+            {okCount} / {list.length}
+          </div>
+          <p className="meta">本轮完成度 {Math.round((okCount / list.length) * 100)}%</p>
+          <div className="btn-row" style={{ justifyContent: "center" }}>
+            <button type="button" className="btn primary" onClick={restart}>再来一组</button>
+            <Link to="/levels" className="btn ghost">返回关卡</Link>
           </div>
         </div>
       ) : (
         <>
-          <div className="progressbar">
-            <div style={{ width: `${(results.length / list.length) * 100}%` }} />
-          </div>
           <QuestionCard key={`${q.id}-${idx}-${round}`} q={q} onAnswered={onAnswered} />
           {results.length === idx + 1 && (
-            <div style={{ marginTop: 12 }}>
-              <button type="button" className="act primary" onClick={next}>
-                {idx + 1 >= list.length ? "看结果" : "下一题"}
+            <div className="sticky-cta">
+              <button type="button" className="btn-block" onClick={next}>
+                {idx + 1 >= list.length ? "看结果" : "下一题"} →
               </button>
             </div>
           )}
