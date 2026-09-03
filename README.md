@@ -62,7 +62,7 @@ nanikiru/
 | M1 | 引擎：向听数 / 进张计算 / 最优切牌排序 + golden 测试 + 第三方对拍 ≥20 题 | ✅ 2026-09-02：golden 74 例 + 随机自洽 + 校验测试共 101 绿；对拍 Python `mahjong` 151 手 0 差异（[报告](docs/references/duipai-report.md)）；verify CLI 可用（`npm run verify -w @nanikiru/engine -- <题库.json>`） |
 | M2 | Web V1：做题闭环（判分 / 讲解 / 错题本 / 关卡树），内置 20~30 题样例库 | ✅ 2026-09-02：试点题库 28 题（L1-L7，全过 verify CLI）；闭环冒烟 `npx tsx apps/web/scripts/smoke-loop.ts` 全绿；Edge 无头渲染五页 + SW 预缓存核实；PWA 安装与断网真机体验待用户验收 |
 | M3 | 内容建设：起步每级 ≥10 题（共 ≥70）先上线，后续补至 200（PRD 目标） | ✅ 起步批达标（2026-09-03）：68 题在库（8/8/11/10/11/10/10），四题型 47/10/7/4；分布闸门过、`selfcheck` 全绿（引擎 108 + publish 幂等/篡改拦 + 闭环冒烟 + IDB 增量链）；查重双闸（骨架 + 考点近亲）落地。后续内容线：新考点判分已收口（仅存 1 候选），扩量走「已踩考点结构变体」+ 词条讲解 + 200 完整目标 |
-| M4 | 上线 Web / PWA，服务器静态部署 + 题库增量更新跑通 | 🔨 工程全落地：publish 分片+manifest、客户端增量、`e2e-update`/`e2e-bank`/`selfcheck` 全绿，M3 起步批达标；剩**真实域名部署** + PWA 断网真机验收后打勾 |
+| M4 | 上线 Web / PWA，服务器静态部署 + 题库增量更新跑通 | 🔨 工程全落地：publish 分片+manifest、客户端增量、`e2e-update`/`e2e-bank`/`selfcheck` 全绿；域名已定 **tangzheheshui.cn**（2026-09-03），nginx/deploy 模板已填真域名。剩（用户侧三步）：DNS 解析 → 服务器套 nginx + certbot 签证书 → 跑 `server/deploy.sh`；随后 PWA 断网真机验收打勾 |
 | M5 | Capacitor 打包 iOS，App Store 提审 | ⬜ |
 | M6 | V2 规划（复盘 / 赖子变体等，PRD 明确不进 V1） | ⬜ |
 

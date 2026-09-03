@@ -94,11 +94,11 @@ nanikiru/
 **URL 结构**
 
 ```
-https://<域名>/                              # Web App 本体（静态托管，同源）
-https://<域名>/bank/manifest.json            # 题库版本清单（客户端更新入口）
-https://<域名>/bank/v{bank_version}/L1.json … L7.json   # 题库分片（按版本目录，天然支持回滚）
-https://<域名>/config.json                   # 远程配置（功能开关）
-https://<域名>/version.json                  # App 最新版本号（M5 iOS 用）
+https://tangzheheshui.cn/                              # Web App 本体（静态托管，同源）
+https://tangzheheshui.cn/bank/manifest.json            # 题库版本清单（客户端更新入口）
+https://tangzheheshui.cn/bank/v{bank_version}/L1.json … L7.json   # 题库分片（按版本目录，天然支持回滚）
+https://tangzheheshui.cn/config.json                   # 远程配置（功能开关）
+https://tangzheheshui.cn/version.json                  # App 最新版本号（M5 iOS 用）
 ```
 
 > 版本目录记法 `v{N}` 具体化为 `v{bank_version}`（如 `v2026.09.2-pilot`）。
@@ -139,7 +139,7 @@ https://<域名>/version.json                  # App 最新版本号（M5 iOS �
 
 **单点版本号**：`content/build/version.mjs` 的 `CURRENT_BANK_VERSION` 是唯一版本源——
 `roll-bank.mjs`（打包出厂题库进 App）与 `publish.mjs`（发布服务器分片）都引它，
-**保证 App 内置 = 服务器当前，换内容只 bump 这一处**。当前值 `2026.09.1-pilot`（与 M3 试点一致）。
+**保证 App 内置 = 服务器当前，换内容只 bump 这一处**。当前值 `2026.09.5-pilot`。
 
 **发布（操作流程）**：
 
@@ -151,8 +151,8 @@ npx tsx packages/engine/bin/verify.ts content/questions --write
 node content/build/roll-bank.mjs
 # 4) 产出 server/bank/v{version}/ 分片 + manifest（累加 v{version} 目录，旧目录保留）
 node content/build/publish.mjs
-# 5) 上传（可整段走 server/deploy.sh 示例；先数据后指针，客户端不会拿到 404 分片）
-rsync -av server/ user@server:/var/www/nanikiru/
+# 5) 上传（可整段走 server/deploy.sh；先数据后指针，客户端不会拿到 404 分片）
+rsync -av server/ user@tangzheheshui.cn:/var/www/nanikiru/
 ```
 
 - **同版本防呆**（2026-09-02 加）：`publish.mjs` 若发现 `server/bank` 已存在同版本 manifest
@@ -164,9 +164,13 @@ rsync -av server/ user@server:/var/www/nanikiru/
 - e2e 干跑：`npx tsx apps/web/scripts/e2e-update.ts` 本地 http 服务模拟
   「服务器 v1→v2 发布 → 客户端首拉全量 / 再发单级变更只拉该级」全链路（M4 DoD 自测）
 
-**待办（M4 上线前，需用户拍板）**：服务器归属与域名（现有站点 / 新域名 + HTTPS 证书）；
-国内可达性（主要用户在国内则静态资源放国内或 CDN）。Cache-Control 策略已定稿并给出
-`server/nginx.conf.sample`；客户端增量更新代码与 e2e 干跑已落地（2026-09-02）。
+**域名已定（2026-09-03 用户裁定）：`tangzheheshui.cn`**。剩三步实操（均在用户侧）：
+① DNS A 记录指向服务器 IP；② 服务器装 nginx 后套用 `server/nginx.conf.sample`
+（端口 80 的 ACME 验证 + 跳转块已备好，`certbot --webroot` 签 Let's Encrypt 后取消证书两行注释）；
+③ 首次发布跑 `server/deploy.sh`（按真实 SSH 用户改脚本默认值）。
+**备案提示**：.cn 域名解析到**境内**服务器须 ICP 备案才能开放 80/443；境外服务器
+（含香港）免备案，静态小站直连可达性可接受，先境外后视情况迁国内/CDN。
+Cache-Control 策略已定稿并给出 `server/nginx.conf.sample`；客户端增量更新代码与 e2e 干跑已落地（2026-09-02）。
 
 ## 六、风险清单
 

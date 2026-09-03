@@ -23,7 +23,7 @@ npx tsx packages/engine/bin/verify.ts content/questions --write   # 1) 校验并
 node content/build/roll-bank.mjs                                   # 3) 重滚 App 出厂题库
 node content/build/publish.mjs                                     # 4) 产出分片 + manifest（写后自动自检：
                                                                     #    sha↔落盘、count、分片正文不含版本号；失败即报错）
-rsync -av server/ user@server:/var/www/nanikiru/                   # 5) 上传（manifest 最后）
+rsync -av server/ user@tangzheheshui.cn:/var/www/nanikiru/         # 5) 上传（manifest 最后）
 ```
 
 协议与客户端行为详见 [architecture.md §五](../docs/design/architecture.md)。

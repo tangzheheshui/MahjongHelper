@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
-# nanikiru 发布脚本（M4，示例——按真实环境改 <user>@<host> 后使用）。
+# nanikiru 发布脚本（M4）。域名 tangzheheshui.cn（2026-09-03 定）——
+# 按真实 SSH 用户改默认值（如 root@ / ubuntu@）后使用。
 # 顺序保证「先数据后指针」：App 壳 + 分片先上传，manifest/config/version 最后。
 # 用法：server/deploy.sh [user@host:/var/www/nanikiru]
 set -euo pipefail
 
-DEST="${1:-user@server:/var/www/nanikiru}"
+DEST="${1:-user@tangzheheshui.cn:/var/www/nanikiru}"
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 echo "① 构建 Web（含出厂题库，version 单点 content/build/version.mjs）…"
