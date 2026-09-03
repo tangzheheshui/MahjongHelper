@@ -1,6 +1,6 @@
 {
- "bank_version": "2026.09.5-pilot",
- "generated_at": "2026-09-03T07:41:33.507Z",
+ "bank_version": "2026.09.7",
+ "generated_at": "2026-09-03T14:04:03.611Z",
  "questions": [
   {
    "schema_version": 1,
@@ -193,7 +193,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.127Z"
+    "checked_at": "2026-09-03T14:03:50.618Z"
    }
   },
   {
@@ -394,7 +394,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.128Z"
+    "checked_at": "2026-09-03T14:03:50.619Z"
    }
   },
   {
@@ -439,7 +439,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.128Z"
+    "checked_at": "2026-09-03T14:03:50.619Z"
    }
   },
   {
@@ -484,7 +484,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.128Z"
+    "checked_at": "2026-09-03T14:03:50.619Z"
    }
   },
   {
@@ -529,7 +529,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.128Z"
+    "checked_at": "2026-09-03T14:03:50.619Z"
    }
   },
   {
@@ -574,7 +574,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.128Z"
+    "checked_at": "2026-09-03T14:03:50.619Z"
    }
   },
   {
@@ -780,7 +780,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.128Z"
+    "checked_at": "2026-09-03T14:03:50.619Z"
    }
   },
   {
@@ -975,7 +975,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.128Z"
+    "checked_at": "2026-09-03T14:03:50.619Z"
    }
   },
   {
@@ -1157,7 +1157,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.229Z"
+    "checked_at": "2026-09-03T14:03:50.721Z"
    }
   },
   {
@@ -1429,7 +1429,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.229Z"
+    "checked_at": "2026-09-03T14:03:50.721Z"
    }
   },
   {
@@ -1474,7 +1474,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.229Z"
+    "checked_at": "2026-09-03T14:03:50.721Z"
    }
   },
   {
@@ -1519,7 +1519,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.229Z"
+    "checked_at": "2026-09-03T14:03:50.721Z"
    }
   },
   {
@@ -1564,7 +1564,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.229Z"
+    "checked_at": "2026-09-03T14:03:50.721Z"
    }
   },
   {
@@ -1776,7 +1776,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.229Z"
+    "checked_at": "2026-09-03T14:03:50.722Z"
    }
   },
   {
@@ -1965,7 +1965,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.229Z"
+    "checked_at": "2026-09-03T14:03:50.722Z"
    }
   },
   {
@@ -2221,7 +2221,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.230Z"
+    "checked_at": "2026-09-03T14:03:50.722Z"
    }
   },
   {
@@ -2391,7 +2391,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T06:15:07.514Z"
+    "checked_at": "2026-09-03T14:03:50.861Z"
    }
   },
   {
@@ -2622,7 +2622,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T06:15:07.516Z"
+    "checked_at": "2026-09-03T14:03:50.861Z"
    }
   },
   {
@@ -2870,7 +2870,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T06:15:07.516Z"
+    "checked_at": "2026-09-03T14:03:50.861Z"
    }
   },
   {
@@ -3152,7 +3152,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T06:15:07.517Z"
+    "checked_at": "2026-09-03T14:03:50.862Z"
    }
   },
   {
@@ -3340,7 +3340,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T06:15:07.517Z"
+    "checked_at": "2026-09-03T14:03:50.862Z"
    }
   },
   {
@@ -3524,7 +3524,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T06:15:07.518Z"
+    "checked_at": "2026-09-03T14:03:50.862Z"
    }
   },
   {
@@ -3757,7 +3757,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T06:15:07.518Z"
+    "checked_at": "2026-09-03T14:03:50.862Z"
    }
   },
   {
@@ -3934,7 +3934,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T06:15:07.518Z"
+    "checked_at": "2026-09-03T14:03:50.862Z"
    }
   },
   {
@@ -4122,7 +4122,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T06:15:07.519Z"
+    "checked_at": "2026-09-03T14:03:50.862Z"
    }
   },
   {
@@ -4314,7 +4314,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T06:15:07.519Z"
+    "checked_at": "2026-09-03T14:03:50.862Z"
    }
   },
   {
@@ -4511,7 +4511,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T06:15:07.519Z"
+    "checked_at": "2026-09-03T14:03:50.863Z"
    }
   },
   {
@@ -4700,7 +4700,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.447Z"
+    "checked_at": "2026-09-03T14:03:50.967Z"
    }
   },
   {
@@ -4938,7 +4938,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.447Z"
+    "checked_at": "2026-09-03T14:03:50.967Z"
    }
   },
   {
@@ -5121,7 +5121,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.447Z"
+    "checked_at": "2026-09-03T14:03:50.967Z"
    }
   },
   {
@@ -5329,7 +5329,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.447Z"
+    "checked_at": "2026-09-03T14:03:50.967Z"
    }
   },
   {
@@ -5563,7 +5563,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.447Z"
+    "checked_at": "2026-09-03T14:03:50.968Z"
    }
   },
   {
@@ -5761,7 +5761,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.447Z"
+    "checked_at": "2026-09-03T14:03:50.968Z"
    }
   },
   {
@@ -6006,7 +6006,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.448Z"
+    "checked_at": "2026-09-03T14:03:50.968Z"
    }
   },
   {
@@ -6197,7 +6197,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.448Z"
+    "checked_at": "2026-09-03T14:03:50.968Z"
    }
   },
   {
@@ -6443,7 +6443,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.448Z"
+    "checked_at": "2026-09-03T14:03:50.968Z"
    }
   },
   {
@@ -6657,7 +6657,215 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.448Z"
+    "checked_at": "2026-09-03T14:03:50.968Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L4_011",
+   "level": "L4",
+   "question_type": "what_to_discard",
+   "difficulty": "medium",
+   "knowledge_point": "两对半：对子过剩四张并列",
+   "category": "bili",
+   "hand": [
+    "3m",
+    "3m",
+    "4m",
+    "5m",
+    "6m",
+    "7m",
+    "2s",
+    "3s",
+    "6s",
+    "6s",
+    "7s",
+    "7s",
+    "9s",
+    "9s"
+   ],
+   "answer": {
+    "correct": [
+     "3m",
+     "6s",
+     "7s",
+     "9s"
+    ]
+   },
+   "explanation": {
+    "best": "博主答案：打 6条——视频从引挂与打点的角度选它（这类考量不进判分，只在讲解里看）。引擎答案：3万、6条、7条、9条 四张并列最优，各 33 张进张——33万、66条、77条、99条 四对挤位，对子过剩时拆哪一对都等价；顺手去拆 23条 搭子反而掉到 27 张，搭子别动。判分按引擎口径，四张全算对。",
+    "source": "B站·『两对半牌型』"
+   },
+   "engine_snapshot": {
+    "shanten_before": 2,
+    "candidates": [
+     {
+      "discard": "3m",
+      "shanten_after": 2,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "8m",
+       "1s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 2,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "2m",
+       "3m",
+       "5m",
+       "8m",
+       "1s",
+       "4s",
+       "5s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 2,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "2m",
+       "3m",
+       "5m",
+       "8m",
+       "1s",
+       "4s",
+       "5s",
+       "6s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "9s",
+      "shanten_after": 2,
+      "ukeire_count": 33,
+      "ukeire_tiles": [
+       "2m",
+       "3m",
+       "5m",
+       "8m",
+       "1s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 2,
+      "ukeire_count": 27,
+      "ukeire_tiles": [
+       "2m",
+       "3m",
+       "5m",
+       "8m",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 2,
+      "ukeire_count": 27,
+      "ukeire_tiles": [
+       "2m",
+       "3m",
+       "5m",
+       "8m",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "4m",
+      "shanten_after": 2,
+      "ukeire_count": 24,
+      "ukeire_tiles": [
+       "3m",
+       "1s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "7m",
+      "shanten_after": 2,
+      "ukeire_count": 24,
+      "ukeire_tiles": [
+       "3m",
+       "1s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "6m",
+      "shanten_after": 2,
+      "ukeire_count": 22,
+      "ukeire_tiles": [
+       "1s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "5m",
+      "shanten_after": 3,
+      "ukeire_count": 36,
+      "ukeire_tiles": [
+       "2m",
+       "3m",
+       "5m",
+       "8m",
+       "1s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-03T14:03:50.968Z"
    }
   },
   {
@@ -6874,7 +7082,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T05:55:48.976Z"
+    "checked_at": "2026-09-03T14:03:51.154Z"
    }
   },
   {
@@ -7106,7 +7314,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T05:55:48.977Z"
+    "checked_at": "2026-09-03T14:03:51.154Z"
    }
   },
   {
@@ -7365,7 +7573,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T05:55:48.978Z"
+    "checked_at": "2026-09-03T14:03:51.155Z"
    }
   },
   {
@@ -7621,7 +7829,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T05:55:48.978Z"
+    "checked_at": "2026-09-03T14:03:51.155Z"
    }
   },
   {
@@ -7671,7 +7879,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T05:55:48.978Z"
+    "checked_at": "2026-09-03T14:03:51.155Z"
    }
   },
   {
@@ -7721,7 +7929,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T05:55:48.978Z"
+    "checked_at": "2026-09-03T14:03:51.155Z"
    }
   },
   {
@@ -7771,7 +7979,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T05:55:48.978Z"
+    "checked_at": "2026-09-03T14:03:51.155Z"
    }
   },
   {
@@ -7821,7 +8029,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T05:55:48.978Z"
+    "checked_at": "2026-09-03T14:03:51.155Z"
    }
   },
   {
@@ -8059,7 +8267,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T05:55:48.978Z"
+    "checked_at": "2026-09-03T14:03:51.155Z"
    }
   },
   {
@@ -8247,7 +8455,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T05:55:48.979Z"
+    "checked_at": "2026-09-03T14:03:51.155Z"
    }
   },
   {
@@ -8429,7 +8637,732 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-03T05:55:48.979Z"
+    "checked_at": "2026-09-03T14:03:51.155Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L5_012",
+   "level": "L5",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "knowledge_point": "听牌选择：中膨重张还是浮牌单骑",
+   "category": "tenpai",
+   "hand": [
+    "2m",
+    "3m",
+    "4m",
+    "7m",
+    "8m",
+    "9m",
+    "9p",
+    "1s",
+    "2s",
+    "3s",
+    "4s",
+    "5s",
+    "5s",
+    "6s"
+   ],
+   "answer": {
+    "correct": [
+     "5s"
+    ]
+   },
+   "explanation": {
+    "best": "切 5条（3 张）：兑现 123条、456条 两面子，单骑 9筒。切 9筒 则抱住 4556条 中膨——4条6条 嵌 5条，自己手里已占两张、外面只剩 2 张。3 > 2，重张让位给浮牌；切 1条 退一向听换 34 张是向听倒退，不在考虑内。",
+    "source": "79博客·牌效率13-19『一向听的牌理 / 听牌时的牌理』"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "5s",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "9p"
+      ]
+     },
+     {
+      "discard": "9p",
+      "shanten_after": 0,
+      "ukeire_count": 2,
+      "ukeire_tiles": [
+       "5s"
+      ]
+     },
+     {
+      "discard": "1s",
+      "shanten_after": 1,
+      "ukeire_count": 34,
+      "ukeire_tiles": [
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 1,
+      "ukeire_count": 29,
+      "ukeire_tiles": [
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s"
+      ]
+     },
+     {
+      "discard": "4s",
+      "shanten_after": 1,
+      "ukeire_count": 28,
+      "ukeire_tiles": [
+       "7p",
+       "8p",
+       "9p",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "2s",
+      "shanten_after": 1,
+      "ukeire_count": 19,
+      "ukeire_tiles": [
+       "9p",
+       "1s",
+       "2s",
+       "4s",
+       "5s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "9p",
+       "5s"
+      ]
+     },
+     {
+      "discard": "4m",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "9p",
+       "5s"
+      ]
+     },
+     {
+      "discard": "9m",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "6m",
+       "9m",
+       "9p",
+       "5s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 9,
+      "ukeire_tiles": [
+       "3m",
+       "9p",
+       "5s"
+      ]
+     },
+     {
+      "discard": "7m",
+      "shanten_after": 1,
+      "ukeire_count": 9,
+      "ukeire_tiles": [
+       "7m",
+       "9p",
+       "5s"
+      ]
+     },
+     {
+      "discard": "8m",
+      "shanten_after": 1,
+      "ukeire_count": 9,
+      "ukeire_tiles": [
+       "8m",
+       "9p",
+       "5s"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 1,
+      "ukeire_count": 9,
+      "ukeire_tiles": [
+       "9p",
+       "3s",
+       "5s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-03T14:03:51.156Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L5_013",
+   "level": "L5",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "knowledge_point": "听牌选择：中膨长连的并列双解",
+   "category": "tenpai",
+   "hand": [
+    "2m",
+    "3m",
+    "4m",
+    "5m",
+    "6m",
+    "6m",
+    "7m",
+    "9m",
+    "1p",
+    "2p",
+    "3p",
+    "5s",
+    "6s",
+    "7s"
+   ],
+   "answer": {
+    "correct": [
+     "2m",
+     "5m"
+    ]
+   },
+   "explanation": {
+    "best": "切 2万 或 5万 并列正解（各 4 张）：都等 8万 进来组 789万、6万6万 作雀头。切 6万 只等 9万（3 张）、切 9万 只等 6万（2 张），差一步就是差一步；切 7万 退回一向听换 29 张，不补这一巡。两解张数相同，判分按「并列不算错」。",
+    "source": "79博客·牌效率4-7『搭子理论 / 切牌选择的思考方法』"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "2m",
+      "shanten_after": 0,
+      "ukeire_count": 4,
+      "ukeire_tiles": [
+       "8m"
+      ]
+     },
+     {
+      "discard": "5m",
+      "shanten_after": 0,
+      "ukeire_count": 4,
+      "ukeire_tiles": [
+       "8m"
+      ]
+     },
+     {
+      "discard": "6m",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "9m"
+      ]
+     },
+     {
+      "discard": "9m",
+      "shanten_after": 0,
+      "ukeire_count": 2,
+      "ukeire_tiles": [
+       "6m"
+      ]
+     },
+     {
+      "discard": "7m",
+      "shanten_after": 1,
+      "ukeire_count": 29,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "5m",
+       "6m",
+       "7m",
+       "8m",
+       "9m"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 19,
+      "ukeire_tiles": [
+       "2m",
+       "3m",
+       "5m",
+       "6m",
+       "8m",
+       "9m"
+      ]
+     },
+     {
+      "discard": "4m",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "6m",
+       "8m",
+       "9m"
+      ]
+     },
+     {
+      "discard": "1p",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "6m",
+       "8m",
+       "9m",
+       "1p",
+       "4p"
+      ]
+     },
+     {
+      "discard": "5s",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "6m",
+       "8m",
+       "9m",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "6m",
+       "8m",
+       "9m",
+       "4s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "2p",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "6m",
+       "8m",
+       "9m",
+       "2p"
+      ]
+     },
+     {
+      "discard": "3p",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "6m",
+       "8m",
+       "9m",
+       "3p"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "6m",
+       "8m",
+       "9m",
+       "6s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-03T14:03:51.156Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L5_014",
+   "level": "L5",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "knowledge_point": "听牌选择：换嵌张先数自己占的牌",
+   "category": "tenpai",
+   "hand": [
+    "2m",
+    "3m",
+    "4m",
+    "7m",
+    "8m",
+    "9m",
+    "9p",
+    "9p",
+    "1s",
+    "3s",
+    "3s",
+    "4s",
+    "5s",
+    "5s"
+   ],
+   "answer": {
+    "correct": [
+     "5s"
+    ]
+   },
+   "explanation": {
+    "best": "切 5条（4 张）：3条4条5条 成面子，1条3条 嵌 2条——2条 自己一张不占，外面 4 张全在。切 1条 则留 3条5条 嵌 4条，手里那张 4条 先吃掉一张，只剩 3 张。同样是嵌张，差就差在「自己占几张」；切 3条 退一向听 25 张更是白送一巡。",
+    "source": "79博客·牌效率13-19『一向听的牌理 / 听牌时的牌理』"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "5s",
+      "shanten_after": 0,
+      "ukeire_count": 4,
+      "ukeire_tiles": [
+       "2s"
+      ]
+     },
+     {
+      "discard": "1s",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "4s"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 1,
+      "ukeire_count": 25,
+      "ukeire_tiles": [
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 15,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "2s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "4m",
+      "shanten_after": 1,
+      "ukeire_count": 15,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "2s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "9m",
+      "shanten_after": 1,
+      "ukeire_count": 15,
+      "ukeire_tiles": [
+       "6m",
+       "9m",
+       "2s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "9p",
+      "shanten_after": 1,
+      "ukeire_count": 15,
+      "ukeire_tiles": [
+       "9p",
+       "1s",
+       "2s",
+       "4s",
+       "5s"
+      ]
+     },
+     {
+      "discard": "4s",
+      "shanten_after": 1,
+      "ukeire_count": 14,
+      "ukeire_tiles": [
+       "9p",
+       "2s",
+       "3s",
+       "4s",
+       "5s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 11,
+      "ukeire_tiles": [
+       "3m",
+       "2s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "7m",
+      "shanten_after": 1,
+      "ukeire_count": 11,
+      "ukeire_tiles": [
+       "7m",
+       "2s",
+       "4s"
+      ]
+     },
+     {
+      "discard": "8m",
+      "shanten_after": 1,
+      "ukeire_count": 11,
+      "ukeire_tiles": [
+       "8m",
+       "2s",
+       "4s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-03T14:03:51.156Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L5_015",
+   "level": "L5",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "knowledge_point": "听牌选择：单骑挑外面剩得多的",
+   "category": "tenpai",
+   "hand": [
+    "2m",
+    "3m",
+    "4m",
+    "5m",
+    "6m",
+    "7m",
+    "9p",
+    "1s",
+    "2s",
+    "2s",
+    "3s",
+    "6s",
+    "7s",
+    "8s"
+   ],
+   "answer": {
+    "correct": [
+     "2s"
+    ]
+   },
+   "explanation": {
+    "best": "切 2条（3 张）：1条2条3条、6条7条8条 齐两面子，单骑 9筒——手里只有一张，外面剩 3。切 9筒 则拆 2条2条 挑 2条 当单骑，自己先占两张、外面只剩 2。3 > 2，单骑别挑自己攥着的牌；切 1条 退一向听 28 张是白丢一巡。",
+    "source": "79博客·牌效率4-7『搭子理论 / 切牌选择的思考方法』"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "2s",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "9p"
+      ]
+     },
+     {
+      "discard": "9p",
+      "shanten_after": 0,
+      "ukeire_count": 2,
+      "ukeire_tiles": [
+       "2s"
+      ]
+     },
+     {
+      "discard": "1s",
+      "shanten_after": 1,
+      "ukeire_count": 28,
+      "ukeire_tiles": [
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 1,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "7p",
+       "8p",
+       "9p",
+       "1s",
+       "2s",
+       "3s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "2m",
+       "5m",
+       "8m",
+       "9p",
+       "2s"
+      ]
+     },
+     {
+      "discard": "7m",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "7m",
+       "9p",
+       "2s"
+      ]
+     },
+     {
+      "discard": "4m",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "9p",
+       "2s"
+      ]
+     },
+     {
+      "discard": "5m",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "5m",
+       "8m",
+       "9p",
+       "2s"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "9p",
+       "2s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "9p",
+       "2s",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 9,
+      "ukeire_tiles": [
+       "3m",
+       "9p",
+       "2s"
+      ]
+     },
+     {
+      "discard": "6m",
+      "shanten_after": 1,
+      "ukeire_count": 9,
+      "ukeire_tiles": [
+       "6m",
+       "9p",
+       "2s"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 9,
+      "ukeire_tiles": [
+       "9p",
+       "2s",
+       "7s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-03T14:03:51.156Z"
    }
   },
   {
@@ -8623,7 +9556,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.667Z"
+    "checked_at": "2026-09-03T14:03:51.276Z"
    }
   },
   {
@@ -8798,7 +9731,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.668Z"
+    "checked_at": "2026-09-03T14:03:51.276Z"
    }
   },
   {
@@ -8999,7 +9932,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.668Z"
+    "checked_at": "2026-09-03T14:03:51.276Z"
    }
   },
   {
@@ -9169,7 +10102,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.668Z"
+    "checked_at": "2026-09-03T14:03:51.277Z"
    }
   },
   {
@@ -9347,7 +10280,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.668Z"
+    "checked_at": "2026-09-03T14:03:51.277Z"
    }
   },
   {
@@ -9535,7 +10468,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.668Z"
+    "checked_at": "2026-09-03T14:03:51.277Z"
    }
   },
   {
@@ -9708,7 +10641,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.669Z"
+    "checked_at": "2026-09-03T14:03:51.277Z"
    }
   },
   {
@@ -9898,7 +10831,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.669Z"
+    "checked_at": "2026-09-03T14:03:51.277Z"
    }
   },
   {
@@ -10082,7 +11015,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.669Z"
+    "checked_at": "2026-09-03T14:03:51.277Z"
    }
   },
   {
@@ -10354,7 +11287,484 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.669Z"
+    "checked_at": "2026-09-03T14:03:51.278Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L6_011",
+   "level": "L6",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "category": "composite",
+   "knowledge_point": "长连一向听：端张先走腰张别动",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "2p",
+    "4p",
+    "5p",
+    "6p",
+    "3s",
+    "5s",
+    "5s",
+    "6s",
+    "7s",
+    "8s",
+    "9s"
+   ],
+   "answer": {
+    "correct": [
+     "9s"
+    ]
+   },
+   "explanation": {
+    "best": "切 9条（38 张）：条子 345条+5678条 七枚长连原样留住，进张铺满条子一片外加筒子嵌张。切 3条（36 张）拆长连的腰，少 2 张；切 6条（35 张）少 3 张。端浮牌先走是口诀，但腰上每一张都在为进张打工——动之前先数。",
+    "source": "79博客·牌效率4-7『搭子理论 / 切牌选择的思考方法』"
+   },
+   "engine_snapshot": {
+    "shanten_before": 1,
+    "candidates": [
+     {
+      "discard": "9s",
+      "shanten_after": 1,
+      "ukeire_count": 38,
+      "ukeire_tiles": [
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "7p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "8s"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 1,
+      "ukeire_count": 36,
+      "ukeire_tiles": [
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "7p",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 1,
+      "ukeire_count": 35,
+      "ukeire_tiles": [
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "7p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s"
+      ]
+     },
+     {
+      "discard": "2p",
+      "shanten_after": 1,
+      "ukeire_count": 29,
+      "ukeire_tiles": [
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "5s",
+      "shanten_after": 1,
+      "ukeire_count": 19,
+      "ukeire_tiles": [
+       "2p",
+       "3s",
+       "4s",
+       "6s",
+       "7s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "8s",
+      "shanten_after": 1,
+      "ukeire_count": 10,
+      "ukeire_tiles": [
+       "2p",
+       "4s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 2,
+      "ukeire_count": 61,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "7p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 2,
+      "ukeire_count": 58,
+      "ukeire_tiles": [
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 2,
+      "ukeire_count": 57,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "7p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 2,
+      "ukeire_count": 57,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "7p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "4p",
+      "shanten_after": 2,
+      "ukeire_count": 54,
+      "ukeire_tiles": [
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 2,
+      "ukeire_count": 54,
+      "ukeire_tiles": [
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "5p",
+       "6p",
+       "7p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 2,
+      "ukeire_count": 48,
+      "ukeire_tiles": [
+       "1p",
+       "2p",
+       "3p",
+       "4p",
+       "7p",
+       "1s",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-03T14:03:51.278Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L6_012",
+   "level": "L6",
+   "question_type": "what_to_discard",
+   "difficulty": "hard",
+   "category": "structure",
+   "knowledge_point": "对子重叠块的一向听精算",
+   "hand": [
+    "1m",
+    "1m",
+    "2m",
+    "2m",
+    "2m",
+    "3m",
+    "7p",
+    "8p",
+    "4s",
+    "5s",
+    "5s",
+    "6s",
+    "7s",
+    "7s"
+   ],
+   "answer": {
+    "correct": [
+     "3m"
+    ]
+   },
+   "explanation": {
+    "best": "切 3万（19 张）：1万1万2万2万2万 重叠块拆出重张，进张 1万/6筒/9筒/3条/6条/7条 铺三色。切 1万 18 张只差 1 张——重张与对子头之间，就差这一张；切 5条（16 张）、切 7条（15 张）去动条子明显让位。六条路全在保一向听，冠军只赢 1 张：精算题。",
+    "source": "79博客·牌效率13-19『一向听的牌理 / 听牌时的牌理』"
+   },
+   "engine_snapshot": {
+    "shanten_before": 1,
+    "candidates": [
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 19,
+      "ukeire_tiles": [
+       "1m",
+       "6p",
+       "9p",
+       "3s",
+       "6s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 1,
+      "ukeire_count": 18,
+      "ukeire_tiles": [
+       "2m",
+       "6p",
+       "9p",
+       "3s",
+       "6s",
+       "7s"
+      ]
+     },
+     {
+      "discard": "5s",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "6p",
+       "9p",
+       "7s"
+      ]
+     },
+     {
+      "discard": "7s",
+      "shanten_after": 1,
+      "ukeire_count": 15,
+      "ukeire_tiles": [
+       "6p",
+       "9p",
+       "3s",
+       "6s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 11,
+      "ukeire_tiles": [
+       "3m",
+       "6p",
+       "9p"
+      ]
+     },
+     {
+      "discard": "4s",
+      "shanten_after": 1,
+      "ukeire_count": 11,
+      "ukeire_tiles": [
+       "6p",
+       "9p",
+       "6s"
+      ]
+     },
+     {
+      "discard": "8p",
+      "shanten_after": 2,
+      "ukeire_count": 59,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "5m",
+       "5p",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "7p",
+      "shanten_after": 2,
+      "ukeire_count": 55,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "5m",
+       "6p",
+       "7p",
+       "8p",
+       "9p",
+       "2s",
+       "3s",
+       "4s",
+       "5s",
+       "6s",
+       "7s",
+       "8s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 2,
+      "ukeire_count": 26,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "6p",
+       "9p",
+       "3s",
+       "5s",
+       "6s",
+       "7s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-03T14:03:51.278Z"
    }
   },
   {
@@ -10534,7 +11944,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.760Z"
+    "checked_at": "2026-09-03T14:03:51.368Z"
    }
   },
   {
@@ -10725,7 +12135,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.760Z"
+    "checked_at": "2026-09-03T14:03:51.368Z"
    }
   },
   {
@@ -10915,7 +12325,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.760Z"
+    "checked_at": "2026-09-03T14:03:51.368Z"
    }
   },
   {
@@ -11211,7 +12621,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.760Z"
+    "checked_at": "2026-09-03T14:03:51.368Z"
    }
   },
   {
@@ -11404,7 +12814,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.760Z"
+    "checked_at": "2026-09-03T14:03:51.368Z"
    }
   },
   {
@@ -11597,7 +13007,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.761Z"
+    "checked_at": "2026-09-03T14:03:51.369Z"
    }
   },
   {
@@ -11840,7 +13250,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.761Z"
+    "checked_at": "2026-09-03T14:03:51.369Z"
    }
   },
   {
@@ -12037,7 +13447,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.761Z"
+    "checked_at": "2026-09-03T14:03:51.369Z"
    }
   },
   {
@@ -12268,7 +13678,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.761Z"
+    "checked_at": "2026-09-03T14:03:51.369Z"
    }
   },
   {
@@ -12453,7 +13863,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.761Z"
+    "checked_at": "2026-09-03T14:03:51.369Z"
    }
   }
  ]

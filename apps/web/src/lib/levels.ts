@@ -121,12 +121,13 @@ function shuffle<T>(arr: T[], rand: () => number = Math.random): T[] {
   return arr;
 }
 
-/** 关卡抽题（requirements.md）：先洗牌再循环补足到下限——题序每次不同，
- *  题量不足时的复用也从随机位置开始，避免连续两次进关看到同一顺序。 */
+/** 关卡抽题（requirements.md：每关 8-12 题）：先洗牌再截到上限 12、不足时循环补足到下限——
+ *  题序每次不同；库存超过 12 时随机抽 12（扩量后单局不膨胀），题量不足时的复用
+ *  也从随机位置开始，避免连续两次进关看到同一顺序。 */
 export function pickStageQuestions(all: Question[], min = 8, rand: () => number = Math.random): { qs: Question[]; reused: boolean } {
   if (all.length === 0) return { qs: [], reused: false };
   const pool = shuffle([...all], rand);
-  const qs = [...pool];
+  const qs = pool.slice(0, 12);
   let i = 0;
   while (qs.length < Math.min(min, 12)) {
     qs.push(pool[i % pool.length]);

@@ -1,5 +1,6 @@
-/** 专项训练分类：与题库 `category` 字段一一对应（vocabulary.md §二 大分类→App 5 组）。
- *  5 组 = 词汇库大分类（vocabulary.md §二）的 App 映射：一+三 / 二 / 五 / 四 / 六+七。
+/** 专项训练分类：与题库 `category` 字段一一对应（vocabulary.md §二 大分类→App 组）。
+ *  前 5 组 = 词汇库大分类（vocabulary.md §二）的 App 映射：一+三 / 二 / 五 / 四 / 六+七；
+ *  第 6 组 bili = B站 来源标签（经典例题精选，非知识分类，2026-09-03）。
  *  按 q.category 精确筛选，不做 knowledge_point 关键词猜测（自由文本会漂移、且一题多投）。 */
 
 import type { Category, Question } from "./types";
@@ -55,6 +56,14 @@ export const SPECIALS: SpecialMeta[] = [
     icon: "⚖️",
     color: "#922B21",
     domain: "词汇库大分类：六 取舍规则 + 七 边界概念",
+  },
+  {
+    id: "bili",
+    name: "B站精选",
+    desc: "B站 何切视频经典例题：博主答案与引擎答案并排看",
+    icon: "📺",
+    color: "#C0392B",
+    domain: "B站 视频来源精选（来源标签，非词汇库大分类）",
   },
 ];
 

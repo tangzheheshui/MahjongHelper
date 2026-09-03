@@ -190,7 +190,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.667Z"
+      "checked_at": "2026-09-03T14:03:51.276Z"
     }
   },
   {
@@ -365,7 +365,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.668Z"
+      "checked_at": "2026-09-03T14:03:51.276Z"
     }
   },
   {
@@ -566,7 +566,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.668Z"
+      "checked_at": "2026-09-03T14:03:51.276Z"
     }
   },
   {
@@ -736,7 +736,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.668Z"
+      "checked_at": "2026-09-03T14:03:51.277Z"
     }
   },
   {
@@ -914,7 +914,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.668Z"
+      "checked_at": "2026-09-03T14:03:51.277Z"
     }
   },
   {
@@ -1102,7 +1102,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.668Z"
+      "checked_at": "2026-09-03T14:03:51.277Z"
     }
   },
   {
@@ -1275,7 +1275,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.669Z"
+      "checked_at": "2026-09-03T14:03:51.277Z"
     }
   },
   {
@@ -1465,7 +1465,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.669Z"
+      "checked_at": "2026-09-03T14:03:51.277Z"
     }
   },
   {
@@ -1649,7 +1649,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.669Z"
+      "checked_at": "2026-09-03T14:03:51.277Z"
     }
   },
   {
@@ -1921,7 +1921,484 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.669Z"
+      "checked_at": "2026-09-03T14:03:51.278Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L6_011",
+    "level": "L6",
+    "question_type": "what_to_discard",
+    "difficulty": "hard",
+    "category": "composite",
+    "knowledge_point": "长连一向听：端张先走腰张别动",
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "2p",
+      "4p",
+      "5p",
+      "6p",
+      "3s",
+      "5s",
+      "5s",
+      "6s",
+      "7s",
+      "8s",
+      "9s"
+    ],
+    "answer": {
+      "correct": [
+        "9s"
+      ]
+    },
+    "explanation": {
+      "best": "切 9条（38 张）：条子 345条+5678条 七枚长连原样留住，进张铺满条子一片外加筒子嵌张。切 3条（36 张）拆长连的腰，少 2 张；切 6条（35 张）少 3 张。端浮牌先走是口诀，但腰上每一张都在为进张打工——动之前先数。",
+      "source": "79博客·牌效率4-7『搭子理论 / 切牌选择的思考方法』"
+    },
+    "engine_snapshot": {
+      "shanten_before": 1,
+      "candidates": [
+        {
+          "discard": "9s",
+          "shanten_after": 1,
+          "ukeire_count": 38,
+          "ukeire_tiles": [
+            "1p",
+            "2p",
+            "3p",
+            "4p",
+            "7p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "8s"
+          ]
+        },
+        {
+          "discard": "3s",
+          "shanten_after": 1,
+          "ukeire_count": 36,
+          "ukeire_tiles": [
+            "1p",
+            "2p",
+            "3p",
+            "4p",
+            "7p",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "6s",
+          "shanten_after": 1,
+          "ukeire_count": 35,
+          "ukeire_tiles": [
+            "1p",
+            "2p",
+            "3p",
+            "4p",
+            "7p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s"
+          ]
+        },
+        {
+          "discard": "2p",
+          "shanten_after": 1,
+          "ukeire_count": 29,
+          "ukeire_tiles": [
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "5s",
+          "shanten_after": 1,
+          "ukeire_count": 19,
+          "ukeire_tiles": [
+            "2p",
+            "3s",
+            "4s",
+            "6s",
+            "7s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "8s",
+          "shanten_after": 1,
+          "ukeire_count": 10,
+          "ukeire_tiles": [
+            "2p",
+            "4s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "1m",
+          "shanten_after": 2,
+          "ukeire_count": 61,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "1p",
+            "2p",
+            "3p",
+            "4p",
+            "7p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "5p",
+          "shanten_after": 2,
+          "ukeire_count": 58,
+          "ukeire_tiles": [
+            "1p",
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "8p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "2m",
+          "shanten_after": 2,
+          "ukeire_count": 57,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "1p",
+            "2p",
+            "3p",
+            "4p",
+            "7p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "3m",
+          "shanten_after": 2,
+          "ukeire_count": 57,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "1p",
+            "2p",
+            "3p",
+            "4p",
+            "7p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "4p",
+          "shanten_after": 2,
+          "ukeire_count": 54,
+          "ukeire_tiles": [
+            "1p",
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "6p",
+          "shanten_after": 2,
+          "ukeire_count": 54,
+          "ukeire_tiles": [
+            "1p",
+            "2p",
+            "3p",
+            "4p",
+            "5p",
+            "6p",
+            "7p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "7s",
+          "shanten_after": 2,
+          "ukeire_count": 48,
+          "ukeire_tiles": [
+            "1p",
+            "2p",
+            "3p",
+            "4p",
+            "7p",
+            "1s",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-03T14:03:51.278Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L6_012",
+    "level": "L6",
+    "question_type": "what_to_discard",
+    "difficulty": "hard",
+    "category": "structure",
+    "knowledge_point": "对子重叠块的一向听精算",
+    "hand": [
+      "1m",
+      "1m",
+      "2m",
+      "2m",
+      "2m",
+      "3m",
+      "7p",
+      "8p",
+      "4s",
+      "5s",
+      "5s",
+      "6s",
+      "7s",
+      "7s"
+    ],
+    "answer": {
+      "correct": [
+        "3m"
+      ]
+    },
+    "explanation": {
+      "best": "切 3万（19 张）：1万1万2万2万2万 重叠块拆出重张，进张 1万/6筒/9筒/3条/6条/7条 铺三色。切 1万 18 张只差 1 张——重张与对子头之间，就差这一张；切 5条（16 张）、切 7条（15 张）去动条子明显让位。六条路全在保一向听，冠军只赢 1 张：精算题。",
+      "source": "79博客·牌效率13-19『一向听的牌理 / 听牌时的牌理』"
+    },
+    "engine_snapshot": {
+      "shanten_before": 1,
+      "candidates": [
+        {
+          "discard": "3m",
+          "shanten_after": 1,
+          "ukeire_count": 19,
+          "ukeire_tiles": [
+            "1m",
+            "6p",
+            "9p",
+            "3s",
+            "6s",
+            "7s"
+          ]
+        },
+        {
+          "discard": "1m",
+          "shanten_after": 1,
+          "ukeire_count": 18,
+          "ukeire_tiles": [
+            "2m",
+            "6p",
+            "9p",
+            "3s",
+            "6s",
+            "7s"
+          ]
+        },
+        {
+          "discard": "5s",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "6p",
+            "9p",
+            "7s"
+          ]
+        },
+        {
+          "discard": "7s",
+          "shanten_after": 1,
+          "ukeire_count": 15,
+          "ukeire_tiles": [
+            "6p",
+            "9p",
+            "3s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "2m",
+          "shanten_after": 1,
+          "ukeire_count": 11,
+          "ukeire_tiles": [
+            "3m",
+            "6p",
+            "9p"
+          ]
+        },
+        {
+          "discard": "4s",
+          "shanten_after": 1,
+          "ukeire_count": 11,
+          "ukeire_tiles": [
+            "6p",
+            "9p",
+            "6s"
+          ]
+        },
+        {
+          "discard": "8p",
+          "shanten_after": 2,
+          "ukeire_count": 59,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "5m",
+            "5p",
+            "6p",
+            "7p",
+            "8p",
+            "9p",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "7p",
+          "shanten_after": 2,
+          "ukeire_count": 55,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "5m",
+            "6p",
+            "7p",
+            "8p",
+            "9p",
+            "2s",
+            "3s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "6s",
+          "shanten_after": 2,
+          "ukeire_count": 26,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "6p",
+            "9p",
+            "3s",
+            "5s",
+            "6s",
+            "7s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-03T14:03:51.278Z"
     }
   }
 ]

@@ -17,8 +17,12 @@ for (const h of hands) {
   const hand = h.trim().split(/\s+/);
   const a = analyze14(hand);
   const best = bestDiscards(a);
+  // 难度画像行（decisions.md）：不退向听切法数 + 最优/次优张数差（越小越难）
+  const same = a.candidates.filter((c) => c.shantenAfter === a.shanten);
+  const tiers = [...new Set(same.map((c) => c.ukeireCount))].sort((x, y) => y - x);
+  const margin = tiers.length > 1 ? tiers[0] - tiers[1] : 0;
   console.log(`手牌: ${hand.join(" ")}`);
-  console.log(`  最优: [${best.join(" ")}] · 切后 ${a.shanten} 向听`);
+  console.log(`  最优: [${best.join(" ")}] · 切后 ${a.shanten} 向听 · 不退向听切法 ${same.length} 种 · 最优/次优张数差 ${margin}`);
   for (const c of a.candidates.slice(0, 8)) {
     const mark = best.includes(c.discard) ? "★" : " ";
     console.log(

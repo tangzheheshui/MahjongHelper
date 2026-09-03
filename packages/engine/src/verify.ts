@@ -21,7 +21,7 @@ export interface Question {
   hand: string[];
   answer: {
     correct: unknown;
-    options?: { discard?: string }[] | null;
+    options?: { discard?: string; value?: string; label?: string }[] | null;
   };
   engine_snapshot?: unknown;
   explanation?: { best?: string; source?: string };
@@ -56,8 +56,8 @@ const QUESTION_TYPES = new Set([
 
 const MENTSU_TYPES = new Set(["ryanmen", "kanchan", "penchan", "pair"]);
 
-/** 专项分类枚举（vocabulary.md §二）：词汇库大分类的 App 5 组映射 */
-const CATEGORIES = new Set(["basic", "composite", "structure", "tenpai", "strategy"]);
+/** 专项分类枚举（vocabulary.md §二）：词汇库大分类的 App 5 组映射 + bili（B站 来源标签，2026-09-03） */
+const CATEGORIES = new Set(["basic", "composite", "structure", "tenpai", "strategy", "bili"]);
 
 /**
  * 两张牌的搭子形状分类（schema v1）：
@@ -106,7 +106,7 @@ function checkCommon(q: Question, errors: string[]): 13 | 14 | null {
   if (!q.id) errors.push("缺少 id");
   if (!q.level) errors.push("缺少 level");
   if (q.category === undefined || !CATEGORIES.has(q.category))
-    errors.push(`category 须为 basic/composite/structure/tenpai/strategy 之一（vocabulary.md §二），实际: ${q.category ?? "(缺失)"}`);
+    errors.push(`category 须为 basic/composite/structure/tenpai/strategy/bili 之一（vocabulary.md §二），实际: ${q.category ?? "(缺失)"}`);
   if (!QUESTION_TYPES.has(q.question_type)) errors.push(`未知 question_type: ${q.question_type}`);
   let n: 13 | 14 | null = null;
   try {

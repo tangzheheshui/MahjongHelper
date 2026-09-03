@@ -185,7 +185,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.447Z"
+      "checked_at": "2026-09-03T14:03:50.967Z"
     }
   },
   {
@@ -423,7 +423,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.447Z"
+      "checked_at": "2026-09-03T14:03:50.967Z"
     }
   },
   {
@@ -606,7 +606,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.447Z"
+      "checked_at": "2026-09-03T14:03:50.967Z"
     }
   },
   {
@@ -814,7 +814,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.447Z"
+      "checked_at": "2026-09-03T14:03:50.967Z"
     }
   },
   {
@@ -1048,7 +1048,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.447Z"
+      "checked_at": "2026-09-03T14:03:50.968Z"
     }
   },
   {
@@ -1246,7 +1246,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.447Z"
+      "checked_at": "2026-09-03T14:03:50.968Z"
     }
   },
   {
@@ -1491,7 +1491,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.448Z"
+      "checked_at": "2026-09-03T14:03:50.968Z"
     }
   },
   {
@@ -1682,7 +1682,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.448Z"
+      "checked_at": "2026-09-03T14:03:50.968Z"
     }
   },
   {
@@ -1928,7 +1928,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.448Z"
+      "checked_at": "2026-09-03T14:03:50.968Z"
     }
   },
   {
@@ -2142,7 +2142,215 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.448Z"
+      "checked_at": "2026-09-03T14:03:50.968Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L4_011",
+    "level": "L4",
+    "question_type": "what_to_discard",
+    "difficulty": "medium",
+    "knowledge_point": "两对半：对子过剩四张并列",
+    "category": "bili",
+    "hand": [
+      "3m",
+      "3m",
+      "4m",
+      "5m",
+      "6m",
+      "7m",
+      "2s",
+      "3s",
+      "6s",
+      "6s",
+      "7s",
+      "7s",
+      "9s",
+      "9s"
+    ],
+    "answer": {
+      "correct": [
+        "3m",
+        "6s",
+        "7s",
+        "9s"
+      ]
+    },
+    "explanation": {
+      "best": "博主答案：打 6条——视频从引挂与打点的角度选它（这类考量不进判分，只在讲解里看）。引擎答案：3万、6条、7条、9条 四张并列最优，各 33 张进张——33万、66条、77条、99条 四对挤位，对子过剩时拆哪一对都等价；顺手去拆 23条 搭子反而掉到 27 张，搭子别动。判分按引擎口径，四张全算对。",
+      "source": "B站·『两对半牌型』"
+    },
+    "engine_snapshot": {
+      "shanten_before": 2,
+      "candidates": [
+        {
+          "discard": "3m",
+          "shanten_after": 2,
+          "ukeire_count": 33,
+          "ukeire_tiles": [
+            "2m",
+            "5m",
+            "8m",
+            "1s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "6s",
+          "shanten_after": 2,
+          "ukeire_count": 33,
+          "ukeire_tiles": [
+            "2m",
+            "3m",
+            "5m",
+            "8m",
+            "1s",
+            "4s",
+            "5s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "7s",
+          "shanten_after": 2,
+          "ukeire_count": 33,
+          "ukeire_tiles": [
+            "2m",
+            "3m",
+            "5m",
+            "8m",
+            "1s",
+            "4s",
+            "5s",
+            "6s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "9s",
+          "shanten_after": 2,
+          "ukeire_count": 33,
+          "ukeire_tiles": [
+            "2m",
+            "3m",
+            "5m",
+            "8m",
+            "1s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s"
+          ]
+        },
+        {
+          "discard": "2s",
+          "shanten_after": 2,
+          "ukeire_count": 27,
+          "ukeire_tiles": [
+            "2m",
+            "3m",
+            "5m",
+            "8m",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "3s",
+          "shanten_after": 2,
+          "ukeire_count": 27,
+          "ukeire_tiles": [
+            "2m",
+            "3m",
+            "5m",
+            "8m",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "4m",
+          "shanten_after": 2,
+          "ukeire_count": 24,
+          "ukeire_tiles": [
+            "3m",
+            "1s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "7m",
+          "shanten_after": 2,
+          "ukeire_count": 24,
+          "ukeire_tiles": [
+            "3m",
+            "1s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "6m",
+          "shanten_after": 2,
+          "ukeire_count": 22,
+          "ukeire_tiles": [
+            "1s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "5m",
+          "shanten_after": 3,
+          "ukeire_count": 36,
+          "ukeire_tiles": [
+            "2m",
+            "3m",
+            "5m",
+            "8m",
+            "1s",
+            "4s",
+            "5s",
+            "6s",
+            "7s",
+            "8s",
+            "9s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-03T14:03:50.968Z"
     }
   }
 ]

@@ -42,7 +42,10 @@
 
 > **App「专项训练」映射（2026-09-03 定）**：大分类在 App 侧归并成 5 组专项——
 > 一+三→搭子与进张、二→复合形与长连、五→整手拆搭、四→听牌与留法、六+七→取舍与不倒退。
-> 每题落库 `category` 字段（枚举见 `packages/engine/src/verify.ts`；App 5 组映射见 `apps/web/src/lib/specials.ts`）。
+> 每题落库 `category` 字段（枚举见 `packages/engine/src/verify.ts`；App 组映射见 `apps/web/src/lib/specials.ts`）。
+> **增补（2026-09-03）**：B站 视频来源题单列第 6 组「B站精选」（`category=bili`）——
+> 这是**来源标签**而非知识分类（不占上表大分类树）；知识考点照常写进 `knowledge_point`，
+> 讲解固定双答案（博主答案 + 引擎答案），判分只认引擎口径。
 > **归类规则（出题时人工定，判据按序）**：①主角是一个形状（帽子 / 中膨 / 两嵌 / 五连…）→ `composite`；
 > 主角是听牌后的形式（两面 vs 单骑、留法选择）→ `tenpai`；②主角是整手结构（块数 / 对子数 / 满不满 /
 > 先切谁的整序）→ `structure`；是跨形状的取舍原则（不倒退 / 愚形让位 / 并列怎么看）→ `strategy`；

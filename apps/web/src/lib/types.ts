@@ -5,9 +5,10 @@ export const LEVELS: Level[] = ["L1", "L2", "L3", "L4", "L5", "L6", "L7"];
 
 export type QuestionType = "what_to_discard" | "ukeire_compare" | "mentsu_identify" | "wait_choose";
 
-/** 专项分类（vocabulary.md §二）：词汇库大分类的 App 5 组映射，每题恰属一组 */
-export type Category = "basic" | "composite" | "structure" | "tenpai" | "strategy";
-export const CATEGORIES: Category[] = ["basic", "composite", "structure", "tenpai", "strategy"];
+/** 专项分类（vocabulary.md §二）：词汇库大分类的 App 5 组映射，每题恰属一组；
+ *  bili = B站 来源标签（第 6 组「B站精选」，不属知识分类，2026-09-03） */
+export type Category = "basic" | "composite" | "structure" | "tenpai" | "strategy" | "bili";
+export const CATEGORIES: Category[] = ["basic", "composite", "structure", "tenpai", "strategy", "bili"];
 
 /** 搭子类型（mentsu_identify；枚举 + 语义校验见 engine verify） */
 export type MentsuType = "ryanmen" | "kanchan" | "penchan" | "pair";

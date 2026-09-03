@@ -14,11 +14,15 @@
  *   best:T        最优切恰好是且唯一是 T（正解唯一题）
  *   best:A;B      最优切恰好并列 A、B 两张（「并列不算错」题）
  *   nobest:T      T 不该是最优切（负向约束，验证自己以为的「错切」确实错）
+ *   hard:N        紧边际难题：切后向听 = N（0=听牌选择 / 1=一向听选择），
+ *                 且「不退向听的切法 ≥2 种、最优与次优张数差 1-2 张」——
+ *                 逼逐张精算（难度画像，详见 decisions.md 难度指标口径）。
  *
  * 用法：
  *   npx tsx content/build/refine.ts "<14 张空格分隔>" best:9m
  *   npx tsx content/build/refine.ts "<14 张>" "best:9m;3s"
  *   npx tsx content/build/refine.ts "<14 张>" nobest:9m --suit mps --shanten 1 --max 6 --json
+ *   npx tsx content/build/refine.ts "<14 张>" hard:0 --suit mps --max 10
  *
  * 选项：
  *   --suit mpsz    只允许在这些花色里替换（m万/p筒/s条/z字；默认全部 34 种）
@@ -28,31 +32,44 @@
  */
 
 import { analyze14, bestDiscards, TILE_KINDS, toCounts, countsToHand } from "@nanikiru/engine";
-import type { Counts } from "@nanikiru/engine";
+import type { Analysis14, Counts } from "@nanikiru/engine";
 
 /* ---------- 参数解析 ---------- */
 
 function usageAndExit(msg: string): never {
   console.error(msg);
   console.error(
-    '用法: npx tsx content/build/refine.ts "<14张空格分隔>" <best:T | best:A;B | nobest:T> [--suit mpsz] [--shanten N] [--max N] [--json]',
+    '用法: npx tsx content/build/refine.ts "<14张空格分隔>" <best:T | best:A;B | nobest:T | hard:N> [--suit mpsz] [--shanten N] [--max N] [--json]',
   );
   process.exit(2);
 }
 
 interface Goal {
-  kind: "best" | "nobest";
-  /** best:T → [T]；best:A;B → [A,B]（恰好并列）；nobest:T → [T] */
+  kind: "best" | "nobest" | "hard";
   tiles: string[];
+  /** hard:N 的目标「最优切后向听」（题面口径），仅 hard 用 */
+  hardShanten?: number;
 }
 
+/** hard 画像（decisions.md 难度指标口径）：不退向听 ≥2 种、最优/次优张数差 1-2 */
+const HARD_MAX_MARGIN = 2;
+const HARD_MIN_SAME = 2;
+
 function parseGoal(raw: string): Goal {
-  const m = /^(best|nobest):([^;]+)(?:;([^;]+))?$/.exec(raw.trim());
+  const m = /^(best|nobest|hard):(.*)$/.exec(raw.trim());
   if (!m) usageAndExit(`无法解析目标 "${raw}"`);
   const kind = m[1] as Goal["kind"];
-  const a = m[2];
-  const b = m[3];
-  if (kind === "nobest" && b !== undefined) usageAndExit(`nobest 只接受一张牌，收到 "${a};${b}"`);
+  const rest = m[2];
+  if (kind === "hard") {
+    const n = Number(rest.trim());
+    if (!Number.isInteger(n) || n < 0 || n > 2) usageAndExit(`hard 目标向听须为 0/1/2，收到 "${rest}"`);
+    return { kind, tiles: [], hardShanten: n };
+  }
+  const parts = rest.split(";").map((s) => s.trim()).filter(Boolean);
+  if (parts.length === 0) usageAndExit(`目标缺少牌，收到 "${raw}"`);
+  if (kind === "nobest" && parts.length > 1) usageAndExit(`nobest 只接受一张牌，收到 "${rest}"`);
+  const a = parts[0];
+  const b = parts[1];
   if (kind === "best" && b === undefined) return { kind, tiles: [a] };
   if (kind === "best") return { kind, tiles: a < b ? [a, b] : [b, a] };
   return { kind, tiles: [a] };
@@ -71,9 +88,24 @@ function parseSuit(pool: string): string[] {
 
 /* ---------- 目标谓词 ---------- */
 
+/** 难度画像：不退向听切法的张数档与最优/次优差（越低越紧 → 越难） */
+function hardnessOf(a: Analysis14): { same: Analysis14["candidates"]; margin: number } {
+  const same = a.candidates.filter((c) => c.shantenAfter === a.shanten);
+  const tiers = [...new Set(same.map((c) => c.ukeireCount))].sort((x, y) => y - x);
+  const margin = tiers.length > 1 ? tiers[0] - tiers[1] : 0;
+  return { same, margin };
+}
+
 function evalHand(hand: string[], goal: Goal, wantShanten: number | null): { ok: boolean; shanten: number; margin: number } | null {
   const a = analyze14(hand);
   if (wantShanten !== null && a.shanten !== wantShanten) return null;
+  if (goal.kind === "hard") {
+    // 紧边际难题画像：切后向听 = 目标 && 不退向听切法 ≥2 种 && 最优/次优差 1-2
+    if (a.shanten !== goal.hardShanten) return null;
+    const { same, margin } = hardnessOf(a);
+    if (same.length < HARD_MIN_SAME || margin < 1 || margin > HARD_MAX_MARGIN) return null;
+    return { ok: true, shanten: a.shanten, margin };
+  }
   const best = bestDiscards(a);
   if (goal.kind === "nobest") {
     if (best.includes(goal.tiles[0])) return null;
@@ -142,11 +174,27 @@ interface Hit {
   distance: number;
   shanten: number;
   margin: number;
+  /** 不退向听的切法数（hard 画像用；best/nobest 填空） */
+  nSame: number;
   best: string[];
 }
+
+function hitFrom(hand: string[], res: { shanten: number; margin: number }, change: string, distance: number): Hit {
+  const a = analyze14(hand);
+  return {
+    hand: hand.join(" "),
+    change,
+    distance,
+    shanten: res.shanten,
+    margin: res.margin,
+    nSame: goal.kind === "hard" ? hardnessOf(a).same.length : 0,
+    best: bestDiscards(a),
+  };
+}
+
 const hits: Hit[] = [];
 if (seedAnalysis) {
-  hits.push({ hand: seedHand.join(" "), change: "", distance: 0, shanten: seedAnalysis.shanten, margin: seedAnalysis.margin, best: bestDiscards(analyze14(seedHand)) });
+  hits.push(hitFrom(seedHand, seedAnalysis, "", 0));
 }
 
 // 枚举：替换一张牌。去掉同一手牌被多次触达的情况（理论唯一，防御性去重）。
@@ -168,32 +216,34 @@ for (let d = 0; d < 34; d++) {
     const res = evalHand(hand, goal, wantShanten);
     if (!res) continue;
     const diff = diffOf(seed, nb);
-    hits.push({
-      hand: sig,
-      change: diff ? `${diff.removed}→${diff.added}` : "",
-      distance: 1,
-      shanten: res.shanten,
-      margin: res.margin,
-      best: bestDiscards(analyze14(hand)),
-    });
+    hits.push(hitFrom(hand, res, diff ? `${diff.removed}→${diff.added}` : "", 1));
   }
 }
 
+// hard：张数差越小越难 → margin 升序；best/nobest：差越大越清晰 → 降序
+const tightFirst = goal.kind === "hard";
 hits.sort(
-  (a, b) => a.distance - b.distance || b.margin - a.margin || (a.hand < b.hand ? -1 : a.hand > b.hand ? 1 : 0),
+  (a, b) => a.distance - b.distance || (tightFirst ? a.margin - b.margin : b.margin - a.margin) || (a.hand < b.hand ? -1 : a.hand > b.hand ? 1 : 0),
 );
 
 const dt = performance.now() - t0;
 
+function goalDesc(g: Goal): string {
+  if (g.kind === "hard") return `hard:${g.hardShanten}`;
+  return g.kind === "nobest" ? `nobest:${g.tiles[0]}` : `best:${g.tiles.join(";")}`;
+}
+
 if (opts.json === "true") {
-  const out = hits.slice(0, maxShow).map((h) => ({ hand: h.hand, change: h.change, distance: h.distance, shanten: h.shanten, best: h.best, ukeire_margin: h.margin }));
+  const out = hits.slice(0, maxShow).map((h) => ({
+    hand: h.hand, change: h.change, distance: h.distance, shanten: h.shanten, best: h.best, ukeire_margin: h.margin, n_same: h.nSame,
+  }));
   process.stdout.write(JSON.stringify(out, null, 2) + "\n");
   process.stderr.write(`# 枚举 ${seen.size - 1} 个近邻，命中 ${hits.length}，耗时 ${dt.toFixed(0)}ms\n`);
   process.exit(0);
 }
 
 const seedNote = hits.some((h) => h.distance === 0) ? "\n（种子本身已满足目标，下列是「同样满足」的近邻替代，可挑牌型更干净的）" : "\n（种子不满足目标，下列是改一张后满足的最近候选）";
-console.log(`种子: ${seedHand.join(" ")}  目标: ${goal.kind === "nobest" ? `nobest:${goal.tiles[0]}` : `best:${goal.tiles.join(";")}`}${seedNote}`);
+console.log(`种子: ${seedHand.join(" ")}  目标: ${goalDesc(goal)}${seedNote}`);
 console.log("");
 
 if (hits.length === 0) {
@@ -205,13 +255,23 @@ if (hits.length === 0) {
 }
 
 const shown = hits.slice(0, maxShow);
-console.log(`#  变化(离种子)   最优切      向听  最优/次优张数差  手牌`);
+console.log(`#  变化(离种子)   最优切      向听  张数差  同向听切法  手牌`);
 for (let i = 0; i < shown.length; i++) {
   const h = shown[i];
   const change = h.distance === 0 ? "＝种子" : h.change.padEnd(11);
   console.log(
-    `${String(i + 1).padStart(2)}  ${change.padEnd(12)}  [${h.best.join(" ")}]${" ".repeat(Math.max(1, 10 - h.best.join(" ").length))}  ${h.shanten}向听  ${String(h.margin).padStart(2)}     ${h.hand}`,
+    `${String(i + 1).padStart(2)}  ${change.padEnd(12)}  [${h.best.join(" ")}]${" ".repeat(Math.max(1, 10 - h.best.join(" ").length))}  ${h.shanten}向听  ${String(h.margin).padStart(2)}      ${h.nSame}种       ${h.hand}`,
   );
+  if (goal.kind === "hard") {
+    // 逐张列出不退向听的切法进张，作者一眼挑「最优/次优名义不同」的真陷阱
+    const a = analyze14(h.hand.split(" "));
+    const same = a.candidates.filter((c) => c.shantenAfter === a.shanten);
+    const line = same
+      .slice(0, 6)
+      .map((c) => `切${c.discard} ${c.ukeireCount}张[${c.ukeireTiles.join("")}]`)
+      .join("  ");
+    console.log(`      ↳ ${line}${same.length > 6 ? " …" : ""}`);
+  }
 }
 console.log("");
 console.log(`枚举 ${seen.size - 1} 个近邻，命中 ${hits.length}，耗时 ${dt.toFixed(0)}ms。命中手牌可再跑 probe 看完整候选表。`);
