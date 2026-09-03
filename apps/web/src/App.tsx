@@ -44,7 +44,7 @@ function isTabPage(pathname: string): boolean {
 }
 
 export function App() {
-  // 启动静默检查题库增量更新（PRD 6.4）：失败无提示保留本地；成功已刷新题库缓存
+  // 启动静默检查题库增量更新（requirements.md）：失败无提示保留本地；成功已刷新题库缓存
   useEffect(() => {
     void checkBankUpdate();
   }, []);

@@ -1,4 +1,4 @@
-/** 关卡结算（PRD 6.2）：正确率、耗时、≥80% 解锁下一级 */
+/** 关卡结算（requirements.md）：正确率、耗时、≥80% 解锁下一级 */
 
 import { useEffect, useRef } from "react";
 import { Link, Navigate, useLocation, useParams } from "react-router-dom";

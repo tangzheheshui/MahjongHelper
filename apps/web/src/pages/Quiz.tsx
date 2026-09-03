@@ -1,4 +1,4 @@
-/** 做题页（web-v1.md §一）：手牌点选 → 判分 → 讲解 → 下一题 → 结算 */
+/** 做题页（requirements.md）：手牌点选 → 判分 → 讲解 → 下一题 → 结算 */
 
 import { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";

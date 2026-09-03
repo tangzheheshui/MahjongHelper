@@ -1,5 +1,5 @@
 /** 专项详情：专项名片（含大分类溯源）+ 开始专项练习 + 考点 chips（进单考点 Drill）。
- *  数据全部来自题库真实字段（web-v1.md §一：专项不展示估算的正确率/已练数）。 */
+ *  数据全部来自题库真实字段（requirements.md）。 */
 
 import { useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";

@@ -32,4 +32,4 @@ npx tsx packages/engine/scripts/duipai-export.ts   # 引擎侧导出批次
 python packages/engine/scripts/duipai.py           # mahjong 侧复算 + 生成本报告
 ```
 
-> M1 DoD（docs/requirements/engine.md §三.2）要求对拍 ≥20 题：本批 151 手超量覆盖。
+> M1 DoD 要求对拍 ≥20 题（对拍口径与命令见 `packages/engine/README.md`）：本批 151 手超量覆盖。

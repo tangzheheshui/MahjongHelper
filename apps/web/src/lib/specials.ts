@@ -1,4 +1,4 @@
-/** 专项训练分类：与题库 `category` 字段一一对应（question-bank.md §九）。
+/** 专项训练分类：与题库 `category` 字段一一对应（vocabulary.md §二 大分类→App 5 组）。
  *  5 组 = 词汇库大分类（vocabulary.md §二）的 App 映射：一+三 / 二 / 五 / 四 / 六+七。
  *  按 q.category 精确筛选，不做 knowledge_point 关键词猜测（自由文本会漂移、且一题多投）。 */
 

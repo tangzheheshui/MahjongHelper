@@ -1,12 +1,12 @@
 /**
- * M4 e2e 干跑（M4 DoD 自测，architecture.md §五）：本地 http 服务模拟服务器，跑通
+ * M4 e2e 干跑（M4 DoD 自测，server/README.md）：本地 http 服务模拟服务器，跑通
  * 「旧题库 → manifest → 增量更新」真实链路。
  *
  * 覆盖（客户端走的是生产同一份 update.ts 逻辑 + 真 fetch + 真 sha256）：
  *   1) 服务器 v1→v2 发布：全新客户端（无已应用哈希）首拉全量 → 归并出新题库
  *   2) 服务器 v2→v3 只改 L3：客户端增量只下载 L3 一个分片，其余级保留
  *   3) 无新版本：up_to_date 不再拉取
- *   4) 分片 sha256 被篡改：更新失败抛错 → 调用方静默保留旧题库（PRD 6.4）
+ *   4) 分片 sha256 被篡改：更新失败抛错 → 调用方静默保留旧题库（requirements.md）
  *
  * 用法：npx tsx apps/web/scripts/e2e-update.ts
  * 退出码：全部通过 0，任一断言失败 1。

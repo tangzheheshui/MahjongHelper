@@ -1,4 +1,4 @@
-/** 本地存储（web-v1.md §二.3）：全部 localStorage，键前缀 nk. */
+/** 本地存储（requirements.md）：全部 localStorage，键前缀 nk. */
 
 import type { Level } from "./types";
 

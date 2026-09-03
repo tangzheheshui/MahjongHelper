@@ -1,15 +1,15 @@
-/** 题库数据类型（content/questions Schema v1 的消费端视图，question-bank.md §二） */
+/** 题库数据类型（schema v1 的消费端视图，源结构见 content/schema/question.schema.json） */
 
 export type Level = "L1" | "L2" | "L3" | "L4" | "L5" | "L6" | "L7";
 export const LEVELS: Level[] = ["L1", "L2", "L3", "L4", "L5", "L6", "L7"];
 
 export type QuestionType = "what_to_discard" | "ukeire_compare" | "mentsu_identify" | "wait_choose";
 
-/** 专项分类（question-bank.md §九）：词汇库大分类的 App 5 组映射，每题恰属一组 */
+/** 专项分类（vocabulary.md §二）：词汇库大分类的 App 5 组映射，每题恰属一组 */
 export type Category = "basic" | "composite" | "structure" | "tenpai" | "strategy";
 export const CATEGORIES: Category[] = ["basic", "composite", "structure", "tenpai", "strategy"];
 
-/** 搭子类型（mentsu_identify，question-bank.md §三 细则） */
+/** 搭子类型（mentsu_identify；枚举 + 语义校验见 engine verify） */
 export type MentsuType = "ryanmen" | "kanchan" | "penchan" | "pair";
 
 export interface MentsuAnswer {
@@ -17,7 +17,7 @@ export interface MentsuAnswer {
   type: MentsuType;
 }
 
-/** wait_choose 的选项（web-v1.md §二.5a）：label 展示、value 判分、discard 绑定切牌 */
+/** wait_choose 的选项（requirements.md）：label 展示、value 判分、discard 绑定切牌 */
 export interface WaitOption {
   value: string;
   label: string;

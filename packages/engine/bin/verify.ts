@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * 题库校验 CLI（engine.md §三.4）：题库 JSON 全量校验，不一致的题拒绝入库。
+ * 题库校验 CLI（schema v1 语义闸）：题库 JSON 全量校验，不一致的题拒绝入库。
  *
  * 用法：
  *   npx tsx packages/engine/bin/verify.ts <题库.json | 目录>... [--write]

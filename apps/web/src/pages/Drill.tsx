@@ -1,6 +1,6 @@
-/** 知识点专项训练（web-v1.md §一）：三种组卷口径——
+/** 知识点专项训练（requirements.md）：三种组卷口径——
  *  /drill/:kp          按 knowledge_point 精确匹配（单考点）
- *  /drill?cat=&from=   按 category 过滤（整组专项，question-bank.md §九）
+ *  /drill?cat=&from=   按 category 过滤（整组专项，vocabulary.md §二）
  *  /drill?id=&from=    单题练习（题库页卡片直达）
  *  乱序不补量、上限 12；错题照记错题本，但不写关卡进度。
  *  返回键回来源页（from 参数），不再写死 /levels。 */

@@ -1,4 +1,4 @@
-/** 错题本（PRD 6.2 / web-v1.md §一）：按级分组、重做、答对移出。
+/** 错题本（requirements.md）：按级分组、重做、答对移出。
  *  沉浸页带返回导航（from 参数）；重做答题计入做题统计；题库更新删掉的题自动清出。 */
 
 import { useEffect, useState } from "react";

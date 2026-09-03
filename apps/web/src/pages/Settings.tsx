@@ -1,4 +1,4 @@
-/** 设置页（PRD 6.4 / web-v1.md §一）：iOS 分组 cell 风格 —— 题库、皮肤、训练、数据、关于 */
+/** 设置页（requirements.md）：iOS 分组 cell 风格 —— 题库、皮肤、训练、数据、关于 */
 
 import { useEffect, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";

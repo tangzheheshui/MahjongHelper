@@ -1,4 +1,4 @@
-/** 水平测试（PRD 6.3）：8 题，L4-L7 各 2 题 → 定级 + 推荐起始级。
+/** 水平测试（requirements.md）：8 题，L4-L7 各 2 题 → 定级 + 推荐起始级。
  *  定级在测完的瞬间落盘（不依赖点哪个退出按钮），返回/关闭都不丢结果。 */
 
 import { useEffect, useMemo, useState } from "react";

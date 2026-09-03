@@ -1,5 +1,5 @@
 /**
- * 题库分布报告（只读，M3 QA，question-bank.md §六）：对照 PRD A.1 起步/完整目标，
+ * 题库分布报告（只读，M3 QA）：对照 requirements.md 题量表（起步下限），
  * 打印七级题量、题型、难度分布与缺口。不改任何文件。
  *
  * 用法：node content/build/report-distribution.mjs
@@ -13,7 +13,7 @@ import { fileURLToPath } from "node:url";
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SRC = join(HERE, "..", "questions");
 
-// 起步下限（2026-09-02 用户裁定：L1-L3 太简单、减量 → ≥8；L4-L7 保持 ≥10）；完整目标见 question-bank.md §六
+// 起步下限（2026-09-02 用户裁定：L1-L3 太简单、减量 → ≥8；L4-L7 保持 ≥10）；完整目标 200 见 requirements.md
 const START_MIN = { L1: 8, L2: 8, L3: 8, L4: 10, L5: 10, L6: 10, L7: 10 };
 const START_MIN_SUM = Object.values(START_MIN).reduce((a, b) => a + b, 0);
 const FULL_TARGET = { L1: 30, L2: 35, L3: 30, L4: 40, L5: 30, L6: 20, L7: 15 };

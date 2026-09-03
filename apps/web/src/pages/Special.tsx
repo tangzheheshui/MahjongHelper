@@ -1,6 +1,6 @@
-/** 专项页：5 大专项卡片（category 口径，question-bank.md §九）。
+/** 专项页：5 大专项卡片（category 口径，vocabulary.md §二）。
  *  卡片数据全部来自题库真实字段（题数 / 考点数 / 级别跨度）——
- *  无行为统计就展示真实可算的，不做「已练/正确率」估算（web-v1.md §一）。 */
+ *  无行为统计就展示真实可算的，不做「已练/正确率」估算（requirements.md）。 */
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";

@@ -1,5 +1,5 @@
 /**
- * 题库版本号单点（M4，architecture.md §五）：
+ * 题库版本号单点（M4，server/README.md）：
  * App 内置出厂题库（roll-bank.mjs）与服务器发布分片（publish.mjs）必须同源同版本，
  * 换内容只 bump 这里一处，然后重跑 roll-bank + publish。
  *

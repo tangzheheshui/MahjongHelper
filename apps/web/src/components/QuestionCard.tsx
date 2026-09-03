@@ -142,7 +142,7 @@ export function QuestionCard({ q, onAnswered }: QuestionCardProps) {
   );
 }
 
-/** 三段式讲解（PRD 7.3 / A.3 #4）：最优解 + 进张对比表 + 理论出处 */
+/** 三段式讲解（requirements.md 关键行为口径）：最优解 + 进张对比表 + 理论出处 */
 function ExplanationDrawer({
   q,
   picked,
@@ -154,7 +154,7 @@ function ExplanationDrawer({
   ok: boolean;
   onClose: () => void;
 }) {
-  // mi/wc 无切牌快照语义（web-v1.md §二.5a）：讲解只走文案与出处，不显示进张对比表
+  // mi/wc 无切牌快照语义（requirements.md）：讲解只走文案与出处，不显示进张对比表
   const showTable =
     q.question_type === "what_to_discard" || q.question_type === "ukeire_compare";
   const cands = candidatesOf(q);

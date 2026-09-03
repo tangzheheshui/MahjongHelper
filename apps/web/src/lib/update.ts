@@ -1,5 +1,5 @@
 /**
- * 题库增量更新（M4，web-v1.md §二.4 / architecture.md §五）。
+ * 题库增量更新（M4，requirements.md）。
  *
  * 本模块只做「拉 manifest → 判变化 → 下载校验分片 → 归并」，**不做任何持久化**：
  * 浏览器侧由 bank.ts 把它接入 IndexedDB，node e2e 脚本直接复用它跑真实链路——
@@ -14,7 +14,7 @@
 
 import type { Question } from "./types";
 
-/** 服务器 manifest.json（question-bank.md §四，publish.mjs 生成） */
+/** 服务器 manifest.json（server/README.md 协议，publish.mjs 生成） */
 export interface ManifestLevel {
   level: string;
   /** 相对 manifest.json 的分片路径，客户端不推断目录名 */

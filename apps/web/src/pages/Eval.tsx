@@ -10,7 +10,7 @@ import { LEVEL_META } from "../lib/levels";
 import { LEVELS } from "../lib/types";
 import type { Level } from "../lib/types";
 
-/** 水平测试覆盖的级（web-v1.md §一：L4-L7 各 2 题） */
+/** 水平测试覆盖的级（requirements.md） */
 const EVAL_LEVELS = LEVELS.filter((l) => ["L4", "L5", "L6", "L7"].includes(l));
 
 /** 缩略雷达图 */

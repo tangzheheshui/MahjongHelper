@@ -1,5 +1,5 @@
 /**
- * 题库发布构建（M4，architecture.md §五）：content/questions/* → server/bank/。
+ * 题库发布构建（M4，server/README.md）：content/questions/* → server/bank/。
  *
  * 产出：
  *   server/bank/v{bank_version}/{L1..L7}.json   分级分片（旧版本目录保留，天然支持回滚）

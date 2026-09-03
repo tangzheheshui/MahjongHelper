@@ -3,7 +3,9 @@
 麻将牌效率引擎：向听数 / 进张枚举 / 最优切牌分析 / 题库校验。
 **零运行时依赖、纯函数**，跑在浏览器 / PWA / Capacitor iOS / Node CLI。
 
-需求与验收：[docs/requirements/engine.md](../../docs/requirements/engine.md)
+需求范围见 [requirements.md](../../docs/requirements.md)（M1 里程碑）；判分口径、改良 / 倒退等 V1
+判定边界见 [CLAUDE.md「内容红线」](../../CLAUDE.md)；**golden 用例集即引擎的宪法**（改行为先补
+golden 再改实现）。
 
 ## 结构
 

@@ -1,4 +1,4 @@
-/** 关卡结构与判分（PRD 5.2 七级分类、6.2 达标解锁、web-v1.md §二.5 抽题） */
+/** 关卡结构与判分（requirements.md：七级分类、达标解锁、抽题口径） */
 
 import { analyze14 } from "@nanikiru/engine";
 import type { Level, MentsuAnswer, MentsuType, Question, UkeireRow, WaitOption } from "./types";
@@ -20,7 +20,7 @@ export const LEVEL_META: Record<Level, LevelMeta> = {
   L7: { level: "L7", name: "综合判断", desc: "攻守与综合效率（通用牌效口径）" },
 };
 
-/** 试点期每级 1 关（PRD 5.4 每关 8-12 题；试点题库不足，web-v1.md §二.5 允许复用并提示） */
+/** 试点期每级 1 关（requirements.md：每关 8-12 题；题库不足允许复用并提示） */
 export const STAGE_OF_LEVEL = "S1";
 
 export const PASS_RATE = 0.8;
@@ -38,7 +38,7 @@ export function mentsuPairKey(tiles: string[]): string {
   return [...tiles].sort().join("|");
 }
 
-/** 判分（web-v1.md §二.2 / §二.5a）：比对 answer.correct，不实时算引擎。
+/** 判分（requirements.md）：比对 answer.correct，不实时算引擎。
  *  wtd/uc 比切牌、wc 比 value、mi 比两张的无序组合（correct 全列该形状组合）。 */
 export function isCorrect(q: Question, userAnswer: string): boolean {
   if (q.question_type === "mentsu_identify") {
@@ -83,7 +83,7 @@ export function shantenBefore(q: Question): number {
   return q.engine_snapshot?.shanten_before ?? analyze14(q.hand).shanten;
 }
 
-/* ---------- 展示层：中文牌面文字与手牌排序（web-v1.md §一 卡片展示口径） ---------- */
+/* ---------- 展示层：中文牌面文字与手牌排序（requirements.md） ---------- */
 
 const SUIT_WORD: Record<string, string> = { m: "万", p: "筒", s: "条" };
 const HONOR_WORD: Record<string, string> = { E: "东", S: "南", W: "西", N: "北", h: "白", f: "发", c: "中" };
@@ -121,7 +121,7 @@ function shuffle<T>(arr: T[], rand: () => number = Math.random): T[] {
   return arr;
 }
 
-/** 关卡抽题（web-v1.md §二.5）：先洗牌再循环补足到下限——题序每次不同，
+/** 关卡抽题（requirements.md）：先洗牌再循环补足到下限——题序每次不同，
  *  题量不足时的复用也从随机位置开始，避免连续两次进关看到同一顺序。 */
 export function pickStageQuestions(all: Question[], min = 8, rand: () => number = Math.random): { qs: Question[]; reused: boolean } {
   if (all.length === 0) return { qs: [], reused: false };
@@ -135,7 +135,7 @@ export function pickStageQuestions(all: Question[], min = 8, rand: () => number 
   return { qs, reused: all.length < min };
 }
 
-/** 达标判断（PRD 6.2）：正确率 ≥80% 解锁下一级 */
+/** 达标判断（requirements.md）：正确率 ≥80% 解锁下一级 */
 export function passRateOf(correct: number, total: number): number {
   return total === 0 ? 0 : correct / total;
 }
@@ -152,7 +152,7 @@ export function nextLevelOf(level: Level): Level | null {
   return i < LEVELS.length - 1 ? LEVELS[i + 1] : null;
 }
 
-/** 结算落地（PRD 6.2）：写最高正确率/星级，达标解锁下一级。纯函数，闭环冒烟共用。 */
+/** 结算落地（requirements.md）：写最高正确率/星级，达标解锁下一级。纯函数，闭环冒烟共用。 */
 export function applyRunResult(
   p: { levels: Partial<Record<Level, { unlocked: boolean; bestRate?: number; stars?: 1 | 2 | 3; completedAt?: string }>> },
   level: Level,
@@ -179,7 +179,7 @@ export function applyRunResult(
   return { progress: { levels }, passed, rate };
 }
 
-/* ---------- 水平测试（PRD 6.3） ---------- */
+/* ---------- 水平测试（requirements.md） ---------- */
 
 export const PLACEMENT_GRADES: { grade: "入门" | "初级" | "中级" | "高级"; levels: Level[] }[] = [
   { grade: "入门", levels: ["L1", "L2"] },
@@ -188,7 +188,7 @@ export const PLACEMENT_GRADES: { grade: "入门" | "初级" | "中级" | "高级
   { grade: "高级", levels: ["L7"] },
 ];
 
-/** 每级抽 2 题组卷；只抽 L4-L7（2026-09-02 用户裁定：L1-L3 太简单不进评测，web-v1.md §一）。
+/** 每级抽 2 题组卷；只抽 L4-L7（2026-09-02 用户裁定：L1-L3 太简单不进评测，requirements.md）。
  *  级内洗牌——「重新测试」不再永远是同一套题，评测才可复评。 */
 export function pickPlacementQuestions(byLevel: Record<string, Question[]>, rand: () => number = Math.random): Question[] {
   const picked: Question[] = [];

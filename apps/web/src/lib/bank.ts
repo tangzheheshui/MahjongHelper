@@ -1,5 +1,5 @@
 /**
- * 题库层（web-v1.md §二.3）：内置题库（打包产物，随 SW 预缓存）→ IndexedDB 种子 → 读取。
+ * 题库层（requirements.md）：内置题库（打包产物，随 SW 预缓存）→ IndexedDB 种子 → 读取。
  * M4 起远程增量也并入 IDB 同一 store，客户端只认 nk.bank 一个真源。
  */
 
@@ -111,7 +111,7 @@ function defaultManifestUrl(): string {
 
 /**
  * 检查并应用一次题库增量更新。永不抛错：IndexedDB 不可用 / 断网 / manifest 损坏 /
- * 分片校验失败一律返回 unavailable 或 up_to_date，保留本地题库（PRD 6.4 静默降级）。
+ * 分片校验失败一律返回 unavailable 或 up_to_date，保留本地题库（requirements.md 静默降级）。
  * App 启动静默与设置页手动「检查并更新」走同一入口。
  */
 export async function checkBankUpdate(

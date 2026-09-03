@@ -1,5 +1,5 @@
 /**
- * bank.ts（IDB 层）集成自测（M4，web-v1.md §二.3）：node 里以内存 fake-indexedDB
+ * bank.ts（IDB 层）集成自测（M4，requirements.md）：node 里以内存 fake-indexedDB
  * 跑真实 loadBank / checkBankUpdate —— 覆盖「种内置 → update_state 落库 → 增量合并 →
  * 缓存刷新 → 失败静默保留」的浏览器路径，逻辑与线上同源。
  *

@@ -20,7 +20,7 @@ export function Levels() {
     loadBank().then(setBank);
   }, []);
 
-  /** 自测期关卡全开（web-v1.md §一，2026-09-02 用户裁定）：网页自测不做解锁门槛；
+  /** 自测期关卡全开（requirements.md，2026-09-02 用户裁定）：网页自测不做解锁门槛；
    *  达标解锁逻辑（applyRunResult）保留仅旁路——上线前翻回 false 恢复门控。 */
   const ALL_LEVELS_OPEN = true;
 

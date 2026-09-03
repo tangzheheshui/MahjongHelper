@@ -2,7 +2,7 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 
-// 离线优先：App 壳 + 出厂题库全部预缓存（web-v1.md §二.4）
+// 离线优先：App 壳 + 出厂题库全部预缓存（requirements.md）
 export default defineConfig({
   plugins: [
     react(),

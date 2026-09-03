@@ -2,5 +2,5 @@
   "schema_version": 1,
   "updated_at": "2026-09-02T00:00:00Z",
   "flags": {},
-  "_note": "远程配置（PRD 6.4 / architecture §五）。当前无功能开关，flags 为空对象；客户端拉不到时用内置默认。新增开关需先在 docs/requirements/web-v1.md 与 architecture.md 记录语义。"
+  "_note": "远程配置（requirements.md 联网策略 / server/README.md 发布协议）。当前无功能开关，flags 为空对象；客户端拉不到时用内置默认。新增开关需先在 requirements.md 与 server/README.md 记录语义。"
 }

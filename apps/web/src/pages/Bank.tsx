@@ -1,4 +1,4 @@
-/** 题库页：难度 + 专项分类（category 字段，question-bank.md §九）双维筛选。
+/** 题库页：难度 + 专项分类（category 字段，vocabulary.md §二）双维筛选。
  *  卡片直达单题练习（/drill?id=）；支持 ?difficulty= 预选（首页「极限挑战」入口）。 */
 
 import { useEffect, useMemo, useState } from "react";

@@ -1,5 +1,5 @@
 /**
- * 题库校验（engine.md §三.4、question-bank.md §五③）：
+ * 题库校验（schema v1 语义闸）：
  * 出题流水线的关卡——correct 必须落在引擎最优集合内，不一致的题拒绝入库。
  *
  * verifyQuestion 为纯函数（bin/verify.ts 只做文件 IO）；
@@ -15,7 +15,7 @@ export interface Question {
   id: string;
   level: string;
   knowledge_point?: string;
-  /** 专项分类（question-bank.md §九，2026-09-03 加）：App 专项训练按它筛选 */
+  /** 专项分类（vocabulary.md §二，2026-09-03 加）：App 专项训练按它筛选 */
   category?: string;
   question_type: "what_to_discard" | "ukeire_compare" | "mentsu_identify" | "wait_choose";
   hand: string[];
@@ -56,11 +56,11 @@ const QUESTION_TYPES = new Set([
 
 const MENTSU_TYPES = new Set(["ryanmen", "kanchan", "penchan", "pair"]);
 
-/** 专项分类枚举（question-bank.md §九）：词汇库大分类的 App 5 组映射 */
+/** 专项分类枚举（vocabulary.md §二）：词汇库大分类的 App 5 组映射 */
 const CATEGORIES = new Set(["basic", "composite", "structure", "tenpai", "strategy"]);
 
 /**
- * 两张牌的搭子形状分类（question-bank.md §三 细则）：
+ * 两张牌的搭子形状分类（schema v1）：
  * 同花色数牌 n,n+1 且非 12/89 → ryanmen；12/89 → penchan；n,n+2 → kanchan；
  * 同牌两张 → pair；跨花色 / 字牌 / 其他间距 → null（不构成搭子形状）。
  */
@@ -82,7 +82,7 @@ export function mentsuShapeOf(a: string, b: string): string | null {
   return null;
 }
 
-/** 生成 14 张手牌的引擎快照（question-bank.md §二 的 engine_snapshot 结构） */
+/** 生成 14 张手牌的引擎快照（schema v1 的 engine_snapshot 结构） */
 export function buildSnapshot(hand: string[]): EngineSnapshot {
   const a = analyze14(hand);
   return {
@@ -106,7 +106,7 @@ function checkCommon(q: Question, errors: string[]): 13 | 14 | null {
   if (!q.id) errors.push("缺少 id");
   if (!q.level) errors.push("缺少 level");
   if (q.category === undefined || !CATEGORIES.has(q.category))
-    errors.push(`category 须为 basic/composite/structure/tenpai/strategy 之一（question-bank.md §九），实际: ${q.category ?? "(缺失)"}`);
+    errors.push(`category 须为 basic/composite/structure/tenpai/strategy 之一（vocabulary.md §二），实际: ${q.category ?? "(缺失)"}`);
   if (!QUESTION_TYPES.has(q.question_type)) errors.push(`未知 question_type: ${q.question_type}`);
   let n: 13 | 14 | null = null;
   try {
@@ -123,7 +123,7 @@ function checkCommon(q: Question, errors: string[]): 13 | 14 | null {
  * 校验单题。判定规则：
  * - what_to_discard：answer.correct 必须与引擎最优切牌集合完全一致
  *   （correct 有不在最优集合内的 → 拒绝；引擎并列最优未列全 → 同样拒绝，
- *    否则判分会把并列正解标错——PRD A.3 #3）
+ *    否则判分会把并列正解标错——并列最优须全列）
  * - ukeire_compare：correct 与 options 均须是合法切牌、切后向听相同，
  *   且 correct 进张严格更多（进张并列的牌型不能出比较题）
  * - mentsu_identify：correct 每项 {tiles:[两张], type} 须形状与 type 一致、
@@ -228,7 +228,7 @@ export function verifyQuestion(q: Question): VerifyResult {
           }
         }
       });
-      // 语义检查（question-bank.md §三 细则）：手牌中该形状的全部两两组合 == correct 集合
+      // 语义检查（schema v1）：手牌中该形状的全部两两组合 == correct 集合
       if (structural && counts && types.size === 1) {
         const type = [...types][0];
         const expect = new Set<string>();

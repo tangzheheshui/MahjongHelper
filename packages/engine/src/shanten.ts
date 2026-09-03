@@ -5,7 +5,7 @@
  *   shanten = 8 − 2×面子数 − min(搭子数, 4−面子数) − 雀头
  * 搭子上限取 4−面子数：面子+搭子凑满 4 个「面子候补」后，多余搭子不产生进度
  * （如 一面子+四搭子+雀头 实为 2 向听而非 1 向听——已由随机测试反例验证）。
- * 口径见 docs/requirements/engine.md。
+ * 口径见 golden 用例集（改行为先补 golden）。
  */
 
 import type { Counts } from "./tiles";
