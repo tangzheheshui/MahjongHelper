@@ -1,6 +1,6 @@
 {
  "bank_version": "2026.09.4-pilot",
- "generated_at": "2026-09-02T15:02:39.853Z",
+ "generated_at": "2026-09-03T06:15:11.745Z",
  "questions": [
   {
    "schema_version": 1,
@@ -2374,7 +2374,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.356Z"
+    "checked_at": "2026-09-03T06:15:07.514Z"
    }
   },
   {
@@ -2604,7 +2604,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.356Z"
+    "checked_at": "2026-09-03T06:15:07.516Z"
    }
   },
   {
@@ -2851,7 +2851,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.356Z"
+    "checked_at": "2026-09-03T06:15:07.516Z"
    }
   },
   {
@@ -3132,7 +3132,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.357Z"
+    "checked_at": "2026-09-03T06:15:07.517Z"
    }
   },
   {
@@ -3319,7 +3319,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.357Z"
+    "checked_at": "2026-09-03T06:15:07.517Z"
    }
   },
   {
@@ -3502,7 +3502,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.357Z"
+    "checked_at": "2026-09-03T06:15:07.518Z"
    }
   },
   {
@@ -3734,7 +3734,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.357Z"
+    "checked_at": "2026-09-03T06:15:07.518Z"
    }
   },
   {
@@ -3910,7 +3910,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.357Z"
+    "checked_at": "2026-09-03T06:15:07.518Z"
    }
   },
   {
@@ -4097,7 +4097,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.357Z"
+    "checked_at": "2026-09-03T06:15:07.519Z"
    }
   },
   {
@@ -4288,7 +4288,203 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.357Z"
+    "checked_at": "2026-09-03T06:15:07.519Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L3_011",
+   "level": "L3",
+   "knowledge_point": "四连形听牌：自带两面单骑，别去切它",
+   "question_type": "what_to_discard",
+   "difficulty": "medium",
+   "hand": [
+    "1m",
+    "2m",
+    "3m",
+    "4m",
+    "5m",
+    "6m",
+    "7p",
+    "8p",
+    "9p",
+    "3s",
+    "4s",
+    "5s",
+    "6s",
+    "9s"
+   ],
+   "answer": {
+    "correct": [
+     "9s"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 9条。123456万（123 + 456 两副）、789筒，三副面子已定，剩 3456条 四连 + 9条 孤张要处理。四连是「顺子 + 单骑」一物两用：读成 345条 + 单骑 6条，或读成 单骑 3条 + 456条，两种摆法合起来等 3条/6条、各 3 张，共 6 张。别从四连里抽牌去凑面子——切 3条 或 6条 也听牌，但四连只剩一种摆法，只能单骑 9条、3 张，砍掉一半。四连天生自带两面单骑，该走的是那张接不上的孤张 9条。",
+    "source": "Riichi Book I §3.3.2 四张复合形 / 本书例3-2（四连 3456 两面单骑）"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "9s",
+      "shanten_after": 0,
+      "ukeire_count": 6,
+      "ukeire_tiles": [
+       "3s",
+       "6s"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "9s"
+      ]
+     },
+     {
+      "discard": "6s",
+      "shanten_after": 0,
+      "ukeire_count": 3,
+      "ukeire_tiles": [
+       "9s"
+      ]
+     },
+     {
+      "discard": "1m",
+      "shanten_after": 1,
+      "ukeire_count": 20,
+      "ukeire_tiles": [
+       "1m",
+       "4m",
+       "7m",
+       "3s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "4m",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "4m",
+       "7m",
+       "3s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "9p",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "6p",
+       "9p",
+       "3s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "4s",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "3s",
+       "4s",
+       "6s",
+       "7s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "5s",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "2s",
+       "3s",
+       "5s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "6m",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "3m",
+       "6m",
+       "3s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "2m",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "2m",
+       "3s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "3m",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "3m",
+       "3s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "5m",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "5m",
+       "3s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "7p",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "7p",
+       "3s",
+       "6s",
+       "9s"
+      ]
+     },
+     {
+      "discard": "8p",
+      "shanten_after": 1,
+      "ukeire_count": 13,
+      "ukeire_tiles": [
+       "8p",
+       "3s",
+       "6s",
+       "9s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-03T06:15:07.519Z"
    }
   },
   {
@@ -6640,7 +6836,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.564Z"
+    "checked_at": "2026-09-03T05:55:48.976Z"
    }
   },
   {
@@ -6871,7 +7067,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.565Z"
+    "checked_at": "2026-09-03T05:55:48.977Z"
    }
   },
   {
@@ -7129,7 +7325,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.565Z"
+    "checked_at": "2026-09-03T05:55:48.978Z"
    }
   },
   {
@@ -7384,7 +7580,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.565Z"
+    "checked_at": "2026-09-03T05:55:48.978Z"
    }
   },
   {
@@ -7433,7 +7629,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.565Z"
+    "checked_at": "2026-09-03T05:55:48.978Z"
    }
   },
   {
@@ -7482,7 +7678,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.565Z"
+    "checked_at": "2026-09-03T05:55:48.978Z"
    }
   },
   {
@@ -7531,7 +7727,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.565Z"
+    "checked_at": "2026-09-03T05:55:48.978Z"
    }
   },
   {
@@ -7580,7 +7776,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.565Z"
+    "checked_at": "2026-09-03T05:55:48.978Z"
    }
   },
   {
@@ -7817,7 +8013,7 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.565Z"
+    "checked_at": "2026-09-03T05:55:48.978Z"
    }
   },
   {
@@ -8004,7 +8200,188 @@
    },
    "verified": {
     "engine_version": "0.1.0",
-    "checked_at": "2026-09-02T15:02:39.565Z"
+    "checked_at": "2026-09-03T05:55:48.979Z"
+   }
+  },
+  {
+   "schema_version": 1,
+   "id": "L5_011",
+   "level": "L5",
+   "knowledge_point": "听牌升级：三张一叠，留两面不抱嵌张",
+   "question_type": "what_to_discard",
+   "difficulty": "medium",
+   "hand": [
+    "5p",
+    "6p",
+    "7p",
+    "3s",
+    "4s",
+    "5s",
+    "7m",
+    "8m",
+    "9m",
+    "9p",
+    "9p",
+    "2m",
+    "4m",
+    "5m"
+   ],
+   "answer": {
+    "correct": [
+     "2m"
+    ],
+    "options": null
+   },
+   "explanation": {
+    "best": "切 2万。这手 789万、567筒、345条 三副面子，99筒 雀头，还剩 245万 三张一叠——它有两种读法：当「45万 两面 + 2万 浮牌」，或当「24万 嵌张 + 5万 浮牌」。读法定听口：切 2万 按两面读，听 3万/6万，共 8 张；切 5万 按嵌张读，只等 3万，4 张。同是三张一叠，留哪张切哪张，直接决定听牌是两面还是嵌张——叠的读法没有唯一解，哪种读法听得多就按哪种切，别抱着嵌张不放。三副完整面子与雀头都不动（拆任一面子都退回 1 向听）。",
+    "source": "79博客·牌效率13-19（一向听·听牌时的牌理）/ Riichi Book I §3.3.1 三张复合形"
+   },
+   "engine_snapshot": {
+    "shanten_before": 0,
+    "candidates": [
+     {
+      "discard": "2m",
+      "shanten_after": 0,
+      "ukeire_count": 8,
+      "ukeire_tiles": [
+       "3m",
+       "6m"
+      ]
+     },
+     {
+      "discard": "5m",
+      "shanten_after": 0,
+      "ukeire_count": 4,
+      "ukeire_tiles": [
+       "3m"
+      ]
+     },
+     {
+      "discard": "4m",
+      "shanten_after": 1,
+      "ukeire_count": 27,
+      "ukeire_tiles": [
+       "1m",
+       "2m",
+       "3m",
+       "4m",
+       "5m",
+       "6m",
+       "7m",
+       "9p"
+      ]
+     },
+     {
+      "discard": "9p",
+      "shanten_after": 1,
+      "ukeire_count": 17,
+      "ukeire_tiles": [
+       "2m",
+       "3m",
+       "5m",
+       "6m",
+       "9p"
+      ]
+     },
+     {
+      "discard": "5p",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "3m",
+       "6m",
+       "5p",
+       "8p"
+      ]
+     },
+     {
+      "discard": "7p",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "3m",
+       "6m",
+       "4p",
+       "7p"
+      ]
+     },
+     {
+      "discard": "3s",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "3m",
+       "6m",
+       "3s",
+       "6s"
+      ]
+     },
+     {
+      "discard": "5s",
+      "shanten_after": 1,
+      "ukeire_count": 16,
+      "ukeire_tiles": [
+       "3m",
+       "6m",
+       "2s",
+       "5s"
+      ]
+     },
+     {
+      "discard": "7m",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3m",
+       "6m",
+       "7m"
+      ]
+     },
+     {
+      "discard": "8m",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3m",
+       "6m",
+       "8m"
+      ]
+     },
+     {
+      "discard": "9m",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3m",
+       "6m",
+       "9m"
+      ]
+     },
+     {
+      "discard": "6p",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3m",
+       "6m",
+       "6p"
+      ]
+     },
+     {
+      "discard": "4s",
+      "shanten_after": 1,
+      "ukeire_count": 12,
+      "ukeire_tiles": [
+       "3m",
+       "6m",
+       "4s"
+      ]
+     }
+    ]
+   },
+   "verified": {
+    "engine_version": "0.1.0",
+    "checked_at": "2026-09-03T05:55:48.979Z"
    }
   },
   {

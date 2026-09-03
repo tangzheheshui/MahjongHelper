@@ -165,7 +165,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.356Z"
+      "checked_at": "2026-09-03T06:15:07.514Z"
     }
   },
   {
@@ -395,7 +395,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.356Z"
+      "checked_at": "2026-09-03T06:15:07.516Z"
     }
   },
   {
@@ -642,7 +642,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.356Z"
+      "checked_at": "2026-09-03T06:15:07.516Z"
     }
   },
   {
@@ -923,7 +923,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.357Z"
+      "checked_at": "2026-09-03T06:15:07.517Z"
     }
   },
   {
@@ -1110,7 +1110,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.357Z"
+      "checked_at": "2026-09-03T06:15:07.517Z"
     }
   },
   {
@@ -1293,7 +1293,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.357Z"
+      "checked_at": "2026-09-03T06:15:07.518Z"
     }
   },
   {
@@ -1525,7 +1525,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.357Z"
+      "checked_at": "2026-09-03T06:15:07.518Z"
     }
   },
   {
@@ -1701,7 +1701,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.357Z"
+      "checked_at": "2026-09-03T06:15:07.518Z"
     }
   },
   {
@@ -1888,7 +1888,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.357Z"
+      "checked_at": "2026-09-03T06:15:07.519Z"
     }
   },
   {
@@ -2079,7 +2079,203 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.357Z"
+      "checked_at": "2026-09-03T06:15:07.519Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L3_011",
+    "level": "L3",
+    "knowledge_point": "四连形听牌：自带两面单骑，别去切它",
+    "question_type": "what_to_discard",
+    "difficulty": "medium",
+    "hand": [
+      "1m",
+      "2m",
+      "3m",
+      "4m",
+      "5m",
+      "6m",
+      "7p",
+      "8p",
+      "9p",
+      "3s",
+      "4s",
+      "5s",
+      "6s",
+      "9s"
+    ],
+    "answer": {
+      "correct": [
+        "9s"
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "切 9条。123456万（123 + 456 两副）、789筒，三副面子已定，剩 3456条 四连 + 9条 孤张要处理。四连是「顺子 + 单骑」一物两用：读成 345条 + 单骑 6条，或读成 单骑 3条 + 456条，两种摆法合起来等 3条/6条、各 3 张，共 6 张。别从四连里抽牌去凑面子——切 3条 或 6条 也听牌，但四连只剩一种摆法，只能单骑 9条、3 张，砍掉一半。四连天生自带两面单骑，该走的是那张接不上的孤张 9条。",
+      "source": "Riichi Book I §3.3.2 四张复合形 / 本书例3-2（四连 3456 两面单骑）"
+    },
+    "engine_snapshot": {
+      "shanten_before": 0,
+      "candidates": [
+        {
+          "discard": "9s",
+          "shanten_after": 0,
+          "ukeire_count": 6,
+          "ukeire_tiles": [
+            "3s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "3s",
+          "shanten_after": 0,
+          "ukeire_count": 3,
+          "ukeire_tiles": [
+            "9s"
+          ]
+        },
+        {
+          "discard": "6s",
+          "shanten_after": 0,
+          "ukeire_count": 3,
+          "ukeire_tiles": [
+            "9s"
+          ]
+        },
+        {
+          "discard": "1m",
+          "shanten_after": 1,
+          "ukeire_count": 20,
+          "ukeire_tiles": [
+            "1m",
+            "4m",
+            "7m",
+            "3s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "4m",
+          "shanten_after": 1,
+          "ukeire_count": 17,
+          "ukeire_tiles": [
+            "4m",
+            "7m",
+            "3s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "9p",
+          "shanten_after": 1,
+          "ukeire_count": 17,
+          "ukeire_tiles": [
+            "6p",
+            "9p",
+            "3s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "4s",
+          "shanten_after": 1,
+          "ukeire_count": 17,
+          "ukeire_tiles": [
+            "3s",
+            "4s",
+            "6s",
+            "7s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "5s",
+          "shanten_after": 1,
+          "ukeire_count": 17,
+          "ukeire_tiles": [
+            "2s",
+            "3s",
+            "5s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "6m",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "3m",
+            "6m",
+            "3s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "2m",
+          "shanten_after": 1,
+          "ukeire_count": 13,
+          "ukeire_tiles": [
+            "2m",
+            "3s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "3m",
+          "shanten_after": 1,
+          "ukeire_count": 13,
+          "ukeire_tiles": [
+            "3m",
+            "3s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "5m",
+          "shanten_after": 1,
+          "ukeire_count": 13,
+          "ukeire_tiles": [
+            "5m",
+            "3s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "7p",
+          "shanten_after": 1,
+          "ukeire_count": 13,
+          "ukeire_tiles": [
+            "7p",
+            "3s",
+            "6s",
+            "9s"
+          ]
+        },
+        {
+          "discard": "8p",
+          "shanten_after": 1,
+          "ukeire_count": 13,
+          "ukeire_tiles": [
+            "8p",
+            "3s",
+            "6s",
+            "9s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-03T06:15:07.519Z"
     }
   }
 ]

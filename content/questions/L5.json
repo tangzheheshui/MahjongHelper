@@ -212,7 +212,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.564Z"
+      "checked_at": "2026-09-03T05:55:48.976Z"
     }
   },
   {
@@ -443,7 +443,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.565Z"
+      "checked_at": "2026-09-03T05:55:48.977Z"
     }
   },
   {
@@ -701,7 +701,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.565Z"
+      "checked_at": "2026-09-03T05:55:48.978Z"
     }
   },
   {
@@ -956,7 +956,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.565Z"
+      "checked_at": "2026-09-03T05:55:48.978Z"
     }
   },
   {
@@ -1005,7 +1005,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.565Z"
+      "checked_at": "2026-09-03T05:55:48.978Z"
     }
   },
   {
@@ -1054,7 +1054,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.565Z"
+      "checked_at": "2026-09-03T05:55:48.978Z"
     }
   },
   {
@@ -1103,7 +1103,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.565Z"
+      "checked_at": "2026-09-03T05:55:48.978Z"
     }
   },
   {
@@ -1152,7 +1152,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.565Z"
+      "checked_at": "2026-09-03T05:55:48.978Z"
     }
   },
   {
@@ -1389,7 +1389,7 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.565Z"
+      "checked_at": "2026-09-03T05:55:48.978Z"
     }
   },
   {
@@ -1576,7 +1576,188 @@
     },
     "verified": {
       "engine_version": "0.1.0",
-      "checked_at": "2026-09-02T15:02:39.565Z"
+      "checked_at": "2026-09-03T05:55:48.979Z"
+    }
+  },
+  {
+    "schema_version": 1,
+    "id": "L5_011",
+    "level": "L5",
+    "knowledge_point": "听牌升级：三张一叠，留两面不抱嵌张",
+    "question_type": "what_to_discard",
+    "difficulty": "medium",
+    "hand": [
+      "5p",
+      "6p",
+      "7p",
+      "3s",
+      "4s",
+      "5s",
+      "7m",
+      "8m",
+      "9m",
+      "9p",
+      "9p",
+      "2m",
+      "4m",
+      "5m"
+    ],
+    "answer": {
+      "correct": [
+        "2m"
+      ],
+      "options": null
+    },
+    "explanation": {
+      "best": "切 2万。这手 789万、567筒、345条 三副面子，99筒 雀头，还剩 245万 三张一叠——它有两种读法：当「45万 两面 + 2万 浮牌」，或当「24万 嵌张 + 5万 浮牌」。读法定听口：切 2万 按两面读，听 3万/6万，共 8 张；切 5万 按嵌张读，只等 3万，4 张。同是三张一叠，留哪张切哪张，直接决定听牌是两面还是嵌张——叠的读法没有唯一解，哪种读法听得多就按哪种切，别抱着嵌张不放。三副完整面子与雀头都不动（拆任一面子都退回 1 向听）。",
+      "source": "79博客·牌效率13-19（一向听·听牌时的牌理）/ Riichi Book I §3.3.1 三张复合形"
+    },
+    "engine_snapshot": {
+      "shanten_before": 0,
+      "candidates": [
+        {
+          "discard": "2m",
+          "shanten_after": 0,
+          "ukeire_count": 8,
+          "ukeire_tiles": [
+            "3m",
+            "6m"
+          ]
+        },
+        {
+          "discard": "5m",
+          "shanten_after": 0,
+          "ukeire_count": 4,
+          "ukeire_tiles": [
+            "3m"
+          ]
+        },
+        {
+          "discard": "4m",
+          "shanten_after": 1,
+          "ukeire_count": 27,
+          "ukeire_tiles": [
+            "1m",
+            "2m",
+            "3m",
+            "4m",
+            "5m",
+            "6m",
+            "7m",
+            "9p"
+          ]
+        },
+        {
+          "discard": "9p",
+          "shanten_after": 1,
+          "ukeire_count": 17,
+          "ukeire_tiles": [
+            "2m",
+            "3m",
+            "5m",
+            "6m",
+            "9p"
+          ]
+        },
+        {
+          "discard": "5p",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "3m",
+            "6m",
+            "5p",
+            "8p"
+          ]
+        },
+        {
+          "discard": "7p",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "3m",
+            "6m",
+            "4p",
+            "7p"
+          ]
+        },
+        {
+          "discard": "3s",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "3m",
+            "6m",
+            "3s",
+            "6s"
+          ]
+        },
+        {
+          "discard": "5s",
+          "shanten_after": 1,
+          "ukeire_count": 16,
+          "ukeire_tiles": [
+            "3m",
+            "6m",
+            "2s",
+            "5s"
+          ]
+        },
+        {
+          "discard": "7m",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "3m",
+            "6m",
+            "7m"
+          ]
+        },
+        {
+          "discard": "8m",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "3m",
+            "6m",
+            "8m"
+          ]
+        },
+        {
+          "discard": "9m",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "3m",
+            "6m",
+            "9m"
+          ]
+        },
+        {
+          "discard": "6p",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "3m",
+            "6m",
+            "6p"
+          ]
+        },
+        {
+          "discard": "4s",
+          "shanten_after": 1,
+          "ukeire_count": 12,
+          "ukeire_tiles": [
+            "3m",
+            "6m",
+            "4s"
+          ]
+        }
+      ]
+    },
+    "verified": {
+      "engine_version": "0.1.0",
+      "checked_at": "2026-09-03T05:55:48.979Z"
     }
   }
 ]
