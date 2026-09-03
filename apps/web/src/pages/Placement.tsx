@@ -1,12 +1,13 @@
-/** 水平测试（PRD 6.3）：约 10 题覆盖 L1-L7 → 定级 + 推荐起始级 */
+/** 水平测试（PRD 6.3）：8 题，L4-L7 各 2 题 → 定级 + 推荐起始级。
+ *  定级在测完的瞬间落盘（不依赖点哪个退出按钮），返回/关闭都不丢结果。 */
 
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { QuestionCard } from "../components/QuestionCard";
 import { loadBank } from "../lib/bank";
 import { LEVEL_META, gradePlacement, pickPlacementQuestions } from "../lib/levels";
-import { loadPlacement, loadProgress, recordWrong, savePlacement, saveProgress } from "../lib/storage";
+import { loadPlacement, loadProgress, recordAnswer, recordWrong, savePlacement, saveProgress } from "../lib/storage";
 import { LEVELS } from "../lib/types";
 import type { Bank, Level, Question } from "../lib/types";
 
@@ -16,6 +17,8 @@ export function Placement() {
   const [done, setDone] = useState(false);
   const [perLevel, setPerLevel] = useState<Partial<Record<Level, { ok: number; total: number }>>>({});
   const [history, setHistory] = useState(() => loadPlacement());
+  const [search] = useSearchParams();
+  const from = search.get("from") || "/";
 
   useEffect(() => {
     loadBank().then(setBank);
@@ -28,6 +31,24 @@ export function Placement() {
     return pickPlacementQuestions(byLevel);
   }, [bank]);
 
+  /** 测完即落盘：定级 + 解锁至起始级（幂等，重渲染不产生副作用差异） */
+  useEffect(() => {
+    if (!done) return;
+    const { grade, startLevel } = gradePlacement(perLevel);
+    const result = { grade, startLevel, takenAt: new Date().toISOString(), perLevel };
+    savePlacement(result);
+    setHistory(result);
+    const p = loadProgress();
+    const i = LEVELS.indexOf(startLevel);
+    for (let k = 0; k <= i; k++) {
+      const lv = LEVELS[k];
+      p.levels[lv] = p.levels[lv] ?? { unlocked: false };
+      p.levels[lv]!.unlocked = true;
+    }
+    saveProgress(p);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [done]);
+
   if (!bank) return <p className="empty">题库加载中…</p>;
 
   if (qs.length === 0) {
@@ -38,7 +59,7 @@ export function Placement() {
     const { grade, startLevel } = gradePlacement(perLevel);
     return (
       <div>
-        <Navbar title="水平定级" back="/" />
+        <Navbar title="水平定级" back={from} />
         <div className={`score-card pass`}>
           <div className="score-ring" style={{ width: 140, height: 140 }}>
             <svg width={140} height={140} viewBox="0 0 160 160">
@@ -70,27 +91,10 @@ export function Placement() {
         </div>
 
         <div className="btn-row">
-          <Link
-            className="btn primary"
-            to={`/quiz/${startLevel}/S1`}
-            onClick={() => {
-              // 定级即解锁至起始级（含），此前级别视为可跳过
-              const p = loadProgress();
-              const i = LEVELS.indexOf(startLevel);
-              for (let k = 0; k <= i; k++) {
-                const lv = LEVELS[k];
-                p.levels[lv] = p.levels[lv] ?? { unlocked: false };
-                p.levels[lv]!.unlocked = true;
-              }
-              saveProgress(p);
-              const result = { grade, startLevel, takenAt: new Date().toISOString(), perLevel };
-              savePlacement(result);
-              setHistory(result);
-            }}
-          >
+          <Link className="btn primary" to={`/quiz/${startLevel}/S1?from=${encodeURIComponent(from)}`}>
             开始训练 →
           </Link>
-          <Link className="btn ghost" to="/">返回首页</Link>
+          <Link className="btn ghost" to={from}>{from === "/" ? "返回首页" : "返回"}</Link>
         </div>
       </div>
     );
@@ -103,20 +107,21 @@ export function Placement() {
       <Navbar
         title="水平测试"
         subtitle="测完推荐起始级别"
-        back="/"
+        back={from}
         right={<span className="nav-count">{Math.min(idx + 1, qs.length)}<em>/{qs.length}</em></span>}
       />
       <div className="quiz-progress">
         <div className="progressbar">
           <div style={{ width: `${(idx / qs.length) * 100}%` }} />
         </div>
-        <p className="meta center" style={{ marginTop: 6, marginBottom: 0 }}>覆盖 L1–L7{history ? " · 将覆盖上次结果" : ""}</p>
+        <p className="meta center" style={{ marginTop: 6, marginBottom: 0 }}>L4–L7 各 2 题{history ? " · 将覆盖上次结果" : ""}</p>
       </div>
 
       <QuestionCard
         key={`${q.id}-${idx}`}
         q={q}
         onAnswered={(ok) => {
+          recordAnswer(ok);
           const s = perLevel[q.level] ?? { ok: 0, total: 0 };
           s.total += 1;
           if (ok) s.ok += 1;

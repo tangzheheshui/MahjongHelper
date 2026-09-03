@@ -1,12 +1,12 @@
 /** 做题页（web-v1.md §一）：手牌点选 → 判分 → 讲解 → 下一题 → 结算 */
 
 import { useEffect, useMemo, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { Navbar } from "../components/Navbar";
 import { QuestionCard } from "../components/QuestionCard";
 import { loadBank, questionsOf } from "../lib/bank";
 import { LEVEL_META, pickStageQuestions } from "../lib/levels";
-import { recordWrong } from "../lib/storage";
+import { recordAnswer, recordWrong } from "../lib/storage";
 import type { Bank, Question } from "../lib/types";
 
 export interface QuizRunResult {
@@ -20,6 +20,8 @@ export interface QuizRunResult {
 export function Quiz() {
   const { level = "L1", stage = "S1" } = useParams();
   const navigate = useNavigate();
+  const [search] = useSearchParams();
+  const back = search.get("from") || `/levels/${level}`;
   const [bank, setBank] = useState<Bank | null>(null);
   const [idx, setIdx] = useState(0);
   const [results, setResults] = useState<QuizRunResult["results"]>([]);
@@ -38,7 +40,7 @@ export function Quiz() {
     <Navbar
       title={`${level} ${meta?.name ?? ""}`}
       subtitle="拆搭进阶"
-      back={`/levels/${level}`}
+      back={back}
       right={<span className="nav-count">{Math.min(idx + 1, qs.length || 1)}<em>/{qs.length}</em></span>}
     />
   );
@@ -59,6 +61,7 @@ export function Quiz() {
   const pct = Math.round((answeredCount / total) * 100);
 
   function onAnswered(ok: boolean, answer: string) {
+    recordAnswer(ok);
     setResults((r) => [...r, { id: q.id, ok, answer }]);
     if (!ok) recordWrong(q);
   }

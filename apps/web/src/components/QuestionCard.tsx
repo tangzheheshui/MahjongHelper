@@ -162,7 +162,6 @@ function ExplanationDrawer({
   const bestShanten = top[0]?.shanten_after ?? 0;
   const bestUkeire = top[0]?.ukeire_count ?? 0;
   const notes = (q.explanation.ukeire_table ?? []).filter((r) => r.note);
-  void picked;
 
   return (
     <>

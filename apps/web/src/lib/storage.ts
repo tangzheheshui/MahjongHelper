@@ -32,8 +32,6 @@ export interface WrongEntry {
   knowledgePoint: string;
   wrongCount: number;
   lastWrongAt: string;
-  /** 重做答对的次数（连续答对≥1 即可移出，PRD 答对后移出） */
-  redoOkAt?: string;
 }
 
 export interface WrongBook {
@@ -48,7 +46,7 @@ export function saveWrongBook(w: WrongBook) {
   writeJson("nk.wrong_book", w);
 }
 
-/** 做错入本（做题页/水平测试共用）：累加错误次数、清除重做标记 */
+/** 做错入本（做题页/水平测试共用）：累加错误次数 */
 export function recordWrong(q: { id: string; level: Level; knowledge_point: string }) {
   const wb = loadWrongBook();
   const e = wb.entries[q.id] ?? {
@@ -60,9 +58,45 @@ export function recordWrong(q: { id: string; level: Level; knowledge_point: stri
   };
   e.wrongCount += 1;
   e.lastWrongAt = new Date().toISOString();
-  delete e.redoOkAt;
   wb.entries[q.id] = e;
   saveWrongBook(wb);
+}
+
+/* ---------- 做题统计 nk.stats（首页/我的页数字的唯一真实来源，2026-09-03 加） ---------- */
+
+export interface Stats {
+  /** 统计日（本地时区 YYYY-MM-DD）；跨天读取时今日计数自动归零，累计保留 */
+  day: string;
+  todayAnswered: number;
+  todayCorrect: number;
+  totalAnswered: number;
+  totalCorrect: number;
+}
+
+/** 本地时区日期：晚间 UTC 偏移会把 toISOString 算成「明天」，今日环会闪零 */
+function localDay(): string {
+  const d = new Date();
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
+export function loadStats(): Stats {
+  const s = readJson<Stats>("nk.stats", { day: localDay(), todayAnswered: 0, todayCorrect: 0, totalAnswered: 0, totalCorrect: 0 });
+  if (s.day === localDay()) return s;
+  const reset = { ...s, day: localDay(), todayAnswered: 0, todayCorrect: 0 };
+  writeJson("nk.stats", reset); // 顺手落盘，避免每次读都构造新对象
+  return reset;
+}
+
+/** 每答一题落一笔（Quiz / Drill / Placement / 错题本重做四处共用） */
+export function recordAnswer(ok: boolean): void {
+  const s = loadStats();
+  writeJson("nk.stats", {
+    day: s.day,
+    todayAnswered: s.todayAnswered + 1,
+    todayCorrect: s.todayCorrect + (ok ? 1 : 0),
+    totalAnswered: s.totalAnswered + 1,
+    totalCorrect: s.totalCorrect + (ok ? 1 : 0),
+  });
 }
 
 /* ---------- 水平测试 nk.placement ---------- */
@@ -98,7 +132,7 @@ export function saveSettings(s: Settings) {
 }
 
 export function clearAllData() {
-  for (const k of ["nk.progress", "nk.wrong_book", "nk.placement", "nk.settings"]) {
+  for (const k of ["nk.progress", "nk.wrong_book", "nk.placement", "nk.settings", "nk.stats"]) {
     localStorage.removeItem(k);
   }
 }

@@ -1,19 +1,20 @@
-/** 我的页 v3：用户数据区 + 功能入口列表 */
+/** 我的页：用户数据区 + 功能入口列表。
+ *  三个数字全部来自 nk.stats 真实答题计数（今日/累计/正确率），不推导不估算。 */
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { loadPlacement, loadProgress, loadWrongBook } from "../lib/storage";
-import { LEVELS } from "../lib/types";
+import { APP_VERSION } from "../lib/meta";
+import { loadPlacement, loadStats, loadWrongBook } from "../lib/storage";
 
 export function Mine() {
-  const [progress, setProgress] = useState(() => loadProgress());
+  const [stats, setStats] = useState(() => loadStats());
   const [placement, setPlacement] = useState(() => loadPlacement());
   const [wrongCount, setWrongCount] = useState(0);
 
   useEffect(() => {
     setWrongCount(Object.keys(loadWrongBook().entries).length);
     const onStorage = () => {
-      setProgress(loadProgress());
+      setStats(loadStats());
       setPlacement(loadPlacement());
       setWrongCount(Object.keys(loadWrongBook().entries).length);
     };
@@ -21,63 +22,37 @@ export function Mine() {
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
-  /** 累计做题（估算） */
-  const totalDone = useMemo(() => {
-    let n = 0;
-    for (const lv of LEVELS) {
-      const r = progress.levels[lv]?.bestRate;
-      if (r !== undefined) n += Math.round(8 * r) + 2;
-    }
-    return n;
-  }, [progress]);
-
-  /** 总正确率 */
-  const overallRate = useMemo(() => {
-    const rates = LEVELS.map((lv) => progress.levels[lv]?.bestRate).filter((r): r is number => r !== undefined);
-    if (rates.length === 0) return 0;
-    return rates.reduce((a, b) => a + b, 0) / rates.length;
-  }, [progress]);
-
-  /** 连续打卡（从 completedAt 推导，简化为有进度的天数） */
-  const streak = useMemo(() => {
-    const dates = new Set(
-      LEVELS
-        .map((lv) => progress.levels[lv]?.completedAt)
-        .filter((d): d is string => d !== undefined)
-        .map((d) => new Date(d).toDateString()),
-    );
-    return Math.max(1, dates.size);
-  }, [progress]);
+  const overallRate = stats.totalAnswered > 0 ? stats.totalCorrect / stats.totalAnswered : 0;
 
   const menuItems = [
     {
       icon: "📒",
       iconBg: "var(--vermilion-soft)",
       title: "错题本",
-      desc: wrongCount > 0 ? `${wrongCount} 道待复习 · 已掌握 ${Math.max(0, wrongCount - 4)} 道` : "暂无错题，继续保持",
+      desc: wrongCount > 0 ? `${wrongCount} 道待复习` : "暂无错题，继续保持",
       badge: wrongCount > 0 ? String(wrongCount) : undefined,
-      to: "/wrong-book",
+      to: "/wrong-book?from=%2Fmine",
     },
     {
       icon: "📊",
       iconBg: "var(--jade-50)",
-      title: "全部练习历史",
-      desc: "查看每次练习的详细记录",
+      title: "关卡进度",
+      desc: "各级最佳成绩、星级与考点入口",
       to: "/levels",
     },
     {
       icon: "📈",
       iconBg: "var(--gold-soft)",
-      title: "完整能力雷达报告",
-      desc: placement ? `当前定级：${placement.grade} · 5 维度详细分析` : "完成评测后生成能力报告",
+      title: "能力评测",
+      desc: placement ? `当前定级：${placement.grade} · L4–L7 四维雷达` : "完成评测后生成能力雷达",
       to: "/eval",
     },
     {
       icon: "⚙️",
       iconBg: "var(--panel-2)",
       title: "设置",
-      desc: "音效、难度、数据管理",
-      to: "/settings",
+      desc: "题库更新、牌面皮肤、数据管理",
+      to: "/settings?from=%2Fmine",
     },
   ];
 
@@ -96,16 +71,16 @@ export function Mine() {
         </div>
         <div className="mine-stats-v2">
           <div className="mine-stat-v2">
-            <div className="v">{totalDone}</div>
+            <div className="v">{stats.totalAnswered}</div>
             <div className="k">累计做题</div>
           </div>
           <div className="mine-stat-v2">
-            <div className="v">{Math.round(overallRate * 100)}%</div>
+            <div className="v">{stats.totalAnswered > 0 ? `${Math.round(overallRate * 100)}%` : "—"}</div>
             <div className="k">总正确率</div>
           </div>
           <div className="mine-stat-v2">
-            <div className="v">{streak}</div>
-            <div className="k">连续打卡</div>
+            <div className="v">{stats.todayAnswered}</div>
+            <div className="k">今日练习</div>
           </div>
         </div>
       </section>
@@ -126,7 +101,7 @@ export function Mine() {
       </div>
 
       <p className="filter-result-v2" style={{ marginTop: 16 }}>
-        何切训练 · 离线教学工具 · 无账号系统 · v0.1.0
+        何切训练 · 离线教学工具 · 无账号系统 · v{APP_VERSION}
       </p>
     </div>
   );

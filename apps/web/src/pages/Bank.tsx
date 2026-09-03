@@ -1,65 +1,53 @@
-/** 题库页 v3：难度 + 标签双维度筛选，题目卡片列表 */
+/** 题库页：难度 + 专项分类（category 字段，question-bank.md §九）双维筛选。
+ *  卡片直达单题练习（/drill?id=）；支持 ?difficulty= 预选（首页「极限挑战」入口）。 */
 
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { loadBank } from "../lib/bank";
 import { tileLabel } from "../lib/levels";
-import type { Bank, Question } from "../lib/types";
+import { SPECIALS } from "../lib/specials";
+import type { Bank, Category } from "../lib/types";
 
 type Difficulty = "all" | "easy" | "medium" | "hard";
-type TagFilter = "all" | "daida" | "tingpai" | "duizi" | "jingoudiao";
+type CatFilter = "all" | Category;
 
 const DIFF_LABEL: Record<Difficulty, string> = {
   all: "全部", easy: "简单", medium: "中等", hard: "困难",
 };
 
-const TAG_LABEL: Record<TagFilter, string> = {
-  all: "全部", daida: "拆搭", tingpai: "听牌", duizi: "对子", jingoudiao: "金钩钓",
-};
-
-/** 从知识点推导标签 */
-function tagOf(q: Question): TagFilter {
-  const kp = q.knowledge_point;
-  if (kp.includes("金钩钓")) return "jingoudiao";
-  if (kp.includes("听牌") || kp.includes("一向听")) return "tingpai";
-  if (kp.includes("对子") || kp.includes("雀头")) return "duizi";
-  if (kp.includes("搭子") || kp.includes("拆搭") || kp.includes("嵌张") || kp.includes("两面") || kp.includes("边张")) return "daida";
-  return "all";
-}
-
-/** 题面简述（从知识点生成） */
-function questionBrief(q: Question): string {
-  const typeMap: Record<string, string> = {
-    what_to_discard: "选择应该打出的牌",
-    ukeire_compare: "比较进张数，选择最优切牌",
-    mentsu_identify: "识别手牌中的搭子类型",
-    wait_choose: "选择听牌形式",
-  };
-  return typeMap[q.question_type] ?? q.knowledge_point;
-}
-
 export function Bank() {
   const [bank, setBank] = useState<Bank | null>(null);
-  const [diff, setDiff] = useState<Difficulty>("all");
-  const [tag, setTag] = useState<TagFilter>("all");
+  const [search] = useSearchParams();
+  const initialDiff = search.get("difficulty");
+  const [diff, setDiff] = useState<Difficulty>(
+    initialDiff === "easy" || initialDiff === "medium" || initialDiff === "hard" ? initialDiff : "all",
+  );
+  const [cat, setCat] = useState<CatFilter>("all");
 
   useEffect(() => {
     void loadBank().then(setBank);
+  }, []);
+
+  const catLabel = useMemo(() => {
+    const m = new Map<string, string>([["all", "全部"], ...SPECIALS.map((s) => [s.id, s.name] as [string, string])]);
+    return (c: string) => m.get(c) ?? "全部";
   }, []);
 
   const filtered = useMemo(() => {
     if (!bank) return [];
     return bank.questions.filter((q) => {
       if (diff !== "all" && q.difficulty !== diff) return false;
-      if (tag !== "all" && tagOf(q) !== tag) return false;
+      if (cat !== "all" && q.category !== cat) return false;
       return true;
     });
-  }, [bank, diff, tag]);
+  }, [bank, diff, cat]);
+
+  const fromBank = encodeURIComponent("/bank");
 
   return (
     <div>
       <h1 className="page-title">题库</h1>
-      <p className="page-subtitle">按难度和标签筛选题目 · 共 {bank?.questions.length ?? 0} 题</p>
+      <p className="page-subtitle">按难度和专项筛选题目 · 共 {bank?.questions.length ?? 0} 题</p>
 
       {/* 筛选栏 */}
       <div className="filter-bar-v2">
@@ -76,27 +64,33 @@ export function Bank() {
           ))}
         </div>
         <div className="filter-row-v2">
-          <span className="fl-label">标签</span>
-          {(Object.keys(TAG_LABEL) as TagFilter[]).map((t) => (
+          <span className="fl-label">专项</span>
+          <button
+            className={`filter-chip-v2 ${cat === "all" ? "active" : ""}`}
+            onClick={() => setCat("all")}
+          >
+            全部
+          </button>
+          {SPECIALS.map((s) => (
             <button
-              key={t}
-              className={`filter-chip-v2 ${tag === t ? "active" : ""}`}
-              onClick={() => setTag(t)}
+              key={s.id}
+              className={`filter-chip-v2 ${cat === s.id ? "active" : ""}`}
+              onClick={() => setCat(s.id)}
             >
-              {TAG_LABEL[t]}
+              {s.name}
             </button>
           ))}
         </div>
       </div>
 
-      {/* 题目列表 */}
+      {/* 题目列表：点卡片 = 练这道题（不再是开该级随机组卷） */}
       {filtered.length > 0 ? (
         <div className="question-list-v2">
           {filtered.slice(0, 30).map((q) => (
             <Link
               key={q.id}
               className="question-card-v2"
-              to={`/quiz/${q.level}/S1`}
+              to={`/drill?id=${q.id}&from=${fromBank}`}
             >
               <div className="tile-preview">
                 {q.hand.slice(0, 3).map((t, i) => (
@@ -110,10 +104,10 @@ export function Bank() {
                   <span className={`q-tag ${q.difficulty}`}>
                     {q.difficulty === "easy" ? "简单" : q.difficulty === "medium" ? "中等" : "困难"}
                   </span>
-                  <span className="q-tag kp">{TAG_LABEL[tagOf(q)]}</span>
+                  <span className="q-tag kp">{catLabel(q.category)}</span>
                   <span className="q-tag kp">{q.level}</span>
                 </div>
-                <div className="question-text-v2">{questionBrief(q)}</div>
+                <div className="question-text-v2">{q.knowledge_point}</div>
               </div>
             </Link>
           ))}

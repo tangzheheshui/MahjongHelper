@@ -19,11 +19,11 @@ const { loadBank, questionsOf } = await import("../src/lib/bank");
 const { LEVELS } = await import("../src/lib/types");
 const {
   isCorrect, candidatesOf, shantenBefore, pickStageQuestions,
-  applyRunResult, pickPlacementQuestions, gradePlacement, mentsuPairKey,
+  applyRunResult, pickPlacementQuestions, gradePlacement, mentsuPairKey, nextTrainingLevel,
 } = await import("../src/lib/levels");
 const {
   loadProgress, saveProgress, recordWrong, loadWrongBook,
-  loadPlacement, savePlacement, clearAllData,
+  loadPlacement, savePlacement, clearAllData, recordAnswer, loadStats,
 } = await import("../src/lib/storage");
 
 let failed = 0;
@@ -133,6 +133,11 @@ console.log("⑥ 水平测试（组卷 / 定级 / 解锁范围）");
   const picked = pickPlacementQuestions(byLevel);
   check("组卷 =8 题（L4-L7 各 2）", picked.length === 8, `${picked.length} 题`);
   check("组卷全为何切题", picked.every((q) => q.question_type === "what_to_discard"));
+  // 级内洗牌（2026-09-03）：固定种子两次组卷结构仍合法，且与固定 rand 结果集一致
+  const seeded = pickPlacementQuestions(byLevel, () => 0.42);
+  check("洗牌组卷结构合法（种子 rand）", seeded.length === 8 && seeded.every((q) => ["L4", "L5", "L6", "L7"].includes(q.level)));
+  const seededAgain = pickPlacementQuestions(byLevel, () => 0.42);
+  check("同种子组卷可复现", seeded.map((q) => q.id).join() === seededAgain.map((q) => q.id).join());
 
   // 全对 → 高级 / L7
   const all: Record<string, { ok: number; total: number }> = {};
@@ -166,11 +171,42 @@ console.log("⑥ 水平测试（组卷 / 定级 / 解锁范围）");
   check("定级结果落盘往返", loaded?.startLevel === "L5");
 }
 
-/* ---------- ⑦ 存储清理 ---------- */
-console.log("⑦ 存储层（清理）");
+/* ---------- ⑦ 做题统计（nk.stats，2026-09-03 加） ---------- */
+console.log("⑦ 做题统计（recordAnswer / loadStats）");
+{
+  recordAnswer(true);
+  recordAnswer(true);
+  recordAnswer(false);
+  const s = loadStats();
+  check("今日计数 3/2", s.todayAnswered === 3 && s.todayCorrect === 2);
+  check("累计计数 3/2", s.totalAnswered === 3 && s.totalCorrect === 2);
+  check("统计日格式 YYYY-MM-DD", /^\d{4}-\d{2}-\d{2}$/.test(s.day), s.day);
+}
+
+/* ---------- ⑧ 继续训练目标（nextTrainingLevel，2026-09-03 加） ---------- */
+console.log("⑧ 继续训练目标（nextTrainingLevel）");
+{
+  check("无进度 → L1", nextTrainingLevel({ levels: {} }) === "L1");
+  check("L1 达标其余未练 → L2", nextTrainingLevel({ levels: { L1: { bestRate: 0.9 } } }) === "L2");
+  check("L1 未达标 → 停在 L1", nextTrainingLevel({ levels: { L1: { bestRate: 0.5 }, L2: { bestRate: 0.9 } } }) === "L1");
+  const all: Record<string, { bestRate: number; stars: 1 | 2 | 3 }> = {};
+  for (const lv of LEVELS) all[lv] = { bestRate: 0.85, stars: 2 };
+  check("全达标但有未满星 → 最低未满星级", nextTrainingLevel({ levels: all }) === "L1");
+  const full = { ...all, L1: { bestRate: 1, stars: 3 as const } };
+  check("L1 满星 → 下一未满星级 L2", nextTrainingLevel({ levels: full }) === "L2");
+  const perfect: Record<string, { bestRate: number; stars: 1 | 2 | 3 }> = {};
+  for (const lv of LEVELS) perfect[lv] = { bestRate: 1, stars: 3 };
+  check("全满星 → L7", nextTrainingLevel({ levels: perfect }) === "L7");
+}
+
+/* ---------- ⑨ 存储清理 ---------- */
+console.log("⑨ 存储层（清理）");
 saveProgress(loadProgress());
 clearAllData();
-check("clearAllData 清空四键", loadPlacement() === null && Object.keys(loadProgress().levels).length === 0);
+check(
+  "clearAllData 清空五键",
+  loadPlacement() === null && Object.keys(loadProgress().levels).length === 0 && loadStats().totalAnswered === 0,
+);
 
 console.log(failed === 0 ? "\n闭环冒烟全部通过 ✅" : `\n闭环冒烟有 ${failed} 项失败 ❌`);
 process.exit(failed === 0 ? 0 : 1);

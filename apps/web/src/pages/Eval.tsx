@@ -1,9 +1,17 @@
-/** 评测页 v3：能力评测介绍 + 历史评测记录 */
+/** 评测页：能力评测入口 + 最近一次评测结果。
+ *  雷达 = 最近一次水平测试 L4-L7 的真实每级正确率（placement.perLevel），
+ *  综合得分 = 该次测试总答对/总题数——不造系数，没测过就不显示。 */
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { loadPlacement } from "../lib/storage";
 import type { PlacementResult } from "../lib/storage";
+import { LEVEL_META } from "../lib/levels";
+import { LEVELS } from "../lib/types";
+import type { Level } from "../lib/types";
+
+/** 水平测试覆盖的级（web-v1.md §一：L4-L7 各 2 题） */
+const EVAL_LEVELS = LEVELS.filter((l) => ["L4", "L5", "L6", "L7"].includes(l));
 
 /** 缩略雷达图 */
 function RadarThumb({ values, color = "#2d6a4f" }: { values: number[]; color?: string }) {
@@ -18,7 +26,7 @@ function RadarThumb({ values, color = "#2d6a4f" }: { values: number[]; color?: s
   );
   const dataPoints = values.map((v, i) => point(i, R * Math.max(0, Math.min(1, v))).join(",")).join(" ");
   return (
-    <svg viewBox="0 0 56 56" width="56" height="56">
+    <svg viewBox="0 0 56 56" width={56} height={56}>
       {rings.map((pts, i) => (
         <polygon key={i} points={pts} fill="none" stroke="#e0d7be" strokeWidth="0.8" />
       ))}
@@ -37,42 +45,51 @@ export function Eval() {
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
-  /** 从 placement 推导 4 维能力值（入门/初级/中级/高级对应 L1-L7） */
-  const abilityValues = (() => {
-    if (!placement) return [0.3, 0.3, 0.3, 0.3];
-    const gradeScore: Record<string, number> = { "入门": 0.4, "初级": 0.55, "中级": 0.7, "高级": 0.85 };
-    const base = gradeScore[placement.grade] ?? 0.5;
-    return [base, base * 0.9, base * 0.8, base * 0.7];
+  /** 4 维 = L4-L7 各级真实正确率（0-1）；该级没做到题则 0 */
+  const abilityValues = EVAL_LEVELS.map((lv) => {
+    const s = placement?.perLevel?.[lv];
+    return s && s.total > 0 ? s.ok / s.total : 0;
+  });
+
+  /** 综合得分 = 该次测试总答对 / 总题数 */
+  const overall = (() => {
+    if (!placement) return 0;
+    let ok = 0, total = 0;
+    for (const lv of LEVELS) {
+      const s = placement.perLevel?.[lv];
+      if (s) { ok += s.ok; total += s.total; }
+    }
+    return total > 0 ? ok / total : 0;
   })();
 
   return (
     <div>
       <h1 className="page-title">能力评测</h1>
-      <p className="page-subtitle">全面摸底，生成专属能力雷达</p>
+      <p className="page-subtitle">快速摸底 · 定级 + 推荐起始关卡</p>
 
       {/* 评测介绍卡 */}
       <section className="eval-intro-v2">
         <div className="ei-icon">🧪</div>
-        <h2>全套能力摸底</h2>
+        <h2>水平测试</h2>
         <p>
-          30 题综合评测，覆盖拆搭、听牌、对子、碰杠、金钩钓五大维度，
-          生成你的专属能力雷达图与提升建议。
+          8 题何切（L4–L7 各 2 题，级内随机抽），按各级正确率定级，
+          并生成 L4–L7 四维能力雷达与推荐起始关卡。
         </p>
         <div className="eval-meta-v2">
-          <div className="em"><span className="v">30</span>题目数量</div>
-          <div className="em"><span className="v">~15</span>预计分钟</div>
-          <div className="em"><span className="v">5</span>能力维度</div>
+          <div className="em"><span className="v">8</span>题目数量</div>
+          <div className="em"><span className="v">~3</span>预计分钟</div>
+          <div className="em"><span className="v">4</span>能力维度</div>
         </div>
-        <Link className="eval-cta-v2" to="/placement">
-          ▶ 开始能力评测
+        <Link className="eval-cta-v2" to="/placement?from=%2Feval">
+          {placement ? "重新评测" : "▶ 开始水平测试"}
         </Link>
       </section>
 
-      {/* 历史评测记录 */}
-      <h3 className="eval-history-title">📋 历史评测记录</h3>
+      {/* 最近一次评测 */}
+      <h3 className="eval-history-title">📋 最近一次评测</h3>
       {placement ? (
         <div className="eval-history-list-v2">
-          <Link className="eval-history-item-v2" to="/placement">
+          <div className="eval-history-item-v2">
             <div className="eval-radar-mini-v2">
               <RadarThumb values={abilityValues} />
             </div>
@@ -83,14 +100,20 @@ export function Eval() {
                 })}
               </div>
               <div className="ei-desc">
-                定级：{placement.grade} · 推荐起始 {placement.startLevel}
+                定级：{placement.grade} · 推荐起始 {placement.startLevel} {LEVEL_META[placement.startLevel].name}
+              </div>
+              <div className="ei-desc" style={{ marginTop: 2 }}>
+                {EVAL_LEVELS.map((lv) => {
+                  const s = placement.perLevel?.[lv];
+                  return `${lv} ${s && s.total > 0 ? Math.round((s.ok / s.total) * 100) : 0}%`;
+                }).join(" · ")}
               </div>
             </div>
             <div className="eval-score-v2">
-              <div className="v">{Math.round(abilityValues.reduce((a, b) => a + b, 0) / abilityValues.length * 100)}</div>
+              <div className="v">{Math.round(overall * 100)}</div>
               <div className="k">综合得分</div>
             </div>
-          </Link>
+          </div>
         </div>
       ) : (
         <p className="empty">
@@ -98,10 +121,6 @@ export function Eval() {
           还没有评测记录，完成首次评测后生成能力雷达
         </p>
       )}
-
-      <p className="filter-result-v2" style={{ marginTop: 16 }}>
-        评测历史记录功能持续完善中 · 更多维度分析即将上线
-      </p>
     </div>
   );
 }

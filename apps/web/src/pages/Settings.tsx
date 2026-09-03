@@ -1,9 +1,11 @@
 /** 设置页（PRD 6.4 / web-v1.md §一）：iOS 分组 cell 风格 —— 题库、皮肤、训练、数据、关于 */
 
 import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
+import { Navbar } from "../components/Navbar";
 import { Tile } from "../components/Tile";
 import { checkBankUpdate, loadBank } from "../lib/bank";
+import { APP_VERSION } from "../lib/meta";
 import { clearAllData, loadPlacement, loadSettings, saveSettings } from "../lib/storage";
 import type { Bank } from "../lib/types";
 import type { BankUpdateResult } from "../lib/bank";
@@ -19,6 +21,8 @@ export function Settings() {
   const [checking, setChecking] = useState(false);
   const [result, setResult] = useState<BankUpdateResult | null>(null);
   const navigate = useNavigate();
+  const [search] = useSearchParams();
+  const from = search.get("from") || "/mine";
 
   useEffect(() => {
     loadBank().then(setBank);
@@ -51,6 +55,8 @@ export function Settings() {
 
   return (
     <div>
+      <Navbar title="设置" back={from} />
+
       <div className="section-head" style={{ marginTop: 6 }}>
         <h2>设置</h2>
         <span className="hint">本机存储 · 无账号系统</span>
@@ -59,7 +65,7 @@ export function Settings() {
       {/* —— 训练 —— */}
       <div className="group-label">训练</div>
       <div className="group">
-        <Link className="cell" to="/placement">
+        <Link className="cell" to="/placement?from=%2Fsettings">
           <span className="ico">🧭</span>
           <span className="label">水平测试</span>
           <span className="val">
@@ -67,7 +73,7 @@ export function Settings() {
           </span>
           <span className="chev">›</span>
         </Link>
-        <Link className="cell" to="/wrong-book">
+        <Link className="cell" to="/wrong-book?from=%2Fsettings">
           <span className="ico">📕</span>
           <span className="label">错题本</span>
           <span className="val">答对即移出</span>
@@ -130,7 +136,7 @@ export function Settings() {
             </label>
           ))}
         </div>
-        <p className="group-note" style={{ marginTop: 10, marginBottom: 2 }}>立即生效、仅存本机；两套皮肤均为原创 SVG 手绘。</p>
+        <p className="group-note" style={{ marginTop: 10, marginBottom: 2 }}>立即生效、仅存本机；皮肤为原创 SVG 手绘（开发期占位，正式牌面另行接入）。</p>
       </div>
 
       {/* —— 数据 —— */}
@@ -142,10 +148,10 @@ export function Settings() {
           <span className="chev">›</span>
         </button>
       </div>
-      <p className="group-note">进度、错题本、定级全部仅存本机。卸载或清除浏览器数据会丢失且无法恢复。</p>
+      <p className="group-note">进度、错题本、统计、定级全部仅存本机。卸载或清除浏览器数据会丢失且无法恢复。</p>
       {confirmClear && (
         <div className="warn-box" style={{ marginTop: 10 }}>
-          <b>⚠ 确认清空全部本地数据</b>（进度 / 错题本 / 定级 / 设置）？此操作不可恢复。
+          <b>⚠ 确认清空全部本地数据</b>（进度 / 错题本 / 统计 / 定级 / 设置）？此操作不可恢复。
           <div className="btn-row">
             <button type="button" className="btn danger" onClick={doClear}>确认清空</button>
             <button type="button" className="btn" onClick={() => setConfirmClear(false)}>取消</button>
@@ -159,7 +165,7 @@ export function Settings() {
         <div className="cell static">
           <span className="ico">ℹ️</span>
           <span className="label">版本</span>
-          <span className="val">v0.1（M2 试点）</span>
+          <span className="val">v{APP_VERSION}</span>
         </div>
       </div>
       <p className="group-note">

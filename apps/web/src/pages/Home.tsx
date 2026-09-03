@@ -2,13 +2,14 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { loadBank } from "../lib/bank";
-import { LEVEL_META, STAGE_OF_LEVEL } from "../lib/levels";
+import { loadBank, questionsOf } from "../lib/bank";
+import { LEVEL_META, STAGE_OF_LEVEL, nextTrainingLevel } from "../lib/levels";
 import { SPECIALS, questionsOfSpecial } from "../lib/specials";
-import { loadPlacement, loadProgress, loadWrongBook } from "../lib/storage";
+import { loadPlacement, loadProgress, loadStats, loadWrongBook } from "../lib/storage";
 import { LEVELS } from "../lib/types";
 import type { Bank, Level } from "../lib/types";
 
+/** 今日练习的展示目标（软目标，只影响环的满刻度，无打卡/连击机制） */
 const DAILY_GOAL = 10;
 
 /** 能力雷达（专项数即维度数，从各关卡 bestRate 推导） */
@@ -40,6 +41,7 @@ function RadarMini({ values }: { values: number[] }) {
 export function Home() {
   const [progress, setProgress] = useState(() => loadProgress());
   const [placement, setPlacement] = useState(() => loadPlacement());
+  const [stats, setStats] = useState(() => loadStats());
   const [wrongCount, setWrongCount] = useState(0);
   const [bank, setBank] = useState<Bank | null>(null);
 
@@ -49,62 +51,30 @@ export function Home() {
     const onStorage = () => {
       setProgress(loadProgress());
       setPlacement(loadPlacement());
+      setStats(loadStats());
       setWrongCount(Object.keys(loadWrongBook().entries).length);
     };
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
-  /** 今日完成数：从 progress.completedAt 中统计今天的 */
-  const todayDone = useMemo(() => {
-    const today = new Date().toDateString();
-    let n = 0;
-    for (const lv of LEVELS) {
-      const completedAt = progress.levels[lv]?.completedAt;
-      if (completedAt && new Date(completedAt).toDateString() === today) n += 1;
-    }
-    // 试点期每关只算 1 次完成，今日完成至少显示有进度的关卡数
-    return Math.max(n, Object.values(progress.levels).filter((l) => l?.bestRate !== undefined).length > 0 ? 3 : 0);
-  }, [progress]);
+  /** 今日/累计/正确率：全部来自 nk.stats 的真实答题计数 */
+  const todayDone = stats.todayAnswered;
+  const totalDone = stats.totalAnswered;
+  const overallRate = stats.totalAnswered > 0 ? stats.totalCorrect / stats.totalAnswered : 0;
 
-  /** 累计完成题数（估算：每关 bestRate 对应题数） */
-  const totalDone = useMemo(() => {
-    let n = 0;
-    for (const lv of LEVELS) {
-      const r = progress.levels[lv]?.bestRate;
-      if (r !== undefined) n += Math.round(8 * r) + 2; // 估算
-    }
-    return n;
-  }, [progress]);
+  /** 继续训练目标：最低的未开始/未达标级（练得最好的级不需要被推荐） */
+  const continueTarget = useMemo<Level>(() => nextTrainingLevel(progress), [progress]);
 
-  /** 总正确率 */
-  const overallRate = useMemo(() => {
-    const rates = LEVELS.map((lv) => progress.levels[lv]?.bestRate).filter((r): r is number => r !== undefined);
-    if (rates.length === 0) return 0;
-    return rates.reduce((a, b) => a + b, 0) / rates.length;
-  }, [progress]);
-
-  /** 继续训练目标：取最高正确率或最低未通过级 */
-  const continueTarget = useMemo<Level>(() => {
-    let best: Level = "L1";
-    let bestRate = -1;
-    for (const lv of LEVELS) {
-      const r = progress.levels[lv]?.bestRate;
-      if (r !== undefined && r > bestRate) { bestRate = r; best = lv; }
-    }
-    return best;
-  }, [progress]);
-
-  /** 能力值（每个专项一维） */
+  /** 能力值（每个专项一维）：该专项题目所在关卡 bestRate 的平均；没练过就是 0，不造假基线 */
   const abilityValues = useMemo(() => {
     if (!bank) return SPECIALS.map(() => 0);
     return SPECIALS.map((sp) => {
       const qs = questionsOfSpecial(bank.questions, sp.id);
       if (qs.length === 0) return 0;
-      // 从这些题所在关卡的 bestRate 取平均
       const levels = [...new Set(qs.map((q) => q.level))];
       const rates = levels.map((lv) => progress.levels[lv]?.bestRate).filter((r): r is number => r !== undefined);
-      return rates.length > 0 ? rates.reduce((a, b) => a + b, 0) / rates.length : 0.3;
+      return rates.length > 0 ? rates.reduce((a, b) => a + b, 0) / rates.length : 0;
     });
   }, [bank, progress]);
 
@@ -116,7 +86,7 @@ export function Home() {
       .slice(0, 2);
   }, [abilityValues]);
 
-  /** 最近练习记录：从 progress completedAt 推导 */
+  /** 最近练习记录：从 progress completedAt 推导（题数取该级题库真实库存） */
   const recentRecords = useMemo(() => {
     return LEVELS
       .map((lv) => ({
@@ -124,11 +94,12 @@ export function Home() {
         meta: LEVEL_META[lv],
         rate: progress.levels[lv]?.bestRate,
         completedAt: progress.levels[lv]?.completedAt,
+        count: bank ? questionsOf(bank, lv).length : 0,
       }))
       .filter((r) => r.rate !== undefined)
       .sort((a, b) => (b.completedAt ?? "").localeCompare(a.completedAt ?? ""))
       .slice(0, 3);
-  }, [progress]);
+  }, [progress, bank]);
 
   const ringPercent = Math.min(1, todayDone / DAILY_GOAL);
   const circumference = 2 * Math.PI * 34;
@@ -161,7 +132,7 @@ export function Home() {
               <div className="ts"><div className="v">{totalDone}</div><div className="k">累计完成</div></div>
               <div className="ts"><div className="v">{Math.round(overallRate * 100)}%</div><div className="k">正确率</div></div>
             </div>
-            <Link className="today-cta" to={`/quiz/${continueTarget}/${STAGE_OF_LEVEL}`}>
+            <Link className="today-cta" to={`/quiz/${continueTarget}/${STAGE_OF_LEVEL}?from=%2F`}>
               ▶ 开始今日训练
             </Link>
           </div>
@@ -209,10 +180,10 @@ export function Home() {
           <h2>⚡ 快捷训练</h2>
         </div>
         <div className="quick-scroll">
-          <Link className="quick-item-v2" to={`/quiz/${continueTarget}/${STAGE_OF_LEVEL}`}>
+          <Link className="quick-item-v2" to={`/quiz/${continueTarget}/${STAGE_OF_LEVEL}?from=%2F`}>
             <span className="qi-icon">🎲</span>
-            <span className="qi-title">随机10题</span>
-            <span className="qi-desc">混合难度</span>
+            <span className="qi-title">练 {continueTarget}</span>
+            <span className="qi-desc">{LEVEL_META[continueTarget].name}</span>
           </Link>
           <Link className="quick-item-v2" to="/special/structure">
             <span className="qi-icon">🔧</span>
@@ -224,7 +195,7 @@ export function Home() {
             <span className="qi-title">听牌判断</span>
             <span className="qi-desc">听牌形式与留法</span>
           </Link>
-          <Link className="quick-item-v2" to="/bank">
+          <Link className="quick-item-v2" to="/bank?difficulty=hard">
             <span className="qi-icon">🔥</span>
             <span className="qi-title">极限挑战</span>
             <span className="qi-desc">困难题筛选</span>
@@ -246,7 +217,7 @@ export function Home() {
                 <div className="ri-info">
                   <div className="ri-name">{r.level} · {r.meta.name}</div>
                   <div className="ri-meta">
-                    {r.completedAt ? new Date(r.completedAt).toLocaleDateString("zh-CN", { month: "2-digit", day: "2-digit" }) : "未完成"} · 8题
+                    {r.completedAt ? new Date(r.completedAt).toLocaleDateString("zh-CN", { month: "2-digit", day: "2-digit" }) : "未完成"} · {r.count}题
                   </div>
                 </div>
                 <div className="ri-acc">{Math.round((r.rate ?? 0) * 100)}%</div>

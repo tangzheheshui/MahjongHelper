@@ -26,6 +26,14 @@ export function LevelDetail() {
     loadBank().then(setBank);
   }, []);
 
+  /** 该级知识点（含题数）——必须在早退 return 之前调用（Hooks 顺序规则） */
+  const kps = useMemo(() => {
+    if (!bank || !isLevel(level)) return [] as { kp: string; n: number }[];
+    const counts = new Map<string, number>();
+    for (const q of questionsOf(bank, level)) counts.set(q.knowledge_point, (counts.get(q.knowledge_point) ?? 0) + 1);
+    return [...counts.entries()].map(([kp, n]) => ({ kp, n })).sort((a, b) => b.n - a.n);
+  }, [bank, level]);
+
   if (!isLevel(level)) {
     return (
       <>
@@ -40,14 +48,6 @@ export function LevelDetail() {
   const count = bank ? questionsOf(bank, level).length : 0;
   const rate = p?.bestRate;
   const stars = p?.stars ?? 0;
-
-  /** 该级知识点（含题数） */
-  const kps = useMemo(() => {
-    if (!bank) return [] as { kp: string; n: number }[];
-    const counts = new Map<string, number>();
-    for (const q of questionsOf(bank, level)) counts.set(q.knowledge_point, (counts.get(q.knowledge_point) ?? 0) + 1);
-    return [...counts.entries()].map(([kp, n]) => ({ kp, n })).sort((a, b) => b.n - a.n);
-  }, [bank, level]);
 
   return (
     <div>

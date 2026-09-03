@@ -1,6 +1,7 @@
-/** 知识点专项训练（web-v1.md §一）：两种组卷口径——
- *  /drill/:kp        按 knowledge_point 精确匹配（单考点）
- *  /drill?cat=&from= 按 category 过滤（整组专项，question-bank.md §九）
+/** 知识点专项训练（web-v1.md §一）：三种组卷口径——
+ *  /drill/:kp          按 knowledge_point 精确匹配（单考点）
+ *  /drill?cat=&from=   按 category 过滤（整组专项，question-bank.md §九）
+ *  /drill?id=&from=    单题练习（题库页卡片直达）
  *  乱序不补量、上限 12；错题照记错题本，但不写关卡进度。
  *  返回键回来源页（from 参数），不再写死 /levels。 */
 
@@ -11,13 +12,14 @@ import { QuestionCard } from "../components/QuestionCard";
 import { loadBank } from "../lib/bank";
 import { pickStageQuestions } from "../lib/levels";
 import { questionsOfSpecial, specialOf } from "../lib/specials";
-import { recordWrong } from "../lib/storage";
+import { recordAnswer, recordWrong } from "../lib/storage";
 import type { Bank, Question } from "../lib/types";
 
 export function Drill() {
   const { kp = "" } = useParams();
   const [search] = useSearchParams();
   const cat = search.get("cat") ?? "";
+  const id = search.get("id") ?? "";
   const from = search.get("from") ?? "";
   const [bank, setBank] = useState<Bank | null>(null);
   const [round, setRound] = useState(0); // 「再来一组」时重抽（换个题序）
@@ -29,32 +31,37 @@ export function Drill() {
   }, []);
 
   const sp = specialOf(cat);
-  const back = from || (kp ? "/levels" : "/special");
+  const back = from || (id ? "/bank" : kp ? "/levels" : "/special");
   const backLabel = from
     ? from.startsWith("/special/")
       ? "返回专项"
       : from.startsWith("/levels")
         ? "返回关卡"
-        : "返回"
-    : kp
-      ? "返回关卡"
-      : "返回专项";
+        : from.startsWith("/bank")
+          ? "返回题库"
+          : "返回"
+    : id
+      ? "返回题库"
+      : kp
+        ? "返回关卡"
+        : "返回专项";
 
   const pool = useMemo(() => {
     if (!bank) return [];
+    if (id) return bank.questions.filter((q) => q.id === id);
     if (kp) return bank.questions.filter((q) => q.knowledge_point === kp);
     if (sp) return questionsOfSpecial(bank.questions, sp.id);
     return [];
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [bank, kp, cat]);
+  }, [bank, kp, cat, id]);
   // min=1：不补量（该口径有几题练几题），只用它的洗牌
   const { qs } = useMemo(() => pickStageQuestions(pool, 1), [pool, round]);
   const list = qs.slice(0, 12);
 
   const navbar = (
     <Navbar
-      title="专项训练"
-      subtitle={kp || (sp ? `${sp.name} · 整组乱序` : "")}
+      title={id ? "单题练习" : "专项训练"}
+      subtitle={id ? "" : kp || (sp ? `${sp.name} · 整组乱序` : "")}
       back={back}
       right={<span className="nav-count">{Math.min(idx + 1, list.length || 1)}<em>/{list.length}</em></span>}
     />
@@ -64,7 +71,7 @@ export function Drill() {
     return (
       <div>
         {navbar}
-        <p className="empty">{kp ? "没有找到该知识点的题目" : "该专项暂无题目"}</p>
+        <p className="empty">{id ? "没有找到该题目（可能已被题库更新移除）" : kp ? "没有找到该知识点的题目" : "该专项暂无题目"}</p>
         <p className="center"><Link to={back} className="btn">← {backLabel}</Link></p>
       </div>
     );
@@ -76,6 +83,7 @@ export function Drill() {
   const okCount = results.filter((r) => r.ok).length;
 
   function onAnswered(ok: boolean) {
+    recordAnswer(ok);
     setResults((r) => [...r, { id: q.id, ok }]);
     if (!ok) recordWrong(q);
   }

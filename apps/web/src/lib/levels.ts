@@ -188,16 +188,30 @@ export const PLACEMENT_GRADES: { grade: "入门" | "初级" | "中级" | "高级
   { grade: "高级", levels: ["L7"] },
 ];
 
-/** 每级抽 2 题组卷；只抽 L4-L7（2026-09-02 用户裁定：L1-L3 太简单不进评测，web-v1.md §一） */
-export function pickPlacementQuestions(byLevel: Record<string, Question[]>): Question[] {
+/** 每级抽 2 题组卷；只抽 L4-L7（2026-09-02 用户裁定：L1-L3 太简单不进评测，web-v1.md §一）。
+ *  级内洗牌——「重新测试」不再永远是同一套题，评测才可复评。 */
+export function pickPlacementQuestions(byLevel: Record<string, Question[]>, rand: () => number = Math.random): Question[] {
   const picked: Question[] = [];
   for (const lv of LEVELS.filter((l) => ["L4", "L5", "L6", "L7"].includes(l))) {
-    const pool = (byLevel[lv] ?? []).filter((q) => q.question_type === "what_to_discard");
-    for (const idx of [0, 2]) {
+    const pool = shuffle([...(byLevel[lv] ?? []).filter((q) => q.question_type === "what_to_discard")], rand);
+    for (const idx of [0, 1]) {
       if (pool[idx]) picked.push(pool[idx]);
     }
   }
   return picked;
+}
+
+/** 「继续训练」目标级：最低的未开始或未达标（<80%）级 → 最低未满星级级 → L7。
+ *  取「最低待改进」而非「练得最好」——前者才是下一步该练的地方。 */
+export function nextTrainingLevel(progress: { levels: Partial<Record<Level, { bestRate?: number; stars?: 1 | 2 | 3 }>> }): Level {
+  for (const lv of LEVELS) {
+    const r = progress.levels[lv]?.bestRate;
+    if (r === undefined || r < PASS_RATE) return lv;
+  }
+  for (const lv of LEVELS) {
+    if ((progress.levels[lv]?.stars ?? 0) < 3) return lv;
+  }
+  return "L7";
 }
 
 /** 定级：从 L7 往下找第一个「该级题正确率 ≥1/2」的级别所在档；全不过 → 入门、起始 L1 */
